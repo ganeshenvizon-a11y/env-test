@@ -1,0 +1,41 @@
+:root{
+
+    --primary:#F4A825;
+
+    --accent:#FAB330;
+
+    --black:#111111;
+
+    --white:#ffffff;
+
+    --text:#555555;
+
+    --text-muted:#6f6f6f;
+
+    --border-light:#e5e5e5;
+
+    --container:1280px;
+
+    --radius:20px;
+
+    --radius-pill:50px;
+
+    --space-2xs:8px;
+
+    --space-xs:12px;
+
+    --space-sm:16px;
+
+    --space-md:24px;
+
+    --space-lg:32px;
+
+    --space-xl:48px;
+
+    --sidebar-width:min(360px, 85vw);
+
+    --transition-fast:.25s ease;
+
+    --transition-base:.35s ease;
+
+}

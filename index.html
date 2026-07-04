@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Envizon Studio</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="assets/css/base/variables.css">
+
+    <link rel="stylesheet"
+          href="assets/css/base/reset.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/navbar.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/hero.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/buttons.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/carousel.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/services-bar.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/craft-services.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/stats-highlight.css">
+
+    <link rel="stylesheet"
+          href="assets/css/style.css">
+
+    <link rel="stylesheet"
+          href="assets/css/responsive.css">
+
+</head>
+
+<body>
+<header class="header">
+
+    <div class="navbar-wrapper">
+
+        <nav class="navbar">
+
+            <div class="logo">
+
+                <img
+                    src="assets/images/logoenv.png"
+                    alt="Envizon">
+
+            </div>
+
+            <ul class="nav-links">
+
+                <li><a class="active" href="#">Services</a></li>
+                <li><a href="#">Work</a></li>
+                <li><a href="#">Clients</a></li>
+                <li><a href="#">Blogs</a></li>
+                <li><a href="#">About</a></li>
+
+            </ul>
+
+            <div class="navbar-actions">
+
+                <a href="#" class="header-btn">
+
+                    Get started
+
+                    <span>↗</span>
+
+                </a>
+
+                <button type="button"
+                        class="nav-toggle"
+                        aria-label="Toggle navigation menu"
+                        aria-expanded="false"
+                        aria-controls="mobile-sidebar">
+
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+
+                </button>
+
+            </div>
+
+        </nav>
+
+    </div>
+
+</header>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="mobile-sidebar"
+       id="mobile-sidebar"
+       role="dialog"
+       aria-modal="true"
+       aria-label="Mobile navigation"
+       aria-hidden="true"
+       tabindex="-1">
+
+    <div class="mobile-sidebar-header">
+
+        <div class="logo">
+            <img src="assets/images/logoenv.png" alt="Envizon">
+        </div>
+
+        <button type="button" class="sidebar-close" aria-label="Close navigation menu">
+            <span class="sidebar-close-bar"></span>
+            <span class="sidebar-close-bar"></span>
+        </button>
+
+    </div>
+
+    <ul class="mobile-nav-links">
+
+        <li><a class="active" href="#">Services</a></li>
+        <li><a href="#">Work</a></li>
+        <li><a href="#">Clients</a></li>
+        <li><a href="#">Blogs</a></li>
+        <li><a href="#">About</a></li>
+
+    </ul>
+
+    <a href="#" class="header-btn mobile-sidebar-cta">
+
+        Get started
+
+        <span>↗</span>
+
+    </a>
+
+</aside>
+
+<section class="hero">
+
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+
+      <h1 class="hero-title">Designing <span class="nowrap">Inn<span class="innovation-o"><img src="assets/images/ellipse-outer.png" alt=""><img src="assets/images/ellipse-inner.png" alt=""></span>vation</span><br>For <span class="highlight">Every Business</span>.</h1>
+
+        <p>
+            We help ambitious brands transform ideas into
+            high-performing digital products through strategy,
+            design and development.
+
+        </p>
+
+        <div class="hero-buttons">
+            <button class="btn btn-primary">Let's Build Now</button>
+            <a href="#" class="btn btn-secondary">
+                <span class="play-icon">▶</span>
+                View Our Work
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Portfolio Showcase Carousel -->
+    <div class="carousel-section">
+        <div class="showcase-carousel"
+             id="showcaseCarousel"
+             tabindex="0"
+             role="region"
+             aria-roledescription="carousel"
+             aria-label="Featured services showcase">
+
+            <div class="showcase-carousel__stage">
+                <ul class="showcase-carousel__track">
+
+                    <li class="showcase-card" data-category="Web Development">
+                        <span class="showcase-card__overlay" aria-hidden="true"></span>
+                        <div class="showcase-card__media" style="background:linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <img src="assets/images/port2.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
+                            <span class="showcase-card__label">Web Development</span>
+                        </div>
+                    </li>
+
+                    <li class="showcase-card" data-category="Brand Identity">
+                        <span class="showcase-card__overlay" aria-hidden="true"></span>
+                        <div class="showcase-card__media" style="background:linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <img src="assets/images/port3.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
+                            <span class="showcase-card__label">Brand Identity</span>
+                        </div>
+                    </li>
+
+                    <li class="showcase-card" data-category="CRO Optimization">
+                        <span class="showcase-card__overlay" aria-hidden="true"></span>
+                        <div class="showcase-card__media" style="background:linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                            <img src="assets/images/port4.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
+                            <span class="showcase-card__label">CRO Optimization</span>
+                        </div>
+                    </li>
+
+                    <li class="showcase-card" data-category="Design Systems">
+                        <span class="showcase-card__overlay" aria-hidden="true"></span>
+                        <div class="showcase-card__media" style="background:linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <img src="assets/images/port5.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
+                            <span class="showcase-card__label">Design Systems</span>
+                        </div>
+                    </li>
+
+                    <li class="showcase-card" data-category="Mobile Apps">
+                        <span class="showcase-card__overlay" aria-hidden="true"></span>
+                        <div class="showcase-card__media" style="background:linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                            <img src="assets/images/port6.jpg" alt="" class="showcase-card__image" loading="lazy" decoding="async">
+                            <span class="showcase-card__label">Mobile Apps</span>
+                        </div>
+                    </li>
+
+                    <li class="showcase-card" data-category="SAAS Products">
+                        <span class="showcase-card__overlay" aria-hidden="true"></span>
+                        <div class="showcase-card__media" style="background:linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                            <img src="assets/images/port7.jpg" alt="" class="showcase-card__image" loading="lazy" decoding="async">
+                            <span class="showcase-card__label">SAAS Products</span>
+                        </div>
+                    </li>
+
+                    <li class="showcase-card" data-category="UI/UX Design">
+                        <span class="showcase-card__overlay" aria-hidden="true"></span>
+                        <div class="showcase-card__media" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <img src="assets/images/port1.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
+                            <span class="showcase-card__label">UI/UX Design</span>
+                        </div>
+                    </li>
+
+                    <li class="showcase-card" data-category="Product Strategy">
+                        <span class="showcase-card__overlay" aria-hidden="true"></span>
+                        <div class="showcase-card__media" style="background:linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                            <img src="assets/images/port8.jpg" alt="" class="showcase-card__image" loading="lazy" decoding="async">
+                            <span class="showcase-card__label">Product Strategy</span>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+            <button type="button" class="showcase-carousel__arrow showcase-carousel__arrow--prev" aria-label="Previous slide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="showcase-carousel__arrow showcase-carousel__arrow--next" aria-label="Next slide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+        </div>
+    </div>
+
+</section>
+
+<!-- Services Category Nav (synced with the showcase carousel) -->
+<section class="services-bar" aria-label="Our services">
+    <ul class="services-bar__track" id="servicesTicker">
+        <li class="services-bar__item">
+            <button type="button" class="services-bar__btn">
+                <span class="services-bar__dot" aria-hidden="true"></span>
+                <span class="services-bar__label">Web Development</span>
+            </button>
+        </li>
+        <li class="services-bar__item">
+            <button type="button" class="services-bar__btn">
+                <span class="services-bar__dot" aria-hidden="true"></span>
+                <span class="services-bar__label">Brand Identity</span>
+            </button>
+        </li>
+        <li class="services-bar__item">
+            <button type="button" class="services-bar__btn">
+                <span class="services-bar__dot" aria-hidden="true"></span>
+                <span class="services-bar__label">CRO Optimization</span>
+            </button>
+        </li>
+        <li class="services-bar__item">
+            <button type="button" class="services-bar__btn">
+                <span class="services-bar__dot" aria-hidden="true"></span>
+                <span class="services-bar__label">Design Systems</span>
+            </button>
+        </li>
+        <li class="services-bar__item">
+            <button type="button" class="services-bar__btn">
+                <span class="services-bar__dot" aria-hidden="true"></span>
+                <span class="services-bar__label">Mobile Apps</span>
+            </button>
+        </li>
+        <li class="services-bar__item">
+            <button type="button" class="services-bar__btn">
+                <span class="services-bar__dot" aria-hidden="true"></span>
+                <span class="services-bar__label">SAAS Products</span>
+            </button>
+        </li>
+        <li class="services-bar__item">
+            <button type="button" class="services-bar__btn">
+                <span class="services-bar__dot" aria-hidden="true"></span>
+                <span class="services-bar__label">UI/UX Design</span>
+            </button>
+        </li>
+        <li class="services-bar__item">
+            <button type="button" class="services-bar__btn">
+                <span class="services-bar__dot" aria-hidden="true"></span>
+                <span class="services-bar__label">Product Strategy</span>
+            </button>
+        </li>
+    </ul>
+</section>
+
+<!-- Craft That Converts — static header -->
+<section class="craft-header">
+
+    <div class="craft-container">
+
+        <div class="craft-header__grid">
+
+            <div class="craft-header__left">
+
+                <div class="craft-header__eyebrow">
+                    <span class="craft-header__eyebrow-line" aria-hidden="true"></span>
+                    <span>What We Do</span>
+                </div>
+
+                <h2 class="craft-header__title">
+                    Craft That
+                    <span class="craft-header__title-accent">Converts</span>
+                </h2>
+
+            </div>
+
+            <div class="craft-header__right">
+
+                <a href="#" class="craft-header__cta">
+                    Contact Now
+                    <span class="craft-header__cta-icon" aria-hidden="true">↗</span>
+                </a>
+
+                <p class="craft-header__text">
+                    Our talented and diverse team works together for one purpose—to
+                    unlock the potential of those around us.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="craft-header__divider" aria-hidden="true"></div>
+
+    </div>
+
+</section>
+
+<!-- Pinned stacked-card services -->
+<section class="services-scroll" id="servicesScroll" aria-label="Our services">
+
+    <div class="services-scroll__stage">
+
+        <div class="services-scroll__track" id="servicesTrack"></div>
+
+    </div>
+
+</section>
+
+<!-- Built for businesses that refuse to look average -->
+<section class="stats-highlight" aria-label="Why businesses choose Envizon">
+
+    <div class="stats-highlight__container">
+
+        <div class="stats-highlight__top">
+
+            <div class="stats-highlight__left">
+
+                <h2 class="stats-highlight__title">
+                    Built For <span>Businesses</span><br>
+                    That Refuse To <span>Look Average</span>
+                </h2>
+
+                <p class="stats-highlight__text">
+                    Envizon exists for the ambitious ones. The founders who understand
+                    that <b>design is a business lever</b>, not a line item. The teams who refuse
+                    to ship average. The brands that want their product to feel inevitable.
+                </p>
+
+            </div>
+
+            <div class="stats-highlight__right">
+
+                <a href="#" class="stats-highlight__link">
+                    Read Case Studies
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="stats-highlight__grid">
+
+            <div class="stats-highlight__card">
+                <div class="stats-highlight__percent">80%</div>
+                <div class="stats-highlight__card-title">Growth using Envizon</div>
+                <p class="stats-highlight__card-desc">Achieve up to a 15% uplift in conversion rates as Redacted AI's algorithms optimize pricing in real-time</p>
+            </div>
+
+            <div class="stats-highlight__card">
+                <div class="stats-highlight__percent">15%</div>
+                <div class="stats-highlight__card-title">Boost Conversion Rates</div>
+                <p class="stats-highlight__card-desc">Achieve up to a 15% uplift in conversion rates as Redacted AI's algorithms optimize pricing in real-time</p>
+            </div>
+
+            <div class="stats-highlight__card">
+                <div class="stats-highlight__percent">85%</div>
+                <div class="stats-highlight__card-title">Better Onboarding Proof</div>
+                <p class="stats-highlight__card-desc">Achieve up to a 15% uplift in conversion rates as Redacted AI's algorithms optimize pricing in real-time</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script type="module" src="assets/js/main.js"></script>
+
+</body>
+</html>

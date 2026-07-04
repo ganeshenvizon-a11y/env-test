@@ -113,7 +113,19 @@ export function initServicesScroll(sectionSelector = '#servicesScroll') {
     // yank the whole page back toward the section's start — i.e. exactly the
     // "resets to Card 01" bug. normalizeScroll() makes ScrollTrigger own scroll
     // handling directly so it never misreads that kind of micro-reversal.
+    //
+    // On mobile, the address bar hiding/showing while the user scrolls fires its
+    // own 'resize' event. ScrollTrigger listens for resize to auto-refresh (to
+    // account for real layout changes), and a refresh recalculates this section's
+    // pinned start/end and repositions scroll to preserve progress. Because that
+    // repositioning happens outside of normalizeScroll's own wheel/touch-tracked
+    // state, the very next frame normalizeScroll reasserts its last known position
+    // over top of it — which is what actually produces the visible "snap back
+    // toward the start of the pin" while scrolling. ignoreMobileResize tells
+    // ScrollTrigger to disregard address-bar-only resizes so they never trigger
+    // that refresh in the first place.
     if (!ScrollTrigger.__envizonNormalized) {
+        ScrollTrigger.config({ ignoreMobileResize: true });
         ScrollTrigger.normalizeScroll(true);
         ScrollTrigger.__envizonNormalized = true;
     }
@@ -144,7 +156,7 @@ export function initServicesScroll(sectionSelector = '#servicesScroll') {
     // reverses the exact same sequence with no separate reverse logic needed.
     const tl = gsap.timeline({
         scrollTrigger: {
-            trigger: section,
+            trigger: stage,
             start: 'top top',
             end: () => `+=${(total - 1) * window.innerHeight}`,
             scrub: 1,

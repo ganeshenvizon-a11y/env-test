@@ -1,3 +1,13 @@
+/* 'Satoshi' is referenced by font-family in several components (e.g. hero-title)
+   but was never actually registered — this loads the weight those need. */
+@font-face{
+    font-family:'Satoshi';
+    src:url('../../fonts/Satoshi-Black.otf') format('opentype');
+    font-weight:900;
+    font-style:normal;
+    font-display:swap;
+}
+
 :root{
 
     --primary:#F4A825;

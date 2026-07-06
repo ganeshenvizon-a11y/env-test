@@ -222,14 +222,12 @@
 }
 
 /* ============================= */
-/* TABLET — horizontal slider     */
+/* TABLET & MOBILE — vertical accordion */
 /* ============================= */
 
-/* Cards keep a fixed, equal width on touch/tablet — only color and the
-   description reveal toggle on tap. Animating flex-basis here as well
-   (like the desktop hover-expand) would resize the active card while the
-   user is mid-swipe, shifting scrollLeft under their finger and making the
-   snap-scroll track jump. */
+/* Below 1024px the horizontal peek-carousel is dropped in favor of a
+   full-width, tap-to-expand accordion: every stage stays visible and
+   reachable via normal page scroll instead of a hidden side-scroll track. */
 
 @media(max-width:1024px){
 
@@ -242,29 +240,35 @@
     }
 
     .stage-cards{
+        display:flex;
+        flex-direction:column;
         height:auto;
-        min-height:260px;
-        overflow-x:auto;
-        overflow-y:hidden;
+        gap:12px;
+        border-radius:0;
+        overflow:visible;
+    }
+
+    .stage-card{
+        flex-basis:auto;
+        width:100%;
         border-radius:16px;
-        scroll-snap-type:x mandatory;
-        -webkit-overflow-scrolling:touch;
-        scrollbar-width:none;
+        border:1px solid var(--border-light);
     }
 
-    .stage-cards::-webkit-scrollbar{
-        display:none;
-    }
-
-    .stage-card,
-    .stage-cards.has-active .stage-card:not(.is-active),
     .stage-card.is-active{
-        flex-basis:46%;
-        scroll-snap-align:start;
+        border-color:transparent;
     }
 
     .stage-card__title{
         white-space:normal;
+    }
+
+    .stage-card__desc{
+        max-width:640px;
+    }
+
+    .stage-card.is-active .stage-card__desc{
+        max-height:220px;
     }
 }
 
@@ -277,16 +281,10 @@
     .how-we-work__aside{
         max-width:none;
     }
-
-    .stage-card,
-    .stage-cards.has-active .stage-card:not(.is-active),
-    .stage-card.is-active{
-        flex-basis:62%;
-    }
 }
 
 /* ============================= */
-/* MOBILE — one-card carousel     */
+/* MOBILE — tighter spacing       */
 /* ============================= */
 
 @media(max-width:480px){
@@ -299,17 +297,15 @@
         margin-bottom:40px;
     }
 
-    .stage-card,
-    .stage-cards.has-active .stage-card:not(.is-active),
-    .stage-card.is-active{
-        flex-basis:88%;
-    }
-
     .stage-card__inner{
-        padding:28px 24px;
+        padding:24px 20px;
     }
 
     .stage-card__title{
         font-size:20px;
+    }
+
+    .stage-card.is-active .stage-card__desc{
+        max-height:260px;
     }
 }

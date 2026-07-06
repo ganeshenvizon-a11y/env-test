@@ -1,0 +1,349 @@
+/* WORKFLOW SHOWCASE — "Better Tools. Smooth Workflow including AI Tools." */
+
+:root{
+
+    --workflow-accent:#E8A11A;
+    --workflow-ink:#111111;
+    --workflow-card-scale:.55;
+
+}
+
+.workflow-showcase{
+    background:#F9F8F8;
+    padding:0 20px;
+    overflow:visible;
+}
+
+/* ============================= */
+/* CONTENT WRAPPER                */
+/* ============================= */
+/* Everything — heading and floating cards alike — lives inside this single
+   wrapper and is positioned relative to it, never the viewport. */
+
+/* Below the 1200px breakpoint there's no fixed section height to carve a
+   buffer out of, so the container reserves its own vertical padding for the
+   floating cards to live in — otherwise they'd sit directly on the heading. */
+.workflow-showcase__container{
+    width:100%;
+    margin:0 auto;
+    padding:100px 0;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* ============================= */
+/* HEADING WRAPPER                */
+/* ============================= */
+
+.workflow-showcase__content{
+    width:100%;
+    max-width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    margin:0 auto;
+    position:relative;
+    z-index:5;
+    opacity:0;
+    transform:translateY(40px);
+    transition:opacity .7s ease, transform .7s ease;
+}
+
+.workflow-showcase__container.is-visible .workflow-showcase__content{
+    opacity:1;
+    transform:none;
+}
+
+.workflow-showcase__heading{
+    font-family:'Satoshi', sans-serif;
+    font-weight:900;
+    font-size:36px;
+    line-height:1;
+    letter-spacing:-1px;
+    color:var(--workflow-ink);
+    max-width:100%;
+    margin:0 auto;
+}
+
+.workflow-showcase__highlight{
+    color:var(--workflow-accent);
+}
+
+/* ============================= */
+/* AI TOGGLE                      */
+/* ============================= */
+/* Sized in em against the heading's own font-size so it scales with the
+   heading at every breakpoint without needing separate overrides. */
+
+.workflow-showcase__toggle{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:1.719em;
+    height:0.906em;
+    padding:0.109em;
+    border-radius:999px;
+    background:var(--workflow-accent);
+    box-shadow:0 10px 24px rgba(232,161,26,.25);
+    vertical-align:middle;
+    margin:0 6px;
+    transition:transform var(--transition-fast);
+}
+
+.workflow-showcase__toggle:hover{
+    transform:scale(1.05);
+}
+
+.workflow-showcase__toggle-knob{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:0.688em;
+    height:0.688em;
+    border-radius:50%;
+    background:#ffffff;
+    flex-shrink:0;
+}
+
+.workflow-showcase__toggle-icon{
+    width:60%;
+    height:60%;
+}
+
+/* ============================= */
+/* FLOATING CARDS                 */
+/* ============================= */
+/* Four independent transform layers so responsive scale, the idle float
+   bob, the hover lift and each card's static rotation never fight over a
+   single `transform` property:
+     .card        → position (fixed, identical at every breakpoint) + hover lift
+     .card-scale  → responsive scale(); the only thing that changes per breakpoint
+     .card-float  → the continuous idle bob animation
+     .card-img    → the card's own static rotation (if any) */
+
+.workflow-showcase__card{
+    position:absolute;
+    transition:transform var(--transition-base);
+}
+
+.workflow-showcase__card:hover{
+    transform:translateY(-8px);
+}
+
+.workflow-showcase__card-scale{
+    transform:scale(var(--workflow-card-scale));
+}
+
+.workflow-showcase__card-float{
+    animation:workflow-float 4s ease-in-out infinite alternate;
+}
+
+@keyframes workflow-float{
+    from{ transform:translateY(0); }
+    to{ transform:translateY(6px); }
+}
+
+.workflow-showcase__card-img{
+    display:block;
+    height:auto;
+}
+
+/* Top left — sprint status */
+.workflow-showcase__card--sprint{
+    top:8px;
+    left:4px;
+}
+
+.workflow-showcase__card--sprint .workflow-showcase__card-float{
+    animation-delay:0s;
+}
+
+.workflow-showcase__card-img--sprint{
+    width:148px;
+    transform:rotate(-6deg);
+}
+
+/* Top right — gemini sparkle icon */
+.workflow-showcase__card--gemini{
+    top:4px;
+    right:4px;
+}
+
+.workflow-showcase__card--gemini .workflow-showcase__card-float{
+    animation-delay:.6s;
+}
+
+.workflow-showcase__card-img--gemini{
+    width:92px;
+}
+
+/* Bottom left — orange sparkle icon */
+.workflow-showcase__card--orange{
+    left:4px;
+    bottom:4px;
+}
+
+.workflow-showcase__card--orange .workflow-showcase__card-float{
+    animation-delay:1.2s;
+}
+
+.workflow-showcase__card-img--orange{
+    width:96px;
+    transform:rotate(-12deg);
+}
+
+/* Bottom right — conversion rate analytics */
+.workflow-showcase__card--analytics{
+    right:4px;
+    bottom:8px;
+}
+
+.workflow-showcase__card--analytics .workflow-showcase__card-float{
+    animation-delay:1.8s;
+}
+
+.workflow-showcase__card-img--analytics{
+    width:148px;
+    transform:rotate(8deg);
+}
+
+/* ============================= */
+/* REDUCED MOTION                 */
+/* ============================= */
+
+@media(prefers-reduced-motion:reduce){
+    .workflow-showcase__content{
+        transition:none;
+    }
+
+    .workflow-showcase__card-float{
+        animation:none;
+    }
+}
+
+/* ============================= */
+/* TABLET (768–1199px)            */
+/* ============================= */
+
+@media(min-width:768px){
+
+    .workflow-showcase{
+        padding:0 32px;
+    }
+
+    .workflow-showcase__container{
+        padding:130px 0;
+    }
+
+    .workflow-showcase__heading{
+        font-size:48px;
+        letter-spacing:-1.4px;
+    }
+
+    :root{
+        --workflow-card-scale:.7;
+    }
+
+    /* more breathing room than mobile, still nowhere near the desktop corners */
+    .workflow-showcase__card--sprint{
+        top:12px;
+        left:8px;
+    }
+
+    .workflow-showcase__card--gemini{
+        top:8px;
+        right:24px;
+    }
+
+    .workflow-showcase__card--orange{
+        left:24px;
+        bottom:12px;
+    }
+
+    .workflow-showcase__card--analytics{
+        right:8px;
+        bottom:12px;
+    }
+}
+
+/* ============================= */
+/* LAPTOP (1200–1439px)           */
+/* ============================= */
+
+@media(min-width:1200px){
+
+    .workflow-showcase{
+        padding:120px 0;
+        min-height:593px;
+        display:flex;
+        align-items:center;
+    }
+
+    .workflow-showcase__container{
+        max-width:1040px;
+        height:336px;
+        padding:0;
+    }
+
+    .workflow-showcase__content{
+        max-width:760px;
+    }
+
+    .workflow-showcase__heading{
+        font-size:56px;
+        letter-spacing:-1.7px;
+    }
+
+    :root{
+        --workflow-card-scale:.9;
+    }
+
+    /* pinned back to the exact Figma offsets — unaffected by the mobile/tablet buffer above */
+    .workflow-showcase__card--sprint{
+        top:18px;
+        left:0;
+    }
+
+    .workflow-showcase__card--gemini{
+        top:10px;
+        right:60px;
+    }
+
+    .workflow-showcase__card--orange{
+        left:70px;
+        bottom:10px;
+    }
+
+    .workflow-showcase__card--analytics{
+        right:0;
+        bottom:8px;
+    }
+}
+
+/* ============================= */
+/* DESKTOP (1440px+)              */
+/* ============================= */
+
+@media(min-width:1440px){
+
+    .workflow-showcase__container{
+        max-width:1160px;
+    }
+
+    .workflow-showcase__content{
+        max-width:896px;
+    }
+
+    .workflow-showcase__heading{
+        font-size:64px;
+        letter-spacing:-2px;
+    }
+
+    :root{
+        --workflow-card-scale:1;
+    }
+}

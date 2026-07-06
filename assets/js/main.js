@@ -3,6 +3,9 @@ import { initShowcaseCarousel } from './components/carousel.js';
 import { initServicesNav } from './components/services-ticker.js';
 import { initServicesScroll } from './components/services-scroll.js';
 import { initHowWeWork } from './components/how-we-work.js';
+import { initWorkflowShowcase } from './components/workflow-showcase.js';
+import { initFaq } from './components/faq.js';
+import { initInsights } from './components/insights.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
@@ -10,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initServicesNav('#servicesTicker', carousel);
     initServicesScroll('#servicesScroll');
     initHowWeWork('.how-we-work');
+    initWorkflowShowcase('.workflow-showcase');
+    initFaq('.faq__accordion');
+    initInsights('.insights');
 });
 
 /**

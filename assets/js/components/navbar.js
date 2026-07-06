@@ -4,7 +4,32 @@
  * open/close, backdrop click, escape key, focus trap and body scroll lock.
  */
 
+const STICKY_THRESHOLD = 16;
+
+function initStickyHeader() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+
+    let ticking = false;
+
+    const applyStickyState = () => {
+        header.classList.toggle('is-sticky', window.scrollY > STICKY_THRESHOLD);
+        ticking = false;
+    };
+
+    const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(applyStickyState);
+    };
+
+    applyStickyState();
+    window.addEventListener('scroll', onScroll, { passive: true });
+}
+
 export function initNavbar() {
+    initStickyHeader();
+
     const toggle = document.querySelector('.nav-toggle');
     const sidebar = document.querySelector('.mobile-sidebar');
     const overlay = document.querySelector('.sidebar-overlay');

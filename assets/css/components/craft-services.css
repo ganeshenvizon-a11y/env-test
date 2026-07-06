@@ -11,7 +11,7 @@
 }
 
 .craft-container{
-    width:min(1188px, calc(100% - 48px));
+    width:min(1200px, calc(100% - 48px));
     margin:0 auto;
 }
 
@@ -21,7 +21,7 @@
 
 .craft-header{
     background:var(--craft-bg);
-    padding:120px 0 64px;
+    padding:120px 0 32px;
 }
 
 .craft-header__grid{
@@ -138,6 +138,7 @@
 .services-scroll{
     position:relative;
     background:var(--craft-bg);
+    padding-bottom:80px;
 }
 
 .services-scroll__stage{
@@ -155,12 +156,17 @@
     position:absolute;
     inset:0;
     height:100%;
-    will-change:transform, opacity, filter, box-shadow;
+    will-change:transform, opacity, filter;
     backface-visibility:hidden;
+    /* services-scroll.js tweens boxShadow on this full-bleed, non-rounded element
+       for depth cues; painted here it reads as a large rectangular halo bleeding
+       past the rounded card below, so the visible shadow lives on
+       .service-panel__inner instead and this one is neutralized. */
+    box-shadow:none !important;
 }
 
 .service-panel__row{
-    width:min(1188px, calc(100% - 48px));
+    width:min(1200px, calc(100% - 48px));
     height:100%;
     margin:0 auto;
 }
@@ -180,6 +186,7 @@
     background:#ffffff;
     border-radius:24px;
     padding:56px 64px;
+    box-shadow:0 12px 40px rgba(0,0,0,0.05);
     transition:transform .4s ease, box-shadow .4s ease;
 }
 
@@ -282,7 +289,11 @@
 
 @media(max-width:1024px){
     .craft-header{
-        padding:100px 0 48px;
+        padding:100px 0 24px;
+    }
+
+    .services-scroll{
+        padding-bottom:64px;
     }
 
     .service-panel__inner{
@@ -314,11 +325,15 @@
 
 @media(max-width:480px){
     .craft-header{
-        padding:80px 0 40px;
+        padding:80px 0 20px;
     }
 
     .craft-header__divider{
         margin-top:40px;
+    }
+
+    .services-scroll{
+        padding-bottom:48px;
     }
 
     :root{

@@ -25,7 +25,12 @@
       "Bash(where msedge.exe)",
       "Bash(node -e \"require.resolve\\('playwright'\\)\")",
       "Bash(npx --no-install playwright --version)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Read(//c/Envizon studio/envizonwebsite/**)",
+      "Bash(python -c ' *)",
+      "Bash(python -m pip install --quiet numpy)",
+      "Bash(python \"C:\\\\Users\\\\kolat\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Envizon-studio-envizonwebsite\\\\4c437051-3ef5-4c90-abfa-8cff1db10467\\\\scratchpad\\\\extract_logos2.py\")",
+      "Bash(node \"C:\\\\Users\\\\kolat\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Envizon-studio-envizonwebsite\\\\4c437051-3ef5-4c90-abfa-8cff1db10467\\\\scratchpad\\\\shot.js\")"
     ]
   }
 }

@@ -1,0 +1,90 @@
+/* WORK — HERO ("Brands That Lead & Inspire Industries.") */
+
+.work-hero{
+    position:relative;
+    padding:170px 0 90px;
+    overflow:hidden;
+    background:
+        radial-gradient(700px 460px at -6% -22%, #FFE9C2 0%, rgba(255,233,194,0) 70%),
+        radial-gradient(700px 460px at 106% -22%, #FFE9C2 0%, rgba(255,233,194,0) 70%),
+        #ffffff;
+}
+
+.work-hero__container{
+    width:min(1200px, calc(100% - 48px));
+    margin:0 auto;
+}
+
+.work-hero__top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:40px;
+}
+
+.work-hero__title{
+    font-size:56px;
+    font-weight:800;
+    line-height:1.15;
+    letter-spacing:-1.5px;
+    color:var(--black);
+    max-width:660px;
+}
+
+.work-hero__accent{
+    color:var(--test-roan-six-87vercelapp-Fire-Bush);
+}
+
+.work-hero__text{
+    font-size:16px;
+    line-height:1.7;
+    color:var(--text);
+    max-width:42ch;
+    flex-shrink:0;
+    padding-bottom:6px;
+}
+
+/* ============================= */
+/* RESPONSIVE                    */
+/* ============================= */
+
+@media(max-width:1200px){
+    .work-hero__title{
+        max-width:520px;
+    }
+}
+
+@media(max-width:1024px){
+    .work-hero{
+        padding:150px 0 72px;
+    }
+
+    .work-hero__title{
+        font-size:44px;
+        letter-spacing:-1px;
+    }
+}
+
+@media(max-width:860px){
+    .work-hero__top{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+    .work-hero__title,
+    .work-hero__text{
+        max-width:none;
+    }
+}
+
+@media(max-width:480px){
+    .work-hero{
+        padding:140px 0 56px;
+    }
+
+    .work-hero__title{
+        font-size:34px;
+        letter-spacing:-.5px;
+    }
+}

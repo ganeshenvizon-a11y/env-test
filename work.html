@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Work - Envizon Studio</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="assets/css/base/variables.css">
+
+    <link rel="stylesheet"
+          href="assets/css/base/reset.css">
+
+    <link rel="stylesheet"
+          href="assets/css/base/fonts.css">
+
+    <link rel="stylesheet"
+          href="assets/css/base/services-variables.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/navbar.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/work-hero.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/work-featured-brands.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/services-cta.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/services-footer.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/insights.css">
+
+</head>
+
+<body>
+<header class="header">
+
+    <div class="navbar-wrapper">
+
+        <nav class="navbar">
+
+            <div class="logo">
+
+                <a href="index.html">
+                    <img
+                        src="assets/images/logoenv.png"
+                        alt="Envizon">
+                </a>
+
+            </div>
+
+            <ul class="nav-links">
+
+                <li><a href="services.html">Services</a></li>
+                <li><a class="active" href="work.html">Work</a></li>
+                <li><a href="#">Clients</a></li>
+                <li><a href="#">Blogs</a></li>
+                <li><a href="about.html">About</a></li>
+
+            </ul>
+
+            <div class="navbar-actions">
+
+                <a href="#" class="header-btn">
+
+                    Get started
+
+                    <span>↗</span>
+
+                </a>
+
+                <button type="button"
+                        class="nav-toggle"
+                        aria-label="Toggle navigation menu"
+                        aria-expanded="false"
+                        aria-controls="mobile-sidebar">
+
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+
+                </button>
+
+            </div>
+
+        </nav>
+
+    </div>
+
+</header>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="mobile-sidebar"
+       id="mobile-sidebar"
+       role="dialog"
+       aria-modal="true"
+       aria-label="Mobile navigation"
+       aria-hidden="true"
+       tabindex="-1">
+
+    <div class="mobile-sidebar-header">
+
+        <div class="logo">
+            <img src="assets/images/logoenv.png" alt="Envizon">
+        </div>
+
+        <button type="button" class="sidebar-close" aria-label="Close navigation menu">
+            <span class="sidebar-close-bar"></span>
+            <span class="sidebar-close-bar"></span>
+        </button>
+
+    </div>
+
+    <ul class="mobile-nav-links">
+
+        <li><a href="services.html">Services</a></li>
+        <li><a class="active" href="work.html">Work</a></li>
+        <li><a href="#">Clients</a></li>
+        <li><a href="#">Blogs</a></li>
+        <li><a href="about.html">About</a></li>
+
+    </ul>
+
+    <a href="#" class="header-btn mobile-sidebar-cta">
+
+        Get started
+
+        <span>↗</span>
+
+    </a>
+
+</aside>
+
+<!-- Brands That Lead & Inspire Industries -->
+<section class="work-hero" aria-label="Brands that lead and inspire industries">
+
+    <div class="work-hero__container">
+
+        <div class="work-hero__top">
+
+            <h1 class="work-hero__title">
+                <span class="work-hero__accent">Brands</span> That Lead &amp;<br>
+                <span class="work-hero__accent">Inspire</span> Industries
+            </h1>
+
+            <p class="work-hero__text">
+                We combine strategy, design, technology, and storytelling to
+                build experiences that create measurable business impact.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Featured brand / project grid -->
+<section class="work-featured-brands" aria-label="Featured client work">
+
+    <div class="work-featured-brands__container">
+
+        <h2 class="work-featured-brands__heading visually-hidden">Featured Client Work</h2>
+
+        <div class="work-featured-brands__grid" id="workFeaturedBrandsGrid"></div>
+
+    </div>
+
+</section>
+
+<!-- We Share What We Learn — insights / blog -->
+<section class="insights" aria-labelledby="insights-title">
+
+    <div class="insights__container">
+
+        <div class="insights__header">
+
+            <div class="insights__heading">
+
+                <div class="insights__eyebrow">
+                    <span class="insights__eyebrow-line" aria-hidden="true"></span>
+                    <span>Insights</span>
+                </div>
+
+                <h2 class="insights__title" id="insights-title">
+                    We share what<br>
+                    <span class="insights__title-accent">we learn.</span>
+                </h2>
+
+            </div>
+
+            <a href="#" class="insights__link">
+                Read All Articles
+                <span class="insights__link-arrow" aria-hidden="true">↗</span>
+            </a>
+
+        </div>
+
+        <div class="insights__grid">
+
+            <article class="insight-card">
+
+                <div class="insight-card__image-wrap">
+                    <img class="insight-card__image"
+                         src="assets/images/port1.png"
+                         alt=""
+                         loading="lazy"
+                         width="384"
+                         height="220">
+                    <span class="insight-card__badge">Design Systems</span>
+                </div>
+
+                <div class="insight-card__content">
+
+                    <div class="insight-card__meta">
+                        <span class="insight-card__category">Engineering</span>
+                        <span class="insight-card__date">Apr 2025</span>
+                    </div>
+
+                    <h3 class="insight-card__title">
+                        <a href="#" class="insight-card__title-link">Why your design system is making your engineers slower?</a>
+                    </h3>
+
+                    <p class="insight-card__desc">
+                        A design system should be a velocity multiplier. Most aren't. Here's what separates the systems that scale from the ones that become another abandoned Figma file.
+                    </p>
+
+                </div>
+
+            </article>
+
+            <article class="insight-card">
+
+                <div class="insight-card__image-wrap">
+                    <img class="insight-card__image"
+                         src="assets/images/port2.png"
+                         alt=""
+                         loading="lazy"
+                         width="384"
+                         height="220">
+                    <span class="insight-card__badge">Design Systems</span>
+                </div>
+
+                <div class="insight-card__content">
+
+                    <div class="insight-card__meta">
+                        <span class="insight-card__category">Engineering</span>
+                        <span class="insight-card__date">Apr 2025</span>
+                    </div>
+
+                    <h3 class="insight-card__title">
+                        <a href="#" class="insight-card__title-link">Why your design system is making your engineers slower?</a>
+                    </h3>
+
+                    <p class="insight-card__desc">
+                        A design system should be a velocity multiplier. Most aren't. Here's what separates the systems that scale from the ones that become another abandoned Figma file.
+                    </p>
+
+                </div>
+
+            </article>
+
+            <article class="insight-card">
+
+                <div class="insight-card__image-wrap">
+                    <img class="insight-card__image"
+                         src="assets/images/port3.png"
+                         alt=""
+                         loading="lazy"
+                         width="384"
+                         height="220">
+                    <span class="insight-card__badge">Design Systems</span>
+                </div>
+
+                <div class="insight-card__content">
+
+                    <div class="insight-card__meta">
+                        <span class="insight-card__category">Engineering</span>
+                        <span class="insight-card__date">Apr 2025</span>
+                    </div>
+
+                    <h3 class="insight-card__title">
+                        <a href="#" class="insight-card__title-link">Why your design system is making your engineers slower?</a>
+                    </h3>
+
+                    <p class="insight-card__desc">
+                        A design system should be a velocity multiplier. Most aren't. Here's what separates the systems that scale from the ones that become another abandoned Figma file.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+<div class="global-cta">
+  <section class="call-to-action-content">
+    <div class="frame-parent">
+      <div class="lets-build-something-people-r-parent">
+        <h1 class="lets-build-something-container">
+          <span class="lets-build-something"
+            >Let's Build Something<br
+          /></span>
+          <span class="people-remember">People Remember</span>
+        </h1>
+        <div class="decorative-elements">
+          <img
+            class="decorative-elements-child"
+            alt=""
+            src="assets/images/services/Group-2087327210.svg"
+          />
+
+          <img
+            class="dot-one-icon"
+            loading="lazy"
+            alt=""
+            src="assets/images/services/Ellipse-2@2x.png"
+          />
+
+          <img
+            class="dot-two-icon"
+            loading="lazy"
+            alt=""
+            src="assets/images/services/Ellipse-3@2x.png"
+          />
+
+          <img
+            class="dot-three-icon"
+            loading="lazy"
+            alt=""
+            src="assets/images/services/Ellipse-5@2x.png"
+          />
+
+          <img
+            class="dot-four-icon"
+            loading="lazy"
+            alt=""
+            src="assets/images/services/Ellipse-5@2x.png"
+          />
+        </div>
+      </div>
+      <div class="cta-button-wrapper">
+        <button class="link6">
+          <div class="book-a-discovery">Book A Discovery Call</div>
+          <img class="svg-icon" alt="" src="assets/images/services/SVG1.svg" />
+        </button>
+      </div>
+    </div>
+  </section>
+<footer class="footer">
+    <div class="footer-graphic-area">
+      <img
+        class="footer-graphic-area-child"
+        alt=""
+        src="assets/images/services/Group-20873272081.svg"
+      />
+
+      <img
+        class="footer-graphic-area-item"
+        loading="lazy"
+        alt=""
+        src="assets/images/services/Group-2087327209.svg"
+      />
+    </div>
+    <h1 class="envizon">envizon</h1>
+    <div class="footer-info-block-parent">
+      <div class="footer-info-block">
+        <div class="footer-brand">
+          <img
+            class="mask-group-icon"
+            alt=""
+            src="assets/images/services/Mask-group@2x.png"
+          />
+
+          <div class="container-parent">
+            <div class="container2">
+              <div class="designing-digital-experiences">
+                Designing digital experiences that<br />accelerate
+                business growth. Hyderabad, India.
+              </div>
+            </div>
+            <div class="social-icons-block">
+              <div class="social-icon-wrapper">
+                <img
+                  class="facebook-icon"
+                  loading="lazy"
+                  alt=""
+                  src="assets/images/services/Facebook.svg"
+                />
+              </div>
+              <div class="twitter-link-wrapper">
+                <div class="twitter-icon-container">
+                  <div class="twitter">
+                    <img
+                      class="vector-icon"
+                      alt=""
+                      src="assets/images/services/Vector.svg"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="twitter-link-wrapper">
+                <div class="twitter-icon-container">
+                  <img
+                    class="instagram-icon"
+                    loading="lazy"
+                    alt=""
+                    src="assets/images/services/Instagram.svg"
+                  />
+                </div>
+              </div>
+              <div class="twitter-link-wrapper">
+                <div class="linkedin-logo-wrapper">
+                  <img
+                    class="linkedin-logo-icon"
+                    alt=""
+                    src="assets/images/services/LinkedIn-logo.svg"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-navigation-grid">
+          <div class="container3">
+            <div class="container2">
+              <b class="contact">Contact</b>
+            </div>
+            <div class="container5">
+              <div class="container2">
+                <div class="helloenvizonstudiocom">
+                  hello@envizonstudio.com
+                </div>
+              </div>
+              <div class="container2">
+                <div class="helloenvizonstudiocom">LinkedIn</div>
+              </div>
+              <div class="container2">
+                <div class="helloenvizonstudiocom">Twitter / X</div>
+              </div>
+              <div class="container2">
+                <div class="helloenvizonstudiocom">Dribbble</div>
+              </div>
+              <div class="container2">
+                <div class="helloenvizonstudiocom">Book a call</div>
+              </div>
+            </div>
+          </div>
+          <div class="container6">
+            <div class="container2">
+              <b class="contact">Company</b>
+            </div>
+            <div class="container5">
+              <div class="container2">
+                <div class="helloenvizonstudiocom">About</div>
+              </div>
+              <div class="container2">
+                <div class="helloenvizonstudiocom">Work</div>
+              </div>
+              <div class="container2">
+                <div class="helloenvizonstudiocom">Process</div>
+              </div>
+              <div class="container2">
+                <div class="helloenvizonstudiocom">Insights</div>
+              </div>
+              <div class="container2">
+                <div class="helloenvizonstudiocom">Careers</div>
+              </div>
+            </div>
+          </div>
+          <div class="container9">
+            <div class="container2">
+              <b class="contact">Services</b>
+            </div>
+            <div class="container5">
+              <div class="container2">
+                <div class="helloenvizonstudiocom">UI/UX Design</div>
+              </div>
+              <div class="container2">
+                <div class="helloenvizonstudiocom">Web Design</div>
+              </div>
+              <div class="container2">
+                <div class="helloenvizonstudiocom">Development</div>
+              </div>
+              <div class="container2">
+                <div class="helloenvizonstudiocom">Branding</div>
+              </div>
+              <div class="container2">
+                <div class="helloenvizonstudiocom">Product Design</div>
+              </div>
+              <div class="container2">
+                <div class="cro-optimization">CRO Optimization</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="horizontalborder">
+        <div class="link2">
+          <div class="envizon-studio-all">
+            &copy; 2025 Envizon Studio. All rights reserved.
+          </div>
+        </div>
+        <div class="container13">
+          <div class="link23">
+            <div class="privacy">Privacy</div>
+          </div>
+          <div class="link23">
+            <div class="envizon-studio-all">Terms</div>
+          </div>
+          <div class="link23">
+            <div class="privacy">Sitemap</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script type="module" src="assets/js/main.js"></script>
+<script type="module">
+    import { initWorkFeaturedBrands } from './assets/js/components/work-featured-brands.js';
+    document.addEventListener('DOMContentLoaded', () => {
+        initWorkFeaturedBrands();
+    });
+</script>
+
+</body>
+</html>

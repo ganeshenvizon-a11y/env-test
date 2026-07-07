@@ -1,0 +1,198 @@
+/* WORK — FEATURED BRANDS (client logo / project card grid) */
+/* Card shape: a colored media tile with a white "tag" panel folded onto its
+   bottom edge. The panel's top-left corner is chamfered off (clip-path) so
+   the media color peeks through — on hover the panel grows upward and the
+   chamfer shrinks to reveal the project tags, with the frame recoloring to
+   the project's accent. Both states share the same clip-path point count so
+   the change animates smoothly instead of jumping. */
+
+.work-featured-brands{
+    background:#ffffff;
+    padding:0 0 110px;
+}
+
+.work-featured-brands__container{
+    width:min(1200px, calc(100% - 48px));
+    margin:0 auto;
+}
+
+.visually-hidden{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0, 0, 0, 0);
+    white-space:nowrap;
+    border:0;
+}
+
+.work-featured-brands__grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:32px 24px;
+}
+
+/* ============================= */
+/* CARD                           */
+/* ============================= */
+
+.brand-card{
+    --panel-top:72%;
+    --chamfer-y:46%;
+    --frame-inset:8px;
+
+    display:block;
+    position:relative;
+    aspect-ratio:385 / 388;
+    border-radius:20px;
+    overflow:hidden;
+    background:var(--card-bg, #eee);
+    opacity:0;
+    transform:translateY(32px);
+    transition:opacity .6s ease, transform .6s ease;
+}
+
+.brand-card.is-visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.brand-card:hover,
+.brand-card:focus-within{
+    --panel-top:55.6%;
+    --chamfer-y:24%;
+}
+
+.brand-card__media{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:14% 16% 32%;
+}
+
+.brand-card__media img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+/* colored frame — provides the border ring around the white panel */
+.brand-card__frame{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    top:var(--panel-top);
+    background:#FFE9C2;
+    clip-path:polygon(54.1% calc(var(--chamfer-y) * .15), 62% 0%, 100% 0%, 100% 100%, 0% 100%, 0% var(--chamfer-y), 28% var(--chamfer-y), 35.9% calc(var(--chamfer-y) * .85));
+    transition:top .45s cubic-bezier(.4,0,.2,1), clip-path .45s cubic-bezier(.4,0,.2,1), background-color .35s ease;
+}
+
+.brand-card:hover .brand-card__frame,
+.brand-card:focus-within .brand-card__frame{
+    background:var(--card-accent, #FFE9C2);
+}
+
+/* white content panel — inset from the frame by a constant border width */
+.brand-card__panel{
+    position:absolute;
+    left:var(--frame-inset);
+    right:var(--frame-inset);
+    bottom:var(--frame-inset);
+    top:calc(var(--panel-top) + var(--frame-inset));
+    background:#fff;
+    clip-path:polygon(54.1% calc(var(--chamfer-y) * .15), 62% 0%, 100% 0%, 100% 100%, 0% 100%, 0% var(--chamfer-y), 28% var(--chamfer-y), 35.9% calc(var(--chamfer-y) * .85));
+    transition:top .45s cubic-bezier(.4,0,.2,1), clip-path .45s cubic-bezier(.4,0,.2,1);
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:0 26px 16px;
+}
+
+.brand-card__name{
+    margin:0;
+    font-size:22px;
+    font-weight:600;
+    color:var(--black);
+}
+
+.brand-card__tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    list-style:none;
+    padding:0;
+    margin:0;
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
+    transition:opacity .3s ease, max-height .45s ease, margin-top .45s ease;
+}
+
+.brand-card:hover .brand-card__tags,
+.brand-card:focus-within .brand-card__tags{
+    opacity:1;
+    max-height:80px;
+    margin-top:14px;
+}
+
+.brand-card__tag{
+    padding:7px 14px;
+    border-radius:var(--radius-pill);
+    border:1px solid var(--border-light);
+    font-size:12px;
+    color:#333;
+    white-space:nowrap;
+}
+
+/* lift on hover, on top of the panel expand */
+@media(hover:hover) and (pointer:fine){
+    .brand-card:hover{
+        transform:translateY(-4px);
+    }
+}
+
+.brand-card:nth-child(1){ transition-delay:0ms; }
+.brand-card:nth-child(2){ transition-delay:70ms; }
+.brand-card:nth-child(3){ transition-delay:140ms; }
+.brand-card:nth-child(4){ transition-delay:0ms; }
+.brand-card:nth-child(5){ transition-delay:70ms; }
+.brand-card:nth-child(6){ transition-delay:140ms; }
+
+/* ============================= */
+/* RESPONSIVE                    */
+/* ============================= */
+
+@media(max-width:900px){
+    .work-featured-brands__grid{
+        grid-template-columns:repeat(2, 1fr);
+        gap:20px;
+    }
+}
+
+@media(max-width:560px){
+    .work-featured-brands{
+        padding:0 0 72px;
+    }
+
+    .work-featured-brands__grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .brand-card{
+        aspect-ratio:4/3.4;
+        --panel-top:60%;
+        --chamfer-y:38%;
+    }
+
+    .brand-card:hover,
+    .brand-card:focus-within{
+        --panel-top:48%;
+        --chamfer-y:20%;
+    }
+}

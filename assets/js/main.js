@@ -1,4 +1,3 @@
-import { initNavbar } from './components/navbar.js';
 import { initShowcaseCarousel } from './components/carousel.js';
 import { initServicesNav } from './components/services-ticker.js';
 import { initServicesScroll } from './components/services-scroll.js';
@@ -8,7 +7,6 @@ import { initFaq } from './components/faq.js';
 import { initInsights } from './components/insights.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    initNavbar();
     const carousel = initShowcaseCarousel('#showcaseCarousel');
     initServicesNav('#servicesTicker', carousel);
     initServicesScroll('#servicesScroll');

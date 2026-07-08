@@ -15,6 +15,7 @@
   align-self: stretch;
   box-sizing: border-box;
   width: 100%;
+  position: relative;
 }
 
 .call-to-action-content {
@@ -100,7 +101,7 @@
   position: absolute;
   margin: 0 !important;
   bottom: -836px;
-  left: -162.8px;
+  left: calc(50% - 560.7px);
   flex-shrink: 0;
   opacity: 0.9;
   pointer-events: none;
@@ -246,36 +247,192 @@
 }
 
 @media screen and (max-width: 1199px) {
+  .lets-build-something-people-r-parent {
+    position: static !important;
+  }
+
+  .lets-build-something-container {
+    max-width: 82% !important;
+    margin: 0 auto !important;
+  }
+
   .decorative-elements {
-    transform: scale(0.55);
-    transform-origin: top center;
-    bottom: -420px;
-    left: -80px;
+    display: block !important;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+    z-index: 0;
+  }
+
+  .decorative-elements-child {
+    width: 800px !important;
+    height: 800px !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    max-width: none !important;
+  }
+
+  .dot-one-icon {
+    left: 2% !important;
+    top: 80px !important;
+    width: 55px !important;
+    height: 55px !important;
+  }
+
+  .dot-three-icon {
+    left: 8% !important;
+    top: 220px !important;
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .dot-four-icon {
+    right: 8% !important;
+    left: auto !important;
+    top: 260px !important;
+    width: 55px !important;
+    height: 55px !important;
+  }
+
+  .dot-two-icon {
+    right: 2% !important;
+    left: auto !important;
+    top: 120px !important;
+    width: 65px !important;
+    height: 65px !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  .decorative-elements {
-    transform: scale(0.4);
-    bottom: -260px;
-  }
-}
-
-@media screen and (max-width: 750px) {
   .global-cta {
     gap: 104px;
   }
 
+  .lets-build-something-people-r-parent {
+    position: static !important;
+  }
+
+  .lets-build-something-container {
+    max-width: 80% !important;
+    margin: 0 auto !important;
+  }
+
   .decorative-elements {
-    transform: scale(0.3);
-    transform-origin: top center;
-    bottom: -160px;
+    display: block !important;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+    z-index: 0;
+  }
+
+  .decorative-elements-child {
+    width: 650px !important;
+    height: 650px !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    max-width: none !important;
+  }
+
+  .dot-one-icon {
+    left: 2% !important;
+    top: 60px !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .dot-three-icon {
+    left: 6% !important;
+    top: 160px !important;
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .dot-four-icon {
+    right: 6% !important;
+    left: auto !important;
+    top: 190px !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .dot-two-icon {
+    right: 2% !important;
+    left: auto !important;
+    top: 90px !important;
+    width: 55px !important;
+    height: 55px !important;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
+  .lets-build-something-people-r-parent {
+    position: static !important;
+  }
+
+  .lets-build-something-container {
+    max-width: 78% !important;
+    margin: 0 auto !important;
+  }
+
   .decorative-elements {
-    display: none;
+    display: block !important;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+    z-index: 0;
+  }
+
+  .decorative-elements-child {
+    width: 500px !important;
+    height: 500px !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    max-width: none !important;
+  }
+
+  .dot-one-icon {
+    left: 2% !important;
+    top: 40px !important;
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .dot-three-icon {
+    left: 6% !important;
+    top: 110px !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .dot-four-icon {
+    right: 6% !important;
+    left: auto !important;
+    top: 130px !important;
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .dot-two-icon {
+    right: 2% !important;
+    left: auto !important;
+    top: 65px !important;
+    width: 44px !important;
+    height: 44px !important;
   }
 }
 

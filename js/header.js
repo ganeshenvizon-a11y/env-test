@@ -33,6 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Initialize navigation behaviors (sticky, toggles, keyboard trap, scroll lock, overlays)
             initNavbar();
+
+            // Dispatch load event for animation listeners
+            document.dispatchEvent(new CustomEvent('headerLoaded'));
         })
         .catch(err => console.error("Error loading header component:", err));
 });

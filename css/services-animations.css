@@ -1,0 +1,113 @@
+/* Envizon Studio - Services page GSAP animations structure */
+
+/* Text line masking for line-by-line reveals */
+.title-line {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: 1.25;
+}
+
+.title-line-inner {
+    display: inline-block;
+    will-change: transform;
+}
+
+/* Accordion interactive states for JS-enabled mode */
+.js-accordion.possibilities__rows {
+    gap: 0 !important;
+}
+
+.js-accordion .possibilities-row {
+    cursor: pointer;
+    transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease;
+    opacity: 0.5;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    padding: 24px 0;
+    width: 100%;
+}
+
+.js-accordion .possibilities-row:last-child {
+    border-bottom: none;
+}
+
+.js-accordion .possibilities-row.is-active {
+    opacity: 1;
+}
+
+.js-accordion .possibilities-row.is-active .possibilities-heading {
+    color: var(--primary, #F4A825);
+    transition: color 0.3s ease;
+}
+
+.js-accordion .possibilities-row.is-active .possibilities-num {
+    color: var(--primary, #F4A825);
+    opacity: 0.8;
+    transition: color 0.3s ease;
+}
+
+.js-accordion .possibilities-desc {
+    overflow: hidden;
+    will-change: height, opacity;
+}
+
+.js-accordion .possibilities-media {
+    overflow: hidden;
+    will-change: height, opacity;
+    display: flex !important; /* Keep columns active */
+}
+
+/* Hover nudge indicator for header & global CTA buttons */
+.btn-arrow-nudge {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.header-btn:hover .btn-arrow-nudge,
+.link6:hover .btn-arrow-nudge {
+    transform: translate(4px, -4px);
+}
+
+/* Base style resets to avoid visual jumps prior to GSAP loading */
+.insights__container,
+.insights__header,
+.services-playbook__grid,
+.services-playbook__title,
+.video-banner__timeline-steps,
+.video-banner__timeline-wrapper,
+.capabilities-header__title,
+.capabilities-header__text,
+.about-values__header,
+.possibilities__title,
+.possibilities-row {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .title-line-inner {
+        transform: none !important;
+    }
+    .insights__container,
+    .insights__header,
+    .services-playbook__grid,
+    .services-playbook__title,
+    .video-banner__timeline-steps,
+    .video-banner__timeline-wrapper,
+    .capabilities-header__title,
+    .capabilities-header__text,
+    .about-values__header,
+    .possibilities__title,
+    .possibilities-row {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    .js-accordion .possibilities-row {
+        opacity: 1 !important;
+    }
+    .js-accordion .possibilities-desc {
+        height: auto !important;
+        opacity: 1 !important;
+    }
+}

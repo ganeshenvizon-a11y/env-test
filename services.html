@@ -60,6 +60,9 @@
     <link rel="stylesheet"
           href="assets/css/components/video-banner.css">
 
+    <link rel="stylesheet"
+          href="css/services-animations.css">
+
 </head>
 
 <body>
@@ -72,8 +75,8 @@
             
             <div class="capabilities-header__left">
                 <h1 class="capabilities-header__title" id="capabilities-header-title">
-                    <span class="text-gold">Capabilities</span> That Move<br>
-                    <span class="text-gold">Brands</span> Forward
+                    <span class="title-line"><span class="title-line-inner"><span class="text-gold">Capabilities</span> That Move</span></span><br>
+                    <span class="title-line"><span class="title-line-inner"><span class="text-gold">Brands</span> Forward</span></span>
                 </h1>
             </div>
 
@@ -622,9 +625,11 @@
 <script type="module">
     import { initServicesValues } from './assets/js/components/services-values.js';
     import { initVideoBanner } from './assets/js/components/video-banner.js';
+    import { initServicesAnimations } from './js/services-animations.js';
     document.addEventListener('DOMContentLoaded', () => {
         initVideoBanner('#videoBanner');
         initServicesValues('#servicesValues');
+        initServicesAnimations();
     });
 </script>
 

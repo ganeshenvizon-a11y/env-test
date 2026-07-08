@@ -29,32 +29,153 @@ export function initVideoBanner(sectionSelector = '.video-banner') {
     function updateState(index) {
         currentState = index;
 
+        const gsap = window.gsap;
+
         // Update active classes on steps
         steps.forEach((btn, idx) => {
             btn.classList.toggle('is-active', idx === index);
         });
 
-        // Update active descriptions
-        descItems.forEach((item, idx) => {
-            item.classList.toggle('is-active', idx === index);
-        });
+        if (gsap) {
+            // Animate descriptions fade out/in
+            descItems.forEach((item, idx) => {
+                if (idx === index) {
+                    gsap.killTweensOf(item);
+                    gsap.fromTo(item, 
+                        { opacity: 0, y: 15 },
+                        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', overwrite: 'auto', display: 'block' }
+                    );
+                } else {
+                    gsap.set(item, { display: 'none', opacity: 0 });
+                }
+            });
 
-        // Update active visual animations
-        visualItems.forEach((item, idx) => {
-            item.classList.toggle('is-active', idx === index);
-        });
+            // Animate active visual item wrapper
+            visualItems.forEach((item, idx) => {
+                if (idx === index) {
+                    item.classList.add('is-active');
+                    gsap.killTweensOf(item);
+                    gsap.fromTo(item, 
+                        { opacity: 0, scale: 0.95 },
+                        { opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out', display: 'flex' }
+                    );
+                } else {
+                    item.classList.remove('is-active');
+                    gsap.set(item, { display: 'none', opacity: 0 });
+                }
+            });
 
-        // Update timeline gold line width
-        if (lineProgress) {
-            // State 0: 0%, State 1: 33.3%, State 2: 66.7% of the total parent container width
-            // Since the timeline line bg runs from 16.6% to 83.3%, the total span is 66.7%.
-            const progressWidths = [0, 33.3, 66.7];
-            lineProgress.style.width = `${progressWidths[index]}%`;
-        }
+            // Animate timeline progress line width
+            if (lineProgress) {
+                const progressWidths = [0, 33.3, 66.7];
+                gsap.to(lineProgress, {
+                    width: `${progressWidths[index]}%`,
+                    duration: 0.6,
+                    ease: 'power2.inOut'
+                });
+            }
 
-        // Move active circular cursor
-        if (cursor) {
-            cursor.style.left = `${positions[index]}%`;
+            // Animate active circular cursor position
+            if (cursor) {
+                gsap.to(cursor, {
+                    left: `${positions[index]}%`,
+                    duration: 0.6,
+                    ease: 'power2.inOut'
+                });
+            }
+
+            // Trigger specific state GSAP animations
+            if (index === 0) {
+                // State 0: Stagger sticky notes
+                gsap.killTweensOf('.sticky-note');
+                gsap.fromTo('.sticky-note',
+                    { scale: 0.4, opacity: 0, y: 20 },
+                    { scale: 1, opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'back.out(1.5)', delay: 0.1 }
+                );
+            } else if (index === 1) {
+                // State 1: Typing code + stagger code pills
+                const codeEl = visualItems[1].querySelector('.coding-editor div:last-child');
+                if (codeEl) {
+                    const textToType = 'new envizon();';
+                    let typeObj = { progress: 0 };
+                    gsap.killTweensOf(typeObj);
+                    gsap.to(typeObj, {
+                        progress: textToType.length,
+                        duration: 1.4,
+                        ease: 'none',
+                        delay: 0.2,
+                        onUpdate: () => {
+                            const len = Math.floor(typeObj.progress);
+                            codeEl.innerHTML = `const project = ${textToType.substring(0, len)}<span class="coding-cursor"></span>`;
+                        }
+                    });
+                }
+                
+                gsap.killTweensOf('.coding-pill');
+                gsap.fromTo('.coding-pill',
+                    { opacity: 0, scale: 0.7, y: 15 },
+                    { opacity: 1, scale: 1, y: 0, duration: 0.4, stagger: 0.08, ease: 'power2.out', delay: 0.3 }
+                );
+            } else if (index === 2) {
+                // State 2: Checkmark pop + metrics counter + confetti stagger
+                gsap.killTweensOf('.browser-success-check');
+                gsap.fromTo('.browser-success-check',
+                    { scale: 0, rotation: -30 },
+                    { scale: 1, rotation: 0, duration: 0.6, ease: 'back.out(2)', delay: 0.15 }
+                );
+
+                gsap.killTweensOf('.confetti');
+                gsap.fromTo('.confetti',
+                    { scale: 0, y: 15 },
+                    { scale: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out', delay: 0.3 }
+                );
+
+                // Stagger delivered stat cards
+                gsap.killTweensOf('.delivered-stat');
+                gsap.fromTo('.delivered-stat',
+                    { opacity: 0, y: 15 },
+                    { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out', delay: 0.2 }
+                );
+
+                // Run count-up metrics counters
+                const stats = [
+                    { el: '.delivered-stat--perf .delivered-stat__val', target: 98, suffix: '+' },
+                    { el: '.delivered-stat--conv .delivered-stat__val', target: 25, prefix: '+', suffix: '%' },
+                    { el: '.delivered-stat--seo .delivered-stat__val', target: 100 }
+                ];
+                stats.forEach(stat => {
+                    const el = section.querySelector(stat.el);
+                    if (!el) return;
+                    
+                    const counter = { val: 0 };
+                    gsap.killTweensOf(counter);
+                    gsap.to(counter, {
+                        val: stat.target,
+                        duration: 1.6,
+                        ease: 'power3.out',
+                        delay: 0.4,
+                        onUpdate: () => {
+                            const currentVal = Math.floor(counter.val);
+                            el.textContent = `${stat.prefix || ''}${currentVal}${stat.suffix || ''}`;
+                        }
+                    });
+                });
+            }
+        } else {
+            // Fallback for non-GSAP browser support
+            descItems.forEach((item, idx) => {
+                item.classList.toggle('is-active', idx === index);
+            });
+            visualItems.forEach((item, idx) => {
+                item.classList.toggle('is-active', idx === index);
+            });
+            if (lineProgress) {
+                const progressWidths = [0, 33.3, 66.7];
+                lineProgress.style.width = `${progressWidths[index]}%`;
+            }
+            if (cursor) {
+                cursor.style.left = `${positions[index]}%`;
+            }
         }
 
         // Reset timer progress
@@ -76,15 +197,26 @@ export function initVideoBanner(sectionSelector = '.video-banner') {
         animFrameId = requestAnimationFrame(tick);
     }
 
+    let isRunning = false;
+
     function startLoop() {
+        if (isRunning) return;
+        isRunning = true;
         progressStartTime = Date.now();
         animFrameId = requestAnimationFrame(tick);
     }
 
-    function resetLoop() {
+    function stopLoop() {
         if (animFrameId) {
             cancelAnimationFrame(animFrameId);
+            animFrameId = null;
         }
+        isRunning = false;
+        setCircleProgress(0);
+    }
+
+    function resetLoop() {
+        stopLoop();
         startLoop();
     }
 
@@ -96,14 +228,24 @@ export function initVideoBanner(sectionSelector = '.video-banner') {
         });
     });
 
-    // Initialize first state and start the progress loop
-    updateState(currentState);
-    startLoop();
+    // Viewport Intersection Observer: loop runs only when section is visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Start fresh from State 0 on viewport entry
+                updateState(0);
+                startLoop();
+            } else {
+                stopLoop();
+            }
+        });
+    }, { threshold: 0.15 });
+
+    observer.observe(section);
 
     // Return cleanup handle
     return () => {
-        if (animFrameId) {
-            cancelAnimationFrame(animFrameId);
-        }
+        observer.unobserve(section);
+        stopLoop();
     };
 }

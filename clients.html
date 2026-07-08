@@ -147,19 +147,8 @@
           </div>
           <div class="handoff-container">
             <div class="handoff-container-child"></div>
-            <img
-              class="handoff-container-item"
-              loading="lazy"
-              alt=""
-              src="assets/images/clients/Rectangle-34624742.svg"
-            />
-
-            <img
-              class="handoff-container-inner"
-              loading="lazy"
-              alt=""
-              src="assets/images/clients/Rectangle-34624742.svg"
-            />
+            <div class="handoff-container-item"></div>
+            <div class="handoff-container-inner"></div>
           </div>
         </div>
       </section>
@@ -1720,5 +1709,519 @@
 <script type="module" src="js/footer.js"></script>
 <script type="module" src="assets/js/main.js"></script>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // ----------------------------------------------------
+    // 0. Base Configuration & CSS Injection (Prevent FOUC)
+    // ----------------------------------------------------
+    const style = document.createElement('style');
+    style.textContent = `
+        /* FOUC prevention resets */
+        .brands-that-lead-container span,
+        .we-combine-strategy,
+        .rectangle-parent,
+        .rectangle-group,
+        .rectangle-container,
+        .our-revenue-grew-container,
+        .andrze-onowski,
+        .co-founder-head,
+        .more-link,
+        .tools-heading-area,
+        .tool-item-wrapper > img,
+        .lets-build-something-container span,
+        .decorative-elements img,
+        .cta-button-wrapper {
+            opacity: 0;
+            will-change: opacity, transform, clip-path;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .brands-that-lead-container span,
+            .we-combine-strategy,
+            .rectangle-parent,
+            .rectangle-group,
+            .rectangle-container,
+            .our-revenue-grew-container,
+            .andrze-onowski,
+            .co-founder-head,
+            .more-link,
+            .tools-heading-area,
+            .tool-item-wrapper > img,
+            .lets-build-something-container span,
+            .decorative-elements img,
+            .cta-button-wrapper {
+                opacity: 1 !important;
+                transform: none !important;
+                clip-path: none !important;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Register GSAP plugins
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Respect reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Helper: Count up values mathematically
+    const initCountUp = (selector, targetVal, formatFn, isHTML = false) => {
+        const el = document.querySelector(selector);
+        if (!el) return;
+
+        if (prefersReducedMotion) {
+            if (isHTML) el.innerHTML = formatFn(targetVal);
+            else el.textContent = formatFn(targetVal);
+            return;
+        }
+
+        let obj = { val: 0 };
+        gsap.to(obj, {
+            val: targetVal,
+            duration: 1.6,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: el,
+                start: 'top 85%',
+                once: true
+            },
+            onUpdate: () => {
+                const cur = Math.floor(obj.val);
+                if (isHTML) el.innerHTML = formatFn(cur);
+                else el.textContent = formatFn(cur);
+            }
+        });
+    };
+
+    // ----------------------------------------------------
+    // 1. Hero Animations
+    // ----------------------------------------------------
+    const initHeroAnimations = () => {
+        if (prefersReducedMotion) return;
+
+        // Line-by-line reveal using clip-path
+        gsap.fromTo('.brands-that-lead-container span',
+            { opacity: 0, clipPath: 'inset(0 0 100% 0)' },
+            {
+                opacity: 1,
+                clipPath: 'inset(0 0 0% 0)',
+                duration: 0.9,
+                stagger: 0.12,
+                ease: 'power3.out',
+                delay: 0.2
+            }
+        );
+
+        // Intro paragraph soft fade-in
+        gsap.fromTo('.we-combine-strategy',
+            { opacity: 0 },
+            {
+                opacity: 1,
+                duration: 1.2,
+                ease: 'power1.out',
+                delay: 0.6
+            }
+        );
+    };
+    // Parse target percentage dynamically from DOM content (e.g. 80%)
+    const getAiToolsTargetPercentage = () => {
+        const textElem = document.querySelector('.ai-tools-used');
+        if (textElem) {
+            const match = textElem.textContent.match(/(\d+)\s*%/);
+            if (match) {
+                return parseInt(match[1], 10);
+            }
+        }
+        return 80; // fallback default
+    };
+    const aiToolsTargetVal = getAiToolsTargetPercentage();
+
+    // Parse target percentage dynamically from highlight card (e.g. 75%)
+    const getStatHighlightTargetPercentage = () => {
+        const textElem = document.querySelector('.stat-highlight-card .h1');
+        if (textElem) {
+            const match = textElem.textContent.match(/(\d+)\s*%/);
+            if (match) {
+                return parseInt(match[1], 10);
+            }
+        }
+        return 75; // fallback default
+    };
+    const statHighlightTargetVal = getStatHighlightTargetPercentage();
+
+    // ----------------------------------------------------
+    // 2. Number Stats Animations
+    // ----------------------------------------------------
+    const initStatsAnimations = () => {
+        // Dynamic Stat Highlight Card Main Number
+        initCountUp('.stat-highlight-card .h1', statHighlightTargetVal, (v) => `${v}%`);
+
+        // Dynamic Unlocking Percentage inline text
+        initCountUp('.unlocking-75-of-container b', statHighlightTargetVal, (v) => `${v}%`);
+
+        // Dynamic AI Tools Text Stat Count-Up
+        initCountUp('.ai-tools-used', aiToolsTargetVal, (v) => `AI tools used to reduce the workflow timing by ${v}%`);
+
+        // 20% Onboarding Stat
+        initCountUp('.process-phases-group .h3', 20, (v) => `${v}%`);
+
+        // 52% Planning Stat
+        initCountUp('.process-phases-group .h32', 52, (v) => `${v}%`);
+
+        // 84% Handoff Stat
+        initCountUp('.rectangle-container .h33', 84, (v) => `${v}%`);
+
+        // 146% Testimonial Revenue Stat
+        initCountUp(
+            '.our-revenue-grew-container',
+            146,
+            (v) => `Our Revenue Grew to <b class="our-revenue-grew">${v}% </b>After Just One Month of Work`,
+            true
+        );
+    };
+
+    // ----------------------------------------------------
+    // 2a. Dynamic Stat Highlight Card Bar Chart Animation
+    // ----------------------------------------------------
+    const initStatHighlightAnimations = () => {
+        const barChild = document.querySelector('.handoff-container-child');
+        const barItem = document.querySelector('.handoff-container-item');
+        const barInner = document.querySelector('.handoff-container-inner');
+        
+        if (!barChild || !barItem || !barInner) return;
+
+        const targetHeightChild = window.getComputedStyle(barChild).height || '83.6px';
+        const targetHeightItem = window.getComputedStyle(barItem).height || '142.1px';
+        const targetHeightInner = window.getComputedStyle(barInner).height || '205.7px';
+
+        // Set initial styles for animation start state
+        gsap.set([barChild, barItem, barInner], { height: 0, opacity: 0 });
+
+        if (prefersReducedMotion) {
+            gsap.set(barChild, { height: targetHeightChild, opacity: 1 });
+            gsap.set(barItem, { height: targetHeightItem, opacity: 1 });
+            gsap.set(barInner, { height: targetHeightInner, opacity: 1 });
+            return;
+        }
+
+        const barTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.stat-highlight-card',
+                start: 'top 85%',
+                once: true
+            }
+        });
+
+        barTl.fromTo([barChild, barItem, barInner],
+            { height: 0, opacity: 0 },
+            {
+                height: (index, target) => {
+                    if (target.classList.contains('handoff-container-child')) return targetHeightChild;
+                    if (target.classList.contains('handoff-container-item')) return targetHeightItem;
+                    return targetHeightInner;
+                },
+                opacity: 1,
+                duration: 1.5,
+                stagger: 0.15,
+                ease: 'power3.out'
+            }
+        );
+    };
+
+    // ----------------------------------------------------
+    // 2b. Animated Pie Chart (Dynamic Conic Gradient)
+    // ----------------------------------------------------
+    const initPieChart = () => {
+        // Hide static image placeholder so the real animated element is visible
+        const frameChild = document.querySelector('.frame-child');
+        if (frameChild) {
+            frameChild.style.display = 'none';
+        }
+
+        // Hide the redundant static planning-step element to ensure only the updated conic chart renders
+        const oldStep = document.querySelector('.planning-step');
+        if (oldStep) {
+            oldStep.style.display = 'none';
+        }
+
+        const chartElement = document.querySelector('.planning-step2');
+        if (!chartElement) return;
+
+        // Transfer drop shadow to the active chart element
+        chartElement.style.boxShadow = '0 0 14.8px rgba(0, 0, 0, 0.25)';
+
+        // Reset base background to start at 0%
+        chartElement.style.background = `conic-gradient(rgb(255, 194, 33) 0%, rgb(255, 233, 194) 0%)`;
+
+        if (prefersReducedMotion) {
+            chartElement.style.background = `conic-gradient(rgb(255, 194, 33) ${aiToolsTargetVal}%, rgb(255, 233, 194) ${aiToolsTargetVal}% 100%)`;
+            return;
+        }
+
+        // Animate progress value
+        let progressObj = { val: 0 };
+        gsap.to(progressObj, {
+            val: aiToolsTargetVal,
+            duration: 1.8,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: chartElement,
+                start: 'top 85%',
+                once: true
+            },
+            onUpdate: () => {
+                chartElement.style.background = `conic-gradient(rgb(255, 194, 33) ${progressObj.val}%, rgb(255, 233, 194) ${progressObj.val}% 100%)`;
+            }
+        });
+    };
+
+    // ----------------------------------------------------
+    // 3. Process Section Cards Reveal
+    // ----------------------------------------------------
+    const initProcessAnimations = () => {
+        if (prefersReducedMotion) return;
+
+        gsap.fromTo(['.rectangle-parent', '.rectangle-group', '.rectangle-container'],
+            { opacity: 0, y: 15 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                stagger: 0.15,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: '.frame-div',
+                    start: 'top 80%',
+                    once: true
+                }
+            }
+        );
+    };
+
+    // ----------------------------------------------------
+    // 4. Clients Logo Marquee Loop (GSAP replacement)
+    // ----------------------------------------------------
+    const initMarqueeAnimations = () => {
+        const tracks = document.querySelectorAll('.clients-logo-ticker__track');
+        tracks.forEach(track => {
+            // Remove the default CSS animation to prevent collision
+            gsap.set(track, { animation: 'none' });
+
+            if (prefersReducedMotion) {
+                gsap.set(track, { xPercent: 0 });
+                return;
+            }
+
+            const isReverse = track.classList.contains('clients-logo-ticker__track--reverse');
+
+            // Set up a loop using xPercent from 0 to -50% (or -50% to 0% for reverse)
+            const tween = gsap.fromTo(track,
+                { xPercent: isReverse ? -50 : 0 },
+                {
+                    xPercent: isReverse ? 0 : -50,
+                    ease: 'none',
+                    duration: 35,
+                    repeat: -1
+                }
+            );
+
+            // Pause marquee on hover, play on leave
+            track.addEventListener('mouseenter', () => tween.pause());
+            track.addEventListener('mouseleave', () => tween.play());
+        });
+    };
+
+    // ----------------------------------------------------
+    // 5. Testimonial Section Text Stagger Reveal
+    // ----------------------------------------------------
+    const initTestimonialAnimations = () => {
+        if (prefersReducedMotion) return;
+
+        const testimonialTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.story-list',
+                start: 'top 80%',
+                once: true
+            }
+        });
+
+        // Stagger quote headline, author name, role, and Read More button
+        testimonialTl.fromTo('.our-revenue-grew-container',
+            { opacity: 0, y: 15 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
+        );
+
+        testimonialTl.fromTo(['.andrze-onowski', '.co-founder-head'],
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out' },
+            '-=0.3'
+        );
+
+        testimonialTl.fromTo('.more-link',
+            { opacity: 0, scale: 0.95 },
+            { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(1.5)' },
+            '-=0.2'
+        );
+    };
+
+    // ----------------------------------------------------
+    // 5b. Tools Section ScrollTrigger Reveals
+    // ----------------------------------------------------
+    const initToolsAnimations = () => {
+        if (prefersReducedMotion) return;
+
+        const toolsTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.tools-content-container',
+                start: 'top 80%',
+                once: true
+            }
+        });
+
+        // Fade up tools title section
+        toolsTl.fromTo('.tools-heading-area',
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }
+        );
+
+        // Stagger bounce-reveal tool logo grids
+        const toolIcons = document.querySelectorAll('.tool-item-wrapper > img');
+        toolsTl.fromTo(toolIcons,
+            { opacity: 0, scale: 0.8, y: 15 },
+            { 
+                opacity: 1, 
+                scale: 1, 
+                y: 0, 
+                duration: 0.6, 
+                stagger: 0.08, 
+                ease: 'back.out(1.4)' 
+            },
+            '-=0.4'
+        );
+    };
+
+    // ----------------------------------------------------
+    // 5c. Global Call-to-Action Section
+    // ----------------------------------------------------
+    const initGlobalCTAAnimations = () => {
+        if (prefersReducedMotion) return;
+
+        const ctaTrigger = '.global-cta';
+        if (document.querySelector(ctaTrigger)) {
+            const ctaTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ctaTrigger,
+                    start: 'top 80%',
+                    once: true
+                }
+            });
+
+            // Title Reveal line by line
+            ctaTl.fromTo('.lets-build-something-container span',
+                { y: 35, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out' }
+            );
+
+            // Dots expand scale in
+            ctaTl.fromTo('.decorative-elements img',
+                { scale: 0, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'back.out(1.8)' },
+                '-=0.5'
+            );
+
+            // Discovery call button scale up
+            ctaTl.fromTo('.cta-button-wrapper',
+                { scale: 0.85, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(1.5)' },
+                '-=0.4'
+            );
+        }
+    };
+
+    // ----------------------------------------------------
+    // 6. Interactive Link/Button Hover Actions & Tool Icons Lift
+    // ----------------------------------------------------
+    const initInteractiveEffects = () => {
+        // Collect links & buttons (including dynamic nav/footer anchors)
+        const interactiveElements = document.querySelectorAll(
+            '.case-study-button, .more-link, .link6, .header-btn, .header-navigation-list a, .footer-navigation-grid a'
+        );
+
+        interactiveElements.forEach(el => {
+            // Hover Lift
+            el.addEventListener('mouseenter', () => {
+                gsap.to(el, {
+                    y: -3,
+                    scale: 1.01,
+                    duration: 0.25,
+                    ease: 'power2.out'
+                });
+            });
+            el.addEventListener('mouseleave', () => {
+                gsap.to(el, {
+                    y: 0,
+                    scale: 1,
+                    duration: 0.25,
+                    ease: 'power2.out'
+                });
+            });
+
+            // Active press click
+            el.addEventListener('mousedown', () => {
+                gsap.to(el, {
+                    scale: 0.96,
+                    duration: 0.1,
+                    ease: 'power1.out'
+                });
+            });
+            el.addEventListener('mouseup', () => {
+                gsap.to(el, {
+                    scale: 1,
+                    duration: 0.15,
+                    ease: 'power2.out'
+                });
+            });
+        });
+
+        // Dynamic 3D interactive lift on Tool Icons
+        const toolIcons = document.querySelectorAll('.tool-item-wrapper > img');
+        toolIcons.forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                gsap.to(icon, {
+                    y: -5,
+                    scale: 1.05,
+                    rotation: 2,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            icon.addEventListener('mouseleave', () => {
+                gsap.to(icon, {
+                    y: 0,
+                    scale: 1,
+                    rotation: 0,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        });
+    };
+
+    // ----------------------------------------------------
+    // 7. Page Elements Initialization Trigger
+    // ----------------------------------------------------
+    initHeroAnimations();
+    initStatsAnimations();
+    initStatHighlightAnimations();
+    initPieChart();
+    initProcessAnimations();
+    initMarqueeAnimations();
+    initTestimonialAnimations();
+    initToolsAnimations();
+    initGlobalCTAAnimations();
+    
+    // Allow header & footer navigation elements to load asynchronously before binding hover states
+    setTimeout(initInteractiveEffects, 600);
+});
+</script>
 </body>
 </html>

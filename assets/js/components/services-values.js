@@ -176,6 +176,12 @@ export function initServicesValues(sectionSelector = '#servicesValues') {
             filter: i === 0 ? 'blur(0px)' : 'blur(8px)',
             boxShadow: i === 0 ? SHADOW_ACTIVE : SHADOW_FADED
         });
+
+        // Initial state for checklist items
+        gsap.set(card.querySelectorAll('.value-card__check-item'), {
+            opacity: i === 0 ? 1 : 0,
+            x: i === 0 ? 0 : -15
+        });
     });
     setActive(0);
 
@@ -228,5 +234,13 @@ export function initServicesValues(sectionSelector = '#servicesValues') {
             ease: 'power2.out',
             duration: 0.45
         }, i);
+
+        tl.to(incoming.querySelectorAll('.value-card__check-item'), {
+            opacity: 1,
+            x: 0,
+            stagger: 0.08,
+            duration: 0.6,
+            ease: 'power2.out'
+        }, i + 0.1);
     }
 }

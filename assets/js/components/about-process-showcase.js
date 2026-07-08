@@ -1,9 +1,15 @@
 /**
  * Envizon Studio - About Page: Process showcase (Discovery / Design / Development)
- * Clicking an inactive item promotes it into the fixed 528x183 active card;
- * the previously active item drops back into the inactive list. The two
- * media wrappers (left/center) never move or resize — only their image src
- * and a opacity/translateX crossfade change. CSS transitions only, no GSAP.
+ *
+ * Desktop (>860px): clicking an inactive item promotes it into the fixed
+ * 528x183 active card; the previously active item drops back into the
+ * inactive list. The two media wrappers (left/center) never move or resize —
+ * only their image src and a opacity/translateX crossfade change.
+ *
+ * Mobile/tablet (<=860px): a separate accordion renders all items in a fixed
+ * order. Each item stays in its own position — tapping one expands its
+ * description + image directly beneath itself, in place, instead of
+ * promoting content up into a shared slot elsewhere on the page.
  */
 
 const SWITCH_MS = 175;
@@ -20,24 +26,24 @@ const FEATURES = [
         title: 'Discovery',
         desc: "We understand before we strategize. Stakeholder conversations, user context, competitive reality — all mapped before a single direction is proposed.",
         cta: 'Book A Discovery Call',
-        left: 'assets/images/about/discovery/discovery-left.webp',
-        center: 'assets/images/about/discovery/discovery-center.webp'
+        left: 'assets/images/port11.png',
+        center: 'assets/images/port11.png'
     },
     {
         key: 'design',
         title: 'Design',
         desc: 'We pitch real options grounded in your strategy, refine relentlessly, and hand off work built to perform — not just to look good in a deck.',
         cta: 'Book A Design Call',
-        left: 'assets/images/about/design/design-left.webp',
-        center: 'assets/images/about/design/design-center.webp'
+        left: 'assets/images/port11.png',
+        center: 'assets/images/port12.png'
     },
     {
         key: 'development',
         title: 'Development',
         desc: 'We build fast, resilient front ends that hold up under real traffic, with clean architecture and rigorous QA at every sprint.',
         cta: 'Book A Development Call',
-        left: 'assets/images/about/development/development-left.webp',
-        center: 'assets/images/about/development/development-center.webp'
+        left: 'assets/images/port11.png',
+        center: 'assets/images/port11.png'
     }
 ];
 
@@ -49,7 +55,8 @@ export function initAboutProcessShowcase(root = '.about-discovery') {
     const list = section.querySelector('.discovery-list');
     const leftWrap = section.querySelector('.discovery-media__wrap--left');
     const centerWrap = section.querySelector('.discovery-media__wrap--center');
-    if (!card || !list || !leftWrap || !centerWrap) return;
+    const accordion = section.querySelector('.discovery-accordion');
+    if (!card || !list || !leftWrap || !centerWrap || !accordion) return;
 
     const leftImg = leftWrap.querySelector('img');
     const centerImg = centerWrap.querySelector('img');
@@ -94,6 +101,46 @@ export function initAboutProcessShowcase(root = '.about-discovery') {
         });
     }
 
+    function renderAccordion() {
+        accordion.innerHTML = FEATURES.map(f => {
+            const isOpen = f.key === activeKey;
+            return `
+                <div class="discovery-accordion__item${isOpen ? ' is-open' : ''}" data-key="${f.key}">
+                    <button type="button"
+                            class="discovery-accordion__header"
+                            aria-expanded="${isOpen}"
+                            aria-controls="discovery-panel-${f.key}"
+                            id="discovery-header-${f.key}">
+                        <span class="discovery-accordion__icon" aria-hidden="true">${ICONS[f.key] || ''}</span>
+                        <span class="discovery-accordion__title">${f.title}</span>
+                        <span class="discovery-accordion__chevron" aria-hidden="true">⌄</span>
+                    </button>
+                    <div class="discovery-accordion__panel"
+                         id="discovery-panel-${f.key}"
+                         role="region"
+                         aria-labelledby="discovery-header-${f.key}">
+                        <div class="discovery-accordion__panel-inner">
+                            <p class="discovery-accordion__desc">${f.desc}</p>
+                            <div class="discovery-accordion__media">
+                                <div class="discovery-media__wrap discovery-media__wrap--left">
+                                    <img src="${f.left}" alt="" loading="lazy">
+                                </div>
+                                <div class="discovery-media__wrap discovery-media__wrap--center">
+                                    <img src="${f.center}" alt="" loading="lazy">
+                                </div>
+                            </div>
+                            <a href="#" class="discovery-accordion__cta">${f.cta} <span aria-hidden="true">↗</span></a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        Array.from(accordion.querySelectorAll('.discovery-accordion__header')).forEach(btn => {
+            btn.addEventListener('click', () => switchTo(btn.closest('.discovery-accordion__item').dataset.key));
+        });
+    }
+
     function switchTo(key) {
         if (isAnimating || key === activeKey) return;
         const feature = FEATURES.find(f => f.key === key);
@@ -109,6 +156,7 @@ export function initAboutProcessShowcase(root = '.about-discovery') {
             activeKey = key;
             renderCard(feature);
             renderList();
+            renderAccordion();
             leftImg.src = feature.left;
             centerImg.src = feature.center;
 
@@ -127,4 +175,5 @@ export function initAboutProcessShowcase(root = '.about-discovery') {
     leftImg.src = initial.left;
     centerImg.src = initial.center;
     renderList();
+    renderAccordion();
 }

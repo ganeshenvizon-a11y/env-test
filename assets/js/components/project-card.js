@@ -1,0 +1,123 @@
+/**
+ * Envizon Studio — Project Card
+ * Single reusable card component for every project/brand grid on the site
+ * (Featured Projects, Brand Grid, and any future section — Case Studies,
+ * Related Projects, a Carousel, etc.). Sections own their own data and grid
+ * chrome; they all render cards through renderProjectCard() from here so
+ * there is exactly one card markup, one stylesheet (project-card.css), and
+ * one set of behaviors (scroll reveal, hover animation, touch activation).
+ *
+ * The card's frame is the Figma-exported "GP-SVG" shape (viewBox 0 0 400
+ * 178). It is defined once as an SVG <symbol> injected into the page on
+ * first render and referenced per card via <use>, so the path data is never
+ * duplicated in the DOM no matter how many cards or sections render it. The
+ * yellow path uses fill="currentColor" so each card can recolor it on
+ * hover/touch via CSS alone (project-card.css sets `color`); the white
+ * panel and all geometry are fixed and are never touched by JS or CSS.
+ */
+
+const FRAME_SYMBOL_ID = 'project-card-frame';
+
+function ensureFrameSprite(){
+    if (document.getElementById(FRAME_SYMBOL_ID)) return;
+
+    const sprite = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    sprite.setAttribute('aria-hidden', 'true');
+    sprite.setAttribute('class', 'project-card-frame-sprite');
+    sprite.innerHTML = `<symbol id="${FRAME_SYMBOL_ID}" viewBox="0 0 400 178">
+        <path class="project-card__frame-yellow" d="M122.354 71.956C129.957 72.0754 137.074 68.2261 141.135 61.7974L172.495 12.1589C176.452 5.89579 183.317 2.06944 190.725 1.99862L364.46 0.337771C383.919 0.151747 399.793 15.8744 399.794 35.3345L399.8 149.683C399.801 165.148 387.264 177.684 371.8 177.684H35.0058C15.6769 177.684 0.00737562 162.016 0.0058257 142.687L0.00285116 105.592C0.00128383 86.0459 16.0087 70.2867 35.5522 70.5934L122.354 71.956Z"></path>
+        <path class="project-card__frame-white" d="M134.26 93.145C141.888 93.145 148.962 89.1597 152.914 82.6353L182.064 34.5166C186.016 27.9922 193.09 24.0069 200.719 24.0069L358.117 24.0074C375.79 24.0074 390.117 38.3343 390.117 56.0074V155.874C390.117 167.92 380.352 177.685 368.307 177.685H33.4901C21.4445 177.685 11.6797 167.92 11.6797 155.874V114.955C11.6797 102.91 21.4445 93.145 33.4901 93.145H134.26Z"></path>
+    </symbol>`;
+    document.body.insertBefore(sprite, document.body.firstChild);
+}
+
+/**
+ * @param {Object} data
+ * @param {string} data.title
+ * @param {string} data.logo - image src for the project/brand logo
+ * @param {string} data.bgColor - CSS background (color or gradient)
+ * @param {string} data.accentColor - hover fill for the SVG frame
+ * @param {string[]} data.tags
+ * @param {string} data.url - case study link
+ * @returns {HTMLAnchorElement}
+ */
+export function renderProjectCard(data){
+    ensureFrameSprite();
+
+    const card = document.createElement('a');
+    card.className = 'project-card';
+    card.href = data.url;
+    card.setAttribute('aria-label', `View ${data.title} case study`);
+    card.style.setProperty('--card-bg', data.bgColor);
+    card.style.setProperty('--card-accent', data.accentColor);
+
+    const tagsMarkup = (data.tags || [])
+        .map(tag => `<li class="project-card__tag">${tag}</li>`)
+        .join('');
+
+    card.innerHTML = `
+        <span class="project-card__background">
+            <img class="project-card__logo" src="${data.logo}" alt="" loading="lazy" decoding="async">
+        </span>
+        <span class="project-card__frame-mask">
+            <svg class="project-card__frame" viewBox="0 0 400 178" aria-hidden="true" focusable="false">
+                <use href="#${FRAME_SYMBOL_ID}"></use>
+            </svg>
+        </span>
+        <span class="project-card__content">
+            <h3 class="project-card__name">${data.title}</h3>
+            <ul class="project-card__tags">${tagsMarkup}</ul>
+        </span>
+    `;
+
+    return card;
+}
+
+/** Fades/slides cards in as they scroll into view. Pass the cards you just rendered. */
+export function revealProjectCardsOnScroll(cards){
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+    cards.forEach(card => observer.observe(card));
+}
+
+let touchActivationBound = false;
+
+/**
+ * Touch devices have no real :hover, so the hover reveal can never be seen
+ * before the link navigates away. First tap reveals it instead of
+ * navigating; a second tap (now that the card is "active") follows the
+ * link. Delegated on `document` and idempotent, so it works for every
+ * .project-card on the page — including ones rendered later (pagination,
+ * carousel slides) — and only needs to be called once per page.
+ */
+export function bindProjectCardTouchActivation(){
+    if (touchActivationBound) return;
+    if (!window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
+    touchActivationBound = true;
+
+    document.addEventListener('click', (event) => {
+        const card = event.target.closest('.project-card');
+
+        if (!card){
+            document.querySelectorAll('.project-card.is-touch-active').forEach(c => c.classList.remove('is-touch-active'));
+            return;
+        }
+
+        if (card.classList.contains('is-touch-active')) return;
+        event.preventDefault();
+        document.querySelectorAll('.project-card.is-touch-active').forEach(c => c.classList.remove('is-touch-active'));
+        card.classList.add('is-touch-active');
+    });
+}
+
+/** Convenience helper for the common case: reveal-on-scroll + touch activation. */
+export function initProjectCardGrid(cards){
+    revealProjectCardsOnScroll(cards);
+    bindProjectCardTouchActivation();
+}

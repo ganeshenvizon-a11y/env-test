@@ -1,0 +1,131 @@
+/* CONTACT — HERO ("Let's Start The Conversation.") */
+
+.contact-hero{
+    position:relative;
+    padding:170px 0 90px;
+    overflow:hidden;
+    background:
+        radial-gradient(700px 460px at -6% -22%, #FFE9C2 0%, rgba(255,233,194,0) 70%),
+        radial-gradient(700px 460px at 106% -22%, #FFE9C2 0%, rgba(255,233,194,0) 70%),
+        #ffffff;
+}
+
+.contact-hero__container{
+    width:min(1200px, calc(100% - 48px));
+    margin:0 auto;
+}
+
+/* ============================= */
+/* BREADCRUMB                     */
+/* ============================= */
+
+.contact-hero__breadcrumb{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:28px;
+    font-size:14px;
+    font-weight:500;
+    color:var(--text-muted);
+}
+
+.contact-hero__breadcrumb a{
+    color:var(--text-muted);
+    transition:color var(--transition-fast);
+}
+
+.contact-hero__breadcrumb a:hover{
+    color:var(--black);
+}
+
+.contact-hero__breadcrumb-sep{
+    color:var(--border-light);
+}
+
+.contact-hero__breadcrumb-current{
+    color:var(--test-roan-six-87vercelapp-Fire-Bush);
+    font-weight:600;
+}
+
+/* ============================= */
+/* HEADING + INTRO TEXT           */
+/* ============================= */
+
+.contact-hero__top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:40px;
+}
+
+.contact-hero__title{
+    font-size:64px;
+    font-weight:800;
+    line-height:1.15;
+    letter-spacing:-2px;
+    color:var(--black);
+    max-width:620px;
+}
+
+.contact-hero__accent{
+    color:var(--test-roan-six-87vercelapp-Fire-Bush);
+}
+
+.contact-hero__text{
+    font-size:16px;
+    line-height:1.7;
+    color:var(--text);
+    max-width:42ch;
+    flex-shrink:0;
+    padding-bottom:6px;
+}
+
+/* ============================= */
+/* RESPONSIVE                    */
+/* ============================= */
+
+@media(max-width:1200px){
+    .contact-hero__title{
+        max-width:520px;
+    }
+}
+
+@media(max-width:1024px){
+    .contact-hero{
+        padding:150px 0 72px;
+    }
+
+    .contact-hero__title{
+        font-size:44px;
+        letter-spacing:-1px;
+    }
+}
+
+@media(max-width:860px){
+    .contact-hero__top{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+    .contact-hero__title,
+    .contact-hero__text{
+        max-width:none;
+    }
+}
+
+@media(max-width:480px){
+    .contact-hero{
+        padding:140px 0 56px;
+    }
+
+    .contact-hero__breadcrumb{
+        margin-bottom:20px;
+        font-size:13px;
+    }
+
+    .contact-hero__title{
+        font-size:34px;
+        letter-spacing:-.5px;
+    }
+}

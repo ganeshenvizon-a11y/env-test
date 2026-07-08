@@ -1,0 +1,239 @@
+/* CONTACT — INFO ("Reach Us, Anytime, Anywhere.") */
+
+.contact-info{
+    background:#ffffff;
+    padding:96px 0 120px;
+}
+
+.contact-info__container{
+    width:min(1200px, calc(100% - 48px));
+    margin:0 auto;
+}
+
+/* ============================= */
+/* HEADER                         */
+/* ============================= */
+
+.contact-info__header{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:flex-end;
+    margin-bottom:56px;
+}
+
+.contact-info__eyebrow{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.contact-info__eyebrow-line{
+    width:28px;
+    height:2px;
+    background:var(--color-gold-100);
+    flex-shrink:0;
+}
+
+.contact-info__eyebrow span{
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--text);
+}
+
+.contact-info__title{
+    font-size:clamp(2.25rem, 1.4rem + 3vw, 3.5rem);
+    font-weight:800;
+    line-height:1.1;
+    letter-spacing:-0.02em;
+    color:var(--black);
+}
+
+.contact-info__title-accent{
+    color:var(--test-roan-six-87vercelapp-Fire-Bush);
+}
+
+.contact-info__text{
+    font-size:16px;
+    line-height:1.7;
+    color:var(--text);
+    max-width:46ch;
+    justify-self:end;
+    text-align:left;
+}
+
+/* ============================= */
+/* CARDS                          */
+/* ============================= */
+
+.contact-info__grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:24px;
+}
+
+.contact-info-card{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+    padding:32px 28px;
+    border-radius:var(--radius);
+    background:var(--color-whitesmoke-100);
+    border:1px solid var(--border-light);
+    opacity:0;
+    transform:translateY(40px);
+    transition:opacity .7s ease, transform .7s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.contact-info-card.is-visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.contact-info-card:nth-child(1){ transition-delay:0ms; }
+.contact-info-card:nth-child(2){ transition-delay:100ms; }
+.contact-info-card:nth-child(3){ transition-delay:200ms; }
+.contact-info-card:nth-child(4){ transition-delay:300ms; }
+
+@media(hover:hover) and (pointer:fine){
+    .contact-info-card:hover{
+        border-color:var(--test-roan-six-87vercelapp-Fire-Bush);
+        box-shadow:0 16px 36px rgba(0,0,0,.06);
+        transform:translateY(-6px);
+    }
+}
+
+.contact-info-card__icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:48px;
+    height:48px;
+    flex-shrink:0;
+    border-radius:50%;
+    background:#111;
+    color:var(--test-roan-six-87vercelapp-Fire-Bush);
+}
+
+.contact-info-card__icon svg{
+    width:20px;
+    height:20px;
+}
+
+.contact-info-card__title{
+    font-size:17px;
+    font-weight:700;
+    color:var(--black);
+}
+
+.contact-info-card__desc{
+    font-size:15px;
+    line-height:1.6;
+    color:var(--text);
+}
+
+.contact-info-card__link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:auto;
+    padding-top:4px;
+    font-size:14px;
+    font-weight:600;
+    color:var(--black);
+    border-bottom:1px solid var(--black);
+    transition:opacity var(--transition-fast);
+}
+
+@media(hover:hover) and (pointer:fine){
+    .contact-info-card__link:hover{
+        opacity:.6;
+    }
+}
+
+/* social links row lives inside the last card */
+
+.contact-info-card__socials{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:auto;
+    padding-top:4px;
+}
+
+.contact-info-card__social{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:#fff;
+    border:1px solid var(--border-light);
+    color:var(--black);
+    transition:background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.contact-info-card__social svg{
+    width:15px;
+    height:15px;
+}
+
+@media(hover:hover) and (pointer:fine){
+    .contact-info-card__social:hover{
+        background:#111;
+        border-color:#111;
+        color:var(--test-roan-six-87vercelapp-Fire-Bush);
+    }
+}
+
+/* ============================= */
+/* RESPONSIVE                    */
+/* ============================= */
+
+@media(max-width:1024px){
+    .contact-info{
+        padding:72px 0 96px;
+    }
+
+    .contact-info__header{
+        margin-bottom:40px;
+    }
+
+    .contact-info__grid{
+        grid-template-columns:repeat(2, 1fr);
+        gap:20px;
+    }
+}
+
+@media(max-width:768px){
+    .contact-info__header{
+        grid-template-columns:1fr;
+        gap:24px;
+    }
+
+    .contact-info__text{
+        justify-self:start;
+        text-align:left;
+        max-width:none;
+    }
+}
+
+@media(max-width:600px){
+    .contact-info{
+        padding:56px 0 72px;
+    }
+
+    .contact-info__title{
+        font-size:34px;
+    }
+
+    .contact-info__grid{
+        grid-template-columns:1fr;
+        gap:16px;
+    }
+}

@@ -1,0 +1,215 @@
+/* PROJECT CARD — shared component used by every project/brand grid on the
+   site (Featured Projects, Brand Grid, and any future section — Case
+   Studies, Related Projects, a Carousel, etc). One card, one stylesheet:
+   only the data (logo, background color, accent color, title, tags, link)
+   ever changes between sections — see assets/js/components/project-card.js.
+
+   The frame is the Figma-exported "GP-SVG" shape (viewBox 0 0 400 178): a
+   yellow notch-cut shape with a white panel inset inside it, defined once
+   as an SVG <symbol> and referenced per card via <use> (never duplicated
+   markup). Its geometry is never modified, morphed, or redrawn — the only
+   things that ever change are the yellow path's rendered color
+   (currentColor, via the --card-accent custom property) and how much of
+   the fixed-size SVG is visible through an overflow:hidden mask. Growing
+   that mask's height on hover is what produces the "panel slides upward"
+   reveal without touching a single path coordinate. */
+
+.project-card{
+    display:block;
+    position:relative;
+    aspect-ratio:385 / 388;
+    border-radius:20px;
+    overflow:hidden;
+    background:var(--card-bg, #eee);
+    opacity:0;
+    transform:translateY(32px);
+    transition:opacity .6s ease, transform .6s ease;
+}
+
+.project-card.is-visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@media(hover:hover) and (pointer:fine){
+    .project-card:hover{
+        transform:translateY(-4px);
+    }
+}
+
+/* default entrance stagger for a 3-up row; sections that paginate or need a
+   different rhythm (e.g. the logo grid) set transition-delay inline in JS,
+   which overrides this by specificity */
+.project-card:nth-child(3n+1){ transition-delay:0ms; }
+.project-card:nth-child(3n+2){ transition-delay:70ms; }
+.project-card:nth-child(3n+3){ transition-delay:140ms; }
+
+/* ============================= */
+/* BACKGROUND + LOGO               */
+/* ============================= */
+
+.project-card__background{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding-top:44px;
+    background:var(--card-bg, #eee);
+    overflow:hidden;
+    z-index:1;
+}
+
+.project-card__logo{
+    width:57%;
+    max-height:145px;
+    object-fit:contain;
+    transition:transform .45s cubic-bezier(.4, 0, .2, 1) .35s;
+}
+
+.project-card:hover .project-card__logo,
+.project-card.is-touch-active .project-card__logo{
+    transform:scale(1.05);
+}
+
+/* ============================= */
+/* SVG FRAME                       */
+/* ============================= */
+
+/* reveal window — grows upward on hover/touch, sliding the visible boundary
+   of the fixed-size SVG frame up the card. The SVG itself never moves,
+   resizes, or reshapes; only how much of it this mask exposes changes. */
+.project-card__frame-mask{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:28%;
+    overflow:hidden;
+    z-index:2;
+    pointer-events:none;
+    transition:height .5s cubic-bezier(.4, 0, .2, 1);
+}
+
+.project-card:hover .project-card__frame-mask,
+.project-card.is-touch-active .project-card__frame-mask{
+    height:44.4%;
+}
+
+.project-card__frame{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    aspect-ratio:400 / 178;
+    display:block;
+    color:#FFE9C2;
+    transition:color .45s ease;
+}
+
+.project-card:hover .project-card__frame,
+.project-card.is-touch-active .project-card__frame{
+    color:var(--card-accent, #FFE9C2);
+}
+
+.project-card__frame-yellow{
+    fill:currentColor;
+}
+
+.project-card__frame-white{
+    fill:#ffffff;
+}
+
+/* ============================= */
+/* TITLE + TAGS                    */
+/* ============================= */
+
+/* Shares the frame's fully-revealed box so its percentage positions always
+   line up with the SVG's white panel underneath it, regardless of the
+   mask's animated height — title/tags never jump as the panel expands. */
+.project-card__content{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    aspect-ratio:400 / 178;
+    z-index:3;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    justify-content:flex-end;
+    padding:0 7% 4% 34%;
+}
+
+.project-card__name{
+    margin:0;
+    font-size:22px;
+    font-weight:600;
+    line-height:1.2;
+    text-align:right;
+    color:var(--black);
+    transition:transform .4s cubic-bezier(.4, 0, .2, 1) .15s;
+}
+
+.project-card:hover .project-card__name,
+.project-card.is-touch-active .project-card__name{
+    transform:translateY(-6px);
+}
+
+.project-card__tags{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:8px;
+    list-style:none;
+    padding:0;
+    margin:10px 0 0;
+    opacity:0;
+    transform:translateY(10px);
+    transition:opacity .35s ease .25s, transform .4s cubic-bezier(.4, 0, .2, 1) .25s;
+}
+
+.project-card:hover .project-card__tags,
+.project-card.is-touch-active .project-card__tags{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.project-card__tag{
+    padding:7px 14px;
+    border-radius:var(--radius-pill);
+    border:1px solid var(--border-light);
+    background:#fff;
+    font-size:12px;
+    color:#333;
+    white-space:nowrap;
+}
+
+/* ============================= */
+/* RESPONSIVE                    */
+/* ============================= */
+
+@media(max-width:560px){
+    .project-card{
+        aspect-ratio:4 / 3.6;
+    }
+
+    .project-card__background{
+        padding-top:36px;
+    }
+
+    .project-card__frame-mask{
+        height:38%;
+    }
+
+    .project-card:hover .project-card__frame-mask,
+    .project-card.is-touch-active .project-card__frame-mask{
+        height:49.5%;
+    }
+
+    .project-card__name{
+        font-size:20px;
+    }
+}

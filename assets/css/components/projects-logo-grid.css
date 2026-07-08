@@ -1,7 +1,7 @@
 /* PROJECTS — LOGO GRID ("Cultivate loyalty, recognition, and growth...") */
-/* Cards reuse the .brand-card component/styles defined in
-   projects-featured-brands.css — this file only owns the section chrome
-   (heading, 4-up grid track, pagination controls). */
+/* Cards reuse the shared .project-card component defined in
+   project-card.css — this file only owns the section chrome (heading, 4-up
+   grid track, pagination controls). */
 
 .projects-logo-grid{
     background:#ffffff;

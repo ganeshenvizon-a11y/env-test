@@ -1,0 +1,101 @@
+/* CONTACT — MAP ("Find Us On The Map.") */
+
+.contact-map{
+    background:var(--color-whitesmoke-100);
+    padding:0 0 120px;
+}
+
+.contact-map__container{
+    width:min(1200px, calc(100% - 48px));
+    margin:0 auto;
+}
+
+.contact-map__header{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:32px;
+    margin-bottom:32px;
+}
+
+.contact-map__title{
+    font-size:clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+    font-weight:800;
+    line-height:1.15;
+    letter-spacing:-.5px;
+    color:var(--black);
+}
+
+.contact-map__title span{
+    color:var(--test-roan-six-87vercelapp-Fire-Bush);
+}
+
+.contact-map__link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    flex-shrink:0;
+    padding-bottom:4px;
+    border-bottom:1px solid var(--black);
+    font-size:15px;
+    font-weight:600;
+    color:var(--black);
+    transition:opacity var(--transition-fast);
+}
+
+@media(hover:hover) and (pointer:fine){
+    .contact-map__link:hover{
+        opacity:.6;
+    }
+}
+
+.contact-map__frame{
+    position:relative;
+    width:100%;
+    aspect-ratio:1200/460;
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,.08);
+    background:var(--color-whitesmoke-200);
+}
+
+.contact-map__frame iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:0;
+    filter:grayscale(.15) contrast(1.02);
+}
+
+/* ============================= */
+/* RESPONSIVE                    */
+/* ============================= */
+
+@media(max-width:768px){
+    .contact-map{
+        padding:0 0 96px;
+    }
+
+    .contact-map__header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:16px;
+        margin-bottom:24px;
+    }
+
+    .contact-map__frame{
+        aspect-ratio:4/5;
+    }
+}
+
+@media(max-width:480px){
+    .contact-map{
+        padding:0 0 72px;
+    }
+
+    .contact-map__frame{
+        aspect-ratio:1/1;
+        border-radius:16px;
+    }
+}

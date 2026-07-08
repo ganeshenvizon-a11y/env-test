@@ -62,7 +62,7 @@
 
 .brand-card:hover,
 .brand-card:focus-within{
-    --panel-top:55.6%;
+    --panel-top:50%;
     --chamfer-y:47%;
 }
 

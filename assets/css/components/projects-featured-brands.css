@@ -1,4 +1,4 @@
-/* WORK — FEATURED BRANDS (client logo / project card grid) */
+/* PROJECTS — FEATURED BRANDS (client logo / project card grid) */
 /* Card shape: a colored media tile with a white "tag" panel folded onto its
    bottom edge. The panel's top-left corner is chamfered off (clip-path) so
    the media color peeks through — on hover the panel grows upward and the
@@ -6,12 +6,12 @@
    the project's accent. Both states share the same clip-path point count so
    the change animates smoothly instead of jumping. */
 
-.work-featured-brands{
+.projects-featured-brands{
     background:#ffffff;
     padding:0 0 110px;
 }
 
-.work-featured-brands__container{
+.projects-featured-brands__container{
     width:min(1200px, calc(100% - 48px));
     margin:0 auto;
 }
@@ -28,7 +28,7 @@
     border:0;
 }
 
-.work-featured-brands__grid{
+.projects-featured-brands__grid{
     display:grid;
     grid-template-columns:repeat(3, 1fr);
     gap:32px 24px;
@@ -39,14 +39,15 @@
 /* ============================= */
 
 .brand-card{
-    --panel-top:72%;
-    --chamfer-y:46%;
+    --panel-top:65%;
+    --chamfer-y:75%;
     --frame-inset:8px;
+    --card-radius:22px;
 
     display:block;
     position:relative;
     aspect-ratio:385 / 388;
-    border-radius:20px;
+    border-radius:var(--card-radius);
     overflow:hidden;
     background:var(--card-bg, #eee);
     opacity:0;
@@ -61,8 +62,8 @@
 
 .brand-card:hover,
 .brand-card:focus-within{
-    --panel-top:55.6%;
-    --chamfer-y:24%;
+    --panel-top:50%;
+    --chamfer-y:47%;
 }
 
 .brand-card__media{
@@ -88,7 +89,20 @@
     bottom:0;
     top:var(--panel-top);
     background:#FFE9C2;
-    clip-path:polygon(54.1% calc(var(--chamfer-y) * .15), 62% 0%, 100% 0%, 100% 100%, 0% 100%, 0% var(--chamfer-y), 28% var(--chamfer-y), 35.9% calc(var(--chamfer-y) * .85));
+    border-radius:var(--card-radius);
+    clip-path:polygon(
+        47.0% 0%, 100% 0%, 100% 100%, 0% 100%,
+        0% var(--chamfer-y),
+        28.5% var(--chamfer-y),
+        30.1% calc(var(--chamfer-y) * .99),
+        31.5% calc(var(--chamfer-y) * .962),
+        32.7% calc(var(--chamfer-y) * .918),
+        33.6% calc(var(--chamfer-y) * .859),
+        42.0% calc(var(--chamfer-y) * .141),
+        42.9% calc(var(--chamfer-y) * .082),
+        44.1% calc(var(--chamfer-y) * .038),
+        45.5% calc(var(--chamfer-y) * .01)
+    );
     transition:top .45s cubic-bezier(.4,0,.2,1), clip-path .45s cubic-bezier(.4,0,.2,1), background-color .35s ease;
 }
 
@@ -105,17 +119,31 @@
     bottom:var(--frame-inset);
     top:calc(var(--panel-top) + var(--frame-inset));
     background:#fff;
-    clip-path:polygon(54.1% calc(var(--chamfer-y) * .15), 62% 0%, 100% 0%, 100% 100%, 0% 100%, 0% var(--chamfer-y), 28% var(--chamfer-y), 35.9% calc(var(--chamfer-y) * .85));
+    border-radius:var(--card-radius);
+    clip-path:polygon(
+        47.0% 0%, 100% 0%, 100% 100%, 0% 100%,
+        0% var(--chamfer-y),
+        28.5% var(--chamfer-y),
+        30.1% calc(var(--chamfer-y) * .99),
+        31.5% calc(var(--chamfer-y) * .962),
+        32.7% calc(var(--chamfer-y) * .918),
+        33.6% calc(var(--chamfer-y) * .859),
+        42.0% calc(var(--chamfer-y) * .141),
+        42.9% calc(var(--chamfer-y) * .082),
+        44.1% calc(var(--chamfer-y) * .038),
+        45.5% calc(var(--chamfer-y) * .01)
+    );
     transition:top .45s cubic-bezier(.4,0,.2,1), clip-path .45s cubic-bezier(.4,0,.2,1);
     display:flex;
     flex-direction:column;
     justify-content:flex-end;
-    padding:0 26px 16px;
+    padding:0 24px 6px;
 }
 
 .brand-card__name{
     margin:0;
-    font-size:22px;
+    font-size:15px;
+    line-height:1.1;
     font-weight:600;
     color:var(--black);
 }
@@ -168,18 +196,18 @@
 /* ============================= */
 
 @media(max-width:900px){
-    .work-featured-brands__grid{
+    .projects-featured-brands__grid{
         grid-template-columns:repeat(2, 1fr);
         gap:20px;
     }
 }
 
 @media(max-width:560px){
-    .work-featured-brands{
+    .projects-featured-brands{
         padding:0 0 72px;
     }
 
-    .work-featured-brands__grid{
+    .projects-featured-brands__grid{
         grid-template-columns:1fr;
         gap:20px;
     }
@@ -187,12 +215,12 @@
     .brand-card{
         aspect-ratio:4/3.4;
         --panel-top:60%;
-        --chamfer-y:38%;
+        --chamfer-y:62%;
     }
 
     .brand-card:hover,
     .brand-card:focus-within{
         --panel-top:48%;
-        --chamfer-y:20%;
+        --chamfer-y:48%;
     }
 }

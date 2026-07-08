@@ -9,7 +9,7 @@
   align-items: flex-end;
   height: auto;
   min-height: 0;
-  /*padding: clamp(80px, 10vw, 152px) 0 clamp(80px, 10vw, 152px);*/
+  /* padding: clamp(80px, 10vw, 152px) 0 clamp(80px, 10vw, 152px); */
   gap: clamp(72px, 12vw, 150px);
   max-width: 100%;
   align-self: stretch;

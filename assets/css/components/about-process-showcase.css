@@ -1,4 +1,4 @@
-/* ABOUT — PROCESS SHOWCASE (Discovery / Strategy / Design / Development / Delivery / Optimization) */
+/* ABOUT — PROCESS SHOWCASE (Discovery / Design / Development) */
 
 .about-discovery{
     background:#ffffff;
@@ -14,7 +14,11 @@
     position:relative;
     display:grid;
     grid-template-columns:minmax(280px, 420px) 1fr;
-    gap:80px;
+    grid-template-areas:
+        "media card"
+        "media list";
+    column-gap:80px;
+    row-gap:32px;
     align-items:start;
     padding:64px;
     border-radius:24px;
@@ -29,6 +33,7 @@
    per active feature, driven by about-process-showcase.js */
 
 .discovery-media{
+    grid-area:media;
     position:relative;
     height:420px;
 }
@@ -71,13 +76,8 @@
 /* CONTENT (active card + list)   */
 /* ============================= */
 
-.discovery-content{
-    display:flex;
-    flex-direction:column;
-    gap:32px;
-}
-
 .discovery-card{
+    grid-area:card;
     width:100%;
     max-width:528px;
     min-height:183px;
@@ -156,6 +156,7 @@
 /* ============================= */
 
 .discovery-list{
+    grid-area:list;
     display:flex;
     flex-direction:column;
     gap:28px;
@@ -235,9 +236,17 @@
 @media(max-width:860px){
     .about-discovery__box{
         grid-template-columns:1fr;
+        grid-template-areas:
+            "card"
+            "media"
+            "list";
+        row-gap:32px;
         padding:32px;
     }
 
+    /* image block moves to sit right under the active card instead of
+       staying pinned above it, so switching cards on mobile/tablet always
+       reveals its image right where the user just tapped */
     .discovery-media{
         width:100%;
         height:380px;

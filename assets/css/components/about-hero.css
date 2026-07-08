@@ -64,7 +64,7 @@
 .about-hero__gallery-item{
     margin:0;
     flex-shrink:0;
-    border-radius:16px;
+    border-radius:12px;
     overflow:hidden;
     background:#eee;
 }
@@ -76,23 +76,23 @@
 }
 
 .about-hero__gallery-item--1{
-    flex:239 1 0;
-    aspect-ratio:239/512;
+    flex:240 1 0;
+    aspect-ratio:240.41/276.5;
 }
 
 .about-hero__gallery-item--2{
-    flex:293 1 0;
-    aspect-ratio:293/376;
+    flex:298 1 0;
+    aspect-ratio:298/379;
 }
 
 .about-hero__gallery-item--3{
     flex:277 1 0;
-    aspect-ratio:277/274;
+    aspect-ratio:277/277;
 }
 
 .about-hero__gallery-item--4{
     flex:254 1 0;
-    aspect-ratio:254/382;
+    aspect-ratio:254/386;
 }
 
 /* ============================= */

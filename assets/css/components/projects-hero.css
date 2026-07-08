@@ -1,6 +1,6 @@
-/* WORK — HERO ("Brands That Lead & Inspire Industries.") */
+/* PROJECTS — HERO ("Brands That Lead & Inspire Industries.") */
 
-.work-hero{
+.projects-hero{
     position:relative;
     padding:170px 0 90px;
     overflow:hidden;
@@ -10,19 +10,19 @@
         #ffffff;
 }
 
-.work-hero__container{
+.projects-hero__container{
     width:min(1200px, calc(100% - 48px));
     margin:0 auto;
 }
 
-.work-hero__top{
+.projects-hero__top{
     display:flex;
     justify-content:space-between;
     align-items:flex-end;
     gap:40px;
 }
 
-.work-hero__title{
+.projects-hero__title{
     font-size:56px;
     font-weight:800;
     line-height:1.15;
@@ -31,11 +31,11 @@
     max-width:660px;
 }
 
-.work-hero__accent{
+.projects-hero__accent{
     color:var(--test-roan-six-87vercelapp-Fire-Bush);
 }
 
-.work-hero__text{
+.projects-hero__text{
     font-size:16px;
     line-height:1.7;
     color:var(--text);
@@ -49,41 +49,41 @@
 /* ============================= */
 
 @media(max-width:1200px){
-    .work-hero__title{
+    .projects-hero__title{
         max-width:520px;
     }
 }
 
 @media(max-width:1024px){
-    .work-hero{
+    .projects-hero{
         padding:150px 0 72px;
     }
 
-    .work-hero__title{
+    .projects-hero__title{
         font-size:44px;
         letter-spacing:-1px;
     }
 }
 
 @media(max-width:860px){
-    .work-hero__top{
+    .projects-hero__top{
         flex-direction:column;
         align-items:flex-start;
         gap:20px;
     }
 
-    .work-hero__title,
-    .work-hero__text{
+    .projects-hero__title,
+    .projects-hero__text{
         max-width:none;
     }
 }
 
 @media(max-width:480px){
-    .work-hero{
+    .projects-hero{
         padding:140px 0 56px;
     }
 
-    .work-hero__title{
+    .projects-hero__title{
         font-size:34px;
         letter-spacing:-.5px;
     }

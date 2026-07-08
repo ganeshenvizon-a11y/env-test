@@ -40,10 +40,16 @@
           href="css/header.css">
 
     <link rel="stylesheet"
-          href="assets/css/components/work-hero.css">
+          href="assets/css/components/projects-hero.css">
 
     <link rel="stylesheet"
-          href="assets/css/components/work-featured-brands.css">
+          href="assets/css/components/projects-featured-brands.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/projects-logo-grid.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/stats-highlight.css">
 
     <link rel="stylesheet"
           href="assets/css/components/services-cta.css">
@@ -60,18 +66,18 @@
 <header class="header"></header>
 
 <!-- Brands That Lead & Inspire Industries -->
-<section class="work-hero" aria-label="Brands that lead and inspire industries">
+<section class="projects-hero" aria-label="Brands that lead and inspire industries">
 
-    <div class="work-hero__container">
+    <div class="projects-hero__container">
 
-        <div class="work-hero__top">
+        <div class="projects-hero__top">
 
-            <h1 class="work-hero__title">
-                <span class="work-hero__accent">Brands</span> That Lead &amp;<br>
-                <span class="work-hero__accent">Inspire</span> Industries
+            <h1 class="projects-hero__title">
+                <span class="projects-hero__accent">Brands</span> That Lead &amp;<br>
+                <span class="projects-hero__accent">Inspire</span> Industries
             </h1>
 
-            <p class="work-hero__text">
+            <p class="projects-hero__text">
                 We combine strategy, design, technology, and storytelling to
                 build experiences that create measurable business impact.
             </p>
@@ -83,13 +89,104 @@
 </section>
 
 <!-- Featured brand / project grid -->
-<section class="work-featured-brands" aria-label="Featured client work">
+<section class="projects-featured-brands" aria-label="Featured client work">
 
-    <div class="work-featured-brands__container">
+    <div class="projects-featured-brands__container">
 
-        <h2 class="work-featured-brands__heading visually-hidden">Featured Client Work</h2>
+        <h2 class="projects-featured-brands__heading visually-hidden">Featured Client Work</h2>
 
-        <div class="work-featured-brands__grid" id="workFeaturedBrandsGrid"></div>
+        <div class="projects-featured-brands__grid" id="projectsFeaturedBrandsGrid"></div>
+
+    </div>
+
+</section>
+
+<!-- Cultivate loyalty, recognition, and growth through the power of brand -->
+<section class="projects-logo-grid" aria-label="Brands we've helped grow">
+
+    <div class="projects-logo-grid__container">
+
+        <h2 class="projects-logo-grid__heading">
+            Cultivate loyalty, <span class="is-muted">recognition, and</span><br>
+            growth <span class="is-muted">through the power of brand.</span>
+        </h2>
+
+        <div class="projects-logo-grid__grid" id="projectsLogoGrid"></div>
+
+        <div class="projects-logo-grid__pagination">
+
+            <button type="button" class="projects-logo-grid__arrow" data-dir="prev" aria-label="Previous projects" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+
+            <span class="projects-logo-grid__page-indicator">
+                <span class="projects-logo-grid__page-current">1</span> / <span class="projects-logo-grid__page-total">1</span>
+            </span>
+
+            <button type="button" class="projects-logo-grid__arrow" data-dir="next" aria-label="Next projects">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Built for businesses that refuse to look average -->
+<section class="stats-highlight" aria-label="Why businesses choose Envizon">
+
+    <div class="stats-highlight__container">
+
+        <div class="stats-highlight__top">
+
+            <h2 class="stats-highlight__title">
+                Built For <span>Businesses</span><br>
+                That Refuse To <span>Look Average</span>
+            </h2>
+
+            <div class="stats-highlight__row">
+
+                <p class="stats-highlight__text">
+                    Envizon exists for the ambitious ones. The founders who understand
+                    that <b>design is a business lever</b>, not a line item. The teams who refuse
+                    to ship average. The brands that want their product to feel inevitable.
+                </p>
+
+                <div class="stats-highlight__right">
+
+                    <a href="#" class="stats-highlight__link">
+                        Read Case Studies
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="stats-highlight__grid">
+
+            <div class="stats-highlight__card">
+                <div class="stats-highlight__percent">80%</div>
+                <div class="stats-highlight__card-title">Growth using Envizon</div>
+                <p class="stats-highlight__card-desc">Achieve up to a 15% uplift in conversion rates as Redacted AI's algorithms optimize pricing in real-time</p>
+            </div>
+
+            <div class="stats-highlight__card">
+                <div class="stats-highlight__percent">15%</div>
+                <div class="stats-highlight__card-title">Boost Conversion Rates</div>
+                <p class="stats-highlight__card-desc">Achieve up to a 15% uplift in conversion rates as Redacted AI's algorithms optimize pricing in real-time</p>
+            </div>
+
+            <div class="stats-highlight__card">
+                <div class="stats-highlight__percent">85%</div>
+                <div class="stats-highlight__card-title">Better Onboarding Proof</div>
+                <p class="stats-highlight__card-desc">Achieve up to a 15% uplift in conversion rates as Redacted AI's algorithms optimize pricing in real-time</p>
+            </div>
+
+        </div>
 
     </div>
 
@@ -277,9 +374,8 @@
       </div>
     </div>
   </section>
+  <footer class="footer"></footer>
 </div>
-
-<footer class="footer"></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -287,9 +383,11 @@
 <script type="module" src="js/footer.js"></script>
 <script type="module" src="assets/js/main.js"></script>
 <script type="module">
-    import { initWorkFeaturedBrands } from './assets/js/components/work-featured-brands.js';
+    import { initProjectsFeaturedBrands } from './assets/js/components/projects-featured-brands.js';
+    import { initProjectsLogoGrid } from './assets/js/components/projects-logo-grid.js';
     document.addEventListener('DOMContentLoaded', () => {
-        initWorkFeaturedBrands();
+        initProjectsFeaturedBrands();
+        initProjectsLogoGrid();
     });
 </script>
 

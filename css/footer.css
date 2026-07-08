@@ -445,8 +445,7 @@
    the same size; only the tappable padding grows) */
 @media screen and (max-width: 1199px) {
   .social-icon-wrapper,
-  .twitter-link-wrapper,
-  .linkedin-logo-wrapper {
+  .twitter-link-wrapper {
     min-width: 40px;
     min-height: 40px;
     padding: 8px;

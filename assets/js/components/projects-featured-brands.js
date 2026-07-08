@@ -1,5 +1,5 @@
 /**
- * Envizon Studio - Work page: Featured brands grid
+ * Envizon Studio - Projects page: Featured brands grid
  * Renders project cards from data, then reveals them on scroll
  * (fade-up, staggered via nth-child transition-delay in the CSS).
  * Tag list + accent border are revealed via CSS on hover/focus —
@@ -93,7 +93,7 @@ function revealOnScroll(cards){
     cards.forEach(card => observer.observe(card));
 }
 
-export function initWorkFeaturedBrands(root = '#workFeaturedBrandsGrid'){
+export function initProjectsFeaturedBrands(root = '#projectsFeaturedBrandsGrid'){
     const grid = document.querySelector(root);
     if (!grid) return;
 

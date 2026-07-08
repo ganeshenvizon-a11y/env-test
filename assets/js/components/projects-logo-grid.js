@@ -7,22 +7,22 @@
 const PAGE_SIZE = 8;
 
 const logos = [
-    { title: 'Zuddle', image: 'assets/images/work/logos/zuddle-cursor.png', bgColor: '#080337', accentColor: '#FF6B6B', tags: ['Product Design', 'Web App'], url: '#' },
-    { title: 'Zuddle', image: 'assets/images/work/logos/zuddle-m.png', bgColor: '#1e1618', accentColor: '#E85C48', tags: ['Brand Identity', 'Iconography'], url: '#' },
-    { title: 'Poly AI', image: 'assets/images/work/logos/polyai-arrow.png', bgColor: '#ffd019', accentColor: '#1a1a1a', tags: ['AI Platform', 'Design System'], url: '#' },
-    { title: 'Poly AI', image: 'assets/images/work/logos/polyai-bowl.png', bgColor: '#9f4aed', accentColor: '#F3E8FF', tags: ['Product Design', 'Motion'], url: '#' },
-    { title: 'Zuddle', image: 'assets/images/work/logos/zuddle-cursor.png', bgColor: '#080337', accentColor: '#FF6B6B', tags: ['Interaction Design', 'Prototyping'], url: '#' },
-    { title: 'Zuddle', image: 'assets/images/work/logos/zuddle-m.png', bgColor: '#1e1618', accentColor: '#E85C48', tags: ['Rebranding', 'Web Design'], url: '#' },
-    { title: 'Poly AI', image: 'assets/images/work/logos/polyai-arrow.png', bgColor: '#ffd019', accentColor: '#1a1a1a', tags: ['Data Visualization', 'Platform UX'], url: '#' },
-    { title: 'Poly AI', image: 'assets/images/work/logos/polyai-bowl.png', bgColor: '#9f4aed', accentColor: '#F3E8FF', tags: ['Brand Identity', 'Packaging'], url: '#' },
-    { title: 'Zuddle', image: 'assets/images/work/logos/zuddle-cursor.png', bgColor: '#080337', accentColor: '#FF6B6B', tags: ['Strategy', 'Web App'], url: '#' },
-    { title: 'Zuddle', image: 'assets/images/work/logos/zuddle-m.png', bgColor: '#1e1618', accentColor: '#E85C48', tags: ['Visual Identity', 'Iconography'], url: '#' },
-    { title: 'Poly AI', image: 'assets/images/work/logos/polyai-arrow.png', bgColor: '#ffd019', accentColor: '#1a1a1a', tags: ['AI Platform', 'Product Design'], url: '#' },
-    { title: 'Poly AI', image: 'assets/images/work/logos/polyai-bowl.png', bgColor: '#9f4aed', accentColor: '#F3E8FF', tags: ['Design System', 'Motion'], url: '#' },
-    { title: 'Zuddle', image: 'assets/images/work/logos/zuddle-cursor.png', bgColor: '#080337', accentColor: '#FF6B6B', tags: ['Product Design', 'Onboarding'], url: '#' },
-    { title: 'Zuddle', image: 'assets/images/work/logos/zuddle-m.png', bgColor: '#1e1618', accentColor: '#E85C48', tags: ['Brand Identity', 'Web Design'], url: '#' },
-    { title: 'Poly AI', image: 'assets/images/work/logos/polyai-arrow.png', bgColor: '#ffd019', accentColor: '#1a1a1a', tags: ['Platform UX', 'Design System'], url: '#' },
-    { title: 'Poly AI', image: 'assets/images/work/logos/polyai-bowl.png', bgColor: '#9f4aed', accentColor: '#F3E8FF', tags: ['Motion', 'Product Design'], url: '#' }
+    { title: 'Zuddle', image: 'assets/images/work/logos/zuddle-cursor.png', bgColor: '#080337', accentColor: '#FF6B6B', tags: ['Product Design', 'Web App'], url: 'project.html' },
+    { title: 'Zuddle', image: 'assets/images/work/logos/zuddle-m.png', bgColor: '#1e1618', accentColor: '#E85C48', tags: ['Brand Identity', 'Iconography'], url: 'project.html' },
+    { title: 'Poly AI', image: 'assets/images/work/logos/polyai-arrow.png', bgColor: '#ffd019', accentColor: '#1a1a1a', tags: ['AI Platform', 'Design System'], url: 'project.html' },
+    { title: 'Poly AI', image: 'assets/images/work/logos/polyai-bowl.png', bgColor: '#9f4aed', accentColor: '#F3E8FF', tags: ['Product Design', 'Motion'], url: 'project.html' },
+    { title: 'Zuddle', image: 'assets/images/work/logos/zuddle-cursor.png', bgColor: '#080337', accentColor: '#FF6B6B', tags: ['Interaction Design', 'Prototyping'], url: 'project.html' },
+    { title: 'Zuddle', image: 'assets/images/work/logos/zuddle-m.png', bgColor: '#1e1618', accentColor: '#E85C48', tags: ['Rebranding', 'Web Design'], url: 'project.html' },
+    { title: 'Poly AI', image: 'assets/images/work/logos/polyai-arrow.png', bgColor: '#ffd019', accentColor: '#1a1a1a', tags: ['Data Visualization', 'Platform UX'], url: 'project.html' },
+    { title: 'Poly AI', image: 'assets/images/work/logos/polyai-bowl.png', bgColor: '#9f4aed', accentColor: '#F3E8FF', tags: ['Brand Identity', 'Packaging'], url: 'project.html' },
+    { title: 'Zuddle', image: 'assets/images/work/logos/zuddle-cursor.png', bgColor: '#080337', accentColor: '#FF6B6B', tags: ['Strategy', 'Web App'], url: 'project.html' },
+    { title: 'Zuddle', image: 'assets/images/work/logos/zuddle-m.png', bgColor: '#1e1618', accentColor: '#E85C48', tags: ['Visual Identity', 'Iconography'], url: 'project.html' },
+    { title: 'Poly AI', image: 'assets/images/work/logos/polyai-arrow.png', bgColor: '#ffd019', accentColor: '#1a1a1a', tags: ['AI Platform', 'Product Design'], url: 'project.html' },
+    { title: 'Poly AI', image: 'assets/images/work/logos/polyai-bowl.png', bgColor: '#9f4aed', accentColor: '#F3E8FF', tags: ['Design System', 'Motion'], url: 'project.html' },
+    { title: 'Zuddle', image: 'assets/images/work/logos/zuddle-cursor.png', bgColor: '#080337', accentColor: '#FF6B6B', tags: ['Product Design', 'Onboarding'], url: 'project.html' },
+    { title: 'Zuddle', image: 'assets/images/work/logos/zuddle-m.png', bgColor: '#1e1618', accentColor: '#E85C48', tags: ['Brand Identity', 'Web Design'], url: 'project.html' },
+    { title: 'Poly AI', image: 'assets/images/work/logos/polyai-arrow.png', bgColor: '#ffd019', accentColor: '#1a1a1a', tags: ['Platform UX', 'Design System'], url: 'project.html' },
+    { title: 'Poly AI', image: 'assets/images/work/logos/polyai-bowl.png', bgColor: '#9f4aed', accentColor: '#F3E8FF', tags: ['Motion', 'Product Design'], url: 'project.html' }
 ];
 
 function renderCard(item){

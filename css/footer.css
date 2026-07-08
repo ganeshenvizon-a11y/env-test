@@ -316,6 +316,14 @@
   align-self: unset;
   height: auto;
   position: relative;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.helloenvizonstudiocom:hover {
+  color: #ffffff;
 }
 
 .container6 {
@@ -345,6 +353,14 @@
   white-space: nowrap;
   position: relative;
   flex-shrink: 0;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.cro-optimization:hover {
+  color: #ffffff;
 }
 
 .horizontalborder {

@@ -13,7 +13,7 @@ const brands = [
         bgColor: 'linear-gradient(180deg, #2b1214 0%, #6b1f2b 100%)',
         accentColor: '#F4A825',
         tags: ['Strategy', 'Visual Identity', 'Web Design'],
-        url: '#'
+        url: 'project.html'
     },
     {
         title: 'Zuddle',
@@ -21,7 +21,7 @@ const brands = [
         bgColor: '#0d3025',
         accentColor: '#2DD4BF',
         tags: ['Brand Identity', 'Product Design', 'Web App'],
-        url: '#'
+        url: 'project.html'
     },
     {
         title: 'Poly AI',
@@ -29,7 +29,7 @@ const brands = [
         bgColor: '#141414',
         accentColor: '#D6F84C',
         tags: ['AI Platform', 'Design System', 'Product Design'],
-        url: '#'
+        url: 'project.html'
     },
     {
         title: 'Marketo',
@@ -37,7 +37,7 @@ const brands = [
         bgColor: '#583fb2',
         accentColor: '#C4B5FD',
         tags: ['Marketing Automation', 'Rebranding', 'Web Design'],
-        url: '#'
+        url: 'project.html'
     },
     {
         title: 'Zuddle',
@@ -45,7 +45,7 @@ const brands = [
         bgColor: '#f4f2ee',
         accentColor: '#1a1a1a',
         tags: ['Interaction Design', 'Iconography', 'Brand System'],
-        url: '#'
+        url: 'project.html'
     },
     {
         title: 'Poly AI',
@@ -53,7 +53,7 @@ const brands = [
         bgColor: '#deeceb',
         accentColor: '#0B4F4A',
         tags: ['Data Visualization', 'Platform UX', 'Product Design'],
-        url: '#'
+        url: 'project.html'
     }
 ];
 

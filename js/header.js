@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Set active page navigation link
             const currentPath = window.location.pathname.split('/').pop() || 'index.html';
             let targetPage = currentPath;
-            if (currentPath === '' || currentPath === 'index.html') {
-                targetPage = 'project.html';
+            if (currentPath === '') {
+                targetPage = 'index.html';
             }
             
             const allLinks = placeholder.querySelectorAll('.nav-links a, .mobile-nav-links a');

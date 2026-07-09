@@ -159,6 +159,10 @@
     color:var(--text-muted);
 }
 
+.testimonials__nav{
+    display:none;
+}
+
 /* ============================= */
 /* TABLET — horizontal slider     */
 /* ============================= */
@@ -195,6 +199,38 @@
     .testimonial-card{
         flex:0 0 calc(50% - 11px);
         scroll-snap-align:start;
+    }
+
+    .testimonials__nav{
+        display:flex;
+        justify-content:center;
+        gap:12px;
+    }
+
+    .testimonials__nav-btn{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        width:44px;
+        height:44px;
+        flex-shrink:0;
+        border-radius:50%;
+        border:1px solid var(--border-light);
+        background:#FBFBFA;
+        color:var(--black);
+        cursor:pointer;
+        transition:background .2s ease, color .2s ease, border-color .2s ease;
+    }
+
+    .testimonials__nav-btn:hover{
+        background:var(--primary);
+        border-color:var(--primary);
+        color:#ffffff;
+    }
+
+    .testimonials__nav-btn svg{
+        width:18px;
+        height:18px;
     }
 }
 

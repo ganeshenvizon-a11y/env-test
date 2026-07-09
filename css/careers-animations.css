@@ -1,0 +1,66 @@
+/* Envizon Studio - Careers page GSAP animations structure */
+
+/* Text line masking for line-by-line reveals */
+.title-line {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: 1.25;
+}
+
+.title-line-inner {
+    display: inline-block;
+    will-change: transform;
+}
+
+/* Hover nudge indicator for header & global CTA buttons */
+.btn-arrow-nudge {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.header-btn:hover .btn-arrow-nudge {
+    transform: translate(4px, -4px);
+}
+
+/* Disable transitions on transform/opacity for cards when GSAP is controlling them */
+.benefit-card,
+.job-card,
+.process-step {
+    transition: box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+/* Base style resets to avoid visual jumps prior to GSAP loading */
+.careers-hero__title,
+.careers-hero__text,
+.careers-benefits__header,
+.benefit-card,
+.careers-openings__header,
+.job-card,
+.careers-process__header,
+.process-step,
+.careers-form-panel,
+.careers-form {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .title-line-inner {
+        transform: none !important;
+    }
+    .careers-hero__title,
+    .careers-hero__text,
+    .careers-benefits__header,
+    .benefit-card,
+    .careers-openings__header,
+    .job-card,
+    .careers-process__header,
+    .process-step,
+    .careers-form-panel,
+    .careers-form {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

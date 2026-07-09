@@ -1,0 +1,190 @@
+/* CAREERS — BENEFITS ("Creativity Meets Improvisation Here") */
+
+.careers-benefits{
+    background:#ffffff;
+    padding:96px 0 104px;
+}
+
+.careers-benefits__container{
+    width:min(1200px, calc(100% - 48px));
+    margin:0 auto;
+}
+
+/* ============================= */
+/* HEADER                         */
+/* ============================= */
+
+.careers-benefits__header{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:flex-end;
+    margin-bottom:56px;
+}
+
+.careers-benefits__eyebrow{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.careers-benefits__eyebrow-line{
+    width:28px;
+    height:2px;
+    background:var(--color-gold-100);
+    flex-shrink:0;
+}
+
+.careers-benefits__eyebrow span{
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--text);
+}
+
+.careers-benefits__title{
+    font-size:clamp(2.25rem, 1.4rem + 3vw, 3.5rem);
+    font-weight:800;
+    line-height:1.1;
+    letter-spacing:-.02em;
+    color:var(--black);
+}
+
+.careers-benefits__title-accent{
+    color:var(--primary);
+}
+
+.careers-benefits__text{
+    font-size:16px;
+    line-height:1.7;
+    color:var(--text);
+    max-width:42ch;
+    justify-self:end;
+    text-align:left;
+}
+
+/* ============================= */
+/* CARDS                          */
+/* ============================= */
+
+.careers-benefits__grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+}
+
+.benefit-card{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+    padding:32px 28px;
+    border-radius:var(--radius);
+    background:var(--color-whitesmoke-100);
+    border:1px solid var(--border-light);
+    opacity:0;
+    transform:translateY(40px);
+    transition:opacity .7s ease, transform .7s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.benefit-card.is-visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.benefit-card:nth-child(1){ transition-delay:0ms; }
+.benefit-card:nth-child(2){ transition-delay:100ms; }
+.benefit-card:nth-child(3){ transition-delay:200ms; }
+.benefit-card:nth-child(4){ transition-delay:300ms; }
+.benefit-card:nth-child(5){ transition-delay:400ms; }
+.benefit-card:nth-child(6){ transition-delay:500ms; }
+
+@media(hover:hover) and (pointer:fine){
+    .benefit-card:hover{
+        border-color:var(--primary);
+        box-shadow:0 16px 36px rgba(0,0,0,.06);
+        transform:translateY(-6px);
+    }
+}
+
+.benefit-card__icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:48px;
+    height:48px;
+    flex-shrink:0;
+    border-radius:50%;
+    background:#111;
+    color:var(--primary);
+}
+
+.benefit-card__icon svg{
+    width:20px;
+    height:20px;
+}
+
+.benefit-card__title{
+    font-size:17px;
+    font-weight:700;
+    color:var(--black);
+}
+
+.benefit-card__desc{
+    font-size:15px;
+    line-height:1.6;
+    color:var(--text);
+}
+
+/* ============================= */
+/* RESPONSIVE                    */
+/* ============================= */
+
+@media(max-width:1024px){
+    .careers-benefits{
+        padding:72px 0 80px;
+    }
+
+    .careers-benefits__header{
+        margin-bottom:40px;
+    }
+
+    .careers-benefits__grid{
+        grid-template-columns:repeat(2, 1fr);
+        gap:20px;
+    }
+}
+
+@media(max-width:768px){
+    .careers-benefits__header{
+        grid-template-columns:1fr;
+        gap:24px;
+    }
+
+    .careers-benefits__text{
+        justify-self:start;
+        text-align:left;
+        max-width:none;
+    }
+}
+
+@media(max-width:600px){
+    .careers-benefits{
+        padding:56px 0 64px;
+    }
+
+    .careers-benefits__title{
+        font-size:34px;
+    }
+
+    .careers-benefits__grid{
+        grid-template-columns:1fr;
+        gap:16px;
+    }
+
+    .benefit-card{
+        padding:26px 22px;
+    }
+}

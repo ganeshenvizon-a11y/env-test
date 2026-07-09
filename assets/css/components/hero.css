@@ -150,6 +150,7 @@
     .hero-content {
         gap: 12px;
         padding-bottom: 32px;
+        padding-top: 36px;
     }
 
     .hero-title {

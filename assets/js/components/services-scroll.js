@@ -129,8 +129,8 @@ export function initServicesScroll(sectionSelector = "#servicesScroll") {
   const section = document.querySelector(sectionSelector);
   if (!section) return;
 
-  const stage = section.querySelector(".services-scroll__stage");
-  const track = section.querySelector(".services-scroll__track");
+  const stage = section.querySelector(".about-values__stage");
+  const track = section.querySelector(".about-values__track");
   if (!stage || !track) return;
 
   renderPanels(track);
@@ -204,8 +204,8 @@ export function initServicesScroll(sectionSelector = "#servicesScroll") {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: stage,
-      start: "top top",
-      end: () => `+=${(total - 1) * window.innerHeight}`,
+      start: "top 140px",
+      end: () => `+=${(total - 1) * window.innerHeight * 0.6}`,
       scrub: 1,
       pin: stage,
       anticipatePin: 1,

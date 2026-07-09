@@ -9,9 +9,14 @@
 }
 
 .workflow-showcase{
-    /* background:#F9F8F8; */
+    background:#ffffff;
     padding:0 20px;
     overflow:visible;
+    transition:background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.workflow-showcase.workflow-showcase--dark{
+    background:#111111;
 }
 
 /* ============================= */
@@ -67,6 +72,7 @@
     color:var(--workflow-ink);
     max-width:100%;
     margin:0 auto;
+    transition:color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .workflow-showcase__highlight{
@@ -82,20 +88,26 @@
 .workflow-showcase__toggle{
     display:inline-flex;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start;
     width:1.719em;
     height:0.906em;
     padding:0.109em;
     border-radius:999px;
-    background:var(--workflow-accent);
-    box-shadow:0 10px 24px rgba(232,161,26,.25);
+    background:#d1d5db;
     vertical-align:middle;
     margin:0 6px;
-    transition:transform var(--transition-fast);
+    transition:background-color 0.35s ease, box-shadow 0.35s ease, transform var(--transition-fast);
+    cursor:pointer;
+    outline:none;
 }
 
 .workflow-showcase__toggle:hover{
     transform:scale(1.05);
+}
+
+.workflow-showcase__toggle:focus-visible{
+    outline:2px solid var(--workflow-accent);
+    outline-offset:2px;
 }
 
 .workflow-showcase__toggle-knob{
@@ -107,11 +119,51 @@
     border-radius:50%;
     background:#ffffff;
     flex-shrink:0;
+    transition:transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .workflow-showcase__toggle-icon{
     width:60%;
     height:60%;
+}
+
+.workflow-showcase__toggle-icon circle[stroke]{
+    stroke:#9ca3af;
+    transition:stroke 0.35s ease;
+}
+
+.workflow-showcase__toggle-icon circle[fill]{
+    fill:#9ca3af;
+    transition:fill 0.35s ease;
+}
+
+/* ============================= */
+/* DARK MODE OVERRIDES            */
+/* ============================= */
+
+.workflow-showcase--dark .workflow-showcase__heading{
+    color:#ffffff;
+}
+
+.workflow-showcase--dark .workflow-showcase__toggle{
+    background:var(--workflow-accent);
+    box-shadow:0 8px 20px rgba(232,161,26,.4);
+}
+
+.workflow-showcase--dark .workflow-showcase__toggle-knob{
+    transform:translateX(0.813em);
+}
+
+.workflow-showcase--dark .workflow-showcase__toggle-icon circle[stroke]{
+    stroke:#E8A11A;
+}
+
+.workflow-showcase--dark .workflow-showcase__toggle-icon circle[fill]{
+    fill:#E8A11A;
+}
+
+.workflow-showcase--dark .workflow-showcase__card{
+    filter:drop-shadow(0 15px 30px rgba(0,0,0,0.6));
 }
 
 /* ============================= */

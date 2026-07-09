@@ -26,6 +26,7 @@ function ensureFrameSprite(){
     const sprite = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     sprite.setAttribute('aria-hidden', 'true');
     sprite.setAttribute('class', 'project-card-frame-sprite');
+    sprite.setAttribute('style', 'position: absolute; width: 0; height: 0; overflow: hidden;');
     sprite.innerHTML = `<symbol id="${FRAME_SYMBOL_ID}" viewBox="0 0 400 178">
         <path class="project-card__frame-yellow" d="M122.354 71.956C129.957 72.0754 137.074 68.2261 141.135 61.7974L172.495 12.1589C176.452 5.89579 183.317 2.06944 190.725 1.99862L364.46 0.337771C383.919 0.151747 399.793 15.8744 399.794 35.3345L399.8 149.683C399.801 165.148 387.264 177.684 371.8 177.684H35.0058C15.6769 177.684 0.00737562 162.016 0.0058257 142.687L0.00285116 105.592C0.00128383 86.0459 16.0087 70.2867 35.5522 70.5934L122.354 71.956Z"></path>
         <path class="project-card__frame-white" d="M134.26 93.145C141.888 93.145 148.962 89.1597 152.914 82.6353L182.064 34.5166C186.016 27.9922 193.09 24.0069 200.719 24.0069L358.117 24.0074C375.79 24.0074 390.117 38.3343 390.117 56.0074V155.874C390.117 167.92 380.352 177.685 368.307 177.685H33.4901C21.4445 177.685 11.6797 167.92 11.6797 155.874V114.955C11.6797 102.91 21.4445 93.145 33.4901 93.145H134.26Z"></path>

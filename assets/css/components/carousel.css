@@ -14,8 +14,18 @@
     width:100%;
     max-width:1400px;
     margin:0 auto;
-    padding:56px 0 40px;
+    padding:0 0 40px;
 }
+
+@media(min-width:1025px) and (max-height:900px){
+    .showcase-carousel{
+        --stage-h:360px;
+        --card-w:380px;
+        padding:0 0 10px;
+    }
+}
+
+
 
 .showcase-carousel:focus{
     outline:none;
@@ -137,7 +147,7 @@
     .showcase-carousel{
         --card-w:320px;
         --stage-h:300px;
-        padding:40px 0 32px;
+        padding:0 0 32px;
     }
 
     .showcase-card__label{
@@ -150,7 +160,7 @@
     .showcase-carousel{
         --card-w:240px;
         --stage-h:230px;
-        padding:32px 0 24px;
+        padding:0 0 24px;
     }
 
     .showcase-carousel__arrow{

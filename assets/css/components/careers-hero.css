@@ -2,7 +2,7 @@
 
 .careers-hero{
     position:relative;
-    padding:170px 0 90px;
+    padding:170px 0 100px;
     overflow:hidden;
     background:
         radial-gradient(700px 460px at -6% -22%, #FFE9C2 0%, rgba(255,233,194,0) 70%),
@@ -52,19 +52,20 @@
 /* ============================= */
 
 .careers-hero__top{
-    display:flex;
-    justify-content:space-between;
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:48px;
     align-items:flex-end;
-    gap:40px;
 }
 
 .careers-hero__title{
-    font-size:64px;
+    font-size:clamp(2rem, 1.4rem + 2.5vw, 3.25rem);
     font-weight:800;
     line-height:1.15;
-    letter-spacing:-2px;
-    color:var(--black);
-    max-width:620px;
+    letter-spacing:-0.03em;
+    color:var(--black, #111111);
+    margin:0;
+    max-width:none;
 }
 
 .careers-hero__accent{
@@ -72,43 +73,30 @@
 }
 
 .careers-hero__text{
-    font-size:16px;
-    line-height:1.7;
-    color:var(--text);
-    max-width:42ch;
+    font-size:clamp(15px, 1.8vw, 17px);
+    line-height:1.75;
+    color:var(--text, #555555);
+    max-width:440px;
+    font-weight:400;
+    margin:0;
     flex-shrink:0;
-    padding-bottom:6px;
 }
 
 /* ============================= */
 /* RESPONSIVE                    */
 /* ============================= */
 
-@media(max-width:1200px){
-    .careers-hero__title{
-        max-width:520px;
-    }
-}
-
 @media(max-width:1024px){
     .careers-hero{
-        padding:150px 0 72px;
+        padding:140px 0 64px;
     }
 
-    .careers-hero__title{
-        font-size:44px;
-        letter-spacing:-1px;
-    }
-}
-
-@media(max-width:860px){
     .careers-hero__top{
-        flex-direction:column;
+        grid-template-columns:1fr;
+        gap:24px;
         align-items:flex-start;
-        gap:20px;
     }
 
-    .careers-hero__title,
     .careers-hero__text{
         max-width:none;
     }
@@ -116,16 +104,11 @@
 
 @media(max-width:480px){
     .careers-hero{
-        padding:140px 0 56px;
+        padding:145px 0 48px;
     }
 
     .careers-hero__breadcrumb{
         margin-bottom:20px;
         font-size:13px;
-    }
-
-    .careers-hero__title{
-        font-size:34px;
-        letter-spacing:-.5px;
     }
 }

@@ -23,7 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Dynamic cursor-tracking spotlight reveal on giant background branding text
 const initFooterInteractiveTitle = () => {
-    const title = document.querySelector('footer.footer .envizon');
+    const footer = document.querySelector('footer.footer');
+    if (!footer) return;
+    const title = footer.querySelector('.envizon');
     if (!title) return;
 
     // Apply fluid text layout properties to resolve browser paint clipping bugs
@@ -31,7 +33,7 @@ const initFooterInteractiveTitle = () => {
     title.style.setProperty('left', '0', 'important');
     title.style.setProperty('text-align', 'center', 'important');
     title.style.setProperty('overflow', 'visible', 'important');
-    title.style.setProperty('z-index', '10', 'important');
+    title.style.setProperty('z-index', '1', 'important');
     title.style.setProperty('padding-top', '45px', 'important');
 
     // Apply inline gradient and clip attributes overriding default styles
@@ -40,7 +42,7 @@ const initFooterInteractiveTitle = () => {
     title.style.setProperty('-webkit-text-fill-color', 'transparent', 'important');
     title.style.setProperty('background-clip', 'text', 'important');
 
-    title.addEventListener('mousemove', (e) => {
+    footer.addEventListener('mousemove', (e) => {
         const rect = title.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
@@ -55,7 +57,7 @@ const initFooterInteractiveTitle = () => {
         return;
     }
 
-    title.addEventListener('mouseenter', () => {
+    footer.addEventListener('mouseenter', () => {
         gsap.to(title, {
             '--spotlight-radius': '250px',
             '--spotlight-opacity': 0.65,
@@ -64,7 +66,7 @@ const initFooterInteractiveTitle = () => {
         });
     });
 
-    title.addEventListener('mouseleave', () => {
+    footer.addEventListener('mouseleave', () => {
         gsap.to(title, {
             '--spotlight-radius': '0px',
             '--spotlight-opacity': 0,

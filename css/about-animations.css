@@ -1,0 +1,72 @@
+/* Envizon Studio - About page GSAP animations structure */
+
+/* Text line masking for line-by-line reveals */
+.title-line {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: 1.25;
+}
+
+.title-line-inner {
+    display: inline-block;
+    will-change: transform;
+}
+
+/* Hover nudge indicator for header & global CTA buttons */
+.btn-arrow-nudge {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.header-btn:hover .btn-arrow-nudge,
+.link6:hover .btn-arrow-nudge {
+    transform: translate(4px, -4px);
+}
+
+/* Disable transitions on transform/opacity for cards when GSAP is controlling them */
+.partnership-card,
+.process-card {
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease !important;
+}
+
+/* Base style resets to avoid visual jumps prior to GSAP loading */
+.insights__container,
+.insights__header,
+.about-hero__title,
+.about-hero__text,
+.about-hero__gallery-item,
+.about-communication__heading,
+.about-communication__pills,
+.about-communication__panels,
+.about-values__header,
+.about-partnerships__header,
+.partnership-card,
+.about-process__heading,
+.process-card {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .title-line-inner {
+        transform: none !important;
+    }
+    .insights__container,
+    .insights__header,
+    .about-hero__title,
+    .about-hero__text,
+    .about-hero__gallery-item,
+    .about-communication__heading,
+    .about-communication__pills,
+    .about-communication__panels,
+    .about-values__header,
+    .about-partnerships__header,
+    .partnership-card,
+    .about-process__heading,
+    .process-card {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

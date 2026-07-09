@@ -1,0 +1,180 @@
+/* Envizon Studio - Index page GSAP animations structure */
+
+/* Text line masking for line-by-line reveals */
+.title-line {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+}
+
+.title-line-inner {
+    display: inline-block;
+    will-change: transform;
+    font-family: inherit;
+    font-weight: inherit;
+}
+
+/* Override descendant span color selector clash with title-line wrappers */
+.stats-highlight__title .title-line,
+.stats-highlight__title .title-line-inner {
+    color: var(--black) !important;
+}
+
+.stats-highlight__title .title-line-inner span {
+    color: var(--primary) !important;
+}
+
+.integrations__title .title-line,
+.integrations__title .title-line-inner {
+    color: #ffffff !important;
+}
+
+.integrations__title .title-line-inner span {
+    color: var(--primary) !important;
+}
+
+/* Hover nudge indicator for buttons */
+.btn-arrow-nudge {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.header-btn:hover .btn-arrow-nudge,
+.link6:hover .btn-arrow-nudge,
+.stats-highlight__link:hover svg,
+.how-we-work__cta:hover span,
+.craft-header__cta:hover span {
+    transform: translate(4px, -4px);
+}
+
+/* Disable transitions on transform/opacity for animated elements */
+.stats-highlight__card,
+.integrations__item,
+.stage-card,
+.testimonial-card,
+.faq-item,
+.insight-card {
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease !important;
+}
+
+/* Base style resets to avoid visual jumps prior to GSAP loading */
+.hero-title,
+.hero-content p,
+.hero-buttons,
+.carousel-section,
+.workflow-showcase__card,
+.workflow-showcase__heading,
+.craft-header__title,
+.craft-header__text,
+.craft-header__cta,
+.stats-highlight__title,
+.stats-highlight__text,
+.stats-highlight__card,
+.integrations__title,
+.integrations__subtitle,
+.integrations__item,
+.how-we-work__title,
+.how-we-work__text,
+.how-we-work__cta,
+.stage-card,
+.testimonials__title,
+.testimonials__text,
+.testimonial-card,
+.faq__title,
+.faq-item,
+.insights__container,
+.insights__header,
+.insight-card {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .title-line-inner {
+        transform: none !important;
+    }
+    .hero-title,
+    .hero-content p,
+    .hero-buttons,
+    .carousel-section,
+    .workflow-showcase__card,
+    .workflow-showcase__heading,
+    .craft-header__title,
+    .craft-header__text,
+    .craft-header__cta,
+    .stats-highlight__title,
+    .stats-highlight__text,
+    .stats-highlight__card,
+    .integrations__title,
+    .integrations__subtitle,
+    .integrations__item,
+    .how-we-work__title,
+    .how-we-work__text,
+    .how-we-work__cta,
+    .stage-card,
+    .testimonials__title,
+    .testimonials__text,
+    .testimonial-card,
+    .faq__title,
+    .faq-item,
+    .insights__container,
+    .insights__header,
+    .insight-card {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* Integrations SVG layout modifications */
+.integrations__icon img {
+    max-width: 24px;
+    max-height: 24px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.integrations__title-wrench-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    width: 2.7em;
+    height: 2.7em;
+    margin: 0 -0.85em;
+    transform: translateY(-0.06em);
+}
+
+.integrations__title-wrench {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+/* Change grid to 12 columns and span items to match mockup rows layout on desktop */
+@media (min-width: 1025px) {
+    .integrations__grid {
+        grid-template-columns: repeat(12, 1fr) !important;
+    }
+
+    /* Row 1: First 4 items span 3 columns each (4 * 3 = 12 columns total) */
+    .integrations__item:nth-child(1),
+    .integrations__item:nth-child(2),
+    .integrations__item:nth-child(3),
+    .integrations__item:nth-child(4) {
+        grid-column: span 3;
+    }
+
+    /* Row 2: Next 3 items span 4 columns each (3 * 4 = 12 columns total) */
+    .integrations__item:nth-child(5),
+    .integrations__item:nth-child(6),
+    .integrations__item:nth-child(7) {
+        grid-column: span 4;
+    }
+}
+

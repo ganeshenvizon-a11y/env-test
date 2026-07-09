@@ -11,6 +11,11 @@ export function initContactInfo(root = '.contact-info') {
     const cards = Array.from(section.querySelectorAll('.contact-info-card'));
     if (!cards.length) return;
 
+    // Skip IntersectionObserver if GSAP is available to prevent transition conflicts
+    if (window.gsap && window.ScrollTrigger) {
+        return;
+    }
+
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (prefersReducedMotion) {

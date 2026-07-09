@@ -87,8 +87,9 @@
     width:136px;
     height:41px;
     border-radius:var(--radius-pill);
-    background:#000;
-    color:#fff;
+    border:1px solid transparent;
+    background:#111111;
+    color:#ffffff;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -96,6 +97,25 @@
     font-size:12px;
     font-weight:600;
     flex-shrink:0;
+    text-decoration:none;
+    box-sizing:border-box;
+    transition:background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease, color 180ms ease;
+}
+
+@media(hover:hover) and (pointer:fine){
+    .header-btn:hover{
+        background-color:#ffffff;
+        border-color:rgba(17,17,17,0.15);
+        box-shadow:0 8px 24px rgba(17, 17, 17, 0.08);
+        transform:translateY(-1px);
+        color:#111111;
+    }
+}
+
+.header-btn:active{
+    background-color:#e6e6e6;
+    border-color:rgba(17,17,17,0.2);
+    color:#111111;
 }
 
 .header-btn span{

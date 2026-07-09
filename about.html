@@ -59,12 +59,14 @@
 
     <link rel="stylesheet"
           href="assets/css/components/services-cta.css">
-
     <link rel="stylesheet"
           href="css/footer.css">
 
     <link rel="stylesheet"
           href="assets/css/components/insights.css">
+
+    <link rel="stylesheet"
+          href="css/about-animations.css">
 
 </head>
 
@@ -77,10 +79,9 @@
     <div class="about-hero__container">
 
         <div class="about-hero__top">
-
             <h1 class="about-hero__title">
-                Single <span class="about-hero__accent">place</span> for<br>
-                all of your <span class="about-hero__accent">ideas</span>.
+                <span class="title-line"><span class="title-line-inner">Single <span class="about-hero__accent">place</span> for</span></span><br>
+                <span class="title-line"><span class="title-line-inner">all of your <span class="about-hero__accent">ideas</span>.</span></span>
             </h1>
 
             <p class="about-hero__text">
@@ -118,10 +119,9 @@
 <section class="about-communication" aria-label="We communicate ideas, touch lives, build businesses">
 
     <div class="about-communication__container">
-
         <h2 class="about-communication__heading">
-            We Communicate <span class="about-communication__accent">Ideas</span>,<br>
-            Touch <span class="about-communication__accent">Lives</span>, Build <span class="about-communication__accent">Businesses</span>.
+            <span class="title-line"><span class="title-line-inner">We Communicate <span class="about-communication__accent">Ideas</span>,</span></span><br>
+            <span class="title-line"><span class="title-line-inner">Touch <span class="about-communication__accent">Lives</span>, Build <span class="about-communication__accent">Businesses</span>.</span></span>
         </h2>
 
         <div class="about-communication__pills" role="tablist" aria-label="Our focus areas">
@@ -724,10 +724,10 @@
         </div>
       </div>
       <div class="cta-button-wrapper">
-        <button class="link6">
+        <a href="contact.html" class="link6">
           <div class="book-a-discovery">Book A Discovery Call</div>
           <img class="svg-icon" alt="" src="assets/images/services/SVG1.svg" />
-        </button>
+        </a>
       </div>
     </div>
   </section>
@@ -745,12 +745,14 @@
     import { initAboutPartnerships } from './assets/js/components/about-partnerships.js';
     import { initAboutProcess } from './assets/js/components/about-process.js';
     import { initAboutProcessShowcase } from './assets/js/components/about-process-showcase.js';
+    import { initAboutAnimations } from './js/about-animations.js';
     document.addEventListener('DOMContentLoaded', () => {
         initAboutCommunication();
         initAboutValues();
         initAboutPartnerships();
         initAboutProcess();
         initAboutProcessShowcase();
+        initAboutAnimations();
     });
 </script>
 

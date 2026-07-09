@@ -66,6 +66,9 @@
     <link rel="stylesheet"
           href="assets/css/components/insights.css">
 
+    <link rel="stylesheet"
+          href="css/contact-animations.css">
+
 </head>
 
 <body>
@@ -74,7 +77,7 @@
 <main>
 
 <!-- Let's Start The Conversation — hero -->
-<section class="contact-hero" aria-label="Let's start the conversation">
+<!-- <section class="contact-hero" aria-label="Let's start the conversation">
 
     <div class="contact-hero__container">
 
@@ -100,7 +103,7 @@
 
     </div>
 
-</section>
+</section> -->
 
 <!-- Reach Us, Anytime, Anywhere — contact info cards -->
 <section class="contact-info" aria-labelledby="contact-info-title">
@@ -117,8 +120,8 @@
                 </div>
 
                 <h2 class="contact-info__title" id="contact-info-title">
-                    Reach Us, <span class="contact-info__title-accent">Anytime</span>,<br>
-                    <span class="contact-info__title-accent">Anywhere</span>
+                    <span class="title-line"><span class="title-line-inner">Reach Us, <span class="contact-info__title-accent">Anytime</span>,</span></span><br>
+                    <span class="title-line"><span class="title-line-inner"><span class="contact-info__title-accent">Anywhere</span></span></span>
                 </h2>
 
             </div>
@@ -555,9 +558,11 @@
 <script type="module">
     import { initContactInfo } from './assets/js/components/contact-info.js';
     import { initContactForm } from './assets/js/components/contact-form.js';
+    import { initContactAnimations } from './js/contact-animations.js';
     document.addEventListener('DOMContentLoaded', () => {
         initContactInfo();
         initContactForm();
+        initContactAnimations();
     });
 </script>
 

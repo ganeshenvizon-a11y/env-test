@@ -11,6 +11,11 @@ export function initAboutProcess(root = '.about-process') {
     const cards = Array.from(section.querySelectorAll('.process-card'));
     if (!cards.length) return;
 
+    // Skip IntersectionObserver if GSAP is available to prevent transition conflicts
+    if (window.gsap && window.ScrollTrigger) {
+        return;
+    }
+
     const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return;

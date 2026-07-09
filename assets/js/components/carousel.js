@@ -5,32 +5,42 @@
  * so the loop stays on the compositor and holds 60fps.
  */
 
-const AUTOPLAY_MS = 3000;
+const AUTOPLAY_MS = 1000;
 const SWIPE_THRESHOLD = 40;
+
+const SHADOWS = [
+    'none',
+    'none',
+    'none',
+    'none'
+];
 
 const LAYOUTS = {
     desktop: {
+        query: '(min-width: 1025px)',
         levels: [
-            { x: 0,   scale: 1,    opacity: 1, z: 50 },
-            { x: 373, scale: 0.63, opacity: 1, z: 40 },
-            { x: 637, scale: 0.45, opacity: 0, z: 30 },
-            { x: 850, scale: 0.35, opacity: 0, z: 10 }
+            { x: 0,    scale: 1,   opacity: 1,   blur: 0,  rotate: 0, overlay: 0,   z: 50 },
+            { x: 373,  scale: .63, opacity: 1,   blur: 0,  rotate: 0, overlay: 0,   z: 40 },
+            { x: 637,  scale: .45, opacity: 0,   blur: 0,  rotate: 0, overlay: 0,   z: 30 },
+            { x: 850,  scale: .35, opacity: 0,   blur: 0,  rotate: 0, overlay: 0,   z: 10 }
         ]
     },
     tablet: {
+        query: '(min-width: 641px) and (max-width: 1024px)',
         levels: [
-            { x: 0,   scale: 1,    opacity: 1, z: 50 },
-            { x: 291, scale: 0.63, opacity: 1, z: 40 },
-            { x: 500, scale: 0.45, opacity: 0, z: 20 },
-            { x: 700, scale: 0.35, opacity: 0, z: 10 }
+            { x: 0,   scale: 1,   opacity: 1,   blur: 0,  rotate: 0, overlay: 0,   z: 50 },
+            { x: 291, scale: .63, opacity: 1,   blur: 0,  rotate: 0, overlay: 0,   z: 40 },
+            { x: 500, scale: .45, opacity: 0,   blur: 0,  rotate: 0, overlay: 0,   z: 20 },
+            { x: 700, scale: .35, opacity: 0,   blur: 0,  rotate: 0, overlay: 0,   z: 10 }
         ]
     },
     mobile: {
+        query: '(max-width: 640px)',
         levels: [
-            { x: 0,   scale: 1,    opacity: 1, z: 50 },
-            { x: 216, scale: 0.63, opacity: 1, z: 20 },
-            { x: 380, scale: 0.45, opacity: 0, z: 10 },
-            { x: 550, scale: 0.35, opacity: 0, z: 5 }
+            { x: 0,   scale: 1,   opacity: 1,   blur: 0,  rotate: 0, overlay: 0,   z: 50 },
+            { x: 216, scale: .63, opacity: 1,   blur: 0,  rotate: 0, overlay: 0,   z: 20 },
+            { x: 380, scale: .45, opacity: 0,   blur: 0,  rotate: 0, overlay: 0,   z: 10 },
+            { x: 550, scale: .35, opacity: 0,   blur: 0,  rotate: 0, overlay: 0,   z: 5 }
         ]
     }
 };
@@ -43,8 +53,8 @@ function getOffset(index, active, total) {
 }
 
 function currentLayoutName() {
-    if (window.matchMedia('(max-width: 640px)').matches) return 'mobile';
-    if (window.matchMedia('(min-width: 641px) and (max-width: 1024px)').matches) return 'tablet';
+    if (window.matchMedia(LAYOUTS.mobile.query).matches) return 'mobile';
+    if (window.matchMedia(LAYOUTS.tablet.query).matches) return 'tablet';
     return 'desktop';
 }
 
@@ -54,12 +64,13 @@ export class ShowcaseCarousel {
         this.cards = Array.from(root.querySelectorAll('.showcase-card'));
         this.overlays = this.cards.map(card => card.querySelector('.showcase-card__overlay'));
         this.total = this.cards.length;
-        this.active = 2; // Sets initial index to middle card
+        this.active = 2;
         this.autoplayId = null;
         this.listeners = new Set();
 
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         this.duration = reduceMotion ? 0.01 : 0.5;
+        this.reduceMotion = reduceMotion;
 
         if (!this.total) return;
 
@@ -130,15 +141,15 @@ export class ShowcaseCarousel {
         this.cards.forEach((card, i) => {
             card.addEventListener('click', () => { this.goTo(i); this.restartAutoplay(); });
 
+            if (this.reduceMotion) return;
+
             const img = card.querySelector('.showcase-card__image');
-            if (img) {
-                card.addEventListener('mouseenter', () => {
-                    gsap.to(img, { scale: 1.08, duration: 0.6, ease: 'power3.out' });
-                });
-                card.addEventListener('mouseleave', () => {
-                    gsap.to(img, { scale: 1, duration: 0.6, ease: 'power3.out' });
-                });
-            }
+            card.addEventListener('mouseenter', () => {
+                gsap.to(img, { scale: 1.08, duration: .6, ease: 'power3.out' });
+            });
+            card.addEventListener('mouseleave', () => {
+                gsap.to(img, { scale: 1, duration: .6, ease: 'power3.out' });
+            });
         });
 
         this.root.addEventListener('keydown', (e) => {

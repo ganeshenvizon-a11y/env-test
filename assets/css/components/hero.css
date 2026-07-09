@@ -1,29 +1,66 @@
 /* HERO */
 
 .hero{
+    /* local typography tokens (ported from prd-001's design system, scoped
+       here rather than in variables.css so the rest of the site is untouched) */
+    --hero-h1-size:3.25rem;
+    --hero-h1-line:1.1;
+    --hero-h1-tracking:-0.02em;
+    --hero-body-size:0.875rem;
+    --hero-body-line:1.5;
+    --hero-body-tracking:0em;
+    --hero-container:912px;
+
     position:relative;
-    min-height:100vh;
-    min-height:100dvh;
+    height:100vh;
+    height:100dvh;
     display:flex;
     flex-direction:column;
-    padding-top:170px;
-    padding-bottom:56px;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:clamp(120px, 15vw, 152px);
+    padding-bottom:0;
     overflow:hidden;
 }
 
+@media(max-width:911px){
+    .hero{
+        --hero-h1-size:2.75rem;
+    }
+}
+
+@media(max-width:599px){
+    .hero{
+        --hero-h1-size:2rem;
+        --hero-h1-tracking:-0.015em;
+    }
+}
+
 .hero-bg{
+    /* taller + offset than the hero itself so the GSAP parallax tween
+       (see hero.js) always has image to reveal, never a hard edge */
     position:absolute;
-    inset:0;
-    background-image:url('../../images/cloud-bg.png');
+    top:-0%;
+    left:0;
+    right:0;
+    height:100%;
+    background-image:url('../../images/BGIMG-HERO.png');
     background-size:cover;
     background-position:center;
     z-index:-1;
+    transform:scale(1.15);
+    will-change:transform;
 }
 
 .hero-content{
-    /* fluid width: capped at 606px, otherwise the viewport minus side gutters */
-    width:min(606px, calc(100% - 32px));
+    /* fluid width: capped at --hero-container to attach strictly to navbar width */
+    width:min(var(--hero-container), calc(100% - 32px));
     margin:0 auto;
+    padding-bottom: 52px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:24px;
     text-align:center;
     flex-shrink:0;
 }
@@ -31,19 +68,35 @@
 .hero-title{
     width:100%;
     font-family:'Satoshi',sans-serif;
+    font-size:var(--hero-h1-size);
+    line-height:var(--hero-h1-line);
+    letter-spacing:var(--hero-h1-tracking);
     font-weight:900;
-    line-height:1.23;
-    /* fluid scale: 28px at narrow phones up to 62px at desktop, no breakpoint jumps */
-    font-size:clamp(1.75rem, 1rem + 3.2vw, 3.875rem);
-    letter-spacing:clamp(-2.48px, -0.04em, -1px);
     color:#000;
     margin:0 auto;
     word-break:keep-all;
     overflow-wrap:break-word;
 }
 
-.hero-title br{
-    display:block;
+.hero-title__line{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    column-gap:0.28em;
+    row-gap:0.12em;
+}
+
+.hero-title__mask{
+    display:inline-block;
+    overflow:hidden;
+    line-height:1.15;
+    padding-bottom:0.1em;
+    margin-bottom:-0.1em;
+}
+
+.hero-title__word{
+    display:inline-block;
+    will-change:transform;
 }
 
 /* keeps "Innovation" (text + styled O) from breaking across lines */
@@ -78,29 +131,85 @@
 }
 
 .hero-content > p{
-    font-size:clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
+    font-size:var(--hero-body-size);
+    line-height:var(--hero-body-line);
+    letter-spacing:var(--hero-body-tracking);
     font-weight:400;
-    line-height:1.6;
     color:var(--text);
-    margin:20px 0 0 0;
-    max-width:46ch;
-    margin-left:auto;
-    margin-right:auto;
+    margin:0;
+    max-width:52ch;
 }
 
-@media(max-width:768px){
+/* below this, shrinking further would make the title illegible — let the
+   hero take its natural height and the page scroll instead of clipping content */
+@media(max-height:680px){
     .hero{
-        padding-top:150px;
+        height:auto;
+        min-height:100dvh;
+        overflow:visible;
     }
 }
 
-@media(max-width:480px){
+/* Tablet — 768px to 1024px
+   padding-top floor is set to clear the navbar pill (top offset up to 28px +
+   80px height = ~108px bottom edge) with genuine breathing room beneath it.
+   The base .hero locks to 100dvh with justify-content:space-between, which on
+   tablet (short content, tall viewport) shoves the carousel all the way to
+   the bottom and leaves a dead gap in the middle — so here the section
+   shrinks to fit its content instead, and the carousel sits a fixed distance
+   below the buttons. */
+@media(min-width:768px) and (max-width:1024px){
     .hero{
-        padding-top:140px;
-        padding-bottom:32px;
+        height:auto;
+        min-height:0;
+        justify-content:flex-start;
+        padding-top:clamp(140px, 15vw, 168px);
+        padding-bottom:clamp(40px, 6vw, 64px);
+    }
+
+    .hero-content{
+        gap:20px;
+        padding-bottom:0;
     }
 
     .hero-content > p{
-        margin-top:14px;
+        max-width:46ch;
+    }
+
+    .hero .carousel-section{
+        margin-top:clamp(32px, 6vw, 56px);
+    }
+}
+
+/* Mobile — up to 767px: tighter rhythm so headline, copy, CTAs and the
+   showcase carousel all sit comfortably within one viewport, while still
+   clearing the floating navbar pill with a visible gap */
+@media(max-width:767px){
+    .hero{
+        padding-top:clamp(132px, 24vw, 156px);
+    }
+
+    .hero-bg{
+        background-position:50% 18%;
+    }
+
+    .hero-content{
+        gap:16px;
+        padding-bottom:28px;
+    }
+
+    .hero-content > p{
+        max-width:34ch;
+    }
+}
+
+@media(max-width:420px){
+    .hero{
+        padding-top:clamp(126px, 26vw, 144px);
+    }
+
+    .hero-content{
+        gap:14px;
+        padding-bottom:24px;
     }
 }

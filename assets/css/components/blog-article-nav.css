@@ -1,0 +1,152 @@
+/* BLOG SINGLE — Previous/Next Article navigation, between the article and
+   the CTA section. Compact editorial-style nav: a small direction label
+   above a horizontal image+text card. Reuses existing tokens (radius,
+   spacing, shadow, color) from services-variables.css and the same
+   thumbnail/list-item pattern already used by .sidebar-recent__item
+   (blog-sidebar.css) — no new design language is introduced. */
+
+.article-nav-wrapper {
+  display: flex;
+  width: 100%;
+  padding: 0 clamp(20px, 8.5vw, 122px);
+  box-sizing: border-box;
+}
+
+.article-nav {
+  width: min(1198px, 100%);
+  margin: 0 auto;
+  display: flex;
+  gap: clamp(20px, 3vw, 32px);
+}
+
+.article-nav-item {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-8);
+}
+
+.article-nav-item--prev {
+  align-items: flex-start;
+}
+
+.article-nav-item--next {
+  align-items: flex-end;
+}
+
+.article-nav-card__direction {
+  font-family: var(--font-inter);
+  font-size: var(--fs-12);
+  font-weight: 600;
+  color: var(--color-goldenrod-300);
+}
+
+.article-nav-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--gap-12);
+  padding: var(--padding-8);
+  border: var(--border-1);
+  border-radius: var(--br-20);
+  box-shadow: var(--shadow-drop-12);
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.article-nav-card--next {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .article-nav-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-drop-2);
+    cursor: pointer;
+  }
+
+  .article-nav-card:hover .article-nav-card__image {
+    transform: scale(1.05);
+  }
+
+  .article-nav-card:hover .article-nav-card__title {
+    color: var(--color-goldenrod-300);
+  }
+}
+
+.article-nav-card__image-wrap {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: var(--br-12);
+}
+
+.article-nav-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 300ms ease;
+}
+
+.article-nav-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-3);
+  min-width: 0;
+}
+
+.article-nav-card__category {
+  font-family: var(--font-inter);
+  font-size: var(--fs-11);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-goldenrod-300);
+}
+
+.article-nav-card__title {
+  margin: 0;
+  font-family: var(--font-satoshi);
+  font-weight: 700;
+  font-size: var(--fs-16);
+  line-height: 1.3;
+  color: var(--color-black);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  transition: color 200ms ease;
+}
+
+@media screen and (max-width: 1050px) {
+  .article-nav {
+    gap: clamp(16px, 2.5vw, 24px);
+  }
+
+  .article-nav-card__image-wrap {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .article-nav {
+    flex-direction: column;
+    gap: var(--gap-24);
+  }
+
+  .article-nav-item--next {
+    align-items: flex-start;
+  }
+
+  .article-nav-card--next {
+    flex-direction: row;
+    text-align: left;
+  }
+}

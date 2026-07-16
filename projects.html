@@ -40,6 +40,9 @@
           href="css/header.css">
 
     <link rel="stylesheet"
+          href="assets/css/components/buttons.css">
+
+    <link rel="stylesheet"
           href="assets/css/components/projects-hero.css?v=1.1">
 
     <link rel="stylesheet"
@@ -62,6 +65,9 @@
 
     <link rel="stylesheet"
           href="assets/css/components/insights.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/loading-state.css">
 
 </head>
 
@@ -104,7 +110,11 @@
 
 </section>
 
-<!-- Cultivate loyalty, recognition, and growth through the power of brand -->
+<!-- Cultivate loyalty, recognition, and growth through the power of brand
+     Phase 1: commented out — this was a static/placeholder paginated grid
+     (duplicate fake projects). Pagination is a future phase (see
+     PROJECT_CMS_PLAN.md); re-enable once the Projects Listing needs a
+     second, paginated section backed by real data.
 <section class="projects-logo-grid" aria-label="Brands we've helped grow">
 
     <div class="projects-logo-grid__container">
@@ -135,6 +145,8 @@
     </div>
 
 </section>
+-->
+
 
 <!-- Built for businesses that refuse to look average -->
 <section class="stats-highlight" aria-label="Why businesses choose Envizon">
@@ -385,6 +397,10 @@
 <script type="module" src="js/header.js"></script>
 <script type="module" src="js/footer.js"></script>
 <script type="module" src="assets/js/main.js"></script>
+<!-- Phase 1: #projectsFeaturedBrandsGrid is now populated dynamically from
+     the WordPress Projects CMS by js/projects.js. The static placeholder
+     init below is disabled but left in place (see PROJECT_CMS_PLAN.md); the
+     paginated logo grid it also initialized has been commented out above.
 <script type="module">
     import { initProjectsFeaturedBrands } from './assets/js/components/projects-featured-brands.js';
     import { initProjectsLogoGrid } from './assets/js/components/projects-logo-grid.js';
@@ -393,6 +409,8 @@
         initProjectsLogoGrid();
     });
 </script>
+-->
+<script type="module" src="js/projects.js"></script>
 
 </body>
 </html>

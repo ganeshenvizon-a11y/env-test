@@ -1,0 +1,30 @@
+/* BLOG SINGLE — Related Articles, after the Previous/Next navigation and
+   before the CTA. Reuses the existing .insight-card component and
+   .insights__grid layout (insights.css) as-is — this file only adds the
+   section wrapper/heading around that reused grid, no new card design. */
+
+.related-articles-wrapper {
+  display: flex;
+  width: 100%;
+  padding: clamp(40px, 6vw, 80px) clamp(20px, 8.5vw, 122px) 0;
+  box-sizing: border-box;
+}
+
+.related-articles {
+  width: min(1198px, 100%);
+  margin: 0 auto;
+}
+
+.related-articles__heading {
+  margin: 0 0 var(--gap-24);
+  font-family: var(--font-satoshi);
+  font-weight: 700;
+  font-size: var(--fs-32);
+  color: var(--color-black);
+}
+
+@media screen and (max-width: 1050px) {
+  .related-articles__heading {
+    font-size: var(--fs-24);
+  }
+}

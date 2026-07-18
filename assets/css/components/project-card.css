@@ -101,6 +101,28 @@
     fill:#ffffff;
 }
 
+/* branding-card__frame styles imported from services_branding.html/css */
+.branding-card__frame {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    aspect-ratio: 400 / 178;
+    display: block;
+    color: #FAF6EE !important; /* Force branding accent color */
+    pointer-events: none;
+    z-index: 2;
+}
+
+.branding-card__frame-yellow {
+    fill: currentColor;
+}
+
+.branding-card__frame-white {
+    fill: #F7F2E8; /* Light warm cream color matching mockup tabs */
+}
+
 /* ============================= */
 /* TITLE + TAGS                    */
 /* ============================= */

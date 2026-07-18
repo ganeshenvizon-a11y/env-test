@@ -1,0 +1,61 @@
+/* PROJECTS — SERVICE FILTERS (chip bar between Featured Projects and All
+   Projects). Chips reuse the site's pill radius/token language from
+   variables.css and buttons.css rather than inventing a new visual style. */
+
+.projects-service-filters{
+    background:#ffffff;
+    padding:0 0 48px;
+}
+
+.projects-service-filters__container{
+    width:min(1200px, calc(100% - 48px));
+    margin:0 auto;
+}
+
+.projects-service-filters__list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.projects-service-filters__chip{
+    font-family:'Inter',sans-serif;
+    font-size:0.8125rem;
+    font-weight:600;
+    letter-spacing:.02em;
+    line-height:1.3;
+    padding:10px 20px;
+    border:1px solid var(--border-light);
+    border-radius:var(--radius-pill);
+    background:var(--white);
+    color:var(--black);
+    cursor:pointer;
+    transition:background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.projects-service-filters__chip:hover{
+    border-color:var(--primary);
+}
+
+.projects-service-filters__chip.is-active{
+    background:var(--primary);
+    border-color:var(--primary);
+    color:#000000;
+}
+
+@media(max-width:600px){
+    .projects-service-filters{
+        padding:0 0 32px;
+    }
+
+    .projects-service-filters__list{
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        padding-bottom:4px;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    .projects-service-filters__chip{
+        flex-shrink:0;
+    }
+}

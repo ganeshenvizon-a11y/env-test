@@ -130,7 +130,16 @@
 .article-content figure {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  align-self: center;
   gap: var(--gap-8);
+}
+
+@media screen and (min-width: 1051px) {
+  .article-content figure {
+    flex-direction: row;
+  }
+  
 }
 
 .article-content figcaption {
@@ -198,6 +207,9 @@
   .article-content h3 {
     font-size: var(--fs-24);
   }
+  .service-tag-list{
+    flex-direction: row;
+  }
 }
 
 @media screen and (max-width: 450px) {
@@ -247,3 +259,47 @@
 .is-article-missing .reading-progress {
   display: none;
 }
+
+/* ==========================================================================
+   Project Single Page Gutenberg Layout: Heading & Paragraph Layout (40:60 ratio)
+   ========================================================================== */
+.works-internal-ui-v10 .heading-paragraph-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-24);
+  width: 100%;
+  padding: 10px 0;
+}
+
+.works-internal-ui-v10 .heading-paragraph-group .wp-block-heading {
+  width: 100%;
+}
+
+.works-internal-ui-v10 .heading-paragraph-group__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-24);
+  width: 100%;
+}
+
+@media screen and (min-width: 1051px) {
+  .works-internal-ui-v10 .heading-paragraph-group {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 48px;
+  }
+
+  .works-internal-ui-v10 .heading-paragraph-group .wp-block-heading {
+    width: calc(40% - 24px);
+    flex-shrink: 0;
+  }
+
+  .works-internal-ui-v10 .heading-paragraph-group__body {
+    width: calc(60% - 24px);
+    flex-shrink: 0;
+  }
+}
+
+
+

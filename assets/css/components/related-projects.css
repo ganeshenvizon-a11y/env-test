@@ -1,0 +1,40 @@
+/* PROJECT — RELATED PROJECTS (section chrome only) */
+/* Cards and the 3-up grid track reuse the existing shared component/classes
+   — .project-card (project-card.css) and .projects-featured-brands__grid /
+   __container (projects-featured-brands.css). This file only owns what
+   isn't already covered: the section wrapper and a visible heading (the
+   Featured Client Work section's heading is visually-hidden; this one
+   isn't). */
+
+.related-projects{
+    /* .works-internal-ui-v10 is a column flex container with
+       align-items:flex-start (not stretch), so every direct child section
+       must set its own align-self/width — see .main-content,
+       .article-content-wrapper, .case-study-summary-parent for the same
+       pattern — otherwise it collapses to its content's width. */
+    align-self:stretch;
+    width:100%;
+    background:#ffffff;
+    padding:100px 0 110px;
+    box-sizing:border-box;
+}
+
+.related-projects__heading{
+    font-size:32px;
+    font-weight:700;
+    line-height:1.5;
+    text-align:center;
+    color:var(--black);
+    margin:0 0 48px;
+}
+
+@media(max-width:600px){
+    .related-projects{
+        padding:72px 0 88px;
+    }
+
+    .related-projects__heading{
+        font-size:24px;
+        margin-bottom:40px;
+    }
+}

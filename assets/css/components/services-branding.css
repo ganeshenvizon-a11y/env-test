@@ -1,0 +1,450 @@
+/* SERVICES BRANDING PAGE - CSS Component Styles */
+
+/* ==========================================================================
+   Page Shell & Background Glows
+   ========================================================================== */
+
+.branding-page {
+  position: relative;
+  background-color: #ffffff;
+  color: #111111;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  padding-top: 150px;
+}
+
+/* Glowing background circles for premium look */
+.branding-page__glow-top {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(250, 179, 48, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.branding-page__glow-middle {
+  position: absolute;
+  top: 1100px;
+  right: -200px;
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, rgba(250, 179, 48, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.branding-page__glow-bottom {
+  position: absolute;
+  bottom: 300px;
+  left: -200px;
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, rgba(250, 179, 48, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Container limits */
+.branding-container {
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+
+.branding-hero {
+  text-align: center;
+  padding: 40px 0 60px;
+}
+
+.branding-hero__title {
+  font-family: 'Satoshi', 'Poppins', sans-serif;
+  font-size: clamp(2.5rem, 1.8rem + 3.2vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -2px;
+  color: #111111;
+  margin: 0 auto 50px;
+  max-width: 950px;
+}
+
+.branding-hero__title .text-gold {
+  color: #FAB330;
+}
+
+.branding-hero__image-wrap {
+  width: 100%;
+  border-radius: clamp(16px, 3vw, 32px);
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+}
+
+.branding-hero__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.branding-hero__image-wrap:hover .branding-hero__image {
+  transform: scale(1.03);
+}
+
+/* ==========================================================================
+   Intro/Details Section (01 Branding)
+   ========================================================================== */
+
+.branding-intro {
+  padding: 80px 0 100px;
+}
+
+.branding-intro__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.branding-intro__num,
+.branding-intro__title {
+  font-family: 'Satoshi', 'Poppins', sans-serif;
+  font-size: clamp(3rem, 2.5rem + 4vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.9;
+  color: #D1D1D6;
+  letter-spacing: -2px;
+}
+
+.branding-intro__divider {
+  border: none;
+  border-top: 1px solid #E5E5EA;
+  margin: 0 0 60px 0;
+}
+
+.branding-intro__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 100px);
+  align-items: start;
+}
+
+.branding-intro__left,
+.branding-intro__right {
+  position: relative;
+}
+
+.branding-intro__image-wrap {
+  border-radius: clamp(16px, 2.5vw, 24px);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  margin-top: 0;
+}
+
+.branding-intro__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.branding-intro__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.25rem);
+  line-height: 1.7;
+  color: #333333;
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+
+.branding-intro__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.branding-intro__list-item {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.125rem);
+  color: #8E8E93;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.branding-intro__list-item::before {
+  content: "•";
+  color: #8E8E93;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   Case Studies Section
+   ========================================================================== */
+
+.branding-cases {
+  padding: 100px 0 120px;
+  border-top: 1px solid #F0F0F0;
+}
+
+/* Eyebrow label styling */
+.branding-cases__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.branding-cases__eyebrow-line {
+  width: 24px;
+  height: 1.5px;
+  background-color: #FAB330;
+}
+
+.branding-cases__eyebrow-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #999999;
+  text-transform: uppercase;
+}
+
+.branding-cases__header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+  align-items: end;
+}
+
+.branding-cases__title {
+  font-family: 'Satoshi', 'Poppins', sans-serif;
+  font-size: clamp(2.25rem, 1.8rem + 2.5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -2px;
+  color: #111111;
+  margin: 0;
+}
+
+.branding-cases__title .text-gold {
+  color: #FAB330;
+}
+
+.branding-cases__intro-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.branding-cases__link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111111;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  transition: color 0.3s ease;
+}
+
+.branding-cases__link:hover {
+  color: #FAB330;
+}
+
+.branding-cases__link-arrow {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s ease;
+}
+
+.branding-cases__link:hover .branding-cases__link-arrow {
+  transform: translate(3px, -3px);
+}
+
+.branding-cases__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #666666;
+  margin: 0;
+  max-width: 500px;
+}
+
+/* 4-column case studies grid */
+.branding-cases__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+/* Premium Card Styles */
+.branding-card {
+  position: relative;
+  aspect-ratio: 385 / 388;
+  border-radius: 24px;
+  overflow: hidden;
+  text-decoration: none;
+  background-color: var(--card-bg, #eee);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+  display: block;
+}
+
+.branding-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+}
+
+.branding-card__bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 60px; /* Leave space for bottom notch */
+  z-index: 1;
+}
+
+.branding-card__logo-wrap {
+  width: 60%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.branding-card__logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Notched tab container at bottom */
+.branding-card__frame {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  aspect-ratio: 400 / 178;
+  display: block;
+  color: var(--card-accent, #FAF6EE); /* Accent yellow path color */
+  pointer-events: none;
+  z-index: 2;
+}
+
+.branding-card__frame-yellow {
+  fill: currentColor;
+}
+
+.branding-card__frame-white {
+  fill: #F7F2E8; /* Light warm cream color matching mockup tabs */
+}
+
+/* Card Content / Client Title text aligned inside the notched tab */
+.branding-card__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0 10% 8% 30%;
+  pointer-events: none;
+}
+
+.branding-card__title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(14px, 5cqw, 20px);
+  font-weight: 700;
+  color: #111111;
+  margin: 0;
+  text-align: right;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+@media screen and (max-width: 1024px) {
+  .branding-cases__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .branding-page {
+    padding-top: 120px;
+  }
+
+  .branding-intro__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .branding-intro {
+    padding: 60px 0;
+  }
+
+  .branding-cases {
+    padding: 60px 0;
+  }
+
+  .branding-cases__header {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  
+  .branding-cases__intro-right {
+    gap: 12px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .branding-cases__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .branding-card {
+    max-width: 380px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .branding-hero__title {
+    margin-bottom: 30px;
+  }
+
+  .branding-intro__num,
+  .branding-intro__title {
+    font-size: clamp(2.25rem, 1.5rem + 4vw, 3rem);
+  }
+
+  .branding-intro__divider {
+    margin: 0 0 30px 0;
+  }
+}

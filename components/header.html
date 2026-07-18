@@ -9,7 +9,14 @@
         
         <!-- Desktop Navigation Links (Hidden on mobile/tablet) -->
         <ul class="nav-links">
-            <li><a href="services.html">Services</a></li>
+            <li>
+                <a href="services.html" class="services-trigger">
+                    Services
+                    <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 11px; height: 11px; margin-left: 6px; display: inline-block; vertical-align: middle; transition: transform 0.25s ease;">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </a>
+            </li>
             <li><a href="projects.html">Work</a></li>
             <li><a href="clients.html">Clients</a></li>
             <li><a href="blog.html">Blogs</a></li>
@@ -35,6 +42,26 @@
             </button>
         </div>
     </nav>
+
+    <!-- Services Dropdown (Mega Menu) - Positioned inside wrapper for full-width layout -->
+    <div class="services-dropdown">
+        <div class="services-dropdown__container">
+            <!-- Left List of Options -->
+            <div class="services-dropdown__left">
+                <span class="services-dropdown__eyebrow">OUR CAPABILITIES</span>
+                <ul class="services-dropdown__list">
+                    <li><a href="services_branding.html" data-hero="assets/images/services/branding/image 165.jpg">Branding</a></li>
+                    <li><a href="services_digital.html" data-hero="assets/images/services/digital/image 165.png">Digital</a></li>
+                    <li><a href="services_motion.html" data-hero="assets/images/services/motion/image 165.png">Motion</a></li>
+                    <li><a href="services_strategy.html" data-hero="assets/images/services/strategy/image 165.png">Strategy</a></li>
+                </ul>
+            </div>
+            <!-- Right Preview Image Section -->
+            <div class="services-dropdown__preview">
+                <img id="dropdown-preview-img" src="assets/images/services/branding/image 165.jpg" alt="Services preview">
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Mobile/Tablet Off-canvas Sidebar & Overlay Backdrop -->
@@ -54,7 +81,23 @@
     
     <!-- Vertical Links inside Sidebar -->
     <ul class="mobile-nav-links">
-        <li><a href="services.html">Services</a></li>
+        <li class="mobile-has-submenu">
+            <div class="mobile-nav-item-wrapper">
+                <a href="services.html">Services</a>
+                <button type="button" class="mobile-submenu-toggle" aria-label="Toggle Services Submenu">
+                    <!-- SVG Down Arrow -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="submenu-arrow-icon">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+            </div>
+            <ul class="mobile-submenu">
+                <li><a href="services_branding.html">Branding</a></li>
+                <li><a href="services_digital.html">Digital</a></li>
+                <li><a href="services_motion.html">Motion</a></li>
+                <li><a href="services_strategy.html">Strategy</a></li>
+            </ul>
+        </li>
         <li><a href="projects.html">Work</a></li>
         <li><a href="clients.html">Clients</a></li>
         <li><a href="blog.html">Blogs</a></li>

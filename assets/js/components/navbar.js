@@ -78,7 +78,8 @@ function initScrollBehavior() {
                     setHidden(false);
                     setCompact(false);
                 } else {
-                    setHidden(desktopQuery.matches ? goingDown : goingDown && y > 80);
+                    // Only slide away header on desktop scroll down; keep it permanently sticky on mobile/tablet
+                    setHidden(desktopQuery.matches ? goingDown : false);
                     setCompact(y > COMPACT_AT);
                 }
                 lastY = y;

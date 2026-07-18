@@ -10,6 +10,8 @@
 
     <title>Project - Envizon Studio</title>
 
+    <meta name="description" content="Envizon Studio is a branding, design, and digital marketing agency helping brands stand out.">
+
     <!-- Google Fonts -->
 
     <link rel="preconnect"
@@ -43,6 +45,9 @@
           href="assets/css/components/buttons.css">
 
     <link rel="stylesheet"
+          href="assets/css/components/breadcrumbs.css">
+
+    <link rel="stylesheet"
           href="assets/css/components/services-layout.css">
 
     <link rel="stylesheet"
@@ -59,6 +64,24 @@
 
     <link rel="stylesheet"
           href="assets/css/components/services-case-study.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/blog-article-content.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/project-card.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/projects-featured-brands.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/related-projects.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/blog-share.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/loading-state.css">
 
     <link rel="stylesheet"
           href="assets/css/components/services-cta.css">
@@ -78,37 +101,40 @@
     src="assets/images/services/Rectangle-34624738.svg"
   />
 
+  <section class="breadcrumbs-wrapper">
+    <nav class="breadcrumbs" id="breadcrumbs" aria-label="Breadcrumb" hidden>
+      <ol class="breadcrumbs__list"></ol>
+    </nav>
+  </section>
+
   <section class="main-content">
     <div class="hero-container">
       <section class="client-highlight">
         <div class="client-card">
-          <h2 class="popl">Popl</h2>
-          <div class="services-header">
+          <h2 class="popl" id="projectClientName">Popl</h2>
+          <div class="services-header" id="projectServicesHeader">
             <h3 class="services-provided">Services Provided</h3>
           </div>
         </div>
         <div class="client-overview-details">
-          <div class="after-gaining-early">
+          <div class="after-gaining-early" id="projectShortDescription">
             After gaining early traction through Y Combinator, Popl expanded
             its offerings to provide teams with a seamless, all-in-one
             solution for digital business cards. By 2025, Popl sharpened its
             focus, transforming into
           </div>
-          <div class="service-tag-list">
-            <div class="backgroundborder">
-              <div class="strategy">Strategy</div>
-            </div>
-            <div class="backgroundborder">
-              <div class="strategy">Visual Identity</div>
-            </div>
-            <div class="backgroundborder">
-              <div class="strategy">Web Design</div>
-            </div>
-          </div>
+          <div class="service-tag-list" id="projectServiceTagList"></div>
         </div>
+        <!-- Populated dynamically by js/project.js from acf.project_website.
+             Reuses the site-wide .btn.btn-primary CTA style (assets/css/components/buttons.css);
+             hidden by default and only revealed when the project has a valid website URL. -->
+        <a class="btn btn-primary" id="projectWebsiteLink" href="#" target="_blank" rel="noopener" hidden>
+          <span>Visit Website</span>
+        </a>
       </section>
       <img
         class="hero-container-child"
+        id="projectFeaturedImage"
         loading="lazy"
         alt=""
         src="assets/images/services/Frame-2087327540@2x.png"
@@ -116,12 +142,61 @@
     </div>
   </section>
   <section class="poised-to-disrupt-the-event-le-wrapper">
-    <h1 class="poised-to-disrupt">
+    <h1 class="poised-to-disrupt" id="projectHeroSubtitle">
       Poised to disrupt the event lead capture landscape, Popl needed a more
       mature brand to match its vision &mdash; without sacrificing the
       cutting-edge spirit of its team.
     </h1>
   </section>
+
+  <!-- Phase 2A: the real project body (content.rendered) renders here,
+       reusing blog-single.html's exact Gutenberg-content pattern
+       (assets/css/components/blog-article-content.css), see js/project.js. -->
+  <section class="article-content-wrapper">
+    <div class="article-content" id="projectContent">
+      <div class="loading-state">Loading project…</div>
+    </div>
+  </section>
+
+  <!-- Shared "Share this" widget (assets/css/components/blog-share.css,
+       js/shared/social-share.js) — same markup/ids as blog-single.html so
+       the one shared module and stylesheet serve both pages unchanged. -->
+  <div class="article-share-wrapper">
+    <div class="article-share" id="articleShare" hidden>
+      <span class="article-share__label">Share this project</span>
+      <div class="article-share__actions">
+        <a class="article-share__btn" id="shareLinkedIn" href="#" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.94 8.5H3.56V20.5H6.94V8.5Z" fill="currentColor"/>
+            <path d="M5.25 6.75C6.35 6.75 7.19 5.91 7.19 4.87C7.19 3.83 6.35 3 5.25 3C4.19 3 3.31 3.83 3.31 4.87C3.31 5.91 4.19 6.75 5.25 6.75Z" fill="currentColor"/>
+            <path d="M13.44 8.5H10.19V20.5H13.56V14.44C13.56 12.81 13.87 11.25 15.87 11.25C17.83 11.25 17.87 13.09 17.87 14.56V20.5H21.25V13.87C21.25 10.94 20.62 8.19 17.19 8.19C15.56 8.19 14.44 9.09 13.98 9.94H13.94L13.44 8.5Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a class="article-share__btn" id="shareFacebook" href="#" target="_blank" rel="noopener" aria-label="Share on Facebook">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M15.5 8.5H17.5V5.13C17.16 5.09 16 5 14.65 5C11.79 5 9.83 6.75 9.83 9.95V12.5H6.65V16.25H9.83V21.5H13.7V16.25H16.76L17.24 12.5H13.7V10.32C13.7 9.25 13.99 8.5 15.5 8.5Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a class="article-share__btn" id="shareTwitter" href="#" target="_blank" rel="noopener" aria-label="Share on X">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M17.53 3H20.5L14.36 10.02L21.58 21H15.93L11.5 14.77L6.43 21H3.46L10.03 13.48L3.1 3H8.9L12.9 8.73L17.53 3ZM16.54 19.3H18.11L8.22 4.6H6.54L16.54 19.3Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <button type="button" class="article-share__btn" id="shareCopyLink" aria-label="Copy link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M10.5 13.5C11 14.16 11.63 14.7 12.35 15.08C13.07 15.46 13.86 15.67 14.67 15.7C15.48 15.73 16.29 15.58 17.03 15.26C17.78 14.94 18.44 14.46 18.98 13.85L22.11 10.72C23.09 9.7 23.63 8.34 23.62 6.93C23.61 5.52 23.04 4.17 22.04 3.17C21.04 2.17 19.69 1.6 18.28 1.59C16.87 1.58 15.51 2.12 14.49 3.1L12.65 4.93" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13.5 10.5C13 9.84 12.37 9.3 11.65 8.92C10.93 8.54 10.14 8.33 9.33 8.3C8.52 8.27 7.71 8.42 6.97 8.74C6.22 9.06 5.56 9.54 5.02 10.15L1.89 13.28C0.91 14.3 0.37 15.66 0.38 17.07C0.39 18.48 0.96 19.83 1.96 20.83C2.96 21.83 4.31 22.4 5.72 22.41C7.13 22.42 8.49 21.88 9.51 20.9L11.34 19.07" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <span class="article-share__toast" id="shareToast" role="status" aria-live="polite" hidden>Link copied!</span>
+    </div>
+  </div>
+
+  <!-- Phase 2A: placeholder/static demo body sections commented out — they
+       stood in for the real Gutenberg content now rendered above. Pagination
+       through real content is out of scope for this phase; see
+       PROJECT_CMS_PLAN.md.
   <section class="empty-block-wrapper">
     <img
       class="empty-block-icon"
@@ -300,20 +375,27 @@
       />
     </div>
   </main>
-  <section class="case-study-summary-parent">
-    <div class="case-study-summary">
-      <div class="case-study-header">
-        <div class="case-study-logo-wrapper">
-          <img
-            class="case-study-logo-wrapper-child"
-            loading="lazy"
-            alt=""
-            src="assets/images/services/Group-2087327207.svg"
-          />
-        </div>
-        <h2 class="poly-ai">Poly AI</h2>
-      </div>
+  -->
+
+  <!-- Populated dynamically by js/project-nav.js, reusing the existing
+       case-study-summary/case-study-header/poly-ai markup and classes.
+       Hidden by default and only revealed once both a previous and next
+       project are found (navigation wraps around, so this only ever hides
+       when the catalog has fewer than two projects). -->
+  <nav class="case-study-summary-parent" id="projectNav" aria-label="Project navigation" hidden></nav>
+
+  <!-- Populated dynamically by js/project-related.js. Hidden by default and
+       only revealed once at least one related project is found. -->
+  <section class="related-projects" id="relatedProjects" aria-label="Related projects" hidden>
+    <div class="projects-featured-brands__container">
+      <h2 class="related-projects__heading">Related Projects</h2>
+      <div class="projects-featured-brands__grid" id="relatedProjectsGrid"></div>
     </div>
+  </section>
+
+  
+
+  <section class="case-study-summary-parent">
     <div class="global-cta">
       <section class="call-to-action-content">
         <div class="frame-parent">
@@ -376,6 +458,9 @@
 <script type="module" src="js/header.js"></script>
 <script type="module" src="js/footer.js"></script>
 <script type="module" src="assets/js/main.js"></script>
+<script type="module" src="js/project.js"></script>
+<script type="module" src="js/project-related.js"></script>
+<script type="module" src="js/project-nav.js"></script>
 
 </body>
 </html>

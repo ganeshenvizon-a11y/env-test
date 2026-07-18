@@ -128,19 +128,79 @@
       </div>
 
       <div class="clients-hero__proof-strip">
-        <div class="clients-hero__proof">
-          <strong class="clients-hero__metric" data-count="75">75%</strong>
-          <span class="clients-hero__proof-label">Potential unlocked</span>
+        <!-- Card 1 -->
+        <div class="client-card">
+          <div class="client-card__inner">
+            <!-- Front Face (Inactive State) -->
+            <div class="client-card__face client-card__face--front">
+              <img class="client-card__bg" src="assets/images/clients/jpeg%20client%20images/Surreal%20Digital%20Figure%201.png" alt="Futuristic digital artwork 1">
+              <button class="client-card__toggle client-card__toggle--maximize" aria-label="Show metric details" type="button">
+                <img src="assets/images/clients/jpeg%20client%20images/maximize.svg" alt="Expand">
+              </button>
+            </div>
+            <!-- Back Face (Active State) -->
+            <div class="client-card__face client-card__face--back">
+              <div class="client-card__top">
+                <img class="client-card__logo" src="assets/images/clients/jpeg%20client%20images/chart.svg" alt="Chart logo">
+                <button class="client-card__toggle client-card__toggle--minimize" aria-label="Hide metric details" type="button">
+                  <img src="assets/images/clients/jpeg%20client%20images/minimize.svg" alt="Collapse">
+                </button>
+              </div>
+              <div class="client-card__bottom">
+                <p class="client-card__text">Unlocking <strong>75%</strong> of the business Potential</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="clients-hero__proof">
-          <strong class="clients-hero__metric" data-count="80">80%</strong>
-          <span class="clients-hero__proof-label">Faster workflows</span>
+        <!-- Card 2 -->
+        <div class="client-card">
+          <div class="client-card__inner">
+            <!-- Front Face (Inactive State) -->
+            <div class="client-card__face client-card__face--front">
+              <img class="client-card__bg" src="assets/images/clients/jpeg%20client%20images/Surreal%20Digital%20Figure%202.png" alt="Futuristic digital artwork 2">
+              <button class="client-card__toggle client-card__toggle--maximize" aria-label="Show AI workflow details" type="button">
+                <img src="assets/images/clients/jpeg%20client%20images/maximize.svg" alt="Expand">
+              </button>
+            </div>
+            <!-- Back Face (Active State) -->
+            <div class="client-card__face client-card__face--back">
+              <div class="client-card__top">
+                <img class="client-card__logo" src="assets/images/clients/jpeg%20client%20images/ai.svg" alt="AI logo">
+                <button class="client-card__toggle client-card__toggle--minimize" aria-label="Hide AI workflow details" type="button">
+                  <img src="assets/images/clients/jpeg%20client%20images/minimize.svg" alt="Collapse">
+                </button>
+              </div>
+              <div class="client-card__bottom">
+                <p class="client-card__text">AI tools used to reduce the workflow timing by <strong>80%</strong></p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="clients-hero__proof">
-          <strong class="clients-hero__metric">03</strong>
-          <span class="clients-hero__proof-label">Clear project stages</span>
+        <!-- Card 3 -->
+        <div class="client-card">
+          <div class="client-card__inner">
+            <!-- Front Face (Inactive State) -->
+            <div class="client-card__face client-card__face--front">
+              <img class="client-card__bg" src="assets/images/clients/jpeg%20client%20images/Surreal%20Digital%20Figure%203.png" alt="Futuristic digital artwork 3">
+              <button class="client-card__toggle client-card__toggle--maximize" aria-label="Show process details" type="button">
+                <img src="assets/images/clients/jpeg%20client%20images/maximize.svg" alt="Expand">
+              </button>
+            </div>
+            <!-- Back Face (Active State) -->
+            <div class="client-card__face client-card__face--back">
+              <div class="client-card__top">
+                <img class="client-card__logo" src="assets/images/clients/jpeg%20client%20images/bargraph.svg" alt="Process graph logo">
+                <button class="client-card__toggle client-card__toggle--minimize" aria-label="Hide process details" type="button">
+                  <img src="assets/images/clients/jpeg%20client%20images/minimize.svg" alt="Collapse">
+                </button>
+              </div>
+              <div class="client-card__bottom">
+                <p class="client-card__text">Clear & proven processes at every stage</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -824,6 +884,27 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ----------------------------------------------------
+    // Interactive Client Cards Toggles
+    // ----------------------------------------------------
+    const initClientCards = () => {
+        const cards = document.querySelectorAll('.client-card');
+        cards.forEach(card => {
+            const toggles = card.querySelectorAll('.client-card__toggle');
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    card.classList.toggle('is-flipped');
+                });
+            });
+
+            // Forgiving click target: allow clicking the card itself to toggle
+            card.addEventListener('click', () => {
+                card.classList.toggle('is-flipped');
+            });
+        });
+    };
+
+    // ----------------------------------------------------
     // 8. Page Elements Initialization Trigger
     // ----------------------------------------------------
     initClientsHeroAnimations();
@@ -832,6 +913,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTestimonialAnimations();
     initToolsAnimations();
     initGlobalCTAAnimations();
+    initClientCards();
     
     setTimeout(initInteractiveEffects, 600);
 });

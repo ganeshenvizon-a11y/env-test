@@ -126,11 +126,11 @@
 
         <!-- Hero Buttons -->
         <div class="hero-buttons">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" onclick="window.location.href='contact.html'">
                 <span>Let's Build Now</span>
                 <i class="ph ph-arrow-up-right"></i>
             </button>
-            <a href="#" class="btn btn-secondary">
+            <a href="projects.html" class="btn btn-secondary">
                 <span class="play-icon">▶</span>
                 View Our Work
             </a>
@@ -379,7 +379,7 @@
 
                 <div class="stats-highlight__right">
 
-                    <a href="#" class="stats-highlight__link">
+                    <a href="projects.html" class="stats-highlight__link">
                         Read Case Studies
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                     </a>
@@ -530,7 +530,7 @@
 
             <div class="how-we-work__aside">
 
-                <a href="#" class="how-we-work__cta">
+                <a href="contact.html" class="how-we-work__cta">
                     Start Building Now
                     <span aria-hidden="true">↗</span>
                 </a>
@@ -780,102 +780,7 @@
 
         </div>
 
-        <div class="insights__grid">
-
-            <article class="insight-card">
-
-                <div class="insight-card__image-wrap">
-                    <img class="insight-card__image"
-                         src="assets/images/port1.png"
-                         alt=""
-                         loading="lazy"
-                         width="384"
-                         height="220">
-                    <span class="insight-card__badge">Design Systems</span>
-                </div>
-
-                <div class="insight-card__content">
-
-                    <div class="insight-card__meta">
-                        <span class="insight-card__category">Engineering</span>
-                        <span class="insight-card__date">Apr 2025</span>
-                    </div>
-
-                    <h3 class="insight-card__title">
-                        <a href="#" class="insight-card__title-link">Why your design system is making your engineers slower?</a>
-                    </h3>
-
-                    <p class="insight-card__desc">
-                        A design system should be a velocity multiplier. Most aren't. Here's what separates the systems that scale from the ones that become another abandoned Figma file.
-                    </p>
-
-                </div>
-
-            </article>
-
-            <article class="insight-card">
-
-                <div class="insight-card__image-wrap">
-                    <img class="insight-card__image"
-                         src="assets/images/port2.png"
-                         alt=""
-                         loading="lazy"
-                         width="384"
-                         height="220">
-                    <span class="insight-card__badge">Design Systems</span>
-                </div>
-
-                <div class="insight-card__content">
-
-                    <div class="insight-card__meta">
-                        <span class="insight-card__category">Engineering</span>
-                        <span class="insight-card__date">Apr 2025</span>
-                    </div>
-
-                    <h3 class="insight-card__title">
-                        <a href="#" class="insight-card__title-link">Why your design system is making your engineers slower?</a>
-                    </h3>
-
-                    <p class="insight-card__desc">
-                        A design system should be a velocity multiplier. Most aren't. Here's what separates the systems that scale from the ones that become another abandoned Figma file.
-                    </p>
-
-                </div>
-
-            </article>
-
-            <article class="insight-card">
-
-                <div class="insight-card__image-wrap">
-                    <img class="insight-card__image"
-                         src="assets/images/port3.png"
-                         alt=""
-                         loading="lazy"
-                         width="384"
-                         height="220">
-                    <span class="insight-card__badge">Design Systems</span>
-                </div>
-
-                <div class="insight-card__content">
-
-                    <div class="insight-card__meta">
-                        <span class="insight-card__category">Engineering</span>
-                        <span class="insight-card__date">Apr 2025</span>
-                    </div>
-
-                    <h3 class="insight-card__title">
-                        <a href="#" class="insight-card__title-link">Why your design system is making your engineers slower?</a>
-                    </h3>
-
-                    <p class="insight-card__desc">
-                        A design system should be a velocity multiplier. Most aren't. Here's what separates the systems that scale from the ones that become another abandoned Figma file.
-                    </p>
-
-                </div>
-
-            </article>
-
-        </div>
+        <div class="insights__grid" id="homeInsightsGrid"></div>
 
     </div>
 
@@ -1027,6 +932,7 @@
 <script type="module" src="js/header.js"></script>
 <script type="module" src="js/footer.js"></script>
 <script type="module" src="assets/js/main.js"></script>
+<script type="module" src="js/latest-insights.js"></script>
 <script type="module">
     import { initIndexAnimations } from './js/index-animations.js';
     document.addEventListener('DOMContentLoaded', () => {

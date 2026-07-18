@@ -294,10 +294,27 @@ textarea.careers-form__control{
     flex-shrink:0;
 }
 
+.careers-form__honeypot{
+    position:absolute;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+}
+
+.careers-form__recaptcha{
+    min-height:78px;
+}
+
 .careers-form__status{
     font-size:14px;
     font-weight:600;
     margin-top:-8px;
+}
+
+.careers-form__status[data-state="pending"]{
+    color:var(--text-muted);
 }
 
 .careers-form__status[data-state="success"]{

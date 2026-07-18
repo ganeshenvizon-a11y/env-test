@@ -403,8 +403,9 @@
   width: 956px;
   display: flex;
   flex-direction: column;
+  padding-top: 60px;
   align-items: center;
-  gap: 72px;
+  gap: 60px;
   max-width: 100%;
 }
 .customer-stories {

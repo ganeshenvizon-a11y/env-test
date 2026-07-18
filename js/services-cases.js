@@ -60,19 +60,27 @@ function createCard(project, prefix, palette) {
   card.style.setProperty("--card-bg", palette.bg);
   card.style.setProperty("--card-accent", palette.accent);
 
+  // title/image src are CMS text, not markup — kept out of the innerHTML
+  // template above and assigned via DOM APIs below so a title containing
+  // literal HTML (quotes, angle brackets) can't be parsed as markup.
   card.innerHTML = `
         <span class="${prefix}-card__bg">
             <span class="${prefix}-card__logo-wrap">
-                <img class="${prefix}-card__logo" src="${getProjectImage(project)}" alt="${title} logo" loading="lazy">
+                <img class="${prefix}-card__logo" loading="lazy" decoding="async">
             </span>
         </span>
         <svg class="${prefix}-card__frame" viewBox="0 0 400 178" aria-hidden="true" focusable="false">
             <use href="#${prefix}-card-frame"></use>
         </svg>
         <span class="${prefix}-card__content">
-            <h3 class="${prefix}-card__title">${title}</h3>
+            <h3 class="${prefix}-card__title"></h3>
         </span>
     `;
+
+  const logo = card.querySelector(`.${prefix}-card__logo`);
+  logo.src = getProjectImage(project);
+  logo.alt = `${title} logo`;
+  card.querySelector(`.${prefix}-card__title`).textContent = title;
 
   return card;
 }

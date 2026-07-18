@@ -23,6 +23,17 @@ import { setImageWithFallback } from '../../../js/shared/cms-validation.js';
 const FRAME_SYMBOL_ID = 'project-card-frame';
 const BRANDING_FRAME_SYMBOL_ID = 'branding-card-frame';
 
+// Whether this page is the projects/brand-showcase page never changes during
+// the page's lifetime, so the DOM check runs once and is reused for every
+// card instead of re-querying on each renderProjectCard() call.
+let isProjectsPageCache = null;
+function isProjectsPage(){
+    if (isProjectsPageCache === null) {
+        isProjectsPageCache = !!(document.querySelector('.projects-hero') || document.getElementById('projectsFeaturedBrandsGrid'));
+    }
+    return isProjectsPageCache;
+}
+
 function ensureFrameSprite(){
     if (document.getElementById(FRAME_SYMBOL_ID)) return;
 
@@ -55,9 +66,8 @@ function ensureFrameSprite(){
 export function renderProjectCard(data){
     ensureFrameSprite();
 
-    const isProjectsPage = !!(document.querySelector('.projects-hero') || document.getElementById('projectsFeaturedBrandsGrid'));
-    const frameClass = isProjectsPage ? 'branding-card__frame' : 'project-card__frame';
-    const frameSymbolId = isProjectsPage ? BRANDING_FRAME_SYMBOL_ID : FRAME_SYMBOL_ID;
+    const frameClass = isProjectsPage() ? 'branding-card__frame' : 'project-card__frame';
+    const frameSymbolId = isProjectsPage() ? BRANDING_FRAME_SYMBOL_ID : FRAME_SYMBOL_ID;
 
     const card = document.createElement('a');
     card.className = 'project-card';
@@ -66,10 +76,10 @@ export function renderProjectCard(data){
     card.style.setProperty('--card-bg', data.bgColor);
     card.style.setProperty('--card-accent', data.accentColor);
 
-    const tagsMarkup = (data.tags || [])
-        .map(tag => `<li class="project-card__tag">${tag}</li>`)
-        .join('');
-
+    // Title/tags come straight from CMS text fields, so they're written via
+    // textContent (never interpolated into the innerHTML template below) —
+    // a title or tag containing literal HTML must render as inert text, not
+    // be parsed as markup.
     card.innerHTML = `
         <span class="project-card__background">
             <img class="project-card__logo" alt="" loading="lazy" decoding="async">
@@ -78,10 +88,20 @@ export function renderProjectCard(data){
             <use href="#${frameSymbolId}"></use>
         </svg>
         <span class="project-card__content">
-            <h3 class="project-card__name">${data.title}</h3>
-            <ul class="project-card__tags">${tagsMarkup}</ul>
+            <h3 class="project-card__name"></h3>
+            <ul class="project-card__tags"></ul>
         </span>
     `;
+
+    card.querySelector('.project-card__name').textContent = data.title;
+
+    const tagsList = card.querySelector('.project-card__tags');
+    (data.tags || []).forEach(tag => {
+        const li = document.createElement('li');
+        li.className = 'project-card__tag';
+        li.textContent = tag;
+        tagsList.appendChild(li);
+    });
 
     // Set src after insertion (not in the template string above) so the
     // error listener is guaranteed to be attached before loading starts —
@@ -96,8 +116,25 @@ export function renderProjectCard(data){
     return card;
 }
 
-/** Fades/slides cards in as they scroll into view. Pass the cards you just rendered. */
-export function revealProjectCardsOnScroll(cards){
+// Grids that re-render on every interaction (search/filter changes on
+// projects.html) call revealProjectCardsOnScroll again each time with a
+// fresh batch of cards. Without tracking the previous observer per grid, the
+// old one is never disconnected — it keeps holding a strong reference to
+// cards already wiped from the DOM, a growing leak across a single session
+// of searching/filtering. Keyed by container, so unrelated grids (e.g.
+// Related Projects on project.html) each keep their own observer.
+const gridObservers = new WeakMap();
+
+/**
+ * Fades/slides cards in as they scroll into view. Pass the cards you just
+ * rendered and the grid container they live in, so a re-render for the same
+ * container disconnects its previous observer first.
+ */
+export function revealProjectCardsOnScroll(cards, container){
+    if (container) {
+        gridObservers.get(container)?.disconnect();
+    }
+
     const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return;
@@ -105,6 +142,8 @@ export function revealProjectCardsOnScroll(cards){
             obs.unobserve(entry.target);
         });
     }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+    if (container) gridObservers.set(container, observer);
 
     cards.forEach(card => observer.observe(card));
 }

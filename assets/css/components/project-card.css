@@ -54,6 +54,15 @@
 .project-card:nth-child(3n+2){ transition-delay:70ms; }
 .project-card:nth-child(3n+3){ transition-delay:140ms; }
 
+/* Cards still reveal on scroll (IntersectionObserver stays as-is), just
+   without the animated fade/slide/lift — they snap straight to their final
+   state instead of transitioning into it. */
+@media (prefers-reduced-motion: reduce){
+    .project-card{
+        transition:none;
+    }
+}
+
 /* ============================= */
 /* BACKGROUND + LOGO               */
 /* ============================= */

@@ -1,11 +1,16 @@
 import { decodeHtmlEntities } from "./wp-utils.js";
-import { fetchAllProjects, buildProjectCardData } from "./project-utils.js";
+import {
+  fetchAllProjects,
+  buildProjectCardData,
+  isRenderableProject,
+} from "./project-utils.js";
 import {
   renderProjectCard,
   revealProjectCardsOnScroll,
 } from "../assets/js/components/project-card.js";
 import { renderBreadcrumbs } from "./breadcrumbs.js";
 import { showState } from "./shared/loading-state.js";
+import { track } from "./shared/analytics.js";
 
 /**
  * projects.html keeps the logo and accent frame but drops the service-taxonomy
@@ -157,7 +162,7 @@ function renderServiceFilters(container, filters, activeSlug, onSelect) {
   });
 }
 
-function renderProjects(grid, projects, emptyMessage, emptyStateOptions) {
+function renderProjects(grid, projects, emptyMessage, emptyStateOptions, source) {
   grid.innerHTML = "";
 
   if (!projects.length) {
@@ -166,16 +171,35 @@ function renderProjects(grid, projects, emptyMessage, emptyStateOptions) {
   }
 
   const fragment = document.createDocumentFragment();
-  projects.forEach((project) =>
-    fragment.appendChild(renderProjectCard(buildCardData(project))),
-  );
+  projects.forEach((project) => {
+    const cardData = buildCardData(project);
+    const card = renderProjectCard(cardData);
+    card.addEventListener("click", () =>
+      track("project_card_click", { slug: project.slug, title: cardData.title, source }),
+    );
+    fragment.appendChild(card);
+  });
   grid.appendChild(fragment);
 
-  revealProjectCardsOnScroll(Array.from(grid.querySelectorAll(".project-card")));
+  revealProjectCardsOnScroll(Array.from(grid.querySelectorAll(".project-card")), grid);
 }
 
 function updateSearchClearVisibility(clearBtn, value) {
   if (clearBtn) clearBtn.hidden = !value;
+}
+
+/**
+ * Moves keyboard focus to `container` after a dynamic update destroys the
+ * control the user just activated (e.g. the "Try Again" button inside a
+ * grid that gets wiped and re-rendered) — otherwise focus silently falls
+ * back to <body> and the user loses their place on the page. Grids are
+ * plain, non-interactive containers, so tabindex="-1" is added once to let
+ * them receive this programmatic focus without joining the normal Tab order.
+ */
+function focusAfterUpdate(container) {
+  if (!container) return;
+  if (!container.hasAttribute("tabindex")) container.setAttribute("tabindex", "-1");
+  container.focus();
 }
 
 /**
@@ -202,23 +226,40 @@ function createProjectsController({ allGrid, searchInput, searchClearBtn, filter
       hasActiveFilter
         ? { actions: [{ label: "Clear Filters", onClick: clearFilters }] }
         : undefined,
+      "all",
     );
+
+    return filtered.length;
   }
 
   function setSearch(value) {
     state.search = value;
     writeStateToUrl(state.search, state.activeSlug);
-    render();
+    const resultCount = render();
+
+    const query = state.search.trim();
+    if (query) {
+      track("project_search", { query, resultCount });
+      if (resultCount === 0) track("project_search_zero_results", { query });
+    }
   }
 
   function setService(slug) {
+    const previousSlug = state.activeSlug;
     state.activeSlug = slug;
     setActiveChip(filterBar, slug);
     writeStateToUrl(state.search, state.activeSlug);
     render();
+
+    if (slug && slug !== previousSlug) {
+      track("service_filter_selected", { service: slug });
+    } else if (!slug && previousSlug) {
+      track("service_filter_cleared");
+    }
   }
 
   function clearFilters() {
+    const hadServiceFilter = Boolean(state.activeSlug);
     state.search = "";
     state.activeSlug = null;
     if (searchInput) searchInput.value = "";
@@ -226,12 +267,48 @@ function createProjectsController({ allGrid, searchInput, searchClearBtn, filter
     setActiveChip(filterBar, null);
     writeStateToUrl(state.search, state.activeSlug);
     render();
+    if (hadServiceFilter) track("service_filter_cleared");
+    // The "Clear Filters" button itself lives inside the grid render()
+    // just wiped, so keyboard focus would otherwise silently fall back to
+    // <body> — return it to the search input, the control this action reset.
+    if (searchInput) searchInput.focus();
   }
 
   return { state, render, setSearch, setService, clearFilters };
 }
 
-async function loadProjects(refs, initialUrlState) {
+/**
+ * searchInput/searchClearBtn live outside the grids loadProjects()
+ * wipes-and-rebuilds on every call, so — unlike the grids and filter chips —
+ * they survive a failed-then-retried load. Their listeners are therefore
+ * wired up exactly once (from init(), never from loadProjects() itself) and
+ * always dispatch to whatever controller is currently active via this box,
+ * so a retry can swap the controller without ever double-attaching a
+ * listener to the persistent input/button.
+ */
+function attachSearchListeners({ searchInput, searchClearBtn }, controllerBox) {
+  if (searchInput) {
+    const debouncedSetSearch = debounce(
+      (value) => controllerBox.current?.setSearch(value),
+      SEARCH_DEBOUNCE_MS,
+    );
+    searchInput.addEventListener("input", () => {
+      updateSearchClearVisibility(searchClearBtn, searchInput.value);
+      debouncedSetSearch(searchInput.value);
+    });
+  }
+
+  if (searchClearBtn) {
+    searchClearBtn.addEventListener("click", () => {
+      if (searchInput) searchInput.value = "";
+      updateSearchClearVisibility(searchClearBtn, "");
+      controllerBox.current?.setSearch("");
+      if (searchInput) searchInput.focus();
+    });
+  }
+}
+
+async function loadProjects(refs, initialUrlState, controllerBox) {
   const { featuredGrid, allGrid, filterBar, searchInput, searchClearBtn } = refs;
 
   showState(featuredGrid, "Loading projects…");
@@ -239,11 +316,15 @@ async function loadProjects(refs, initialUrlState) {
 
   try {
     const projects = await fetchAllProjects();
-    const { featuredProjects, allProjects } = partitionProjects(projects);
+    const { featuredProjects, allProjects } = partitionProjects(
+      projects.filter(isRenderableProject),
+    );
     renderProjects(
       featuredGrid,
       featuredProjects,
       "No featured projects published yet — check back soon.",
+      undefined,
+      "featured",
     );
 
     const filters = buildServiceFilters(allProjects);
@@ -254,6 +335,7 @@ async function loadProjects(refs, initialUrlState) {
       { allGrid, searchInput, searchClearBtn, filterBar },
       allProjects,
     );
+    controllerBox.current = controller;
     controller.state.search = initialUrlState.search;
     controller.state.activeSlug = initialSlug;
     writeStateToUrl(controller.state.search, controller.state.activeSlug);
@@ -263,30 +345,14 @@ async function loadProjects(refs, initialUrlState) {
 
     if (filterBar) renderServiceFilters(filterBar, filters, initialSlug, controller.setService);
 
-    if (searchInput) {
-      const debouncedSetSearch = debounce(
-        (value) => controller.setSearch(value),
-        SEARCH_DEBOUNCE_MS,
-      );
-      searchInput.addEventListener("input", () => {
-        updateSearchClearVisibility(searchClearBtn, searchInput.value);
-        debouncedSetSearch(searchInput.value);
-      });
-    }
-
-    if (searchClearBtn) {
-      searchClearBtn.addEventListener("click", () => {
-        if (searchInput) searchInput.value = "";
-        updateSearchClearVisibility(searchClearBtn, "");
-        controller.setSearch("");
-        if (searchInput) searchInput.focus();
-      });
-    }
-
     controller.render();
   } catch (err) {
     console.error("Error loading projects:", err);
-    const retry = () => loadProjects(refs, initialUrlState);
+    // The "Try Again" button lives inside featuredGrid/allGrid, both of
+    // which get wiped and re-rendered on retry — return focus to the first
+    // grid once that finishes so it isn't unexpectedly lost to <body>.
+    const retry = () =>
+      loadProjects(refs, initialUrlState, controllerBox).then(() => focusAfterUpdate(featuredGrid));
     showState(featuredGrid, "We couldn’t load projects right now.", {
       actions: [{ label: "Try Again", onClick: retry }],
     });
@@ -305,8 +371,12 @@ function init() {
     searchClearBtn: document.getElementById("projectsSearchClear"),
   };
   if (!refs.featuredGrid || !refs.allGrid) return;
+  track("projects_page_view");
   renderBreadcrumbs("projects");
-  loadProjects(refs, readStateFromUrl());
+
+  const controllerBox = { current: null };
+  attachSearchListeners(refs, controllerBox);
+  loadProjects(refs, readStateFromUrl(), controllerBox);
 }
 
 document.addEventListener("DOMContentLoaded", init);

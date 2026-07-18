@@ -72,7 +72,7 @@
 .how-we-work__aside{
     display:flex;
     flex-direction:column;
-    align-items:flex-start;
+    align-items:flex-end;
     gap:24px;
     max-width:420px;
     padding-top:4px;

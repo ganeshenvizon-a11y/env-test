@@ -21,6 +21,7 @@ import {
   hasContent,
 } from "./shared/cms-validation.js";
 import { showState } from "./shared/loading-state.js";
+import { track } from "./shared/analytics.js";
 
 function getRefs() {
   return {
@@ -123,6 +124,11 @@ function renderProject(refs, project) {
   }
   setOptionalText(refs.shortDescription, description);
   setSafeLink(refs.websiteLink, decodeHtmlEntities(acf.project_website || ""));
+  if (refs.websiteLink && !refs.websiteLink.hidden) {
+    refs.websiteLink.addEventListener("click", () =>
+      track("project_website_click", { slug: project.slug, title, destinationUrl: refs.websiteLink.href }),
+    );
+  }
 
   setImageWithFallback(refs.heroImage, image, FALLBACK_IMAGE, title);
 
@@ -135,7 +141,9 @@ function renderProject(refs, project) {
   refs.content.innerHTML = rawContent;
   wrapHeadingParagraphPairs(refs.content);
 
-  initSocialShare({ title, description, url, image });
+  initSocialShare({ title, description, url, image, slug: project.slug });
+
+  track("project_page_view", { slug: project.slug, title });
 }
 
 function hideHero(refs) {

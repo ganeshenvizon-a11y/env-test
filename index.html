@@ -1,753 +1,939 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+    <head>
 
-    <meta charset="UTF-8">
+        <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Envizon Studio</title>
+        <title>Envizon Studio</title>
 
-    <!-- Google Font -->
+        <!-- Google Font -->
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet">
+        <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Phosphor Icons (hero CTA arrow icon) -->
-    <link rel="stylesheet" type="text/css"
-          href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
+        <!-- Phosphor Icons (hero CTA arrow icon) -->
+        <link
+        rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
 
-    <!-- CSS -->
+        <!-- CSS -->
 
-    <link rel="stylesheet"
-          href="assets/css/base/variables.css">
+        <link rel="stylesheet" href="assets/css/base/variables.css">
 
-    <link rel="stylesheet"
-          href="assets/css/base/reset.css">
+        <link rel="stylesheet" href="assets/css/base/reset.css">
 
-    <link rel="stylesheet"
-          href="assets/css/base/fonts.css">
+        <link rel="stylesheet" href="assets/css/base/fonts.css">
 
-    <link rel="stylesheet"
-          href="assets/css/base/services-variables.css">
+        <link rel="stylesheet" href="assets/css/base/services-variables.css">
 
-    <link rel="stylesheet"
-          href="css/header.css">
+        <link rel="stylesheet" href="css/header.css">
 
-    <link rel="stylesheet"
-          href="assets/css/components/hero.css">
+        <link rel="stylesheet" href="assets/css/components/hero.css">
 
-    <link rel="stylesheet"
-          href="assets/css/components/buttons.css">
+        <link rel="stylesheet" href="assets/css/components/buttons.css">
 
-    <link rel="stylesheet"
-          href="assets/css/components/carousel.css">
+        <link rel="stylesheet" href="assets/css/components/carousel.css">
 
-    <link rel="stylesheet"
-          href="assets/css/components/services-bar.css">
+        <link rel="stylesheet" href="assets/css/components/services-bar.css">
 
-    <link rel="stylesheet"
-          href="assets/css/components/about-values.css">
+        <link rel="stylesheet" href="assets/css/components/about-values.css">
 
-    <link rel="stylesheet"
-          href="assets/css/components/craft-services.css">
+        <link rel="stylesheet" href="assets/css/components/craft-services.css">
 
-    <link rel="stylesheet"
-          href="assets/css/components/how-we-work.css">
+        <link rel="stylesheet" href="assets/css/components/how-we-work.css">
 
-    <link rel="stylesheet"
-          href="assets/css/components/workflow-showcase.css">
+        <link rel="stylesheet" href="assets/css/components/workflow-showcase.css">
 
-    <link rel="stylesheet"
-          href="assets/css/components/testimonials.css">
+        <link rel="stylesheet" href="assets/css/components/testimonials.css">
 
-    <link rel="stylesheet"
-          href="assets/css/components/stats-highlight.css">
+        <link rel="stylesheet" href="assets/css/components/stats-highlight.css">
 
-    <link rel="stylesheet"
-          href="assets/css/components/integrations.css">
+        <link rel="stylesheet" href="assets/css/components/integrations.css">
 
-    <link rel="stylesheet"
-          href="assets/css/components/services-cta.css">
+        <link rel="stylesheet" href="assets/css/components/services-cta.css">
 
-    <link rel="stylesheet"
-          href="css/footer.css">
+        <link rel="stylesheet" href="css/footer.css">
 
-    <link rel="stylesheet"
-          href="assets/css/components/faq.css">
+        <link rel="stylesheet" href="assets/css/components/faq.css">
 
-    <link rel="stylesheet"
-          href="assets/css/components/insights.css">
+        <link rel="stylesheet" href="assets/css/components/insights.css">
 
-    <link rel="stylesheet"
-          href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/style.css">
 
-    <link rel="stylesheet"
-          href="assets/css/responsive.css">
+        <link rel="stylesheet" href="assets/css/responsive.css">
 
-    <link rel="stylesheet"
-          href="css/index-animations.css">
+        <link rel="stylesheet" href="css/index-animations.css">
 
-</head>
+    </head>
 
-<body>
-<header class="header"></header>
+    <body>
+        <header class="header"></header>
 
-<section class="hero">
-    <!-- Parallax background element -->
-    <div class="hero-bg"></div>
+        <section
+            class="hero">
+            <!-- Parallax background element -->
+            <div class="hero-bg"></div>
 
-    <div class="hero-content">
-        <!-- Masked Text Headline (Avoids text layout shifts during animated reveals) -->
-        <h1 class="hero-title">
-            <span class="hero-title__line">
-                <span class="hero-title__mask"><span class="hero-title__word">Designing</span></span>
-                <span class="hero-title__mask"><span class="hero-title__word nowrap">Inn<span class="innovation-o"><img src="assets/images/ellipse-outer.png" alt=""><img src="assets/images/ellipse-inner.png" alt=""></span>vation</span></span>
-            </span>
-            <span class="hero-title__line">
-                <span class="hero-title__mask"><span class="hero-title__word">For</span></span>
-                <span class="hero-title__mask"><span class="hero-title__word highlight">Every</span></span>
-                <span class="hero-title__mask"><span class="hero-title__word"><span class="highlight">Business</span>.</span></span>
-            </span>
-        </h1>
-
-        <p>
-            We help ambitious brands transform ideas into high-performing digital products through strategy, design, and development.
-        </p>
-
-        <!-- Hero Buttons -->
-        <div class="hero-buttons">
-            <button class="btn btn-primary" onclick="window.location.href='contact.html'">
-                <span>Let's Build Now</span>
-                <i class="ph ph-arrow-up-right"></i>
-            </button>
-            <a href="projects.html" class="btn btn-secondary">
-                <span class="play-icon">▶</span>
-                View Our Work
-            </a>
-        </div>
-    </div>
-
-    <!-- 5-Card Coverflow Showcase Carousel Section -->
-    <div class="carousel-section">
-        <div class="showcase-carousel" id="showcaseCarousel" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Featured services showcase">
-            <div class="showcase-carousel__stage">
-                <ul class="showcase-carousel__track">
-                    <!-- Carousel Slide Card 1 -->
-                    <li class="showcase-card" data-category="Web Development">
-                        <span class="showcase-card__overlay" aria-hidden="true"></span>
-                        <div class="showcase-card__media">
-                            <img src="assets/images/b1.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
-                            <span class="showcase-card__label">Web Development</span>
-                        </div>
-                    </li>
-                    <!-- Carousel Slide Card 2 -->
-                    <li class="showcase-card" data-category="Brand Identity">
-                        <span class="showcase-card__overlay" aria-hidden="true"></span>
-                        <div class="showcase-card__media">
-                            <img src="assets/images/b2.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
-                            <span class="showcase-card__label">Brand Identity</span>
-                        </div>
-                    </li>
-                    <!-- Carousel Slide Card 3 -->
-                    <li class="showcase-card" data-category="CRO Optimization">
-                        <span class="showcase-card__overlay" aria-hidden="true"></span>
-                        <div class="showcase-card__media">
-                            <img src="assets/images/b3.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
-                            <span class="showcase-card__label">CRO Optimization</span>
-                        </div>
-                    </li>
-                    <!-- Carousel Slide Card 4 -->
-                    <li class="showcase-card" data-category="Design Systems">
-                        <span class="showcase-card__overlay" aria-hidden="true"></span>
-                        <div class="showcase-card__media">
-                            <img src="assets/images/b4.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
-                            <span class="showcase-card__label">Design Systems</span>
-                        </div>
-                    </li>
-                    <!-- Carousel Slide Card 5 -->
-                    <li class="showcase-card" data-category="Mobile Apps">
-                        <span class="showcase-card__overlay" aria-hidden="true"></span>
-                        <div class="showcase-card__media">
-                            <img src="assets/images/b5.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
-                            <span class="showcase-card__label">Mobile Apps</span>
-                        </div>
-                    </li>
-
-                    <li class="showcase-card" data-category="SAAS Products">
-                        <span class="showcase-card__overlay" aria-hidden="true"></span>
-                        <div class="showcase-card__media">
-                            <img src="assets/images/uiux-banner.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
-                            <span class="showcase-card__label">SAAS Products</span>
-                        </div>
-                    </li>
-
-                    <li class="showcase-card" data-category="UI/UX Design">
-                        <span class="showcase-card__overlay" aria-hidden="true"></span>
-                        <div class="showcase-card__media">
-                            <img src="assets/images/b2.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
-                            <span class="showcase-card__label">UI/UX Design</span>
-                        </div>
-                    </li>
-
-                    <li class="showcase-card" data-category="Product Strategy">
-                        <span class="showcase-card__overlay" aria-hidden="true"></span>
-                        <div class="showcase-card__media">
-                            <img src="assets/images/b3.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
-                            <span class="showcase-card__label">Product Strategy</span>
-                        </div>
-                    </li>
-
-                    
-
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Services Category Nav (synced with the showcase carousel) -->
-<section class="services-bar" aria-label="Our services">
-    <ul class="services-bar__track" id="servicesTicker">
-        <li class="services-bar__item">
-            <button type="button" class="services-bar__btn">
-                <span class="services-bar__dot" aria-hidden="true"></span>
-                <span class="services-bar__label">Web Development</span>
-            </button>
-        </li>
-        <li class="services-bar__item">
-            <button type="button" class="services-bar__btn">
-                <span class="services-bar__dot" aria-hidden="true"></span>
-                <span class="services-bar__label">Brand Identity</span>
-            </button>
-        </li>
-        <li class="services-bar__item">
-            <button type="button" class="services-bar__btn">
-                <span class="services-bar__dot" aria-hidden="true"></span>
-                <span class="services-bar__label">CRO Optimization</span>
-            </button>
-        </li>
-        <li class="services-bar__item">
-            <button type="button" class="services-bar__btn">
-                <span class="services-bar__dot" aria-hidden="true"></span>
-                <span class="services-bar__label">Design Systems</span>
-            </button>
-        </li>
-        <li class="services-bar__item">
-            <button type="button" class="services-bar__btn">
-                <span class="services-bar__dot" aria-hidden="true"></span>
-                <span class="services-bar__label">Mobile Apps</span>
-            </button>
-        </li>
-    </ul>
-</section>
-
-
-<!-- Better Tools · Smooth Workflow — floating AI showcase -->
-<section class="workflow-showcase" aria-label="Better tools, smooth workflow, including AI tools">
-
-    <div class="workflow-showcase__container">
-
-        <div class="workflow-showcase__card workflow-showcase__card--sprint" aria-hidden="true">
-            <div class="workflow-showcase__card-scale">
-                <div class="workflow-showcase__card-float">
-                    <img src="assets/images/workflow/sprint-status.png" alt="" class="workflow-showcase__card-img workflow-showcase__card-img--sprint">
-                </div>
-            </div>
-        </div>
-
-        <div class="workflow-showcase__card workflow-showcase__card--gemini" aria-hidden="true">
-            <div class="workflow-showcase__card-scale">
-                <div class="workflow-showcase__card-float">
-                    <img src="assets/images/workflow/gemini-sparkle.png" alt="" class="workflow-showcase__card-img workflow-showcase__card-img--gemini">
-                </div>
-            </div>
-        </div>
-
-        <div class="workflow-showcase__card workflow-showcase__card--orange" aria-hidden="true">
-            <div class="workflow-showcase__card-scale">
-                <div class="workflow-showcase__card-float">
-                    <img src="assets/images/workflow/orange-sparkle.png" alt="" class="workflow-showcase__card-img workflow-showcase__card-img--orange">
-                </div>
-            </div>
-        </div>
-
-        <div class="workflow-showcase__card workflow-showcase__card--analytics" aria-hidden="true">
-            <div class="workflow-showcase__card-scale">
-                <div class="workflow-showcase__card-float">
-                    <img src="assets/images/workflow/conversion-rate.png" alt="" class="workflow-showcase__card-img workflow-showcase__card-img--analytics">
-                </div>
-            </div>
-        </div>
-
-        <div class="workflow-showcase__content">
-
-            <h2 class="workflow-showcase__heading">
-                <span class="title-line"><span class="title-line-inner"><span class="workflow-showcase__highlight">Better Tools</span></span></span><br>
-                <span class="title-line"><span class="title-line-inner"><span class="workflow-showcase__highlight">Smooth</span> Workflow</span></span><br>
-                <span class="title-line"><span class="title-line-inner">including
-                    <span class="workflow-showcase__toggle" role="img" aria-label="AI tools enabled">
-                        <span class="workflow-showcase__toggle-knob">
-                            <svg class="workflow-showcase__toggle-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="12" r="8" stroke="#E8A11A" stroke-width="3"/>
-                                <circle cx="12" cy="12" r="2.5" fill="#E8A11A"/>
-                            </svg>
+            <div
+                class="hero-content">
+                <!-- Masked Text Headline (Avoids text layout shifts during animated reveals) -->
+                <h1 class="hero-title">
+                    <span class="hero-title__line">
+                        <span class="hero-title__mask">
+                            <span class="hero-title__word">Designing</span>
+                        </span>
+                        <span class="hero-title__mask">
+                            <span class="hero-title__word nowrap">Inn<span class="innovation-o"><img src="assets/images/ellipse-outer.png" alt=""><img src="assets/images/ellipse-inner.png" alt=""></span>vation</span>
                         </span>
                     </span>
-                    AI Tools.</span></span>
-            </h2>
+                    <span class="hero-title__line">
+                        <span class="hero-title__mask">
+                            <span class="hero-title__word">For</span>
+                        </span>
+                        <span class="hero-title__mask">
+                            <span class="hero-title__word highlight">Every</span>
+                        </span>
+                        <span class="hero-title__mask">
+                            <span class="hero-title__word">
+                                <span class="highlight">Business</span>.</span>
+                        </span>
+                    </span>
+                </h1>
 
-        </div>
+                <p>
+                    We help ambitious brands transform ideas into high-performing digital products through strategy, design, and development.
+                </p>
 
-    </div>
+                <!-- Hero Buttons -->
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="window.location.href='contact.html'">
+                        <span>Let's Build Now</span>
+                        <i class="ph ph-arrow-up-right"></i>
+                    </button>
+                    <a href="projects.html" class="btn btn-secondary">
+                        <span class="play-icon">▶</span>
+                        View Our Work
+                    </a>
+                </div>
+            </div>
 
-</section>
+            <!-- 5-Card Coverflow Showcase Carousel Section -->
+            <div class="carousel-section">
+                <div class="showcase-carousel" id="showcaseCarousel" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Featured services showcase">
+                    <div class="showcase-carousel__stage">
+                        <ul
+                            class="showcase-carousel__track">
+                            <!-- Carousel Slide Card 1 -->
+                            <li class="showcase-card" data-category="Web Development">
+                                <span class="showcase-card__overlay" aria-hidden="true"></span>
+                                <div class="showcase-card__media">
+                                    <img src="assets/images/b1.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
+                                    <span class="showcase-card__label">Web Development</span>
+                                </div>
+                            </li>
+                            <!-- Carousel Slide Card 2 -->
+                            <li class="showcase-card" data-category="Brand Identity">
+                                <span class="showcase-card__overlay" aria-hidden="true"></span>
+                                <div class="showcase-card__media">
+                                    <img src="assets/images/b2.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
+                                    <span class="showcase-card__label">Brand Identity</span>
+                                </div>
+                            </li>
+                            <!-- Carousel Slide Card 3 -->
+                            <li class="showcase-card" data-category="CRO Optimization">
+                                <span class="showcase-card__overlay" aria-hidden="true"></span>
+                                <div class="showcase-card__media">
+                                    <img src="assets/images/b3.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
+                                    <span class="showcase-card__label">CRO Optimization</span>
+                                </div>
+                            </li>
+                            <!-- Carousel Slide Card 4 -->
+                            <li class="showcase-card" data-category="Design Systems">
+                                <span class="showcase-card__overlay" aria-hidden="true"></span>
+                                <div class="showcase-card__media">
+                                    <img src="assets/images/b4.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
+                                    <span class="showcase-card__label">Design Systems</span>
+                                </div>
+                            </li>
+                            <!-- Carousel Slide Card 5 -->
+                            <li class="showcase-card" data-category="Mobile Apps">
+                                <span class="showcase-card__overlay" aria-hidden="true"></span>
+                                <div class="showcase-card__media">
+                                    <img src="assets/images/b5.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
+                                    <span class="showcase-card__label">Mobile Apps</span>
+                                </div>
+                            </li>
 
-<!-- Services Values Section -->
-<section class="about-values" id="servicesScroll" aria-label="Our services and capabilities">
+                            <li class="showcase-card" data-category="SAAS Products">
+                                <span class="showcase-card__overlay" aria-hidden="true"></span>
+                                <div class="showcase-card__media">
+                                    <img src="assets/images/uiux-banner.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
+                                    <span class="showcase-card__label">SAAS Products</span>
+                                </div>
+                            </li>
 
-    <div class="about-values__container">
+                            <li class="showcase-card" data-category="UI/UX Design">
+                                <span class="showcase-card__overlay" aria-hidden="true"></span>
+                                <div class="showcase-card__media">
+                                    <img src="assets/images/b2.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
+                                    <span class="showcase-card__label">UI/UX Design</span>
+                                </div>
+                            </li>
 
-        <div class="about-values__header">
+                            <li class="showcase-card" data-category="Product Strategy">
+                                <span class="showcase-card__overlay" aria-hidden="true"></span>
+                                <div class="showcase-card__media">
+                                    <img src="assets/images/b3.png" alt="" class="showcase-card__image" loading="lazy" decoding="async">
+                                    <span class="showcase-card__label">Product Strategy</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <div class="about-values__heading">
+        <!-- Services Category Nav (synced with the showcase carousel) -->
+        <section class="services-bar" aria-label="Our services">
+            <ul class="services-bar__track" id="servicesTicker">
+                <li class="services-bar__item">
+                    <span class="services-bar__dot" aria-hidden="true"></span>
+                    <span class="services-bar__label">Web Development</span>
+                </li>
+                <li class="services-bar__item">
+                    <span class="services-bar__dot" aria-hidden="true"></span>
+                    <span class="services-bar__label">Brand Identity</span>
+                </li>
+                <li class="services-bar__item">
+                    <span class="services-bar__dot" aria-hidden="true"></span>
+                    <span class="services-bar__label">CRO Optimization</span>
+                </li>
+                <li class="services-bar__item">
+                    <span class="services-bar__dot" aria-hidden="true"></span>
+                    <span class="services-bar__label">Design Systems</span>
+                </li>
+                <li class="services-bar__item">
+                    <span class="services-bar__dot" aria-hidden="true"></span>
+                    <span class="services-bar__label">Mobile Apps</span>
+                </li>
+            </ul>
+        </section>
 
-                <div class="about-values__eyebrow">
-                    <span class="about-values__eyebrow-line" aria-hidden="true"></span>
-                    <span>What We Do</span>
+
+        <!-- Better Tools · Smooth Workflow — floating AI showcase -->
+        <section class="workflow-showcase" aria-label="Better tools, smooth workflow, including AI tools">
+
+            <div class="workflow-showcase__container">
+
+                <div class="workflow-showcase__card workflow-showcase__card--sprint" aria-hidden="true">
+                    <div class="workflow-showcase__card-scale">
+                        <div class="workflow-showcase__card-float">
+                            <img src="assets/images/workflow/sprint-status.png" alt="" class="workflow-showcase__card-img workflow-showcase__card-img--sprint">
+                        </div>
+                    </div>
                 </div>
 
-                <h2 class="about-values__title">
-                    <span class="title-line"><span class="title-line-inner">Craft That <span class="about-values__title-accent">Converts</span></span></span>
-                </h2>
+                <div class="workflow-showcase__card workflow-showcase__card--gemini" aria-hidden="true">
+                    <div class="workflow-showcase__card-scale">
+                        <div class="workflow-showcase__card-float">
+                            <img src="assets/images/workflow/gemini-sparkle.png" alt="" class="workflow-showcase__card-img workflow-showcase__card-img--gemini">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="workflow-showcase__card workflow-showcase__card--orange" aria-hidden="true">
+                    <div class="workflow-showcase__card-scale">
+                        <div class="workflow-showcase__card-float">
+                            <img src="assets/images/workflow/orange-sparkle.png" alt="" class="workflow-showcase__card-img workflow-showcase__card-img--orange">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="workflow-showcase__card workflow-showcase__card--analytics" aria-hidden="true">
+                    <div class="workflow-showcase__card-scale">
+                        <div class="workflow-showcase__card-float">
+                            <img src="assets/images/workflow/conversion-rate.png" alt="" class="workflow-showcase__card-img workflow-showcase__card-img--analytics">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="workflow-showcase__content">
+
+                    <h2 class="workflow-showcase__heading">
+                        <span class="title-line">
+                            <span class="title-line-inner">
+                                <span class="workflow-showcase__highlight">Better Tools</span>
+                            </span>
+                        </span><br>
+                        <span class="title-line">
+                            <span class="title-line-inner">
+                                <span class="workflow-showcase__highlight">Smooth</span>
+                                Workflow</span>
+                        </span><br>
+                        <span class="title-line">
+                            <span class="title-line-inner">including
+                                <span class="workflow-showcase__toggle" role="img" aria-label="AI tools enabled">
+                                    <span class="workflow-showcase__toggle-knob">
+                                        <svg class="workflow-showcase__toggle-icon" viewbox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="12" cy="12" r="8" stroke="#E8A11A" stroke-width="3"/>
+                                            <circle cx="12" cy="12" r="2.5" fill="#E8A11A"/>
+                                        </svg>
+                                    </span>
+                                </span>
+                                AI Tools.</span>
+                        </span>
+                    </h2>
+
+                </div>
 
             </div>
 
-            <div class="about-values__aside">
+        </section>
 
-                <a href="contact.html" class="about-values__cta">
-                    Contact Now
-                    <span class="about-values__cta-icon" aria-hidden="true">↗</span>
-                </a>
+        <!-- Services Values Section -->
+        <section class="about-values" id="servicesScroll" aria-label="Our services and capabilities">
 
-                <p class="about-values__text">
-                    Our talented and diverse team works together for one purpose—to
-                    unlock the potential of those around us.
-                </p>
+            <div class="about-values__container">
+
+                <div class="about-values__header">
+
+                    <div class="about-values__heading">
+
+                        <div class="about-values__eyebrow">
+                            <span class="about-values__eyebrow-line" aria-hidden="true"></span>
+                            <span>What We Do</span>
+                        </div>
+
+                        <h2 class="about-values__title">
+                            <span class="title-line">
+                                <span class="title-line-inner">Craft That
+                                    <span class="about-values__title-accent">Converts</span>
+                                </span>
+                            </span>
+                        </h2>
+
+                    </div>
+
+                    <div class="about-values__aside">
+
+                        <a href="contact.html" class="about-values__cta">
+                            Contact Now
+                            <span class="about-values__cta-icon" aria-hidden="true">↗</span>
+                        </a>
+
+                        <p class="about-values__text">
+                            Our talented and diverse team works together for one purpose—to
+                                                unlock the potential of those around us.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <hr class="about-values__divider">
+
+                <div class="about-values__stage">
+                    <div class="about-values__track" id="servicesTrack"></div>
+                </div>
 
             </div>
 
-        </div>
-
-        <hr class="about-values__divider">
-
-        <div class="about-values__stage">
-            <div class="about-values__track" id="servicesTrack"></div>
-        </div>
-
-    </div>
-
-</section>
+        </section>
 
 
-<!-- Built for businesses that refuse to look average -->
-<section class="stats-highlight" aria-label="Why businesses choose Envizon">
+        <!-- Built for businesses that refuse to look average -->
+        <section class="stats-highlight" aria-label="Why businesses choose Envizon">
 
-    <div class="stats-highlight__container">
+            <div class="stats-highlight__container">
 
-        <div class="stats-highlight__top">
+                <div class="stats-highlight__top">
 
-            <h2 class="stats-highlight__title">
-                <span class="title-line"><span class="title-line-inner">Built For <span>Businesses</span></span></span><br>
-                <span class="title-line"><span class="title-line-inner">That Refuse To <span>Look Average</span></span></span>
-            </h2>
+                    <h2 class="stats-highlight__title">
+                        <span class="title-line">
+                            <span class="title-line-inner">Built For
+                                <span>Businesses</span>
+                            </span>
+                        </span><br>
+                        <span class="title-line">
+                            <span class="title-line-inner">That Refuse To
+                                <span>Look Average</span>
+                            </span>
+                        </span>
+                    </h2>
 
-            <div class="stats-highlight__row">
+                    <div class="stats-highlight__row">
 
-                <p class="stats-highlight__text">
-                    Envizon exists for the ambitious ones. The founders who understand
-                    that <b>design is a business lever</b>, not a line item. The teams who refuse
-                    to ship average. The brands that want their product to feel inevitable.
-                </p>
+                        <p class="stats-highlight__text">
+                            Envizon exists for the ambitious ones. The founders who understand
+                                                that
+                            <b>design is a business lever</b>, not a line item. The teams who refuse
+                                                    to ship average. The brands that want their product to feel inevitable.
+                        </p>
 
-                <div class="stats-highlight__right">
+                        <div class="stats-highlight__right">
 
-                    <a href="projects.html" class="stats-highlight__link">
-                        Read Case Studies
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                            <a href="projects.html" class="stats-highlight__link">
+                                Read Case Studies
+                                <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="stats-highlight__grid">
+
+                    <div class="stats-highlight__card">
+                        <div class="stats-highlight__percent">80%</div>
+                        <div class="stats-highlight__card-title">Growth using Envizon</div>
+                        <p class="stats-highlight__card-desc">Achieve up to a 15% uplift in conversion rates as Redacted AI's algorithms optimize pricing in real-time</p>
+                    </div>
+
+                    <div class="stats-highlight__card">
+                        <div class="stats-highlight__percent">15%</div>
+                        <div class="stats-highlight__card-title">Boost Conversion Rates</div>
+                        <p class="stats-highlight__card-desc">Achieve up to a 15% uplift in conversion rates as Redacted AI's algorithms optimize pricing in real-time</p>
+                    </div>
+
+                    <div class="stats-highlight__card">
+                        <div class="stats-highlight__percent">85%</div>
+                        <div class="stats-highlight__card-title">Better Onboarding Proof</div>
+                        <p class="stats-highlight__card-desc">Achieve up to a 15% uplift in conversion rates as Redacted AI's algorithms optimize pricing in real-time</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Integrated with top rated tools -->
+        <section class="integrations" aria-label="Integrated with top rated tools">
+
+            <div class="integrations__container">
+
+                <div class="integrations__card">
+
+                    <span class="integrations__glow integrations__glow--gold-top" aria-hidden="true"></span>
+                    <span class="integrations__glow integrations__glow--white" aria-hidden="true"></span>
+                    <span class="integrations__glow integrations__glow--gold-bottom" aria-hidden="true"></span>
+
+                    <div class="integrations__header">
+
+                        <h2 class="integrations__title">
+                            <span class="title-line">
+                                <span class="title-line-inner">Integrated with Top Rated
+                                    <span class="integrations__title-wrench-wrap"><img src="assets/images/workflow/tools.svg" alt="Tool" class="integrations__title-wrench"></span>
+                                    <span>Tools.</span>
+                                </span>
+                            </span>
+                        </h2>
+
+                        <p class="integrations__subtitle">
+                            We plug into the design and development tools your team already trusts,
+                                                from first sketch to final deploy.
+                        </p>
+
+                    </div>
+
+                    <div class="integrations__grid">
+
+                        <div class="integrations__item integrations__item--default" style="--accent:#31A8FF;">
+                            <span class="integrations__icon" aria-hidden="true"><img src="assets/images/workflow/adobe-photoshop-icon-1.svg" alt="Photoshop"></span>
+                            <div>
+                                <div class="integrations__item-title">Photoshop</div>
+                                <p class="integrations__item-desc">Send sms to Zipify Customers</p>
+                            </div>
+                        </div>
+
+                        <div class="integrations__item integrations__item--default" style="--accent:#8b949e;">
+                            <span class="integrations__icon" aria-hidden="true"><img src="assets/images/workflow/github-icon-1-1.svg" alt="GitHub"></span>
+                            <div>
+                                <div class="integrations__item-title">GitHub</div>
+                                <p class="integrations__item-desc">Create new segments and send more targeted .</p>
+                            </div>
+                        </div>
+
+                        <div class="integrations__item integrations__item--green" style="--accent:#82B541;">
+                            <span class="integrations__icon" aria-hidden="true"><img src="assets/images/workflow/envato-logo-icon-1.svg" alt="Envato Elements"></span>
+                            <div>
+                                <div class="integrations__item-title">Envato Elements</div>
+                                <p class="integrations__item-desc">Send SMS to Okendo reviews</p>
+                            </div>
+                        </div>
+
+                        <div class="integrations__item integrations__item--gold" style="--accent:#F9AB00;">
+                            <span class="integrations__icon" aria-hidden="true"><img src="assets/images/workflow/Google-logo.svg" alt="Google Analytics"></span>
+                            <div>
+                                <div class="integrations__item-title">Google Analytics</div>
+                                <p class="integrations__item-desc">View Analytics data inside BlueReceipt</p>
+                            </div>
+                        </div>
+
+                        <div class="integrations__item integrations__item--default" style="--accent:#A259FF;">
+                            <span class="integrations__icon" aria-hidden="true"><img src="assets/images/workflow/figma-icon-1.svg" alt="Figma"></span>
+                            <div>
+                                <div class="integrations__item-title">Figma</div>
+                                <p class="integrations__item-desc">View Analytics data inside BlueReceipt</p>
+                            </div>
+                        </div>
+
+                        <div class="integrations__item integrations__item--green" style="--accent:#FF9A00;">
+                            <span class="integrations__icon" aria-hidden="true"><img src="assets/images/workflow/adobe-illustrator-icon-1.svg" alt="Illustrator"></span>
+                            <div>
+                                <div class="integrations__item-title">Illustrator</div>
+                                <p class="integrations__item-desc">Create new segments and send more targeted Klayvio emails</p>
+                            </div>
+                        </div>
+
+                        <div class="integrations__item integrations__item--default" style="--accent:#DA1F26;">
+                            <span class="integrations__icon" aria-hidden="true"><img src="assets/images/workflow/adobe-express-icon-1@2x.png" alt="Adobe Suite"></span>
+                            <div>
+                                <div class="integrations__item-title">Adobe Suite</div>
+                                <p class="integrations__item-desc">Create new segments and send more targeted Mailchimp emails</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- How We Work — five-stage process -->
+        <section class="how-we-work" aria-label="How we work">
+
+            <div class="how-we-work__container">
+
+                <div class="how-we-work__header">
+
+                    <div class="how-we-work__heading">
+
+                        <div class="how-we-work__eyebrow">
+                            <span class="how-we-work__eyebrow-line" aria-hidden="true"></span>
+                            <span>How We Work</span>
+                        </div>
+
+                        <h2 class="how-we-work__title">
+                            <span class="title-line">
+                                <span class="title-line-inner">Five stages.</span>
+                            </span><br>
+                            <span class="title-line">
+                                <span class="title-line-inner">
+                                    <span class="how-we-work__title-accent">Zero surprises.</span>
+                                </span>
+                            </span>
+                        </h2>
+
+                    </div>
+
+                    <div class="how-we-work__aside">
+
+                        <a href="contact.html" class="how-we-work__cta">
+                            Start Building Now
+                            <span aria-hidden="true">↗</span>
+                        </a>
+
+                        <p class="how-we-work__text">
+                            Our talented and diverse team works together for one purpose—to
+                                                unlock the potential of those around us.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="stage-cards has-active" id="stageCards" role="tablist" aria-label="Our five-stage process">
+
+                    <article class="stage-card is-active" data-stage="1" role="tab" aria-selected="true" tabindex="0">
+                        <div class="stage-card__inner">
+
+                            <div class="stage-card__row">
+                                <span class="stage-card__number">Stage 01</span>
+                                <span class="stage-card__icon" aria-hidden="true">
+                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.35-4.35"/></svg>
+                                </span>
+                            </div>
+
+                            <h3 class="stage-card__title">Discover</h3>
+
+                            <p class="stage-card__desc">Deep-dive into your business, users, and competition. We run stakeholder interviews, user research sessions, and competitive audits to uncover the real problem worth solving.</p>
+
+                        </div>
+                    </article>
+
+                    <article class="stage-card" data-stage="2" role="tab" aria-selected="false" tabindex="-1">
+                        <div class="stage-card__inner">
+
+                            <div class="stage-card__row">
+                                <span class="stage-card__number">Stage 02</span>
+                                <span class="stage-card__icon" aria-hidden="true">
+                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>
+                                </span>
+                            </div>
+
+                            <h3 class="stage-card__title">Define</h3>
+
+                            <p class="stage-card__desc">We translate insights into a clear strategy — mapping user flows, defining success metrics, and scoping the product so every decision has a purpose.</p>
+
+                        </div>
+                    </article>
+
+                    <article class="stage-card" data-stage="3" role="tab" aria-selected="false" tabindex="-1">
+                        <div class="stage-card__inner">
+
+                            <div class="stage-card__row">
+                                <span class="stage-card__number">Stage 03</span>
+                                <span class="stage-card__icon" aria-hidden="true">
+                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l4-6h10l4 6-9 12L3 9z"/><path d="M3 9h18M9 3l3 6 3-6"/></svg>
+                                </span>
+                            </div>
+
+                            <h3 class="stage-card__title">Design</h3>
+
+                            <p class="stage-card__desc">Wireframes evolve into polished, on-brand interfaces. We prototype, test, and refine until every screen feels intuitive and effortless to use.</p>
+
+                        </div>
+                    </article>
+
+                    <article class="stage-card" data-stage="4" role="tab" aria-selected="false" tabindex="-1">
+                        <div class="stage-card__inner">
+
+                            <div class="stage-card__row">
+                                <span class="stage-card__number">Stage 04</span>
+                                <span class="stage-card__icon" aria-hidden="true">
+                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+                                </span>
+                            </div>
+
+                            <h3 class="stage-card__title">Develop</h3>
+
+                            <p class="stage-card__desc">Our engineers turn designs into fast, scalable, production-ready code — with clean architecture, rigorous QA, and close collaboration at every sprint.</p>
+
+                        </div>
+                    </article>
+
+                    <article class="stage-card" data-stage="5" role="tab" aria-selected="false" tabindex="-1">
+                        <div class="stage-card__inner">
+
+                            <div class="stage-card__row">
+                                <span class="stage-card__number">Stage 05</span>
+                                <span class="stage-card__icon" aria-hidden="true">
+                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+                                </span>
+                            </div>
+
+                            <h3 class="stage-card__title">Scale</h3>
+
+                            <p class="stage-card__desc">We launch, measure, and iterate. Post-launch support, analytics, and optimization keep your product growing long after release.</p>
+
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- For businesses that demand the best — testimonial grid -->
+        <section class="testimonials" aria-label="What our clients say">
+
+            <div class="testimonials__container">
+
+                <div class="testimonials__header">
+
+                    <div class="testimonials__heading">
+
+                        <div class="testimonials__eyebrow">
+                            <span class="testimonials__eyebrow-line" aria-hidden="true"></span>
+                            <span>What We Do</span>
+                        </div>
+
+                        <h2 class="testimonials__title">
+                            <span class="title-line">
+                                <span class="title-line-inner">For businesses</span>
+                            </span><br>
+                            <span class="title-line">
+                                <span class="title-line-inner">that demand
+                                    <span class="testimonials__title-accent">the best</span>
+                                </span>
+                            </span>
+                        </h2>
+
+                    </div>
+
+                    <div class="testimonials__aside">
+
+                        <p class="testimonials__text">
+                            Six disciplines. One integrated philosophy. We don't
+                                                do component work — we build the whole machine.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="testimonials__grid">
+
+                    <article class="testimonial-card">
+
+                        <span class="testimonial-card__quote" aria-hidden="true">
+                            <svg viewbox="0 0 32 24"><path d="M8.86 24C6.13 24 3.98 23.06 2.4 21.18.8 19.3 0 16.9 0 13.98c0-3.02.9-5.78 2.7-8.28C4.5 3.2 6.98 1.34 10.14 0l2.9 4.32c-2.1.98-3.74 2.18-4.92 3.6-1.16 1.42-1.84 2.9-2.04 4.44.5-.24 1.08-.36 1.74-.36 1.76 0 3.22.58 4.38 1.74 1.18 1.14 1.77 2.6 1.77 4.38 0 1.86-.62 3.38-1.86 4.56C10.9 23.42 9.5 24 8.86 24Zm18.06 0c-2.73 0-4.88-.94-6.46-2.82-1.6-1.88-2.4-4.28-2.4-7.2 0-3.02.9-5.78 2.7-8.28C22.56 3.2 25.04 1.34 28.2 0l2.9 4.32c-2.1.98-3.74 2.18-4.92 3.6-1.16 1.42-1.84 2.9-2.04 4.44.5-.24 1.08-.36 1.74-.36 1.76 0 3.22.58 4.38 1.74 1.18 1.14 1.77 2.6 1.77 4.38 0 1.86-.62 3.38-1.86 4.56C28.96 23.42 27.56 24 26.92 24Z"/></svg>
+                        </span>
+
+                        <p class="testimonial-card__text">
+                            "Envizon didn't just redesign our product — they changed how our team thinks about
+                                                design. The process was rigorous, the output was stunning, and the results were
+                                                immediate. 68% improvement in onboarding completion in the first 8 weeks."
+                        </p>
+
+                        <div class="testimonial-card__author">
+                            <span class="testimonial-card__avatar" aria-hidden="true">RK</span>
+                            <div class="testimonial-card__author-info">
+                                <span class="testimonial-card__name">Ravi Krishnamurthy</span>
+                                <span class="testimonial-card__role">CPO, Nexus Analytics</span>
+                            </div>
+                        </div>
+
+                    </article>
+
+                    <article class="testimonial-card">
+
+                        <span class="testimonial-card__quote" aria-hidden="true">
+                            <svg viewbox="0 0 32 24"><path d="M8.86 24C6.13 24 3.98 23.06 2.4 21.18.8 19.3 0 16.9 0 13.98c0-3.02.9-5.78 2.7-8.28C4.5 3.2 6.98 1.34 10.14 0l2.9 4.32c-2.1.98-3.74 2.18-4.92 3.6-1.16 1.42-1.84 2.9-2.04 4.44.5-.24 1.08-.36 1.74-.36 1.76 0 3.22.58 4.38 1.74 1.18 1.14 1.77 2.6 1.77 4.38 0 1.86-.62 3.38-1.86 4.56C10.9 23.42 9.5 24 8.86 24Zm18.06 0c-2.73 0-4.88-.94-6.46-2.82-1.6-1.88-2.4-4.28-2.4-7.2 0-3.02.9-5.78 2.7-8.28C22.56 3.2 25.04 1.34 28.2 0l2.9 4.32c-2.1.98-3.74 2.18-4.92 3.6-1.16 1.42-1.84 2.9-2.04 4.44.5-.24 1.08-.36 1.74-.36 1.76 0 3.22.58 4.38 1.74 1.18 1.14 1.77 2.6 1.77 4.38 0 1.86-.62 3.38-1.86 4.56C28.96 23.42 27.56 24 26.92 24Z"/></svg>
+                        </span>
+
+                        <p class="testimonial-card__text">
+                            "Envizon didn't just redesign our product — they changed how our team thinks about
+                                                design. The process was rigorous, the output was stunning, and the results were
+                                                immediate. 68% improvement in onboarding completion in the first 8 weeks."
+                        </p>
+
+                        <div class="testimonial-card__author">
+                            <span class="testimonial-card__avatar" aria-hidden="true">RK</span>
+                            <div class="testimonial-card__author-info">
+                                <span class="testimonial-card__name">Ravi Krishnamurthy</span>
+                                <span class="testimonial-card__role">CPO, Nexus Analytics</span>
+                            </div>
+                        </div>
+
+                    </article>
+
+                    <article class="testimonial-card">
+
+                        <span class="testimonial-card__quote" aria-hidden="true">
+                            <svg viewbox="0 0 32 24"><path d="M8.86 24C6.13 24 3.98 23.06 2.4 21.18.8 19.3 0 16.9 0 13.98c0-3.02.9-5.78 2.7-8.28C4.5 3.2 6.98 1.34 10.14 0l2.9 4.32c-2.1.98-3.74 2.18-4.92 3.6-1.16 1.42-1.84 2.9-2.04 4.44.5-.24 1.08-.36 1.74-.36 1.76 0 3.22.58 4.38 1.74 1.18 1.14 1.77 2.6 1.77 4.38 0 1.86-.62 3.38-1.86 4.56C10.9 23.42 9.5 24 8.86 24Zm18.06 0c-2.73 0-4.88-.94-6.46-2.82-1.6-1.88-2.4-4.28-2.4-7.2 0-3.02.9-5.78 2.7-8.28C22.56 3.2 25.04 1.34 28.2 0l2.9 4.32c-2.1.98-3.74 2.18-4.92 3.6-1.16 1.42-1.84 2.9-2.04 4.44.5-.24 1.08-.36 1.74-.36 1.76 0 3.22.58 4.38 1.74 1.18 1.14 1.77 2.6 1.77 4.38 0 1.86-.62 3.38-1.86 4.56C28.96 23.42 27.56 24 26.92 24Z"/></svg>
+                        </span>
+
+                        <p class="testimonial-card__text">
+                            "Envizon didn't just redesign our product — they changed how our team thinks about
+                                                design. The process was rigorous, the output was stunning, and the results were
+                                                immediate. 68% improvement in onboarding completion in the first 8 weeks."
+                        </p>
+
+                        <div class="testimonial-card__author">
+                            <span class="testimonial-card__avatar" aria-hidden="true">RK</span>
+                            <div class="testimonial-card__author-info">
+                                <span class="testimonial-card__name">Ravi Krishnamurthy</span>
+                                <span class="testimonial-card__role">CPO, Nexus Analytics</span>
+                            </div>
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <div class="testimonials__nav">
+                    <button type="button" class="testimonials__nav-btn testimonials__nav-btn--prev" aria-label="Previous testimonial">
+                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <button type="button" class="testimonials__nav-btn testimonials__nav-btn--next" aria-label="Next testimonial">
+                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- We Share What We Learn — insights / blog -->
+        <section class="insights" aria-labelledby="insights-title">
+
+            <div class="insights__container">
+
+                <div class="insights__header">
+
+                    <div class="insights__heading">
+
+                        <div class="insights__eyebrow">
+                            <span class="insights__eyebrow-line" aria-hidden="true"></span>
+                            <span>Insights</span>
+                        </div>
+
+                        <h2 class="insights__title" id="insights-title">
+                            We share what<br>
+                            <span class="insights__title-accent">we learn.</span>
+                        </h2>
+
+                    </div>
+
+                    <a href="blog.html" class="insights__link">
+                        Read All Articles
+                        <span class="insights__link-arrow" aria-hidden="true">↗</span>
                     </a>
 
                 </div>
 
-            </div>
-
-        </div>
-
-        <div class="stats-highlight__grid">
-
-            <div class="stats-highlight__card">
-                <div class="stats-highlight__percent">80%</div>
-                <div class="stats-highlight__card-title">Growth using Envizon</div>
-                <p class="stats-highlight__card-desc">Achieve up to a 15% uplift in conversion rates as Redacted AI's algorithms optimize pricing in real-time</p>
-            </div>
-
-            <div class="stats-highlight__card">
-                <div class="stats-highlight__percent">15%</div>
-                <div class="stats-highlight__card-title">Boost Conversion Rates</div>
-                <p class="stats-highlight__card-desc">Achieve up to a 15% uplift in conversion rates as Redacted AI's algorithms optimize pricing in real-time</p>
-            </div>
-
-            <div class="stats-highlight__card">
-                <div class="stats-highlight__percent">85%</div>
-                <div class="stats-highlight__card-title">Better Onboarding Proof</div>
-                <p class="stats-highlight__card-desc">Achieve up to a 15% uplift in conversion rates as Redacted AI's algorithms optimize pricing in real-time</p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- Integrated with top rated tools -->
-<section class="integrations" aria-label="Integrated with top rated tools">
-
-    <div class="integrations__container">
-
-        <div class="integrations__card">
-
-            <span class="integrations__glow integrations__glow--gold-top" aria-hidden="true"></span>
-            <span class="integrations__glow integrations__glow--white" aria-hidden="true"></span>
-            <span class="integrations__glow integrations__glow--gold-bottom" aria-hidden="true"></span>
-
-            <div class="integrations__header">
-
-                <h2 class="integrations__title">
-                    <span class="title-line"><span class="title-line-inner">Integrated with Top Rated <span class="integrations__title-wrench-wrap"><img src="assets/images/workflow/tools.svg" alt="Tool" class="integrations__title-wrench"></span> <span>Tools.</span></span></span>
-                </h2>
-
-                <p class="integrations__subtitle">
-                    We plug into the design and development tools your team already trusts,
-                    from first sketch to final deploy.
-                </p>
+                <div class="insights__grid" id="homeInsightsGrid"></div>
 
             </div>
 
-            <div class="integrations__grid">
+        </section>
 
-                <div class="integrations__item integrations__item--default" style="--accent:#31A8FF;">
-                    <span class="integrations__icon" aria-hidden="true"><img src="assets/images/workflow/adobe-photoshop-icon-1.svg" alt="Photoshop"></span>
-                    <div>
-                        <div class="integrations__item-title">Photoshop</div>
-                        <p class="integrations__item-desc">Send sms to Zipify Customers</p>
-                    </div>
-                </div>
+        <!-- Some Question's Need Solutions — FAQ accordion -->
+        <section class="faq" aria-label="Frequently asked questions">
 
-                <div class="integrations__item integrations__item--default" style="--accent:#8b949e;">
-                    <span class="integrations__icon" aria-hidden="true"><img src="assets/images/workflow/github-icon-1-1.svg" alt="GitHub"></span>
-                    <div>
-                        <div class="integrations__item-title">GitHub</div>
-                        <p class="integrations__item-desc">Create new segments and send more targeted .</p>
-                    </div>
-                </div>
+            <div class="faq__container">
 
-                <div class="integrations__item integrations__item--green" style="--accent:#82B541;">
-                    <span class="integrations__icon" aria-hidden="true"><img src="assets/images/workflow/envato-logo-icon-1.svg" alt="Envato Elements"></span>
-                    <div>
-                        <div class="integrations__item-title">Envato Elements</div>
-                        <p class="integrations__item-desc">Send SMS to Okendo reviews</p>
-                    </div>
-                </div>
+                <div class="faq__heading">
 
-                <div class="integrations__item integrations__item--gold" style="--accent:#F9AB00;">
-                    <span class="integrations__icon" aria-hidden="true"><img src="assets/images/workflow/Google-logo.svg" alt="Google Analytics"></span>
-                    <div>
-                        <div class="integrations__item-title">Google Analytics</div>
-                        <p class="integrations__item-desc">View Analytics data inside BlueReceipt</p>
-                    </div>
-                </div>
-
-                <div class="integrations__item integrations__item--default" style="--accent:#A259FF;">
-                    <span class="integrations__icon" aria-hidden="true"><img src="assets/images/workflow/figma-icon-1.svg" alt="Figma"></span>
-                    <div>
-                        <div class="integrations__item-title">Figma</div>
-                        <p class="integrations__item-desc">View Analytics data inside BlueReceipt</p>
-                    </div>
-                </div>
-
-                <div class="integrations__item integrations__item--green" style="--accent:#FF9A00;">
-                    <span class="integrations__icon" aria-hidden="true"><img src="assets/images/workflow/adobe-illustrator-icon-1.svg" alt="Illustrator"></span>
-                    <div>
-                        <div class="integrations__item-title">Illustrator</div>
-                        <p class="integrations__item-desc">Create new segments and send more targeted Klayvio emails</p>
-                    </div>
-                </div>
-
-                <div class="integrations__item integrations__item--default" style="--accent:#DA1F26;">
-                    <span class="integrations__icon" aria-hidden="true"><img src="assets/images/workflow/adobe-express-icon-1@2x.png" alt="Adobe Suite"></span>
-                    <div>
-                        <div class="integrations__item-title">Adobe Suite</div>
-                        <p class="integrations__item-desc">Create new segments and send more targeted Mailchimp emails</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- How We Work — five-stage process -->
-<section class="how-we-work" aria-label="How we work">
-
-    <div class="how-we-work__container">
-
-        <div class="how-we-work__header">
-
-            <div class="how-we-work__heading">
-
-                <div class="how-we-work__eyebrow">
-                    <span class="how-we-work__eyebrow-line" aria-hidden="true"></span>
-                    <span>How We Work</span>
-                </div>
-
-                <h2 class="how-we-work__title">
-                    <span class="title-line"><span class="title-line-inner">Five stages.</span></span><br>
-                    <span class="title-line"><span class="title-line-inner"><span class="how-we-work__title-accent">Zero surprises.</span></span></span>
-                </h2>
-
-            </div>
-
-            <div class="how-we-work__aside">
-
-                <a href="contact.html" class="how-we-work__cta">
-                    Start Building Now
-                    <span aria-hidden="true">↗</span>
-                </a>
-
-                <p class="how-we-work__text">
-                    Our talented and diverse team works together for one purpose—to
-                    unlock the potential of those around us.
-                </p>
-            </div>
-
-        </div>
-
-        <div class="stage-cards has-active" id="stageCards" role="tablist" aria-label="Our five-stage process">
-
-            <article class="stage-card is-active" data-stage="1" role="tab" aria-selected="true" tabindex="0">
-                <div class="stage-card__inner">
-
-                    <div class="stage-card__row">
-                        <span class="stage-card__number">Stage 01</span>
-                        <span class="stage-card__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.35-4.35"/></svg>
+                    <h2 class="faq__title">
+                        <span class="title-line">
+                            <span class="title-line-inner">Some
+                                <span class="faq__title-accent">Question's</span>
+                            </span>
+                        </span><br>
+                        <span class="title-line">
+                            <span class="title-line-inner">Need
+                                <span class="faq__bulb" aria-hidden="true">
+                                    <svg viewbox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.5.36.8.94.8 1.55V16h5.4v-.55c0-.61.3-1.19.8-1.55A6 6 0 0 0 12 3Z"/></svg>
+                                </span>
+                                Solutions!</span>
                         </span>
+                    </h2>
+
+                </div>
+
+                <div class="faq__accordion" id="faqAccordion">
+
+                    <div class="faq-item">
+                        <h3 class="faq-item__heading">
+                            <button type="button" class="faq-item__trigger" id="faq-trigger-1" aria-expanded="false" aria-controls="faq-panel-1">
+                                <span class="faq-item__question">What does Envizon Studio actually do?</span>
+                                <span class="faq-item__icon" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                        <div class="faq-item__panel" id="faq-panel-1" role="region" aria-labelledby="faq-trigger-1">
+                            <div class="faq-item__content">
+                                <p>We're a full-service design and development studio. We handle strategy, UI/UX design, and production-ready code — from the first wireframe to a shipped, scalable product.</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <h3 class="stage-card__title">Discover</h3>
-
-                    <p class="stage-card__desc">Deep-dive into your business, users, and competition. We run stakeholder interviews, user research sessions, and competitive audits to uncover the real problem worth solving.</p>
-
-                </div>
-            </article>
-
-            <article class="stage-card" data-stage="2" role="tab" aria-selected="false" tabindex="-1">
-                <div class="stage-card__inner">
-
-                    <div class="stage-card__row">
-                        <span class="stage-card__number">Stage 02</span>
-                        <span class="stage-card__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>
-                        </span>
+                    <div class="faq-item is-open">
+                        <h3 class="faq-item__heading">
+                            <button type="button" class="faq-item__trigger" id="faq-trigger-2" aria-expanded="true" aria-controls="faq-panel-2">
+                                <span class="faq-item__question">Why do I need a proper design process instead of just building fast?</span>
+                                <span class="faq-item__icon" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                        <div class="faq-item__panel" id="faq-panel-2" role="region" aria-labelledby="faq-trigger-2">
+                            <div class="faq-item__content">
+                                <ol>
+                                    <li>Skipping strategy means every design decision gets made ad-hoc, and inconsistencies pile up fast across screens.</li>
+                                    <li>Fixing those inconsistencies later costs far more time and money than getting the foundation right from day one.</li>
+                                </ol>
+                            </div>
+                        </div>
                     </div>
 
-                    <h3 class="stage-card__title">Define</h3>
-
-                    <p class="stage-card__desc">We translate insights into a clear strategy — mapping user flows, defining success metrics, and scoping the product so every decision has a purpose.</p>
-
-                </div>
-            </article>
-
-            <article class="stage-card" data-stage="3" role="tab" aria-selected="false" tabindex="-1">
-                <div class="stage-card__inner">
-
-                    <div class="stage-card__row">
-                        <span class="stage-card__number">Stage 03</span>
-                        <span class="stage-card__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l4-6h10l4 6-9 12L3 9z"/><path d="M3 9h18M9 3l3 6 3-6"/></svg>
-                        </span>
+                    <div class="faq-item">
+                        <h3 class="faq-item__heading">
+                            <button type="button" class="faq-item__trigger" id="faq-trigger-3" aria-expanded="false" aria-controls="faq-panel-3">
+                                <span class="faq-item__question">Do I need an existing brand or website to get started?</span>
+                                <span class="faq-item__icon" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                        <div class="faq-item__panel" id="faq-panel-3" role="region" aria-labelledby="faq-trigger-3">
+                            <div class="faq-item__content">
+                                <p>No. We regularly take clients from a blank slate — building brand identity, product strategy, and the site itself in one engagement.</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <h3 class="stage-card__title">Design</h3>
-
-                    <p class="stage-card__desc">Wireframes evolve into polished, on-brand interfaces. We prototype, test, and refine until every screen feels intuitive and effortless to use.</p>
-
-                </div>
-            </article>
-
-            <article class="stage-card" data-stage="4" role="tab" aria-selected="false" tabindex="-1">
-                <div class="stage-card__inner">
-
-                    <div class="stage-card__row">
-                        <span class="stage-card__number">Stage 04</span>
-                        <span class="stage-card__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>
-                        </span>
+                    <div class="faq-item">
+                        <h3 class="faq-item__heading">
+                            <button type="button" class="faq-item__trigger" id="faq-trigger-4" aria-expanded="false" aria-controls="faq-panel-4">
+                                <span class="faq-item__question">How do we start working together?</span>
+                                <span class="faq-item__icon" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                        <div class="faq-item__panel" id="faq-panel-4" role="region" aria-labelledby="faq-trigger-4">
+                            <div class="faq-item__content">
+                                <p>Book an intro call. We'll scope your goals, timeline, and budget, then send a proposal with a clear stage-by-stage plan</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <h3 class="stage-card__title">Develop</h3>
-
-                    <p class="stage-card__desc">Our engineers turn designs into fast, scalable, production-ready code — with clean architecture, rigorous QA, and close collaboration at every sprint.</p>
-
                 </div>
-            </article>
-
-            <article class="stage-card" data-stage="5" role="tab" aria-selected="false" tabindex="-1">
-                <div class="stage-card__inner">
-
-                    <div class="stage-card__row">
-                        <span class="stage-card__number">Stage 05</span>
-                        <span class="stage-card__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
-                        </span>
-                    </div>
-
-                    <h3 class="stage-card__title">Scale</h3>
-
-                    <p class="stage-card__desc">We launch, measure, and iterate. Post-launch support, analytics, and optimization keep your product growing long after release.</p>
-
-                </div>
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- For businesses that demand the best — testimonial grid -->
-<section class="testimonials" aria-label="What our clients say">
-
-    <div class="testimonials__container">
-
-        <div class="testimonials__header">
-
-            <div class="testimonials__heading">
-
-                <div class="testimonials__eyebrow">
-                    <span class="testimonials__eyebrow-line" aria-hidden="true"></span>
-                    <span>What We Do</span>
-                </div>
-
-                <h2 class="testimonials__title">
-                    <span class="title-line"><span class="title-line-inner">For businesses</span></span><br>
-                    <span class="title-line"><span class="title-line-inner">that demand <span class="testimonials__title-accent">the best</span></span></span>
-                </h2>
 
             </div>
 
-            <div class="testimonials__aside">
+        </section>
+        <div class="global-cta">
+            <section class="call-to-action-content">
+                <div class="frame-parent">
+                    <div class="lets-build-something-people-r-parent">
+                        <h1 class="lets-build-something-container">
+                            <span class="lets-build-something">Let's Build Something<br/></span>
+                            <span class="people-remember">People Remember</span>
+                        </h1>
+                        <div class="decorative-elements">
+                            <img class="decorative-elements-child" alt="" src="assets/images/services/Group-2087327210.svg"/>
 
-                <p class="testimonials__text">
-                    Six disciplines. One integrated philosophy. We don't
-                    do component work — we build the whole machine.
-                </p>
+                            <img class="dot-one-icon" loading="lazy" alt="" src="assets/images/services/Ellipse-2@2x.png"/>
 
-            </div>
+                            <img class="dot-two-icon" loading="lazy" alt="" src="assets/images/services/Ellipse-3@2x.png"/>
 
-        </div>
+                            <img class="dot-three-icon" loading="lazy" alt="" src="assets/images/services/Ellipse-5@2x.png"/>
 
-        <div class="testimonials__grid">
-
-            <article class="testimonial-card">
-
-                <span class="testimonial-card__quote" aria-hidden="true">
-                    <svg viewBox="0 0 32 24"><path d="M8.86 24C6.13 24 3.98 23.06 2.4 21.18.8 19.3 0 16.9 0 13.98c0-3.02.9-5.78 2.7-8.28C4.5 3.2 6.98 1.34 10.14 0l2.9 4.32c-2.1.98-3.74 2.18-4.92 3.6-1.16 1.42-1.84 2.9-2.04 4.44.5-.24 1.08-.36 1.74-.36 1.76 0 3.22.58 4.38 1.74 1.18 1.14 1.77 2.6 1.77 4.38 0 1.86-.62 3.38-1.86 4.56C10.9 23.42 9.5 24 8.86 24Zm18.06 0c-2.73 0-4.88-.94-6.46-2.82-1.6-1.88-2.4-4.28-2.4-7.2 0-3.02.9-5.78 2.7-8.28C22.56 3.2 25.04 1.34 28.2 0l2.9 4.32c-2.1.98-3.74 2.18-4.92 3.6-1.16 1.42-1.84 2.9-2.04 4.44.5-.24 1.08-.36 1.74-.36 1.76 0 3.22.58 4.38 1.74 1.18 1.14 1.77 2.6 1.77 4.38 0 1.86-.62 3.38-1.86 4.56C28.96 23.42 27.56 24 26.92 24Z"/></svg>
-                </span>
-
-                <p class="testimonial-card__text">
-                    "Envizon didn't just redesign our product — they changed how our team thinks about
-                    design. The process was rigorous, the output was stunning, and the results were
-                    immediate. 68% improvement in onboarding completion in the first 8 weeks."
-                </p>
-
-                <div class="testimonial-card__author">
-                    <span class="testimonial-card__avatar" aria-hidden="true">RK</span>
-                    <div class="testimonial-card__author-info">
-                        <span class="testimonial-card__name">Ravi Krishnamurthy</span>
-                        <span class="testimonial-card__role">CPO, Nexus Analytics</span>
+                            <img class="dot-four-icon" loading="lazy" alt="" src="assets/images/services/Ellipse-5@2x.png"/>
+                        </div>
+                    </div>
+                    <div class="cta-button-wrapper">
+                        <a href="contact.html" class="link6">
+                            <div class="book-a-discovery">Book A Discovery Call</div>
+                            <img class="svg-icon" alt="" src="assets/images/services/SVG1.svg"/>
+                        </a>
                     </div>
                 </div>
-
-            </article>
-
-            <article class="testimonial-card">
-
-                <span class="testimonial-card__quote" aria-hidden="true">
-                    <svg viewBox="0 0 32 24"><path d="M8.86 24C6.13 24 3.98 23.06 2.4 21.18.8 19.3 0 16.9 0 13.98c0-3.02.9-5.78 2.7-8.28C4.5 3.2 6.98 1.34 10.14 0l2.9 4.32c-2.1.98-3.74 2.18-4.92 3.6-1.16 1.42-1.84 2.9-2.04 4.44.5-.24 1.08-.36 1.74-.36 1.76 0 3.22.58 4.38 1.74 1.18 1.14 1.77 2.6 1.77 4.38 0 1.86-.62 3.38-1.86 4.56C10.9 23.42 9.5 24 8.86 24Zm18.06 0c-2.73 0-4.88-.94-6.46-2.82-1.6-1.88-2.4-4.28-2.4-7.2 0-3.02.9-5.78 2.7-8.28C22.56 3.2 25.04 1.34 28.2 0l2.9 4.32c-2.1.98-3.74 2.18-4.92 3.6-1.16 1.42-1.84 2.9-2.04 4.44.5-.24 1.08-.36 1.74-.36 1.76 0 3.22.58 4.38 1.74 1.18 1.14 1.77 2.6 1.77 4.38 0 1.86-.62 3.38-1.86 4.56C28.96 23.42 27.56 24 26.92 24Z"/></svg>
-                </span>
-
-                <p class="testimonial-card__text">
-                    "Envizon didn't just redesign our product — they changed how our team thinks about
-                    design. The process was rigorous, the output was stunning, and the results were
-                    immediate. 68% improvement in onboarding completion in the first 8 weeks."
-                </p>
-
-                <div class="testimonial-card__author">
-                    <span class="testimonial-card__avatar" aria-hidden="true">RK</span>
-                    <div class="testimonial-card__author-info">
-                        <span class="testimonial-card__name">Ravi Krishnamurthy</span>
-                        <span class="testimonial-card__role">CPO, Nexus Analytics</span>
-                    </div>
-                </div>
-
-            </article>
-
-            <article class="testimonial-card">
-
-                <span class="testimonial-card__quote" aria-hidden="true">
-                    <svg viewBox="0 0 32 24"><path d="M8.86 24C6.13 24 3.98 23.06 2.4 21.18.8 19.3 0 16.9 0 13.98c0-3.02.9-5.78 2.7-8.28C4.5 3.2 6.98 1.34 10.14 0l2.9 4.32c-2.1.98-3.74 2.18-4.92 3.6-1.16 1.42-1.84 2.9-2.04 4.44.5-.24 1.08-.36 1.74-.36 1.76 0 3.22.58 4.38 1.74 1.18 1.14 1.77 2.6 1.77 4.38 0 1.86-.62 3.38-1.86 4.56C10.9 23.42 9.5 24 8.86 24Zm18.06 0c-2.73 0-4.88-.94-6.46-2.82-1.6-1.88-2.4-4.28-2.4-7.2 0-3.02.9-5.78 2.7-8.28C22.56 3.2 25.04 1.34 28.2 0l2.9 4.32c-2.1.98-3.74 2.18-4.92 3.6-1.16 1.42-1.84 2.9-2.04 4.44.5-.24 1.08-.36 1.74-.36 1.76 0 3.22.58 4.38 1.74 1.18 1.14 1.77 2.6 1.77 4.38 0 1.86-.62 3.38-1.86 4.56C28.96 23.42 27.56 24 26.92 24Z"/></svg>
-                </span>
-
-                <p class="testimonial-card__text">
-                    "Envizon didn't just redesign our product — they changed how our team thinks about
-                    design. The process was rigorous, the output was stunning, and the results were
-                    immediate. 68% improvement in onboarding completion in the first 8 weeks."
-                </p>
-
-                <div class="testimonial-card__author">
-                    <span class="testimonial-card__avatar" aria-hidden="true">RK</span>
-                    <div class="testimonial-card__author-info">
-                        <span class="testimonial-card__name">Ravi Krishnamurthy</span>
-                        <span class="testimonial-card__role">CPO, Nexus Analytics</span>
-                    </div>
-                </div>
-
-            </article>
-
+            </section>
+            <footer class="footer"></footer>
         </div>
 
-        <div class="testimonials__nav">
-            <button type="button" class="testimonials__nav-btn testimonials__nav-btn--prev" aria-label="Previous testimonial">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-            </button>
-            <button type="button" class="testimonials__nav-btn testimonials__nav-btn--next" aria-label="Next testimonial">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-            </button>
-        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+        <script type="module" src="js/header.js"></script>
+        <script type="module" src="js/footer.js"></script>
+        <script type="module" src="assets/js/main.js"></script>
+        <script type="module" src="js/latest-insights.js"></script>
+        <script type="module">
+            import {initIndexAnimations} from './js/index-animations.js';
+            document.addEventListener('DOMContentLoaded', () => {
+                initIndexAnimations();
+            });
+        </script>
 
     </div>
 

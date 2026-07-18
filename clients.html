@@ -315,7 +315,7 @@
             class="card-background-icon"
             loading="lazy"
             alt=""
-            src="assets/images/clients/Card-Background@2x.png"
+            src="assets/images/clients/founder-portrait.png"
           />
         </div>
         <div class="story-item">
@@ -903,6 +903,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.classList.toggle('is-flipped');
             });
         });
+
+        // Automatically open the first card after a short delay so the user understands they are interactive
+        if (cards.length > 0) {
+            setTimeout(() => {
+                // Only flip it automatically if the user hasn't already interacted with any of the cards
+                const alreadyFlipped = Array.from(cards).some(c => c.classList.contains('is-flipped'));
+                if (!alreadyFlipped) {
+                    cards[0].classList.add('is-flipped');
+                }
+            }, 1200);
+        }
     };
 
     // ----------------------------------------------------

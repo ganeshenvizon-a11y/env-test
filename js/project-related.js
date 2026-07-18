@@ -21,9 +21,11 @@ function getRefs() {
 
 function renderRelatedProjects(refs, projects) {
   const fragment = document.createDocumentFragment();
-  projects.forEach((project) =>
-    fragment.appendChild(renderProjectCard(buildProjectCardData(project))),
-  );
+  projects.forEach((project) => {
+    const cardData = buildProjectCardData(project);
+    cardData.tags = []; // Remove tags for related projects section
+    fragment.appendChild(renderProjectCard(cardData));
+  });
   refs.grid.appendChild(fragment);
   refs.section.hidden = false;
 

@@ -110,7 +110,7 @@
     width: 100%;
     aspect-ratio: 400 / 178;
     display: block;
-    color: #FAF6EE !important; /* Force branding accent color */
+    color: var(--card-accent, #eda922) !important; /* Force branding accent color */
     pointer-events: none;
     z-index: 2;
 }
@@ -163,6 +163,10 @@
     list-style:none;
     padding:0;
     margin:clamp(4px, 2.5cqw, 10px) 0 0;
+}
+
+.project-card__tags:empty{
+    display:none;
 }
 
 .project-card__tag{

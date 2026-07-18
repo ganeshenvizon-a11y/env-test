@@ -56,6 +56,9 @@
           href="assets/css/components/services-bar.css">
 
     <link rel="stylesheet"
+          href="assets/css/components/about-values.css">
+
+    <link rel="stylesheet"
           href="assets/css/components/craft-services.css">
 
     <link rel="stylesheet"
@@ -100,55 +103,46 @@
 <header class="header"></header>
 
 <section class="hero">
-
+    <!-- Parallax background element -->
     <div class="hero-bg"></div>
 
     <div class="hero-content">
-
-      <h1 class="hero-title">
-          <span class="hero-title__line">
-              <span class="hero-title__mask"><span class="hero-title__word">Designing</span></span>
-              <span class="hero-title__mask"><span class="hero-title__word nowrap">Inn<span class="innovation-o"><img src="assets/images/ellipse-outer.png" alt=""><img src="assets/images/ellipse-inner.png" alt=""></span>vation</span></span>
-          </span>
-          <span class="hero-title__line">
-              <span class="hero-title__mask"><span class="hero-title__word">For</span></span>
-              <span class="hero-title__mask"><span class="hero-title__word highlight">Every</span></span>
-              <span class="hero-title__mask"><span class="hero-title__word"><span class="highlight">Business</span>.</span></span>
-          </span>
-      </h1>
+        <!-- Masked Text Headline (Avoids text layout shifts during animated reveals) -->
+        <h1 class="hero-title">
+            <span class="hero-title__line">
+                <span class="hero-title__mask"><span class="hero-title__word">Designing</span></span>
+                <span class="hero-title__mask"><span class="hero-title__word nowrap">Inn<span class="innovation-o"><img src="assets/images/ellipse-outer.png" alt=""><img src="assets/images/ellipse-inner.png" alt=""></span>vation</span></span>
+            </span>
+            <span class="hero-title__line">
+                <span class="hero-title__mask"><span class="hero-title__word">For</span></span>
+                <span class="hero-title__mask"><span class="hero-title__word highlight">Every</span></span>
+                <span class="hero-title__mask"><span class="hero-title__word"><span class="highlight">Business</span>.</span></span>
+            </span>
+        </h1>
 
         <p>
-            We help ambitious brands transform ideas into
-            high-performing digital products through strategy,
-            design and development.
-
+            We help ambitious brands transform ideas into high-performing digital products through strategy, design, and development.
         </p>
 
+        <!-- Hero Buttons -->
         <div class="hero-buttons">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" onclick="window.location.href='contact.html'">
                 <span>Let's Build Now</span>
                 <i class="ph ph-arrow-up-right"></i>
             </button>
-            <a href="#" class="btn btn-secondary">
+            <a href="projects.html" class="btn btn-secondary">
                 <span class="play-icon">▶</span>
                 View Our Work
             </a>
         </div>
-
     </div>
 
-    <!-- Portfolio Showcase Carousel -->
+    <!-- 5-Card Coverflow Showcase Carousel Section -->
     <div class="carousel-section">
-        <div class="showcase-carousel"
-             id="showcaseCarousel"
-             tabindex="0"
-             role="region"
-             aria-roledescription="carousel"
-             aria-label="Featured services showcase">
-
+        <div class="showcase-carousel" id="showcaseCarousel" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Featured services showcase">
             <div class="showcase-carousel__stage">
                 <ul class="showcase-carousel__track">
-
+                    <!-- Carousel Slide Card 1 -->
                     <li class="showcase-card" data-category="Web Development">
                         <span class="showcase-card__overlay" aria-hidden="true"></span>
                         <div class="showcase-card__media">
@@ -156,7 +150,7 @@
                             <span class="showcase-card__label">Web Development</span>
                         </div>
                     </li>
-
+                    <!-- Carousel Slide Card 2 -->
                     <li class="showcase-card" data-category="Brand Identity">
                         <span class="showcase-card__overlay" aria-hidden="true"></span>
                         <div class="showcase-card__media">
@@ -164,7 +158,7 @@
                             <span class="showcase-card__label">Brand Identity</span>
                         </div>
                     </li>
-
+                    <!-- Carousel Slide Card 3 -->
                     <li class="showcase-card" data-category="CRO Optimization">
                         <span class="showcase-card__overlay" aria-hidden="true"></span>
                         <div class="showcase-card__media">
@@ -172,7 +166,7 @@
                             <span class="showcase-card__label">CRO Optimization</span>
                         </div>
                     </li>
-
+                    <!-- Carousel Slide Card 4 -->
                     <li class="showcase-card" data-category="Design Systems">
                         <span class="showcase-card__overlay" aria-hidden="true"></span>
                         <div class="showcase-card__media">
@@ -180,7 +174,7 @@
                             <span class="showcase-card__label">Design Systems</span>
                         </div>
                     </li>
-
+                    <!-- Carousel Slide Card 5 -->
                     <li class="showcase-card" data-category="Mobile Apps">
                         <span class="showcase-card__overlay" aria-hidden="true"></span>
                         <div class="showcase-card__media">
@@ -215,16 +209,8 @@
 
                 </ul>
             </div>
-
-            <button type="button" class="showcase-carousel__arrow showcase-carousel__arrow--prev" aria-label="Previous slide">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-            </button>
-            <button type="button" class="showcase-carousel__arrow showcase-carousel__arrow--next" aria-label="Next slide">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-            </button>
         </div>
     </div>
-
 </section>
 
 <!-- Services Category Nav (synced with the showcase carousel) -->
@@ -258,24 +244,6 @@
             <button type="button" class="services-bar__btn">
                 <span class="services-bar__dot" aria-hidden="true"></span>
                 <span class="services-bar__label">Mobile Apps</span>
-            </button>
-        </li>
-        <li class="services-bar__item">
-            <button type="button" class="services-bar__btn">
-                <span class="services-bar__dot" aria-hidden="true"></span>
-                <span class="services-bar__label">SAAS Products</span>
-            </button>
-        </li>
-        <li class="services-bar__item">
-            <button type="button" class="services-bar__btn">
-                <span class="services-bar__dot" aria-hidden="true"></span>
-                <span class="services-bar__label">UI/UX Design</span>
-            </button>
-        </li>
-        <li class="services-bar__item">
-            <button type="button" class="services-bar__btn">
-                <span class="services-bar__dot" aria-hidden="true"></span>
-                <span class="services-bar__label">Product Strategy</span>
             </button>
         </li>
     </ul>
@@ -342,34 +310,34 @@
 
 </section>
 
-<!-- Craft That Converts — static header -->
-<section class="craft-header">
+<!-- Services Values Section -->
+<section class="about-values" id="servicesScroll" aria-label="Our services and capabilities">
 
-    <div class="craft-container">
+    <div class="about-values__container">
 
-        <div class="craft-header__grid">
+        <div class="about-values__header">
 
-            <div class="craft-header__left">
+            <div class="about-values__heading">
 
-                <div class="craft-header__eyebrow">
-                    <span class="craft-header__eyebrow-line" aria-hidden="true"></span>
+                <div class="about-values__eyebrow">
+                    <span class="about-values__eyebrow-line" aria-hidden="true"></span>
                     <span>What We Do</span>
                 </div>
 
-                <h2 class="craft-header__title">
-                    <span class="title-line"><span class="title-line-inner">Craft That <span class="craft-header__title-accent">Converts</span></span></span>
+                <h2 class="about-values__title">
+                    <span class="title-line"><span class="title-line-inner">Craft That <span class="about-values__title-accent">Converts</span></span></span>
                 </h2>
 
             </div>
 
-            <div class="craft-header__right">
+            <div class="about-values__aside">
 
-                <a href="#" class="craft-header__cta">
+                <a href="contact.html" class="about-values__cta">
                     Contact Now
-                    <span class="craft-header__cta-icon" aria-hidden="true">↗</span>
+                    <span class="about-values__cta-icon" aria-hidden="true">↗</span>
                 </a>
 
-                <p class="craft-header__text">
+                <p class="about-values__text">
                     Our talented and diverse team works together for one purpose—to
                     unlock the potential of those around us.
                 </p>
@@ -378,22 +346,16 @@
 
         </div>
 
-        <div class="craft-header__divider" aria-hidden="true"></div>
+        <hr class="about-values__divider">
+
+        <div class="about-values__stage">
+            <div class="about-values__track" id="servicesTrack"></div>
+        </div>
 
     </div>
 
 </section>
 
-<!-- Pinned stacked-card services -->
-<section class="services-scroll" id="servicesScroll" aria-label="Our services">
-
-    <div class="services-scroll__stage">
-
-        <div class="services-scroll__track" id="servicesTrack"></div>
-
-    </div>
-
-</section>
 
 <!-- Built for businesses that refuse to look average -->
 <section class="stats-highlight" aria-label="Why businesses choose Envizon">
@@ -417,7 +379,7 @@
 
                 <div class="stats-highlight__right">
 
-                    <a href="#" class="stats-highlight__link">
+                    <a href="projects.html" class="stats-highlight__link">
                         Read Case Studies
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                     </a>
@@ -568,7 +530,7 @@
 
             <div class="how-we-work__aside">
 
-                <a href="#" class="how-we-work__cta">
+                <a href="contact.html" class="how-we-work__cta">
                     Start Building Now
                     <span aria-hidden="true">↗</span>
                 </a>
@@ -811,109 +773,14 @@
 
             </div>
 
-            <a href="#" class="insights__link">
+            <a href="blog.html" class="insights__link">
                 Read All Articles
                 <span class="insights__link-arrow" aria-hidden="true">↗</span>
             </a>
 
         </div>
 
-        <div class="insights__grid">
-
-            <article class="insight-card">
-
-                <div class="insight-card__image-wrap">
-                    <img class="insight-card__image"
-                         src="assets/images/port1.png"
-                         alt=""
-                         loading="lazy"
-                         width="384"
-                         height="220">
-                    <span class="insight-card__badge">Design Systems</span>
-                </div>
-
-                <div class="insight-card__content">
-
-                    <div class="insight-card__meta">
-                        <span class="insight-card__category">Engineering</span>
-                        <span class="insight-card__date">Apr 2025</span>
-                    </div>
-
-                    <h3 class="insight-card__title">
-                        <a href="#" class="insight-card__title-link">Why your design system is making your engineers slower?</a>
-                    </h3>
-
-                    <p class="insight-card__desc">
-                        A design system should be a velocity multiplier. Most aren't. Here's what separates the systems that scale from the ones that become another abandoned Figma file.
-                    </p>
-
-                </div>
-
-            </article>
-
-            <article class="insight-card">
-
-                <div class="insight-card__image-wrap">
-                    <img class="insight-card__image"
-                         src="assets/images/port2.png"
-                         alt=""
-                         loading="lazy"
-                         width="384"
-                         height="220">
-                    <span class="insight-card__badge">Design Systems</span>
-                </div>
-
-                <div class="insight-card__content">
-
-                    <div class="insight-card__meta">
-                        <span class="insight-card__category">Engineering</span>
-                        <span class="insight-card__date">Apr 2025</span>
-                    </div>
-
-                    <h3 class="insight-card__title">
-                        <a href="#" class="insight-card__title-link">Why your design system is making your engineers slower?</a>
-                    </h3>
-
-                    <p class="insight-card__desc">
-                        A design system should be a velocity multiplier. Most aren't. Here's what separates the systems that scale from the ones that become another abandoned Figma file.
-                    </p>
-
-                </div>
-
-            </article>
-
-            <article class="insight-card">
-
-                <div class="insight-card__image-wrap">
-                    <img class="insight-card__image"
-                         src="assets/images/port3.png"
-                         alt=""
-                         loading="lazy"
-                         width="384"
-                         height="220">
-                    <span class="insight-card__badge">Design Systems</span>
-                </div>
-
-                <div class="insight-card__content">
-
-                    <div class="insight-card__meta">
-                        <span class="insight-card__category">Engineering</span>
-                        <span class="insight-card__date">Apr 2025</span>
-                    </div>
-
-                    <h3 class="insight-card__title">
-                        <a href="#" class="insight-card__title-link">Why your design system is making your engineers slower?</a>
-                    </h3>
-
-                    <p class="insight-card__desc">
-                        A design system should be a velocity multiplier. Most aren't. Here's what separates the systems that scale from the ones that become another abandoned Figma file.
-                    </p>
-
-                </div>
-
-            </article>
-
-        </div>
+        <div class="insights__grid" id="homeInsightsGrid"></div>
 
     </div>
 
@@ -1065,6 +932,7 @@
 <script type="module" src="js/header.js"></script>
 <script type="module" src="js/footer.js"></script>
 <script type="module" src="assets/js/main.js"></script>
+<script type="module" src="js/latest-insights.js"></script>
 <script type="module">
     import { initIndexAnimations } from './js/index-animations.js';
     document.addEventListener('DOMContentLoaded', () => {

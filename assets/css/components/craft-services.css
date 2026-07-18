@@ -349,3 +349,8 @@
         padding:18px 20px;
     }
 }
+
+#servicesScroll .about-values__stage{
+    height:var(--craft-stage-height);
+    margin-top:0px;
+}

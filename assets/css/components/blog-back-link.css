@@ -1,0 +1,39 @@
+/* BLOG SINGLE — "Back to Blogs" link, above the breadcrumb. Reuses the
+   breadcrumb's own typography/color tokens (blog-single-breadcrumb.css) so
+   it reads as part of the same navigation row, just one line up. The
+   hover-nudge on the arrow mirrors the existing pattern already used by
+   .sidebar-featured__cta / .insights__link-arrow. */
+
+.blog-back-link-wrapper {
+  display: flex;
+  width: 100%;
+  padding: clamp(16px, 3vw, 24px) clamp(20px, 8.5vw, 122px) 0;
+  box-sizing: border-box;
+}
+
+.blog-back-link {
+  width: min(1198px, 100%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--gap-8);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.blog-back-link:hover {
+  color: var(--black);
+}
+
+.blog-back-link__arrow {
+  display: inline-block;
+  transition: transform 200ms ease;
+}
+
+.blog-back-link:hover .blog-back-link__arrow {
+  transform: translateX(-3px);
+}

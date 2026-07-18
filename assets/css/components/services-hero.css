@@ -199,6 +199,14 @@
     align-items: flex-start;
   }
 
+  /* .after-gaining-early's flex-basis (560px) sets a sensible min-width
+     when .client-overview-details is a row (desktop), but that same value
+     becomes a forced min-height once the container switches to a column
+     here, leaving a large blank gap under short text. Let it size to content. */
+  .after-gaining-early {
+    flex: 0 1 auto;
+  }
+
   .service-tag-list {
     flex-direction: row;
     flex-wrap: wrap;

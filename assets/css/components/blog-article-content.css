@@ -1,0 +1,305 @@
+/* BLOG SINGLE — generic article body for WordPress content.rendered.
+   Scoped to .article-content so raw WP tags (p, h2, ul, blockquote, img...)
+   inherit this page's existing type scale/spacing tokens (services-variables.css)
+   instead of browser defaults — no new design language introduced. */
+
+.article-content-wrapper {
+  display: flex;
+  align-self: stretch;
+  width: 100%;
+  height: auto;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--padding-0) clamp(20px, 8.5vw, 122px) clamp(24px, 5vw, 60px);
+  box-sizing: border-box;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+
+.article-content {
+  font-family: var(--font-inter);
+  font-size: var(--fs-18);
+  line-height: var(--lh-28);
+  color: var(--color-darkslategray-100);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-24);
+}
+
+.article-content p,
+.article-content ul,
+.article-content ol,
+.article-content blockquote,
+.article-content figure,
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-content h5,
+.article-content h6,
+.article-content img,
+.article-content pre,
+.article-content table,
+.article-content hr {
+  margin: 0;
+}
+
+.article-content h2 {
+  font-family: var(--font-satoshi);
+  font-weight: 900;
+  font-size: var(--fs-40);
+  line-height: 143%;
+  letter-spacing: var(--ls--1_56);
+  color: var(--color-black);
+}
+
+.article-content h3 {
+  font-family: var(--font-satoshi);
+  font-weight: 700;
+  font-size: var(--fs-32);
+  line-height: var(--lh-46);
+  color: var(--color-black);
+}
+
+.article-content h4 {
+  font-family: var(--font-satoshi);
+  font-weight: 700;
+  font-size: var(--fs-24);
+  line-height: var(--lh-40);
+  color: var(--color-black);
+}
+
+.article-content h5 {
+  font-family: var(--font-satoshi);
+  font-weight: 700;
+  font-size: var(--fs-20);
+  line-height: var(--lh-28);
+  color: var(--color-black);
+}
+
+.article-content h6 {
+  font-family: var(--font-satoshi);
+  font-weight: 700;
+  font-size: var(--fs-18);
+  line-height: var(--lh-28);
+  color: var(--color-black);
+}
+
+.article-content a {
+  color: var(--color-goldenrod-300);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.article-content strong,
+.article-content b {
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+.article-content em,
+.article-content i {
+  font-style: italic;
+}
+
+.article-content ul,
+.article-content ol {
+  padding-left: 1.25em;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-12);
+}
+
+.article-content li {
+  line-height: var(--lh-28);
+}
+
+.article-content blockquote {
+  border-left: 3px solid var(--color-goldenrod-300);
+  padding-left: var(--padding-24);
+  font-style: italic;
+  color: var(--color-gray-800);
+}
+
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--br-24);
+  box-shadow: 0 24px 70px rgba(17, 17, 17, 0.08);
+}
+
+.article-content figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  gap: var(--gap-8);
+}
+
+@media screen and (min-width: 1051px) {
+  .article-content figure {
+    flex-direction: row;
+  }
+  
+}
+
+.article-content figcaption {
+  font-size: var(--fs-14);
+  color: var(--wwwungrammarycom-Dove-Gray);
+}
+
+.article-content pre {
+  background: var(--color-whitesmoke-300);
+  padding: var(--padding-16) var(--padding-20);
+  border-radius: var(--br-12);
+  overflow-x: auto;
+  font-size: var(--fs-14);
+}
+
+.article-content code {
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.article-content pre code {
+  font-size: 1em;
+}
+
+.article-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: var(--fs-16);
+}
+
+.article-content thead {
+  border-bottom: var(--border-1);
+}
+
+.article-content th {
+  font-family: var(--font-inter);
+  font-weight: 700;
+  color: var(--color-black);
+  text-align: left;
+}
+
+.article-content th,
+.article-content td {
+  padding: var(--padding-12) var(--padding-16);
+  border-bottom: var(--border-1);
+}
+
+.article-content tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.article-content hr {
+  border: none;
+  border-top: var(--border-1);
+}
+
+@media screen and (max-width: 1050px) {
+  .article-content h2 {
+    font-size: var(--fs-32);
+    line-height: var(--lh-46);
+  }
+
+  .article-content h3 {
+    font-size: var(--fs-24);
+  }
+  .service-tag-list{
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .article-content {
+    font-size: var(--fs-16);
+    line-height: var(--lh-22);
+  }
+
+  .article-content h2 {
+    font-size: var(--fs-24);
+    line-height: 34px;
+  }
+}
+
+/* ============================= */
+/* ARTICLE NOT FOUND              */
+/* ============================= */
+
+.article-not-found {
+  width: 100%;
+  text-align: center;
+  padding: clamp(48px, 8vw, 96px) 24px;
+}
+
+.article-not-found__title {
+  margin: 0 0 var(--gap-12);
+  font-family: var(--font-satoshi);
+  font-weight: 700;
+  font-size: var(--fs-32);
+  color: var(--color-black);
+}
+
+.article-not-found__desc {
+  margin: 0 0 var(--gap-24);
+  font-family: var(--font-inter);
+  font-size: var(--fs-16);
+  color: var(--wwwungrammarycom-Dove-Gray);
+}
+
+/* Invalid/failed article: hide everything article-specific but keep the
+   page shell (hero already hides itself inline) — header, CTA and footer
+   stay so the page still feels like part of the site, not a dead end. */
+.is-article-missing .blog-sidebar,
+.is-article-missing .article-nav-wrapper,
+.is-article-missing .article-share-wrapper,
+.is-article-missing .related-articles-wrapper,
+.is-article-missing .reading-progress {
+  display: none;
+}
+
+/* ==========================================================================
+   Project Single Page Gutenberg Layout: Heading & Paragraph Layout (40:60 ratio)
+   ========================================================================== */
+.works-internal-ui-v10 .heading-paragraph-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-24);
+  width: 100%;
+  padding: 10px 0;
+}
+
+.works-internal-ui-v10 .heading-paragraph-group .wp-block-heading {
+  width: 100%;
+}
+
+.works-internal-ui-v10 .heading-paragraph-group__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-24);
+  width: 100%;
+}
+
+@media screen and (min-width: 1051px) {
+  .works-internal-ui-v10 .heading-paragraph-group {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 48px;
+  }
+
+  .works-internal-ui-v10 .heading-paragraph-group .wp-block-heading {
+    width: calc(40% - 24px);
+    flex-shrink: 0;
+  }
+
+  .works-internal-ui-v10 .heading-paragraph-group__body {
+    width: calc(60% - 24px);
+    flex-shrink: 0;
+  }
+}
+
+
+

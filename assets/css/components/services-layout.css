@@ -53,10 +53,11 @@
 }
 
 /* shared "design width, but never wider than the viewport" pattern used by
-   the hero, brand-strategy and logo-showcase sections */
+   the hero, brand-strategy, logo-showcase and article-content sections */
 .hero-container,
 .strategy-content-wrapper,
-.logo-design-card {
+.logo-design-card,
+.article-content {
   width: min(1198px, 100%);
   margin: 0 auto;
 }

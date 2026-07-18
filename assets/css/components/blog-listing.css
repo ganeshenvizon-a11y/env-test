@@ -1,0 +1,87 @@
+/* BLOG LISTING PAGE — spacing shim so the reused .insights section
+   clears the fixed header when it's the page's first section
+   (on the homepage it sits after other content, so it doesn't need this). */
+
+.blog-page .insights {
+    padding-top: 40px;
+}
+
+/* Scoped container alignment overrides to match insights__container layout across all breakpoints */
+.blog-page .capabilities-header__container {
+    width: min(1200px, calc(100% - 48px));
+    margin: 0 auto;
+}
+
+@media(max-width: 1199px) {
+    .blog-page .capabilities-header__container {
+        width: 90%;
+    }
+}
+
+@media(max-width: 767px) {
+    .blog-page .capabilities-header__container {
+        width: 100%;
+        padding-inline: 24px;
+        box-sizing: border-box;
+    }
+}
+
+/* Loading / error / empty states now live in the shared
+   assets/css/components/loading-state.css (see .loading-state), used by
+   both blog.html and projects.html. */
+
+/* Pagination controls — reuses insights.css's accent color/transition
+   tokens and the .insight-card pill/hover language, no new design system. */
+
+.insights__pagination{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin-top:48px;
+}
+
+.insights__page-btn{
+    min-width:40px;
+    height:40px;
+    padding:0 14px;
+    border:1px solid rgba(0,0,0,.1);
+    border-radius:999px;
+    background:#ffffff;
+    color:var(--black);
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    transition:background-color var(--insights-anim), color var(--insights-anim), border-color var(--insights-anim);
+}
+
+.insights__page-btn:hover:not(:disabled){
+    border-color:var(--insights-accent);
+    color:var(--insights-accent);
+}
+
+.insights__page-btn.is-active{
+    background:var(--insights-accent);
+    border-color:var(--insights-accent);
+    color:#ffffff;
+}
+
+.insights__page-btn--nav{
+    padding:0 18px;
+}
+
+.insights__page-btn:disabled{
+    opacity:.35;
+    cursor:default;
+}
+
+@media(max-width:767px){
+    .insights__page-btn{
+        min-width:36px;
+        height:36px;
+        padding:0 10px;
+        font-size:13px;
+    }
+}

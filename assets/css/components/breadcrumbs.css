@@ -1,0 +1,73 @@
+/* BREADCRUMBS — shared component (Home / Section / Current Page), reused
+   across the Projects listing, Project single, and future Blog/Services/
+   Careers pages. Visual tokens match the site's existing breadcrumb pattern
+   (careers-hero__breadcrumb / contact-hero__breadcrumb / blog-single-
+   breadcrumb) — colors, font size/weight and spacing carried over as-is.
+   Keyboard focus is handled by the global a:focus-visible rule in
+   assets/css/base/reset.css — no separate rule needed here. */
+
+.breadcrumbs-wrapper{
+  display:flex;
+  width:100%;
+  padding:0 clamp(20px, 8.5vw, 122px);
+  box-sizing:border-box;
+}
+
+.breadcrumbs-wrapper .breadcrumbs{
+  width:min(1198px, 100%);
+  margin:0 auto;
+}
+
+.breadcrumbs--spaced{
+  margin-bottom:28px;
+}
+
+.breadcrumbs__list{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0;
+  padding:0;
+  list-style:none;
+  font-family:'Inter', sans-serif;
+  font-size:14px;
+  font-weight:500;
+  color:var(--text-muted);
+}
+
+.breadcrumbs__item{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.breadcrumbs__item:not(:last-child)::after{
+  content:"/";
+  color:var(--border-light);
+}
+
+.breadcrumbs__link{
+  color:var(--text-muted);
+  text-decoration:none;
+  transition:color var(--transition-fast);
+}
+
+.breadcrumbs__link:hover{
+  color:var(--black);
+}
+
+.breadcrumbs__current{
+  color:var(--primary);
+  font-weight:600;
+}
+
+@media screen and (max-width:450px){
+  .breadcrumbs__list{
+    font-size:13px;
+  }
+
+  .breadcrumbs--spaced{
+    margin-bottom:20px;
+  }
+}

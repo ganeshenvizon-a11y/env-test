@@ -15,6 +15,9 @@ export function initServicesAnimations() {
     // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
+    // Standardised scroll-reveal duration (1.5 s across all pages)
+    const REVEAL = 0.7;
+
     // Respect user preferences for reduced motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
@@ -36,7 +39,7 @@ export function initServicesAnimations() {
         // Slide down navbar from top
         gsap.fromTo(navbar,
             { y: -80, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }
+            { y: 0, opacity: 1, duration: REVEAL, ease: 'power3.out' }
         );
 
         // Link hover effect: add classes/transitions using Javascript
@@ -76,7 +79,7 @@ export function initServicesAnimations() {
     // Line-by-line reveal
     heroTl.fromTo('.capabilities-header__title .title-line-inner',
         { yPercent: 100 },
-        { yPercent: 0, duration: 1.1, stagger: 0.15, ease: 'power4.out' }
+        { yPercent: 0, duration: REVEAL, stagger: 0.15, ease: 'power4.out' }
     );
 
     // Make title visible
@@ -85,7 +88,7 @@ export function initServicesAnimations() {
     // Paragraph fade-up
     heroTl.fromTo('.capabilities-header__text',
         { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' },
+        { y: 0, opacity: 1, duration: REVEAL, ease: 'power3.out' },
         '-=0.75'
     );
 
@@ -102,18 +105,18 @@ export function initServicesAnimations() {
 
     processTl.fromTo('.video-banner__timeline-wrapper',
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
+        { opacity: 1, y: 0, duration: REVEAL, ease: 'power2.out' }
     );
 
     processTl.fromTo('.video-banner__timeline-line-bg',
         { scaleX: 0, transformOrigin: 'left center' },
-        { scaleX: 1, duration: 0.7, ease: 'power2.out' },
+        { scaleX: 1, duration: REVEAL, ease: 'power2.out' },
         '-=0.3'
     );
 
     processTl.fromTo('.video-banner__timeline-steps',
         { y: 15, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' },
+        { y: 0, opacity: 1, duration: REVEAL, ease: 'power2.out' },
         '-=0.5'
     );
 
@@ -126,7 +129,7 @@ export function initServicesAnimations() {
         {
             y: 0,
             opacity: 1,
-            duration: 0.8,
+            duration: REVEAL,
             ease: 'power2.out',
             scrollTrigger: {
                 trigger: '.services-playbook',
@@ -140,7 +143,7 @@ export function initServicesAnimations() {
         {
             y: 0,
             opacity: 1,
-            duration: 0.7,
+            duration: REVEAL,
             stagger: 0.12,
             ease: 'power2.out',
             scrollTrigger: {
@@ -171,7 +174,7 @@ export function initServicesAnimations() {
         {
             y: 0,
             opacity: 1,
-            duration: 0.8,
+            duration: REVEAL,
             ease: 'power3.out',
             scrollTrigger: {
                 trigger: '#servicesValues',
@@ -188,7 +191,7 @@ export function initServicesAnimations() {
         {
             y: 0,
             opacity: 1,
-            duration: 0.8,
+            duration: REVEAL,
             ease: 'power3.out',
             scrollTrigger: {
                 trigger: '.possibilities',
@@ -202,7 +205,7 @@ export function initServicesAnimations() {
         {
             y: 0,
             opacity: 1,
-            duration: 0.8,
+            duration: REVEAL,
             stagger: 0.15,
             ease: 'power2.out',
             clearProps: 'opacity,transform',
@@ -326,7 +329,7 @@ export function initServicesAnimations() {
         {
             y: 0,
             opacity: 1,
-            duration: 0.8,
+            duration: REVEAL,
             ease: 'power2.out',
             scrollTrigger: {
                 trigger: '.insights',
@@ -346,7 +349,7 @@ export function initServicesAnimations() {
             opacity: 1,
             y: 0,
             clipPath: 'inset(0% 0% 0% 0%)',
-            duration: 1.1,
+            duration: REVEAL,
             stagger: 0.15,
             ease: 'power3.out',
             scrollTrigger: {
@@ -389,20 +392,20 @@ export function initServicesAnimations() {
         // Title Reveal line by line
         ctaTl.fromTo('.lets-build-something-container span',
             { y: 35, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out' }
+            { y: 0, opacity: 1, duration: REVEAL, stagger: 0.15, ease: 'power3.out' }
         );
 
         // Dots expand scale in
         ctaTl.fromTo('.decorative-elements img',
             { scale: 0, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'back.out(1.8)' },
+            { scale: 1, opacity: 1, duration: REVEAL, stagger: 0.08, ease: 'back.out(1.8)' },
             '-=0.5'
         );
 
         // Discovery call button scale up
         ctaTl.fromTo('.cta-button-wrapper',
             { scale: 0.85, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(1.5)' },
+            { scale: 1, opacity: 1, duration: REVEAL, ease: 'back.out(1.5)' },
             '-=0.4'
         );
     }
@@ -446,7 +449,7 @@ export function initServicesAnimations() {
             {
                 y: 0,
                 opacity: 1,
-                duration: 0.7,
+                duration: REVEAL,
                 stagger: 0.1,
                 ease: 'power2.out',
                 scrollTrigger: {

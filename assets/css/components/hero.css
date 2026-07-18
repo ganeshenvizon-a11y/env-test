@@ -99,35 +99,48 @@
     will-change:transform;
 }
 
-/* keeps "Innovation" (text + styled O) from breaking across lines */
-.nowrap{
-    white-space:nowrap;
+.hero-title__mask {
+    display: inline-block;
+    overflow: hidden;
+    line-height: 1.15;
 }
 
-.innovation-o{
-    position:relative;
-    display:inline-flex;
-    width:0.65em;
-    height:0.65em;
-    justify-content:center;
-    align-items:center;
-    vertical-align:middle;
-    margin:0 2px;
+.hero-title__word {
+    display: inline-block;
+    will-change: transform;
 }
 
-.innovation-o img:first-child{
-    width:100%;
-    height:100%;
+.nowrap {
+    white-space: nowrap;
 }
 
-.innovation-o img:last-child{
-    position:absolute;
-    width:25%;
-    height:25%;
+/* Innovation "o" graphic container */
+.innovation-o {
+    position: relative;
+    display: inline-flex;
+    width: 0.65em;
+    height: 0.65em;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    margin: 0 2px;
 }
 
-.highlight{
-    color:var(--accent);
+.innovation-o img:first-child { 
+    width: 100%; 
+    height: 100%; 
+    display: block;
+}
+
+.innovation-o img:last-child {
+    position: absolute;
+    width: 25%;
+    height: 25%;
+    display: block;
+}
+
+.highlight {
+    color: var(--accent);
 }
 
 .hero-content > p{

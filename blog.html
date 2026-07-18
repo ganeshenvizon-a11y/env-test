@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Blog - Envizon Studio</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="assets/css/base/variables.css">
+
+    <link rel="stylesheet"
+          href="assets/css/base/reset.css">
+
+    <link rel="stylesheet"
+          href="assets/css/base/fonts.css">
+
+    <link rel="stylesheet"
+          href="assets/css/base/services-variables.css">
+
+    <link rel="stylesheet"
+          href="css/header.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/buttons.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/video-banner.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/insights.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/loading-state.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/blog-listing.css">
+
+    <link rel="stylesheet"
+          href="assets/css/components/blog-filter-bar.css">
+
+    <link rel="stylesheet"
+          href="css/footer.css">
+
+</head>
+
+<body class="blog-page">
+<header class="header"></header>
+
+<!-- Capabilities Header Section -->
+<section class="capabilities-header" aria-labelledby="blog-header-title">
+    <div class="capabilities-header__container">
+        <div class="capabilities-header__grid">
+            
+            <div class="capabilities-header__left">
+                <h1 class="capabilities-header__title" id="blog-header-title">
+                    We share what<br>
+                    <span class="text-gold">we learn.</span>
+                </h1>
+            </div>
+
+            <div class="capabilities-header__right">
+                <p class="capabilities-header__text">
+                    Explore our latest thoughts, guides and industry news from our design and technology teams.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- We Share What We Learn — blog listing -->
+<section class="insights" aria-labelledby="insights-title">
+    <h2 class="visually-hidden" id="insights-title">Blog Articles</h2>
+
+    <div class="insights__container">
+
+        <div class="blog-filter-bar">
+
+            <nav class="blog-filter-bar__breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="blog-filter-bar__breadcrumb-sep" aria-hidden="true">/</span>
+                <span class="blog-filter-bar__breadcrumb-current" aria-current="page">Blogs</span>
+            </nav>
+
+            <div class="blog-filter-bar__controls">
+
+                <span class="blog-filter-bar__results" id="blogResultsText" aria-live="polite"></span>
+
+                <div class="blog-filter-bar__search">
+                    <svg class="blog-filter-bar__search-icon" width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                        <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.6"/>
+                        <path d="M16 16L13 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    </svg>
+                    <input type="search" class="blog-filter-bar__search-input" id="blogSearchInput"
+                           placeholder="Search articles..." aria-label="Search articles">
+                </div>
+
+                <div class="blog-filter-bar__selects">
+                    <select class="blog-filter-bar__select" id="blogCategoryFilter" aria-label="Filter by category">
+                        <option value="">Categories</option>
+                        <!-- populated by js/blog.js -->
+                    </select>
+
+                    <select class="blog-filter-bar__select" id="blogTagFilter" aria-label="Filter by tag">
+                        <option value="">Tags</option>
+                        <!-- populated by js/blog.js -->
+                    </select>
+
+                    <button type="button" class="blog-filter-bar__clear" id="blogClearFilters" hidden>Clear filters</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="insights__grid" id="insightsGrid" aria-live="polite">
+            <!-- Cards are rendered by js/blog.js -->
+        </div>
+
+        <nav class="insights__pagination" id="insightsPagination" aria-label="Blog pagination" hidden>
+            <!-- Page controls are rendered by js/blog.js -->
+        </nav>
+
+    </div>
+
+</section>
+
+<footer class="footer"></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script type="module" src="js/header.js"></script>
+<script type="module" src="js/footer.js"></script>
+<script type="module" src="js/blog.js"></script>
+
+</body>
+</html>

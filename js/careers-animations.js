@@ -16,6 +16,9 @@ export function initCareersAnimations() {
 
     gsap.registerPlugin(ScrollTrigger);
 
+    // Standardised scroll-reveal duration (1.5 s across all pages)
+    const REVEAL = 0.7;
+
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
         gsap.set('.careers-hero__title, .careers-hero__text, .careers-benefits__header, .benefit-card, .careers-openings__header, .job-card, .careers-process__header, .process-step, .careers-form-panel, .careers-form', { opacity: 1 });
@@ -34,7 +37,7 @@ export function initCareersAnimations() {
 
         gsap.fromTo(navbar,
             { y: -80, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }
+            { y: 0, opacity: 1, duration: REVEAL, ease: 'power3.out' }
         );
 
         const allLinks = header.querySelectorAll('.nav-links a, .mobile-nav-links a');
@@ -68,14 +71,14 @@ export function initCareersAnimations() {
 
     heroTl.fromTo('.careers-hero__title .title-line-inner',
         { yPercent: 100 },
-        { yPercent: 0, duration: 1.1, stagger: 0.15, ease: 'power4.out' }
+        { yPercent: 0, duration: REVEAL, stagger: 0.15, ease: 'power4.out' }
     );
 
     gsap.set('.careers-hero__title', { opacity: 1 });
 
     heroTl.fromTo('.careers-hero__text',
         { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' },
+        { y: 0, opacity: 1, duration: REVEAL, ease: 'power3.out' },
         '-=0.75'
     );
 
@@ -87,7 +90,7 @@ export function initCareersAnimations() {
         {
             y: 0,
             opacity: 1,
-            duration: 0.8,
+            duration: REVEAL,
             ease: 'power2.out',
             scrollTrigger: { trigger: '.careers-benefits', start: 'top 85%' }
         }
@@ -98,7 +101,7 @@ export function initCareersAnimations() {
         {
             y: 0,
             opacity: 1,
-            duration: 0.7,
+            duration: REVEAL,
             stagger: 0.1,
             ease: 'power2.out',
             scrollTrigger: { trigger: '.careers-benefits__grid', start: 'top 85%' }
@@ -122,7 +125,7 @@ export function initCareersAnimations() {
         {
             y: 0,
             opacity: 1,
-            duration: 0.8,
+            duration: REVEAL,
             ease: 'power2.out',
             scrollTrigger: { trigger: '.careers-openings', start: 'top 85%' }
         }
@@ -133,7 +136,7 @@ export function initCareersAnimations() {
         {
             y: 0,
             opacity: 1,
-            duration: 0.7,
+            duration: REVEAL,
             stagger: 0.12,
             ease: 'power2.out',
             scrollTrigger: { trigger: '.careers-openings__grid', start: 'top 85%' }
@@ -157,7 +160,7 @@ export function initCareersAnimations() {
         {
             y: 0,
             opacity: 1,
-            duration: 0.8,
+            duration: REVEAL,
             ease: 'power2.out',
             scrollTrigger: { trigger: '.careers-process', start: 'top 85%' }
         }
@@ -168,7 +171,7 @@ export function initCareersAnimations() {
         {
             y: 0,
             opacity: 1,
-            duration: 0.7,
+            duration: REVEAL,
             stagger: 0.15,
             ease: 'power2.out',
             scrollTrigger: { trigger: '.careers-process__grid', start: 'top 85%' }
@@ -184,18 +187,18 @@ export function initCareersAnimations() {
 
     formTl.fromTo('.careers-form-panel',
         { x: -30, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }
+        { x: 0, opacity: 1, duration: REVEAL, ease: 'power3.out' }
     );
 
     formTl.fromTo('.careers-form',
         { x: 30, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
+        { x: 0, opacity: 1, duration: REVEAL, ease: 'power3.out' },
         '-=0.8'
     );
 
     formTl.fromTo('.careers-form-panel__point',
         { y: 15, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'power2.out' },
+        { y: 0, opacity: 1, duration: REVEAL, stagger: 0.1, ease: 'power2.out' },
         '-=0.4'
     );
 
@@ -220,7 +223,7 @@ export function initCareersAnimations() {
             {
                 y: 0,
                 opacity: 1,
-                duration: 0.7,
+                duration: REVEAL,
                 stagger: 0.1,
                 ease: 'power2.out',
                 scrollTrigger: { trigger: footer, start: 'top 95%' }

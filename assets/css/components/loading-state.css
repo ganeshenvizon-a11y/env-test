@@ -1,0 +1,17 @@
+/* LOADING / EMPTY / ERROR STATE — shared placeholder message shown inside a
+   grid container while content is loading, or when a fetch comes back empty
+   or failed. Used by blog.html (js/blog.js), projects.html (js/projects.js),
+   and blog-single.html's initial "Loading article…" placeholder. No new
+   visual language — just typography already defined by fonts.css/variables.css. */
+
+.loading-state{
+    grid-column:1 / -1;
+    text-align:center;
+    padding:64px 24px;
+    color:#666666;
+    font-size:16px;
+}
+
+.loading-state .btn{
+    margin-top:24px;
+}

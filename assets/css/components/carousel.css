@@ -1,8 +1,8 @@
-/* SHOWCASE CAROUSEL — 5-card center-focused coverflow, driven by GSAP (see carousel.js) */
+/* SHOWCASE CAROUSEL — 5-card center-focused coverflow, driven by GSAP */
 
-.carousel-section{
-    margin-top:auto;
-    width:100%;
+.carousel-section {
+    margin-top: auto;
+    width: 100%;
 }
 
 .showcase-carousel{
@@ -17,15 +17,6 @@
     padding:0;
 }
 
-.showcase-carousel:focus{
-    outline:none;
-}
-
-.showcase-carousel:focus-visible{
-    outline:2px solid var(--primary);
-    outline-offset:6px;
-}
-
 .showcase-carousel__stage{
     position:relative;
     width:100%;
@@ -34,12 +25,27 @@
     touch-action:pan-y;
 }
 
-.showcase-carousel__track{
-    position:absolute;
-    inset:0;
-    list-style:none;
-    margin:0;
-    padding:0;
+/* Linear gradients on left and right side stages to blend cards out smoothly */
+.showcase-carousel__stage::before,
+.showcase-carousel__stage::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 25%;
+    max-width: 400px;
+    z-index: 45;
+    pointer-events: none;
+}
+
+.showcase-carousel__stage::before {
+    left: 0;
+    background: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0.9) 35%, rgba(255, 255, 255, 0.45) 68%, rgba(255, 255, 255, 0) 100%);
+}
+
+.showcase-carousel__stage::after {
+    right: 0;
+    background: linear-gradient(to left, #ffffff 0%, rgba(255, 255, 255, 0.9) 35%, rgba(255, 255, 255, 0.45) 68%, rgba(255, 255, 255, 0) 100%);
 }
 
 .showcase-card{
@@ -85,29 +91,15 @@
     will-change:transform;
 }
 
-.showcase-card__image.is-broken{
-    display:none;
-}
-
 .showcase-card__label{
     position:relative;
     z-index:1;
-    color:var(--white);
+    color:#ffffff;
     font-weight:700;
     font-size:1.0625rem;
     letter-spacing:.2px;
     padding:20px 22px;
     text-shadow:0 2px 12px rgba(0,0,0,.25);
-}
-
-.showcase-card__overlay{
-    position:absolute;
-    inset:0;
-    z-index:1;
-    background:var(--white);
-    opacity:0;
-    pointer-events:none;
-    border-radius:var(--card-radius);
 }
 
 /* depth cue: dim side cards and lift the active one so it reads as the hero.
@@ -130,19 +122,6 @@
     display:none !important;
 }
 
-.showcase-carousel__arrow:hover{
-    background:var(--primary);
-    color:var(--white);
-}
-
-.showcase-carousel__arrow svg{
-    width:18px;
-    height:18px;
-}
-
-.showcase-carousel__arrow--prev{ left:12px; }
-.showcase-carousel__arrow--next{ right:12px; }
-
 @media(prefers-reduced-motion:reduce){
     .showcase-card{
         transition:none;
@@ -156,6 +135,11 @@
         padding:clamp(20px, 4vh, 40px) 0 clamp(16px, 3vh, 32px);
     }
 
+    .showcase-carousel__stage::before,
+    .showcase-carousel__stage::after {
+        width: 15%;
+    }
+
     .showcase-card__label{
         font-size:0.9375rem;
         padding:16px 18px;
@@ -167,6 +151,11 @@
         --card-w:240px;
         --stage-h:clamp(200px, 26vh, 230px);
         padding:clamp(16px, 3vh, 32px) 0 clamp(12px, 2.5vh, 24px);
+    }
+
+    .showcase-carousel__stage::before,
+    .showcase-carousel__stage::after {
+        width: 10%;
     }
 
     .showcase-carousel__arrow{
@@ -183,49 +172,5 @@
 @media(max-width:480px){
     .showcase-carousel__arrow{
         display:none;
-    }
-}
-
-.showcase-carousel__stage::before,
-.showcase-carousel__stage::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 25%;
-    max-width: 400px;
-    z-index: 45;
-    pointer-events: none;
-}
-
-.showcase-carousel__stage::before {
-    left: 0;
-    background: linear-gradient(to right,
-        #ffffff 0%,
-        rgba(255, 255, 255, 0.9) 35%,
-        rgba(255, 255, 255, 0.45) 68%,
-        rgba(255, 255, 255, 0) 100%);
-}
-
-.showcase-carousel__stage::after {
-    right: 0;
-    background: linear-gradient(to left,
-        #ffffff 0%,
-        rgba(255, 255, 255, 0.9) 35%,
-        rgba(255, 255, 255, 0.45) 68%,
-        rgba(255, 255, 255, 0) 100%);
-}
-
-@media(max-width:1024px) {
-    .showcase-carousel__stage::before,
-    .showcase-carousel__stage::after {
-        width: 15%;
-    }
-}
-
-@media(max-width:640px) {
-    .showcase-carousel__stage::before,
-    .showcase-carousel__stage::after {
-        width: 10%;
     }
 }

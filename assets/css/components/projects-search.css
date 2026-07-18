@@ -1,0 +1,85 @@
+/* PROJECTS — SEARCH INPUT, sitting above the service filter chips (between
+   Featured Projects and All Projects). Mirrors blog-filter-bar__search's
+   skin (whitesmoke fill, pill-ish radius, accent focus ring) so the two
+   listing pages share one search visual language, sized to match the
+   service filter chips beside/below it. */
+
+.projects-search{
+    position:relative;
+    display:flex;
+    align-items:center;
+    margin:0 0 20px;
+}
+
+.projects-search__icon{
+    position:absolute;
+    left:16px;
+    color:var(--text-muted);
+    pointer-events:none;
+}
+
+.projects-search__input{
+    width:100%;
+    min-height:44px;
+    padding:10px 40px;
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    font-weight:500;
+    color:var(--black);
+    background:var(--color-whitesmoke-100);
+    border:1px solid var(--border-light);
+    border-radius:var(--radius-pill);
+    transition:border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+.projects-search__input::placeholder{
+    color:var(--text-muted);
+}
+
+/* Safari/iOS adds a default cancel affordance on type="search" inputs;
+   the custom × button below replaces it, so suppress the native one. */
+.projects-search__input::-webkit-search-cancel-button{
+    -webkit-appearance:none;
+    appearance:none;
+}
+
+.projects-search__input:hover{
+    border-color:var(--primary);
+}
+
+.projects-search__input:focus{
+    outline:none;
+    background:#ffffff;
+    border-color:var(--primary);
+    box-shadow:0 0 0 4px rgba(244,168,37,.14);
+}
+
+.projects-search__clear{
+    position:absolute;
+    right:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:24px;
+    height:24px;
+    border:none;
+    background:transparent;
+    border-radius:50%;
+    font-size:18px;
+    line-height:1;
+    color:var(--text-muted);
+    cursor:pointer;
+    transition:background var(--transition-fast), color var(--transition-fast);
+}
+
+.projects-search__clear:hover{
+    background:var(--border-light);
+    color:var(--black);
+}
+
+@media(max-width:600px){
+    .projects-search{
+        max-width:none;
+        width:100%;
+    }
+}

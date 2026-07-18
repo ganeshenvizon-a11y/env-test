@@ -1,0 +1,82 @@
+/* BLOG SINGLE — "Share this article", between the article content and the
+   Previous/Next navigation. The icon buttons reuse the exact circular
+   button pattern already on this page (.sidebar-search__button in
+   blog-sidebar.css: whitesmoke circle -> goldenrod fill + white icon on
+   hover) so no new button language is introduced. */
+
+.article-share-wrapper {
+  display: flex;
+  width: 100%;
+  padding: 0 clamp(20px, 8.5vw, 122px);
+  box-sizing: border-box;
+}
+
+.article-share {
+  width: min(1198px, 100%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--gap-16);
+  padding-top: clamp(24px, 4vw, 40px);
+  border-top: var(--border-1);
+}
+
+.article-share__label {
+  font-family: var(--font-inter);
+  font-size: var(--fs-14);
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.article-share__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-10);
+}
+
+.article-share__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: var(--br-50);
+  background: var(--color-whitesmoke-100);
+  color: var(--wwwungrammarycom-Dove-Gray);
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease, transform 200ms ease;
+}
+
+.article-share__btn:hover {
+  background: var(--color-goldenrod-300);
+  color: var(--wwwungrammarycom-White);
+  transform: translateY(-2px);
+}
+
+.article-share__btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.article-share__toast {
+  font-family: var(--font-inter);
+  font-size: var(--fs-13);
+  font-weight: 600;
+  color: var(--color-goldenrod-300);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.article-share__toast.is-visible {
+  opacity: 1;
+}
+
+@media screen and (max-width: 450px) {
+  .article-share {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--gap-12);
+  }
+}

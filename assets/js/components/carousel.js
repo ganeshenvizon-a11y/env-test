@@ -1,7 +1,7 @@
 /**
  * Envizon Studio - Showcase Carousel
  * 5-card center-focused coverflow carousel driven by GSAP timelines.
- * Cards use transform-only properties (x, scale, rotation, opacity, filter)
+ * Cards use transform-only properties (x, scale, opacity)
  * so the loop stays on the compositor and holds 60fps.
  */
 
@@ -104,12 +104,8 @@ export class ShowcaseCarousel {
                 x: cfg.x * sign,
                 scale: cfg.scale,
                 opacity: cfg.opacity,
-                rotation: cfg.rotate * sign,
-                filter: `blur(${cfg.blur}px)`,
-                boxShadow: SHADOWS[level],
                 force3D: true
             }, 0);
-            tl.to(this.overlays[i], { opacity: cfg.overlay }, 0);
 
             card.setAttribute('aria-current', i === this.active ? 'true' : 'false');
         });
@@ -141,11 +137,6 @@ export class ShowcaseCarousel {
 
     bindInteractions() {
         const stage = this.root.querySelector('.showcase-carousel__stage');
-        const prev = this.root.querySelector('.showcase-carousel__arrow--prev');
-        const next = this.root.querySelector('.showcase-carousel__arrow--next');
-
-        prev?.addEventListener('click', () => { this.prev(); this.restartAutoplay(); });
-        next?.addEventListener('click', () => { this.next(); this.restartAutoplay(); });
 
         this.cards.forEach((card, i) => {
             card.addEventListener('click', () => { this.goTo(i); this.restartAutoplay(); });

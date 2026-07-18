@@ -1,0 +1,54 @@
+/* BLOG SINGLE — breadcrumb (Home / Blogs / Category), below the header and
+   above the hero. Visual tokens reused from the site's existing breadcrumb
+   pattern (careers-hero__breadcrumb / contact-hero__breadcrumb); horizontal
+   alignment mirrors .main-content > .hero-container's own padding + centered
+   max-width so it lines up with the hero/article content column below it. */
+
+.blog-single-breadcrumb-wrapper{
+  display: flex;
+  width: 100%;
+  padding: 0 clamp(20px, 8.5vw, 122px);
+  box-sizing: border-box;
+}
+
+.blog-single-breadcrumb{
+  width: min(1198px, 100%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.blog-single-breadcrumb a{
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.blog-single-breadcrumb a:hover{
+  color: var(--black);
+}
+
+.blog-single-breadcrumb-sep{
+  color: var(--border-light);
+}
+
+.blog-single-breadcrumb .blog-single-breadcrumb-current{
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.blog-single-breadcrumb .blog-single-breadcrumb-current:hover{
+  color: var(--primary);
+}
+
+@media screen and (max-width: 450px){
+  .blog-single-breadcrumb{
+    font-size: 13px;
+  }
+}

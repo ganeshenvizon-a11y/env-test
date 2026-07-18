@@ -1,4 +1,8 @@
 import { initNavbar } from '../assets/js/components/navbar.js?v=1.1';
+import { initLenis } from './lenis-setup.js';
+
+// Initialize Lenis smooth scroll
+initLenis();
 
 document.addEventListener('DOMContentLoaded', () => {
     const placeholder = document.querySelector('header.header');

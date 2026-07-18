@@ -1,16 +1,18 @@
 /**
  * Envizon Studio - Careers Page: Application form validation
- * Client-side only: validates required fields, email/phone/URL formats and
- * the resume upload, surfaces inline errors, and shows a success state on
- * valid submission. There is no backend wired up yet, so a valid submit
- * simply confirms receipt to the applicant and resets the form.
+ * Validates required fields, email/phone/URL formats and the resume
+ * upload, surfaces inline errors, renders the reCAPTCHA widget, and
+ * submits to career_validate.php.
  */
+
+import { renderRecaptcha, getRecaptchaResponse, resetRecaptcha } from '../utils/recaptcha.js';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^[+]?[\d\s()-]{7,20}$/;
 const URL_PATTERN = /^https?:\/\/.+\..+/i;
 const RESUME_ACCEPT = ['.pdf', '.doc', '.docx'];
 const RESUME_MAX_BYTES = 5 * 1024 * 1024;
+const SUBMIT_ENDPOINT = '/career_validate.php';
 
 function setFieldError(field, message) {
     const wrapper = field.closest('.careers-form__field');
@@ -103,14 +105,24 @@ function initResumeField(form) {
     });
 }
 
+function resetFileField(form) {
+    const nameEl = form.querySelector('.careers-form__file-name');
+    if (nameEl) {
+        nameEl.textContent = 'No file chosen';
+        nameEl.dataset.hasFile = 'false';
+    }
+}
+
 export function initCareersForm(selector = '.careers-form') {
     const form = document.querySelector(selector);
     if (!form) return;
 
-    const fields = Array.from(form.querySelectorAll('.careers-form__control'));
+    const fields = Array.from(form.querySelectorAll('.careers-form__control, .careers-form__file-input'));
     const statusEl = form.querySelector('.careers-form__status');
+    const submitBtn = form.querySelector('.careers-form__submit');
 
     initResumeField(form);
+    renderRecaptcha(form);
 
     fields.forEach(field => {
         const eventName = field.type === 'file' || field.tagName === 'SELECT' ? 'change' : 'blur';
@@ -122,7 +134,7 @@ export function initCareersForm(selector = '.careers-form') {
         });
     });
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         const isValid = fields.reduce((valid, field) => validateField(field) && valid, true);
@@ -137,16 +149,48 @@ export function initCareersForm(selector = '.careers-form') {
             return;
         }
 
-        if (statusEl) {
-            statusEl.textContent = "Thanks — we've received your application and will be in touch if there's a fit.";
-            statusEl.dataset.state = 'success';
+        const recaptchaResponse = getRecaptchaResponse(form);
+        if (!recaptchaResponse) {
+            if (statusEl) {
+                statusEl.textContent = "Please confirm you're not a robot.";
+                statusEl.dataset.state = 'error';
+            }
+            return;
         }
-        form.reset();
 
-        const nameEl = form.querySelector('.careers-form__file-name');
-        if (nameEl) {
-            nameEl.textContent = 'No file chosen';
-            nameEl.dataset.hasFile = 'false';
+        if (submitBtn) submitBtn.disabled = true;
+        if (statusEl) {
+            statusEl.textContent = 'Sending your application…';
+            statusEl.dataset.state = 'pending';
+        }
+
+        try {
+            const formData = new FormData(form);
+            formData.set('g-recaptcha-response', recaptchaResponse);
+
+            const res = await fetch(SUBMIT_ENDPOINT, { method: 'POST', body: formData });
+            const data = await res.json();
+
+            if (statusEl) {
+                statusEl.textContent = data.message || (data.success
+                    ? "Thanks — we've received your application and will be in touch if there's a fit."
+                    : 'Something went wrong. Please try again.');
+                statusEl.dataset.state = data.success ? 'success' : 'error';
+            }
+
+            if (data.success) {
+                form.reset();
+                resetFileField(form);
+            }
+            resetRecaptcha(form);
+        } catch (err) {
+            if (statusEl) {
+                statusEl.textContent = 'Something went wrong. Please check your connection and try again.';
+                statusEl.dataset.state = 'error';
+            }
+            resetRecaptcha(form);
+        } finally {
+            if (submitBtn) submitBtn.disabled = false;
         }
     });
 }

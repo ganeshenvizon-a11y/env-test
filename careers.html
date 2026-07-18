@@ -354,13 +354,7 @@
 
                 <div class="careers-form__field">
                     <label class="careers-form__label" for="careers-position">Position Applying For <span class="careers-form__required">*</span></label>
-                    <select class="careers-form__control" id="careers-position" name="position" required aria-required="true">
-                        <option value="" selected disabled>Select a position</option>
-                        <option value="UI/UX Designer">UI/UX Designer</option>
-                        <option value="Lead Graphic Designer">Lead Graphic Designer</option>
-                        <option value="Marketing Manager">Marketing Manager</option>
-                        <option value="Other">Other / General Application</option>
-                    </select>
+                    <input class="careers-form__control" type="text" id="careers-position" name="position" placeholder="e.g. UI/UX Designer" autocomplete="off" required aria-required="true">
                     <span class="careers-form__error" role="alert"></span>
                 </div>
 
@@ -404,6 +398,10 @@
                 <textarea class="careers-form__control" id="careers-message" name="message" rows="5" placeholder="Tell us why you'd be a great fit..."></textarea>
                 <span class="careers-form__error" role="alert"></span>
             </div>
+
+            <input type="text" name="website_url" class="careers-form__honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="careers-form__recaptcha" data-recaptcha></div>
 
             <p class="careers-form__status" role="status" aria-live="polite"></p>
 

@@ -10,7 +10,7 @@ import { initContactPopup } from "./components/contact-popup.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const carousel = initShowcaseCarousel("#showcaseCarousel");
-  initServicesNav("#servicesTicker", carousel);
+  initServicesNav("#servicesTicker");
   initServicesScroll("#servicesScroll");
   initHowWeWork(".how-we-work");
   initWorkflowShowcase(".workflow-showcase");

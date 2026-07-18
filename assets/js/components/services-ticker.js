@@ -1,54 +1,70 @@
 /**
  * Envizon Studio - Services Category Nav
- * Thin nav strip synced to the showcase carousel's active card.
+ * Slow, infinite GSAP marquee effect.
  */
 
 export class ServicesNav {
-    constructor(root, carousel) {
-        this.root = root;
-        this.carousel = carousel;
-        this.items = Array.from(root.querySelectorAll('.services-bar__item'));
+    constructor(root) {
+        this.root = root; // this is the track (e.g. #servicesTicker, which is ul.services-bar__track)
+        if (!this.root) return;
 
-        if (!this.items.length || !carousel) return;
+        this.originalItems = Array.from(this.root.querySelectorAll('.services-bar__item'));
+        if (!this.originalItems.length) return;
 
-        this.bindClicks();
-        carousel.onChange((index) => this.setActive(index));
+        // Wrap original items in a group to measure its width easily
+        this.group = document.createElement('div');
+        this.group.className = 'services-bar__group';
+        
+        // Move items into the group
+        this.originalItems.forEach(item => this.group.appendChild(item));
+        this.root.appendChild(this.group);
+
+        // Clone the group to ensure we have enough items for seamless scrolling
+        // We will make 4 groups in total (1 original + 3 clones)
+        for (let i = 0; i < 3; i++) {
+            const clone = this.group.cloneNode(true);
+            this.root.appendChild(clone);
+        }
+
+        this.initMarquee();
     }
 
-    bindClicks() {
-        this.items.forEach((item, i) => {
-            const btn = item.querySelector('.services-bar__btn');
-            btn?.addEventListener('click', () => {
-                this.carousel.goTo(i);
-                this.carousel.restartAutoplay();
+    initMarquee() {
+        const startAnimation = () => {
+            const groupWidth = this.group.getBoundingClientRect().width;
+            const gap = parseFloat(window.getComputedStyle(this.root).gap) || 0;
+            const totalDistance = groupWidth + gap;
+
+            if (this.tween) {
+                this.tween.kill();
+            }
+
+            // Animate x of the track
+            this.tween = gsap.to(this.root, {
+                x: -totalDistance,
+                ease: 'none',
+                duration: 35, // slow marquee speed
+                repeat: -1
             });
-        });
+        };
+
+        // Run with a tiny timeout to ensure styling/fonts are applied and clientRect measurements are accurate
+        setTimeout(startAnimation, 50);
+
+        this.resizeHandler = () => startAnimation();
+        window.addEventListener('resize', this.resizeHandler);
     }
 
-    setActive(index) {
-        this.items.forEach((item, i) => {
-            item.classList.toggle('is-active', i === index);
-        });
-
-        // Center the active item within the ticker's own horizontal scroller
-        // (`.services-bar`, this.root's parent) directly via scrollLeft, rather
-        // than scrollIntoView: `.services-bar__track` (this.root) itself has no
-        // overflow set, so scrollIntoView's "nearest" block-axis search can't
-        // find a scrollable ancestor and escalates all the way to the window —
-        // scrolling the whole page every time this fires (including on every
-        // carousel autoplay tick, every 3s) and fighting any other scroll owner
-        // on the page (e.g. the pinned services-scroll section's ScrollTrigger).
-        const item = this.items[index];
-        const scroller = this.root.parentElement;
-        if (!item || !scroller) return;
-
-        const target = item.offsetLeft - (scroller.clientWidth - item.offsetWidth) / 2;
-        scroller.scrollTo({ left: target, behavior: 'smooth' });
+    destroy() {
+        if (this.tween) {
+            this.tween.kill();
+        }
+        window.removeEventListener('resize', this.resizeHandler);
     }
 }
 
-export function initServicesNav(selector = '#servicesTicker', carousel) {
+export function initServicesNav(selector = '#servicesTicker') {
     const root = document.querySelector(selector);
     if (!root) return null;
-    return new ServicesNav(root, carousel);
+    return new ServicesNav(root);
 }

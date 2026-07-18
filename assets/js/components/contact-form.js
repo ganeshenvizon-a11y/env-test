@@ -4,62 +4,11 @@
  * errors, renders the reCAPTCHA widget, and submits to contact_validate.php.
  */
 
+import { renderRecaptcha, getRecaptchaResponse, resetRecaptcha } from '../utils/recaptcha.js';
+
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^[+]?[\d\s()-]{7,20}$/;
-const RECAPTCHA_SITE_KEY = '6LfMv1YqAAAAAKtfU2OduJtKdwY5TrzHdZaYO1jw';
-const RECAPTCHA_SCRIPT_SRC = 'https://www.google.com/recaptcha/api.js?render=explicit';
 const SUBMIT_ENDPOINT = '/contact_validate.php';
-
-let recaptchaScriptPromise = null;
-
-function loadRecaptchaScript() {
-    if (window.grecaptcha && window.grecaptcha.render) return Promise.resolve();
-    if (recaptchaScriptPromise) return recaptchaScriptPromise;
-
-    recaptchaScriptPromise = new Promise((resolve, reject) => {
-        const existing = document.querySelector('script[src^="https://www.google.com/recaptcha/api.js"]');
-        if (existing) {
-            existing.addEventListener('load', () => resolve(), { once: true });
-            existing.addEventListener('error', reject, { once: true });
-            return;
-        }
-        const script = document.createElement('script');
-        script.src = RECAPTCHA_SCRIPT_SRC;
-        script.async = true;
-        script.defer = true;
-        script.addEventListener('load', () => resolve(), { once: true });
-        script.addEventListener('error', reject, { once: true });
-        document.head.appendChild(script);
-    });
-
-    return recaptchaScriptPromise;
-}
-
-function renderRecaptcha(form) {
-    const container = form.querySelector('[data-recaptcha]');
-    if (!container || container.dataset.rendered === 'true') return;
-
-    loadRecaptchaScript().then(() => new Promise((resolve) => window.grecaptcha.ready(resolve))).then(() => {
-        if (container.dataset.rendered === 'true') return;
-        const widgetId = window.grecaptcha.render(container, { sitekey: RECAPTCHA_SITE_KEY });
-        container.dataset.widgetId = String(widgetId);
-        container.dataset.rendered = 'true';
-    }).catch(() => {
-        container.dataset.loadFailed = 'true';
-    });
-}
-
-function getRecaptchaResponse(form) {
-    const container = form.querySelector('[data-recaptcha]');
-    if (!container || container.dataset.rendered !== 'true' || !window.grecaptcha) return '';
-    return window.grecaptcha.getResponse(Number(container.dataset.widgetId));
-}
-
-function resetRecaptcha(form) {
-    const container = form.querySelector('[data-recaptcha]');
-    if (!container || container.dataset.rendered !== 'true' || !window.grecaptcha) return;
-    window.grecaptcha.reset(Number(container.dataset.widgetId));
-}
 
 function setFieldError(field, message) {
     const wrapper = field.closest('.contact-form__field');

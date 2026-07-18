@@ -1,0 +1,207 @@
+/* PRIVACY POLICY PAGE */
+
+.privacy-page {
+    background:
+        radial-gradient(800px 600px at -10% -10%, #FFE9C2 0%, rgba(255,233,194,0) 70%),
+        radial-gradient(800px 600px at 110% -10%, #FFE9C2 0%, rgba(255,233,194,0) 70%),
+        #ffffff;
+    min-height: 100vh;
+}
+
+.privacy-hero {
+    padding: 170px 0 60px;
+    position: relative;
+}
+
+.privacy-hero__container {
+    width: min(1200px, calc(100% - 48px));
+    margin: 0 auto;
+}
+
+.privacy-hero__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.privacy-hero__breadcrumb a {
+    color: var(--text-muted);
+    transition: color var(--transition-fast);
+}
+
+.privacy-hero__breadcrumb a:hover {
+    color: var(--black);
+}
+
+.privacy-hero__breadcrumb-sep {
+    color: var(--border-light);
+}
+
+.privacy-hero__breadcrumb-current {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.privacy-hero__title {
+    font-size: clamp(2.25rem, 1.5rem + 3vw, 4rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: var(--black, #111111);
+    margin: 0;
+}
+
+.privacy-hero__accent {
+    color: var(--primary);
+}
+
+.privacy-layout-section {
+    padding: 20px 0 120px;
+}
+
+.privacy-layout {
+    width: min(1200px, calc(100% - 48px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+.privacy-sidebar {
+    position: sticky;
+    top: 120px;
+    padding-right: 20px;
+}
+
+.privacy-toc__title {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--black);
+    margin-bottom: 20px;
+}
+
+.privacy-toc__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-left: 2px solid var(--border-light);
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.privacy-toc__item {
+    margin: 0;
+    padding: 0;
+}
+
+.privacy-toc__link {
+    display: block;
+    padding: 6px 0 6px 20px;
+    margin-left: -2px; /* overlap border-left */
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.privacy-toc__link:hover {
+    color: var(--black);
+}
+
+.privacy-toc__link.active {
+    color: var(--primary);
+    font-weight: 600;
+    border-left-color: var(--primary);
+}
+
+.privacy-content {
+    font-family: 'Inter', sans-serif;
+    color: var(--text, #555555);
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.privacy-content section {
+    margin-bottom: 60px;
+    scroll-margin-top: 140px; /* Offset for smooth scroll top sticky header */
+}
+
+.privacy-content h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0 0 20px 0;
+    letter-spacing: -0.02em;
+}
+
+.privacy-content p {
+    margin: 0 0 20px 0;
+}
+
+.privacy-content p:last-child {
+    margin-bottom: 0;
+}
+
+.privacy-content ul {
+    margin: 0 0 24px 0;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.privacy-content li {
+    margin-bottom: 12px;
+}
+
+.privacy-content li::marker {
+    color: var(--primary);
+}
+
+@media (max-width: 1024px) {
+    .privacy-hero {
+        padding: 130px 0 40px;
+    }
+    
+    .privacy-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .privacy-sidebar {
+        position: static;
+        padding-right: 0;
+        border-bottom: 1px solid var(--border-light);
+        padding-bottom: 30px;
+    }
+    
+    .privacy-toc__list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-left: none;
+        padding-left: 0;
+        gap: 8px 16px;
+    }
+    
+    .privacy-toc__link {
+        padding: 4px 12px;
+        border-left: none;
+        border-radius: 20px;
+        background: rgba(0, 0, 0, 0.03);
+        font-size: 14px;
+    }
+    
+    .privacy-toc__link.active {
+        background: var(--color-gold-400);
+        color: var(--primary);
+        font-weight: 600;
+    }
+}

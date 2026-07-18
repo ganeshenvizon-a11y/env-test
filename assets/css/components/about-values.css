@@ -406,11 +406,11 @@
 }
 
 #servicesValues .about-values__stage {
-    height: var(--services-values-stage-height, clamp(460px, 55vh, 540px));
+    height: var(--services-values-stage-height, clamp(380px, 46vh, 460px));
 }
 
 #servicesValues .value-card__inner {
-    padding: 32px 40px;
+    padding: 24px 40px;
     align-items: center;
     overflow-y: auto;
 }
@@ -440,7 +440,7 @@
 
 /* Custom CSS variables for responsive stage height */
 :root {
-    --services-values-stage-height: clamp(460px, 55vh, 540px);
+    --services-values-stage-height: clamp(380px, 46vh, 460px);
 }
 
 @media(max-width: 860px) {

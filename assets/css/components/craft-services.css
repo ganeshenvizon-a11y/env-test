@@ -176,8 +176,9 @@
    centers independently, so cards with different content lengths don't align and
    the "covered" card peeks through the misaligned margins instead of being hidden */
 .service-panel__inner{
+    margin-top:50px;
     width:100%;
-    height:100%;
+    height:79%;
     box-sizing:border-box;
     display:grid;
     grid-template-columns:1fr 1fr;

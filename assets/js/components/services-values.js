@@ -185,62 +185,80 @@ export function initServicesValues(sectionSelector = '#servicesValues') {
     });
     setActive(0);
 
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: stage,
-            start: 'top 140px',
-            end: () => `+=${(total - 1) * window.innerHeight * 0.6}`,
-            scrub: 1,
-            pin: stage,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            onUpdate(self) {
-                const index = Math.min(total - 1, Math.round(self.progress * (total - 1)));
-                setActive(index);
+    const buildTimeline = (pinTarget, triggerTarget, start) => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: triggerTarget,
+                start,
+                end: () => `+=${(total - 1) * window.innerHeight * 0.6}`,
+                scrub: 1,
+                pin: pinTarget,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
+                onUpdate(self) {
+                    const index = Math.min(total - 1, Math.round(self.progress * (total - 1)));
+                    setActive(index);
+                }
             }
+        });
+
+        for (let i = 0; i < total - 1; i++) {
+            const outgoing = cards[i];
+            const incoming = cards[i + 1];
+
+            tl.set(incoming, { opacity: 0, scale: 0.95, y: 100, filter: 'blur(8px)' }, i);
+
+            if (i >= 1) {
+                tl.to(cards[i - 1], { opacity: 0, duration: 0.5, ease: 'power1.out' }, i);
+            }
+
+            tl.to(outgoing, {
+                scale: 0.96,
+                y: -30,
+                opacity: 0.6,
+                boxShadow: SHADOW_FADED,
+                ease: 'power3.out',
+                duration: 1
+            }, i);
+
+            tl.to(incoming, {
+                y: 0,
+                scale: 1,
+                boxShadow: SHADOW_ACTIVE,
+                ease: 'power4.out',
+                duration: 1
+            }, i);
+
+            tl.to(incoming, {
+                opacity: 1,
+                filter: 'blur(0px)',
+                ease: 'power2.out',
+                duration: 0.45
+            }, i);
+
+            tl.to(incoming.querySelectorAll('.value-card__check-item'), {
+                opacity: 1,
+                x: 0,
+                stagger: 0.08,
+                duration: 0.6,
+                ease: 'power2.out'
+            }, i + 0.1);
         }
+
+        return tl;
+    };
+
+    // Desktop: pin the whole section (heading + CTA + description + divider
+    // + card stage), flush against the literal viewport top — the floating
+    // nav auto-hides on scroll-down and is gone by the time the user reaches
+    // this section, so no clearance needs to be reserved for it.
+    //
+    // Mobile/tablet: the nav stays permanently visible there (navbar.js), so
+    // only the card stage pins — offset to clear the ~138px nav — while the
+    // heading, CTA and description scroll normally above it. Same behavior
+    // as the about page's equivalent section (about-values.js).
+    ScrollTrigger.matchMedia({
+        '(min-width: 861px)': () => buildTimeline(section, section, 'top top'),
+        '(max-width: 860px)': () => buildTimeline(stage, stage, 'top 140px')
     });
-
-    for (let i = 0; i < total - 1; i++) {
-        const outgoing = cards[i];
-        const incoming = cards[i + 1];
-
-        tl.set(incoming, { opacity: 0, scale: 0.95, y: 100, filter: 'blur(8px)' }, i);
-
-        if (i >= 1) {
-            tl.to(cards[i - 1], { opacity: 0, duration: 0.5, ease: 'power1.out' }, i);
-        }
-
-        tl.to(outgoing, {
-            scale: 0.96,
-            y: -30,
-            opacity: 0.6,
-            boxShadow: SHADOW_FADED,
-            ease: 'power3.out',
-            duration: 1
-        }, i);
-
-        tl.to(incoming, {
-            y: 0,
-            scale: 1,
-            boxShadow: SHADOW_ACTIVE,
-            ease: 'power4.out',
-            duration: 1
-        }, i);
-
-        tl.to(incoming, {
-            opacity: 1,
-            filter: 'blur(0px)',
-            ease: 'power2.out',
-            duration: 0.45
-        }, i);
-
-        tl.to(incoming.querySelectorAll('.value-card__check-item'), {
-            opacity: 1,
-            x: 0,
-            stagger: 0.08,
-            duration: 0.6,
-            ease: 'power2.out'
-        }, i + 0.1);
-    }
 }

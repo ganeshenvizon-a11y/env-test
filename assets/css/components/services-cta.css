@@ -19,6 +19,7 @@
 }
 
 .call-to-action-content {
+  margin-top:100px;
   justify-content: center;
   padding: var(--padding-0) var(--padding-20);
   gap: var(--gap-0);

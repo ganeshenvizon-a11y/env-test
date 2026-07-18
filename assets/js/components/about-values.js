@@ -123,59 +123,79 @@ export function initAboutValues(sectionSelector = '#aboutValues') {
     });
     setActive(0);
 
-    // pin starts once the stage has cleared the floating sticky nav (~138px
-    // tall) rather than at the literal viewport top, so the card settles
-    // just under the nav instead of colliding with it; the shorter, compact
-    // cards here also don't need a full viewport-height of scroll per card
-    // the way the homepage's taller services-scroll cards do
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: stage,
-            start: 'top 140px',
-            end: () => `+=${(total - 1) * window.innerHeight * 0.6}`,
-            scrub: 1,
-            pin: stage,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            onUpdate(self) {
-                const index = Math.min(total - 1, Math.round(self.progress * (total - 1)));
-                setActive(index);
+    const buildTimeline = (pinTarget, triggerTarget, start) => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: triggerTarget,
+                start,
+                end: () => `+=${(total - 1) * window.innerHeight * 0.6}`,
+                scrub: 1,
+                pin: pinTarget,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
+                onUpdate(self) {
+                    const index = Math.min(total - 1, Math.round(self.progress * (total - 1)));
+                    setActive(index);
+                }
             }
+        });
+
+        for (let i = 0; i < total - 1; i++) {
+            const outgoing = cards[i];
+            const incoming = cards[i + 1];
+
+            tl.set(incoming, { opacity: 0, scale: 0.95, y: 100, filter: 'blur(8px)' }, i);
+
+            if (i >= 1) {
+                tl.to(cards[i - 1], { opacity: 0, duration: 0.5, ease: 'power1.out' }, i);
+            }
+
+            tl.to(outgoing, {
+                scale: 0.96,
+                y: -30,
+                opacity: 0.6,
+                boxShadow: SHADOW_FADED,
+                ease: 'power3.out',
+                duration: 1
+            }, i);
+
+            tl.to(incoming, {
+                y: 0,
+                scale: 1,
+                boxShadow: SHADOW_ACTIVE,
+                ease: 'power4.out',
+                duration: 1
+            }, i);
+
+            tl.to(incoming, {
+                opacity: 1,
+                filter: 'blur(0px)',
+                ease: 'power2.out',
+                duration: 0.45
+            }, i);
         }
+
+        return tl;
+    };
+
+    // Desktop: pin the whole section (heading + CTA + description + divider
+    // + card stage) — not just the stage — so the complete layout stays
+    // visible and motionless while only the cards animate inside it. Pins
+    // flush against the literal viewport top: the floating nav (navbar.js)
+    // auto-hides itself on scroll-down and is gone well before the user
+    // reaches this section, so reserving clearance for it here just left a
+    // dead gap above the pinned section instead of the section actually
+    // touching the top of the browser.
+    //
+    // Mobile/tablet: the nav never auto-hides there (navbar.js keeps it
+    // permanently visible on touch devices), and screen height is tight, so
+    // pinning the full section would either collide with the nav or crowd
+    // out the cards. There, only the card stage itself pins — the heading,
+    // CTA and description scroll normally above it — clearing the ~138px
+    // nav the same way this used to work before the whole-section pin was
+    // introduced for desktop.
+    ScrollTrigger.matchMedia({
+        '(min-width: 861px)': () => buildTimeline(section, section, 'top top'),
+        '(max-width: 860px)': () => buildTimeline(stage, stage, 'top 140px')
     });
-
-    for (let i = 0; i < total - 1; i++) {
-        const outgoing = cards[i];
-        const incoming = cards[i + 1];
-
-        tl.set(incoming, { opacity: 0, scale: 0.95, y: 100, filter: 'blur(8px)' }, i);
-
-        if (i >= 1) {
-            tl.to(cards[i - 1], { opacity: 0, duration: 0.5, ease: 'power1.out' }, i);
-        }
-
-        tl.to(outgoing, {
-            scale: 0.96,
-            y: -30,
-            opacity: 0.6,
-            boxShadow: SHADOW_FADED,
-            ease: 'power3.out',
-            duration: 1
-        }, i);
-
-        tl.to(incoming, {
-            y: 0,
-            scale: 1,
-            boxShadow: SHADOW_ACTIVE,
-            ease: 'power4.out',
-            duration: 1
-        }, i);
-
-        tl.to(incoming, {
-            opacity: 1,
-            filter: 'blur(0px)',
-            ease: 'power2.out',
-            duration: 0.45
-        }, i);
-    }
 }

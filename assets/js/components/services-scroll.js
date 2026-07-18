@@ -201,87 +201,105 @@ export function initServicesScroll(sectionSelector = "#servicesScroll") {
   // One timeline "unit" per transition between adjacent cards — scrub maps
   // scroll progress onto it directly (bidirectional), so scrolling back up
   // reverses the exact same sequence with no separate reverse logic needed.
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: stage,
-      start: "top 140px",
-      end: () => `+=${(total - 1) * window.innerHeight * 0.6}`,
-      scrub: 1,
-      pin: stage,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      onUpdate(self) {
-        const index = Math.min(
-          total - 1,
-          Math.round(self.progress * (total - 1)),
-        );
-        setActive(index);
+  const buildTimeline = (pinTarget, triggerTarget, start) => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerTarget,
+        start,
+        end: () => `+=${(total - 1) * window.innerHeight * 0.6}`,
+        scrub: 1,
+        pin: pinTarget,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate(self) {
+          const index = Math.min(
+            total - 1,
+            Math.round(self.progress * (total - 1)),
+          );
+          setActive(index);
+        },
       },
-    },
-  });
+    });
 
-  for (let i = 0; i < total - 1; i++) {
-    const outgoing = panels[i];
-    const incoming = panels[i + 1];
+    for (let i = 0; i < total - 1; i++) {
+      const outgoing = panels[i];
+      const incoming = panels[i + 1];
 
-    // reveal the incoming card into its resting "about to enter" look the
-    // instant its segment starts (imperceptible snap, not an animated tween)
-    tl.set(
-      incoming,
-      { opacity: 0, scale: 0.95, y: 100, filter: "blur(8px)" },
-      i,
-    );
+      // reveal the incoming card into its resting "about to enter" look the
+      // instant its segment starts (imperceptible snap, not an animated tween)
+      tl.set(
+        incoming,
+        { opacity: 0, scale: 0.95, y: 100, filter: "blur(8px)" },
+        i,
+      );
 
-    // fully retire the card from two steps back quickly (finishes in the first
-    // half of this segment) so at most one faded "previous" card is ever on
-    // screen at once, rather than it lingering through the whole transition
-    if (i >= 1) {
+      // fully retire the card from two steps back quickly (finishes in the first
+      // half of this segment) so at most one faded "previous" card is ever on
+      // screen at once, rather than it lingering through the whole transition
+      if (i >= 1) {
+        tl.to(
+          panels[i - 1],
+          { opacity: 0, duration: 0.5, ease: "power1.out" },
+          i,
+        );
+      }
+
+      // outgoing: settles underneath, slightly faded, lower in the stack
       tl.to(
-        panels[i - 1],
-        { opacity: 0, duration: 0.5, ease: "power1.out" },
+        outgoing,
+        {
+          scale: 0.96,
+          y: -30,
+          opacity: 0.6,
+          boxShadow: SHADOW_FADED,
+          ease: "power3.out",
+          duration: 1,
+        },
+        i,
+      );
+
+      // incoming: translateY + scale + shadow drive the full-duration slide-up
+      tl.to(
+        incoming,
+        {
+          y: 0,
+          scale: 1,
+          boxShadow: SHADOW_ACTIVE,
+          ease: "power4.out",
+          duration: 1,
+        },
+        i,
+      );
+
+      // incoming: opacity + blur resolve quickly (front-loaded) so the card is
+      // already fully opaque for most of its slide, avoiding a long translucent
+      // overlap with the card underneath it
+      tl.to(
+        incoming,
+        {
+          opacity: 1,
+          filter: "blur(0px)",
+          ease: "power2.out",
+          duration: 0.45,
+        },
         i,
       );
     }
 
-    // outgoing: settles underneath, slightly faded, lower in the stack
-    tl.to(
-      outgoing,
-      {
-        scale: 0.96,
-        y: -30,
-        opacity: 0.6,
-        boxShadow: SHADOW_FADED,
-        ease: "power3.out",
-        duration: 1,
-      },
-      i,
-    );
+    return tl;
+  };
 
-    // incoming: translateY + scale + shadow drive the full-duration slide-up
-    tl.to(
-      incoming,
-      {
-        y: 0,
-        scale: 1,
-        boxShadow: SHADOW_ACTIVE,
-        ease: "power4.out",
-        duration: 1,
-      },
-      i,
-    );
-
-    // incoming: opacity + blur resolve quickly (front-loaded) so the card is
-    // already fully opaque for most of its slide, avoiding a long translucent
-    // overlap with the card underneath it
-    tl.to(
-      incoming,
-      {
-        opacity: 1,
-        filter: "blur(0px)",
-        ease: "power2.out",
-        duration: 0.45,
-      },
-      i,
-    );
-  }
+  // Desktop: pin the whole section (heading + CTA + description + divider +
+  // card stage), flush against the literal viewport top — the floating nav
+  // auto-hides on scroll-down and is gone by the time the user reaches this
+  // section, so no clearance needs to be reserved for it.
+  //
+  // Mobile/tablet: the nav stays permanently visible there (navbar.js), so
+  // only the card stage pins — offset to clear the ~138px nav — while the
+  // heading, CTA and description scroll normally above it. Same behavior as
+  // the about and services pages' equivalent sections.
+  ScrollTrigger.matchMedia({
+    "(min-width: 861px)": () => buildTimeline(section, section, "top top"),
+    "(max-width: 860px)": () => buildTimeline(stage, stage, "top 140px"),
+  });
 }

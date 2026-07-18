@@ -228,10 +228,27 @@ textarea.contact-form__control{
     flex-shrink:0;
 }
 
+.contact-form__honeypot{
+    position:absolute;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+}
+
+.contact-form__recaptcha{
+    min-height:78px;
+}
+
 .contact-form__status{
     font-size:14px;
     font-weight:600;
     margin-top:-8px;
+}
+
+.contact-form__status[data-state="pending"]{
+    color:var(--text-muted);
 }
 
 .contact-form__status[data-state="success"]{

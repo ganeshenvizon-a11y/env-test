@@ -57,7 +57,7 @@
 .testimonial-card,
 .faq-item,
 .insight-card {
-    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease !important;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease, background 0.3s ease !important;
 }
 
 /* Base style resets to avoid visual jumps prior to GSAP loading */
@@ -144,37 +144,33 @@
     justify-content: center;
     vertical-align: middle;
     width: 2.7em;
-    height: 2.7em;
+    height: 1.7em;
     margin: 0 -0.85em;
     transform: translateY(-0.06em);
 }
 
 .integrations__title-wrench {
-    width: 100%;
+    width: 40%;
     height: 100%;
     display: block;
     object-fit: contain;
 }
 
-/* Change grid to 12 columns and span items to match mockup rows layout on desktop */
+/* Change grid to 10 columns and span items to match mockup rows layout on desktop */
 @media (min-width: 1025px) {
     .integrations__grid {
-        grid-template-columns: repeat(12, 1fr) !important;
+        grid-template-columns: repeat(10, 1fr) !important;
     }
 
-    /* Row 1: First 4 items span 3 columns each (4 * 3 = 12 columns total) */
-    .integrations__item:nth-child(1),
-    .integrations__item:nth-child(2),
-    .integrations__item:nth-child(3),
-    .integrations__item:nth-child(4) {
-        grid-column: span 3;
-    }
+    /* Row 1: Photoshop (span 2), GitHub (span 3), Envato Elements (span 2), Google Analytics (span 3) */
+    .integrations__item:nth-child(1) { grid-column: span 2; }
+    .integrations__item:nth-child(2) { grid-column: span 3; }
+    .integrations__item:nth-child(3) { grid-column: span 2; }
+    .integrations__item:nth-child(4) { grid-column: span 3; }
 
-    /* Row 2: Next 3 items span 4 columns each (3 * 4 = 12 columns total) */
-    .integrations__item:nth-child(5),
-    .integrations__item:nth-child(6),
-    .integrations__item:nth-child(7) {
-        grid-column: span 4;
-    }
+    /* Row 2: Figma (span 3), Illustrator (span 3), Adobe Suite (span 4) */
+    .integrations__item:nth-child(5) { grid-column: span 3; }
+    .integrations__item:nth-child(6) { grid-column: span 3; }
+    .integrations__item:nth-child(7) { grid-column: span 4; }
 }
 

@@ -21,6 +21,14 @@
   isolation: isolate;
 }
 
+/* Adds a <main> landmark around this shell's content sections without
+   affecting the flex layout above — display:contents makes the <main>
+   itself generate no box, so its children keep participating directly as
+   this container's flex items (same gap spacing as before). */
+.works-internal-ui-v10 > main {
+  display: contents;
+}
+
 .works-internal-ui-v10-child {
   background-color: var(--color-gold-400);
   display: block;

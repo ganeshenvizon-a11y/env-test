@@ -23,6 +23,7 @@
 .footer-graphic-area {
   display: block;
   width: var(--width-1440);
+  opacity: 60%;
   height: 622.8px;
   gap: var(--gap-0);
   align-items: flex-start;
@@ -57,15 +58,16 @@
 .envizon {
   font-weight: 500;
   letter-spacing: -0.05em;
-  line-height: 34.7px;
+  line-height: 1;
   display: block;
-  width: 1567.4px;
-  height: 327.1px;
+  width: 100%;
+  height: auto;
   margin: 0;
   position: absolute;
-  bottom: -115.7px;
-  left: calc(50% - 672.8px);
-  font-size: inherit;
+  bottom: -50px;
+  left: 0;
+  text-align: center;
+  font-size: 429.4px;
   font-family: inherit;
   align-items: center;
   z-index: 2;
@@ -269,7 +271,7 @@
   flex: 1;
   height: auto;
   gap: clamp(32px, 7vw, 127px);
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   min-width: 469px;
   font-size: var(--fs-12);
@@ -328,8 +330,10 @@
 
 .container6 {
   width: var(--width-139);
-  padding: var(--padding-0) var(--padding-0) var(--padding-29);
-  box-sizing: border-box;
+}
+
+.container9 {
+  width: 129px;
 }
 
 .container6,
@@ -339,10 +343,8 @@
   align-items: flex-start;
   gap: var(--gap-52);
   height: auto;
-}
-
-.container9 {
-  width: 129px;
+  padding: var(--padding-0) var(--padding-0) var(--padding-29);
+  box-sizing: border-box;
 }
 
 .cro-optimization {

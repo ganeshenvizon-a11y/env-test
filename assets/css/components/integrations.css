@@ -97,28 +97,58 @@
 .integrations__grid{
     position:relative;
     z-index:1;
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
     gap:16px;
 }
 
 .integrations__item{
     --accent:#ffffff;
+    --card-bg: rgba(255,255,255,.04);
+    --card-border: rgba(255,255,255,.08);
     display:flex;
     align-items:flex-start;
     gap:14px;
     padding:22px 20px;
     border-radius:14px;
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
-    border-left:2px solid var(--accent);
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
     transition:background var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
     min-width:0;
+    flex:1 1 calc(25% - 12px);
+    max-width:calc(25% - 12px);
 }
 
 .integrations__item:hover{
-    background:rgba(255,255,255,.07);
     transform:translateY(-4px);
+}
+
+.integrations__item--default {
+    --card-bg: rgba(244, 168, 37, 0.02);
+    --card-border: rgba(244, 168, 37, 0.15);
+}
+.integrations__item--default:hover {
+    --card-bg: rgba(244, 168, 37, 0.08);
+    --card-border: rgba(244, 168, 37, 0.35);
+}
+
+.integrations__item--green {
+    --card-bg: rgba(130, 181, 65, 0.02);
+    --card-border: rgba(130, 181, 65, 0.18);
+}
+.integrations__item--green:hover {
+    --card-bg: rgba(130, 181, 65, 0.08);
+    --card-border: rgba(130, 181, 65, 0.38);
+}
+
+.integrations__item--gold {
+    --card-bg: rgba(249, 171, 0, 0.02);
+    --card-border: rgba(249, 171, 0, 0.18);
+}
+.integrations__item--gold:hover {
+    --card-bg: rgba(249, 171, 0, 0.08);
+    --card-border: rgba(249, 171, 0, 0.38);
 }
 
 .integrations__icon{
@@ -163,8 +193,12 @@
     }
 
     .integrations__grid{
-        grid-template-columns:repeat(2, 1fr);
         gap:14px;
+    }
+
+    .integrations__item{
+        flex-basis:calc(50% - 7px);
+        max-width:calc(50% - 7px);
     }
 }
 
@@ -189,11 +223,12 @@
     }
 
     .integrations__grid{
-        grid-template-columns:1fr;
         gap:12px;
     }
 
     .integrations__item{
+        flex-basis:100%;
+        max-width:100%;
         padding:18px 16px;
     }
 }

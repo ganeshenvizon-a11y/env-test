@@ -24,12 +24,16 @@ export function setOptionalText(el, text) {
 
 /**
  * Points `el` at `url` if it's a safe http(s) URL, or hides `el` otherwise.
+ * Leading/trailing whitespace (common in copy-pasted ACF URL fields) is
+ * trimmed before validation so it never causes an otherwise-valid URL to
+ * fail the safety check.
  */
 export function setSafeLink(el, url) {
   if (!el) return;
-  const isSafe = SAFE_URL.test(url);
+  const normalizedUrl = (url || "").trim();
+  const isSafe = SAFE_URL.test(normalizedUrl);
   el.hidden = !isSafe;
-  if (isSafe) el.href = url;
+  if (isSafe) el.href = normalizedUrl;
 }
 
 /**

@@ -1,0 +1,161 @@
+/* ==========================================================================
+   Envizon Studio - Contact Popup Form Stylesheet
+   ========================================================================== */
+
+/* Prevent scroll on body when popup is active */
+body.contact-popup-open {
+    overflow: hidden !important;
+}
+
+/* Modal Overlay backdrop */
+.contact-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(8, 3, 55, 0.75); /* Reuses dark blue brand color */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.contact-popup-overlay.is-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Modal Container wrapper */
+.contact-popup-container {
+    position: relative;
+    width: min(960px, 92%);
+    max-height: 90vh;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.92) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.contact-popup-overlay.is-active .contact-popup-container {
+    transform: scale(1) translateY(0);
+}
+
+/* Scroll area for modal */
+.contact-popup-scroll {
+    overflow-y: auto;
+    width: 100%;
+    flex: 1;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Close Button styling */
+.contact-popup-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: rgba(8, 3, 55, 0.05);
+    border: none;
+    color: var(--black, #080337);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    transition: background-color var(--transition-fast, 0.2s), color var(--transition-fast, 0.2s), transform 0.3s ease;
+}
+
+.contact-popup-close svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 2.5;
+}
+
+.contact-popup-close:hover {
+    background-color: var(--test-roan-six-87vercelapp-Fire-Bush, #eda922);
+    color: #ffffff;
+    transform: rotate(90deg);
+}
+
+.contact-popup-close:focus-visible {
+    outline: 2px solid var(--test-roan-six-87vercelapp-Fire-Bush, #eda922);
+    outline-offset: 2px;
+}
+
+/* Style overrides to adapt the contact form inside modal */
+.contact-popup-container .contact-form-section__container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    display: grid;
+    grid-template-columns: minmax(0, 360px) 1fr;
+}
+
+.contact-popup-container .contact-form-panel {
+    border-radius: 0;
+    padding: 64px 44px;
+}
+
+.contact-popup-container .contact-form {
+    padding: 64px 48px 48px;
+    background: #ffffff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .contact-popup-container .contact-form-section__container {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-popup-container .contact-form-panel {
+        padding: 48px 36px;
+    }
+    
+    .contact-popup-container .contact-form {
+        padding: 48px 36px 36px;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-popup-container {
+        width: 95%;
+        border-radius: 16px;
+    }
+    
+    .contact-popup-close {
+        top: 16px;
+        right: 16px;
+        width: 36px;
+        height: 36px;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+    }
+    
+    .contact-popup-container .contact-form-panel {
+        padding: 48px 24px 28px;
+    }
+    
+    .contact-popup-container .contact-form {
+        padding: 32px 24px 24px;
+    }
+    
+    .contact-popup-close:hover {
+        background-color: var(--test-roan-six-87vercelapp-Fire-Bush, #eda922);
+        color: #ffffff;
+    }
+}

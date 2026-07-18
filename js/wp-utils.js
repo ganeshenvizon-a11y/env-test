@@ -117,16 +117,20 @@ export function getPostIdFromQuery() {
   return id && /^\d+$/.test(id) ? id : null;
 }
 
+// Reused across every call instead of allocating a fresh element each time —
+// neither is ever attached to the document, so a single shared instance per
+// helper is safe and behaves identically to a fresh one.
+const decodeScratchEl = document.createElement("textarea");
+const stripScratchEl = document.createElement("div");
+
 export function decodeHtmlEntities(text) {
-  const el = document.createElement("textarea");
-  el.innerHTML = text;
-  return el.value;
+  decodeScratchEl.innerHTML = text;
+  return decodeScratchEl.value;
 }
 
 export function stripHtml(html) {
-  const el = document.createElement("div");
-  el.innerHTML = html;
-  return el.textContent || "";
+  stripScratchEl.innerHTML = html;
+  return stripScratchEl.textContent || "";
 }
 
 export function formatDateShort(dateString) {

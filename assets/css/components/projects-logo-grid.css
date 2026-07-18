@@ -35,60 +35,6 @@
 }
 
 /* ============================= */
-/* PAGINATION                     */
-/* ============================= */
-
-.projects-logo-grid__pagination{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:24px;
-}
-
-.projects-logo-grid__arrow{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    width:48px;
-    height:48px;
-    flex-shrink:0;
-    border-radius:50%;
-    border:1px solid var(--border-light);
-    background:var(--white);
-    color:var(--black);
-    cursor:pointer;
-    transition:background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
-}
-
-.projects-logo-grid__arrow svg{
-    width:18px;
-    height:18px;
-}
-
-@media(hover:hover) and (pointer:fine){
-    .projects-logo-grid__arrow:hover:not(:disabled){
-        background:var(--primary);
-        border-color:var(--primary);
-        color:#ffffff;
-        transform:scale(1.06);
-    }
-}
-
-.projects-logo-grid__arrow:disabled{
-    opacity:.35;
-    cursor:not-allowed;
-}
-
-.projects-logo-grid__page-indicator{
-    min-width:48px;
-    text-align:center;
-    font-size:14px;
-    font-weight:600;
-    color:var(--text);
-    letter-spacing:.02em;
-}
-
-/* ============================= */
 /* RESPONSIVE                    */
 /* ============================= */
 

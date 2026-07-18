@@ -172,6 +172,33 @@
   font-size: var(--fs-16);
 }
 
+/* Gutenberg embed blocks (YouTube, Vimeo, Maps, CodePen, X, ...) ship a
+   fixed-pixel iframe width/height from WordPress — constrain it to the
+   article column and reflow it to a 16:9 box via aspect-ratio so it scales
+   with the article instead of overflowing on narrower viewports. */
+.article-content iframe {
+  max-width: 100%;
+}
+
+/* .article-content figure defaults to align-self:center (shrink-to-fit,
+   for image captions) — an embed's wrapper needs a definite width to size
+   its percentage/aspect-ratio box against, so it must stretch instead. */
+.article-content .wp-block-embed {
+  align-self: stretch;
+  width: 100%;
+}
+
+.article-content .wp-block-embed__wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.article-content .wp-block-embed__wrapper iframe {
+  width: 100%;
+  height: 100%;
+}
+
 .article-content thead {
   border-bottom: var(--border-1);
 }

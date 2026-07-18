@@ -6,6 +6,7 @@ import { initWorkflowShowcase } from "./components/workflow-showcase.js";
 import { initFaq } from "./components/faq.js";
 import { initInsights } from "./components/insights.js";
 import { initTestimonials } from "./components/testimonials.js";
+import { initContactPopup } from "./components/contact-popup.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const carousel = initShowcaseCarousel("#showcaseCarousel");
@@ -16,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFaq(".faq__accordion");
   initInsights(".insights");
   initTestimonials(".testimonials");
+  initContactPopup();
 });
 
 /**

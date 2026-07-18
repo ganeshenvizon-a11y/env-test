@@ -9,6 +9,7 @@ import {
   renderProjectCard,
   revealProjectCardsOnScroll,
 } from "../assets/js/components/project-card.js";
+import { track } from "./shared/analytics.js";
 
 const RELATED_PROJECTS_COUNT = 3;
 
@@ -19,18 +20,27 @@ function getRefs() {
   };
 }
 
-function renderRelatedProjects(refs, projects) {
+function renderRelatedProjects(refs, projects, currentSlug) {
   const fragment = document.createDocumentFragment();
   projects.forEach((project) => {
     const cardData = buildProjectCardData(project);
     cardData.tags = []; // Remove tags for related projects section
-    fragment.appendChild(renderProjectCard(cardData));
+    const card = renderProjectCard(cardData);
+    card.addEventListener("click", () =>
+      track("related_project_click", {
+        fromSlug: currentSlug,
+        toSlug: project.slug,
+        toTitle: cardData.title,
+      }),
+    );
+    fragment.appendChild(card);
   });
   refs.grid.appendChild(fragment);
   refs.section.hidden = false;
 
   revealProjectCardsOnScroll(
     Array.from(refs.grid.querySelectorAll(".project-card")),
+    refs.grid,
   );
 }
 
@@ -58,7 +68,7 @@ async function init() {
     );
     if (!related.length) return;
 
-    renderRelatedProjects(refs, related);
+    renderRelatedProjects(refs, related, currentProject.slug);
   } catch (err) {
     console.error("Error loading related projects:", err);
   }

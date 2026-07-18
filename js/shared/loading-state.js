@@ -15,6 +15,7 @@ export function showState(container, message, { actions = [] } = {}) {
   container.innerHTML = "";
   const state = document.createElement("div");
   state.className = "loading-state";
+  state.setAttribute("role", "status");
   state.textContent = message;
 
   actions.forEach(({ label, onClick, href }) => {

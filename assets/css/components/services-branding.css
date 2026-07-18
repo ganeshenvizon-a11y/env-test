@@ -345,7 +345,7 @@
   width: 100%;
   aspect-ratio: 400 / 178;
   display: block;
-  color: var(--card-accent, #FAF6EE); /* Accent yellow path color */
+  color: var(--card-accent, #eda922); /* Accent yellow path color */
   pointer-events: none;
   z-index: 2;
 }

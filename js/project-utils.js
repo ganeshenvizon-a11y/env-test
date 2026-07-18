@@ -4,8 +4,8 @@ import { decodeHtmlEntities, FALLBACK_IMAGE } from "./wp-utils.js";
 // Single consistent visual treatment for every project card — the existing
 // Popl card design (see assets/js/components/project-card.js). Never varies
 // per project: no random colors, no color logic driven by project data.
-const CARD_BG = "linear-gradient(180deg, #2b1214 0%, #6b1f2b 100%)";
-const CARD_ACCENT = "#F4A825";
+const CARD_BG = "#080337";
+const CARD_ACCENT = "#eda922";
 
 // Single fallback title for any project record missing title.rendered —
 // shared by the hero, prev/next nav, and related/listing cards so a blank

@@ -231,6 +231,10 @@
     }
 
     .project-card__background{
-        padding-top:36px;
+        padding-top:0;
+    }
+
+    .project-card__logo{
+        height: 78%;
     }
 }

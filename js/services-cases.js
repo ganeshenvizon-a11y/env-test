@@ -11,10 +11,10 @@ const LATEST_COUNT = 4;
 // Matches the 4 hand-picked colors from the original static markup, cycled
 // per card so the notched-card design keeps its varied look with real data.
 const CARD_PALETTE = [
-  { bg: "#080337", accent: "#eda922" },
-  { bg: "#080337", accent: "#eda922" },
-  { bg: "#080337", accent: "#eda922" },
-  { bg: "#080337", accent: "#eda922" },
+  { bg: "transparent", accent: "#eda922" },
+  { bg: "transparent", accent: "#eda922" },
+  { bg: "transparent", accent: "#eda922" },
+  { bg: "transparent", accent: "#eda922" },
 ];
 
 // Each services page reuses the same "*-cases" markup/CSS, just with its own

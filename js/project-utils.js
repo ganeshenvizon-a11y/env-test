@@ -4,7 +4,7 @@ import { decodeHtmlEntities, FALLBACK_IMAGE } from "./wp-utils.js";
 // Single consistent visual treatment for every project card — the existing
 // Popl card design (see assets/js/components/project-card.js). Never varies
 // per project: no random colors, no color logic driven by project data.
-const CARD_BG = "#080337";
+const CARD_BG = "transparent";
 const CARD_ACCENT = "#eda922";
 
 // Single fallback title for any project record missing title.rendered —

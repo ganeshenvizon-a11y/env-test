@@ -477,3 +477,44 @@
     padding: 8px;
   }
 }
+
+/* ==========================================================================
+   Chatbot Widget Styling
+   ========================================================================== */
+
+/* Curved PNG around chatbot */
+.chat-hi-image-wrapper {
+  position: fixed;
+  bottom: -50px;   /* move slightly higher */
+  right: -46px;   /* align curve with chat icon */
+  width: 180px;
+  z-index: 9997;
+  pointer-events: none;
+}
+
+/* PNG image */
+.chat-hi-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: none;
+}
+
+/* close button */
+.chat-hi-image-close {
+  position: absolute;
+  top: -10px;
+  right: 60px;
+  width: 22px;
+  height: 22px;
+  background: black;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+

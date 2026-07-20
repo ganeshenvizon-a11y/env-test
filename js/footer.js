@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    initChatbot();
+
     const placeholder = document.querySelector('footer.footer');
     if (!placeholder) return;
     if (placeholder.dataset.loaded === 'true') return;
@@ -74,5 +76,37 @@ const initFooterInteractiveTitle = () => {
             ease: 'power2.out'
         });
     });
+};
+
+// Initialize Collect Chatbot dynamically on all pages
+const initChatbot = () => {
+    if (window.CollectId) return; // Prevent double initialization
+    
+    window.CollectId = "69a6e2dab14893cf6adc92f4";
+    const h = document.head || document.getElementsByTagName("head")[0];
+    const s = document.createElement("script");
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://collectcdn.com/launcher.js";
+    h.appendChild(s);
+
+    setTimeout(() => {
+        const existing = document.querySelector('.chat-hi-image-wrapper');
+        if (existing) existing.remove();
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "chat-hi-image-wrapper";
+        wrapper.innerHTML = `
+            <div class="chat-hi-image-close">✕</div>
+            <img src="assets/images/chat-hi-there.png" alt="We Are Here">
+        `;
+
+        document.body.appendChild(wrapper);
+
+        const closeBtn = wrapper.querySelector(".chat-hi-image-close");
+        if (closeBtn) {
+            closeBtn.onclick = () => wrapper.remove();
+        }
+    }, 1200);
 };
 

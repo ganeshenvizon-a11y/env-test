@@ -1,0 +1,77 @@
+<svg width="500" height="361" viewBox="0 0 500 361" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d_3177_34)">
+<path d="M71.3743 100.026L96.5959 268.182C98.446 280.518 109.042 289.643 121.516 289.643H392.442C405.558 289.643 416.481 279.581 417.556 266.509L428.684 131.136C429.891 116.455 418.302 103.873 403.571 103.873H270.219C263.105 103.873 256.323 100.867 251.547 95.5961L236.84 79.3672C232.063 74.0963 225.281 71.0898 218.168 71.0898H96.2939C80.8885 71.0898 69.0892 84.7909 71.3743 100.026Z" fill="#FFFBF2"/>
+<path d="M71.3743 100.026L96.5959 268.182C98.446 280.518 109.042 289.643 121.516 289.643H392.442C405.558 289.643 416.481 279.581 417.556 266.509L428.684 131.136C429.891 116.455 418.302 103.873 403.571 103.873H270.219C263.105 103.873 256.323 100.867 251.547 95.5961L236.84 79.3672C232.063 74.0963 225.281 71.0898 218.168 71.0898H96.2939C80.8885 71.0898 69.0892 84.7909 71.3743 100.026Z" stroke="#FAB330" stroke-width="2.29076"/>
+</g>
+<defs>
+<filter id="filter0_d_3177_34" x="0.000167847" y="-0.000320435" width="499.861" height="360.733" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="34.9723"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.9805 0 0 0 0 0.700268 0 0 0 0 0.189258 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3177_34"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3177_34" result="shape"/>
+</filter>
+</defs>
+</svg>
+      <stop offset="100%" stop-color="#FAB330" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Blur filter for outer glow -->
+    <filter id="blurOuter" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+
+    <!-- Blur filter for mid glow (less blur) -->
+    <filter id="blurMid" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+
+    <!-- Warm cream gradient for folder fill (light top → warmer bottom) -->
+    <linearGradient id="folderFill" x1="218.5" y1="110" x2="218.5" y2="377" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#FFFDF5"/>
+      <stop offset="100%" stop-color="#FFF3CE"/>
+    </linearGradient>
+
+    <!-- Subtle inner glow at bottom edge of folder -->
+    <radialGradient id="innerEdgeGlow" cx="50%" cy="95%" r="60%" gradientUnits="objectBoundingBox">
+      <stop offset="0%"   stop-color="#FAB330" stop-opacity="0.3"/>
+      <stop offset="60%"  stop-color="#FAB330" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FAB330" stop-opacity="0"/>
+    </radialGradient>
+
+  </defs>
+
+  <!-- ===================== GLOW LAYERS ===================== -->
+
+  <!-- Layer 1: Wide outer ambient bloom -->
+  <ellipse cx="350" cy="400" rx="310" ry="160"
+           fill="url(#outerGlow)" filter="url(#blurOuter)"/>
+
+  <!-- Layer 2: Tighter core glow, brighter center -->
+  <ellipse cx="350" cy="380" rx="200" ry="100"
+           fill="url(#midGlow)" filter="url(#blurMid)"/>
+
+  <!-- ===================== FOLDER ===================== -->
+
+  <!-- Folder body: original path translated +130 right, +110 down to center in canvas -->
+  <g transform="translate(130, 110)">
+
+    <!-- Main folder shape -->
+    <path
+      d="M1.42945 30.0816L33.5641 244.328C35.4143 256.664 46.0105 265.789 58.4838 265.789H396.017C409.133 265.789 420.056 255.727 421.131 242.655L435.48 68.1057C436.687 53.4243 425.097 40.8427 410.366 40.8427H240.767C233.654 40.8427 226.872 37.8363 222.095 32.5654L201.123 9.42284C196.346 4.15197 189.564 1.14551 182.451 1.14551H26.3491C10.9437 1.14551 -0.855627 14.8466 1.42945 30.0816Z"
+      fill="url(#folderFill)"
+      stroke="#FAB330"
+      stroke-width="2.29076"
+    />
+
+    <!-- Inner edge glow overlay (bottom warmth) -->
+    <path
+      d="M1.42945 30.0816L33.5641 244.328C35.4143 256.664 46.0105 265.789 58.4838 265.789H396.017C409.133 265.789 420.056 255.727 421.131 242.655L435.48 68.1057C436.687 53.4243 425.097 40.8427 410.366 40.8427H240.767C233.654 40.8427 226.872 37.8363 222.095 32.5654L201.123 9.42284C196.346 4.15197 189.564 1.14551 182.451 1.14551H26.3491C10.9437 1.14551 -0.855627 14.8466 1.42945 30.0816Z"
+      fill="url(#innerEdgeGlow)"
+    />
+
+  </g>
+</svg>

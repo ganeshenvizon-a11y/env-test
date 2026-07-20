@@ -444,11 +444,35 @@
                 />
               </div>
               <div class="tools-heading-area">
-                <img
+                <svg
                   class="tools-heading-area-child"
-                  alt=""
-                  src="assets/images/clients/Tool-Icon.svg"
-                />
+                  viewBox="0 0 437 267"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <filter id="folder-shape-glow" x="-40%" y="-40%" width="180%" height="180%">
+                      <!-- Blur the alpha channel of the shape to create a glow that follows the path -->
+                      <feGaussianBlur in="SourceAlpha" stdDeviation="16" result="blurredAlpha"/>
+                      <!-- Colour the blur golden -->
+                      <feFlood flood-color="#FAB330" flood-opacity="0.75" result="glowColor"/>
+                      <feComposite in="glowColor" in2="blurredAlpha" operator="in" result="coloredGlow"/>
+                      <!-- Stack: glow behind, original shape on top -->
+                      <feMerge>
+                        <feMergeNode in="coloredGlow"/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
+                  </defs>
+                  <path
+                    d="M1.42945 30.0816L33.5641 244.328C35.4143 256.664 46.0105 265.789 58.4838 265.789H396.017C409.133 265.789 420.056 255.727 421.131 242.655L435.48 68.1057C436.687 53.4243 425.097 40.8427 410.366 40.8427H240.767C233.654 40.8427 226.872 37.8363 222.095 32.5654L201.123 9.42284C196.346 4.15197 189.564 1.14551 182.451 1.14551H26.3491C10.9437 1.14551 -0.855627 14.8466 1.42945 30.0816Z"
+                    fill="white"
+                    stroke="#FAB330"
+                    stroke-width="2.29076"
+                    filter="url(#folder-shape-glow)"
+                  />
+                </svg>
 
                 <div class="top-tools-for-container">
                   <span class="brands">Top </span>

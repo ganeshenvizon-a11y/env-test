@@ -1,167 +1,187 @@
-/* SERVICES PAGE — case study summary strip */
+/* PROJECT DETAIL PAGE — Previous/Next navigation bar styling */
+
+.project-nav-wrapper {
+  display: flex;
+  width: 100%;
+  padding: 0 clamp(20px, 8.5vw, 122px);
+  box-sizing: border-box;
+}
+
+/* Hide the wrapper entirely if the inner navigation is hidden */
+.project-nav-wrapper:has(#projectNav[hidden]) {
+  display: none !important;
+}
 
 .case-study-summary-parent {
+  width: min(1198px, 100%);
+  margin: 0 auto;
   display: flex;
-  align-self: stretch;
-  width: 100%;
-  height: auto;
   flex-direction: row;
-  gap: clamp(40px, 6vw, 72px);
-  align-items: center;
-  transform: rotate(0deg);
-  max-width: 100%;
-  flex-shrink: 0;
-  text-align: center;
-  font-size: var(--fs-64);
-  color: var(--color-gray-2700);
-  font-family: var(--font-satoshi);
-  justify-content: flex-start;
+  gap: clamp(20px, 3vw, 40px);
+  align-items: stretch; /* equal height for both cards */
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .case-study-summary {
-  width: min(866px, 100%);
   flex: 1 1 0;
   min-width: 0;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: var(--padding-0) var(--padding-20);
-  box-sizing: border-box;
-  max-width: 100%;
-  height: auto;
-  gap: var(--gap-0);
-  transform: rotate(0deg);
-  flex-direction: row;
-  /* Now also used as an <a> wrapper (js/project-nav.js) — reset link
-     defaults so it keeps the exact same look as the original div markup. */
-  color: inherit;
+  align-items: center;
+  gap: 24px;
+  padding: clamp(24px, 3.5vw, 36px) clamp(28px, 4vw, 48px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  background-color: #ffffff;
   text-decoration: none;
+  color: var(--color-gray-2700, #1a1a1a);
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: 
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+    border-color 0.3s ease;
+  cursor: pointer;
+}
+
+/* Elegant radial hover gradient background */
+.case-study-summary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(230, 166, 50, 0.03) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.case-study-summary:hover::before {
+  opacity: 1;
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .case-study-summary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.02);
+    border-color: var(--color-goldenrod-300);
+  }
+
   .case-study-summary:hover .poly-ai {
     color: var(--color-goldenrod-300);
   }
+
+  .case-study-summary:hover .case-study-logo-wrapper-child {
+    opacity: 1;
+    filter: drop-shadow(0 0 1px rgba(230, 166, 50, 0.3));
+  }
 }
 
-.case-study-header {
-  /* Previous/Next now sit side by side (see .case-study-summary-parent),
-     so each card only has half the width it used to — nowrap plus a fluid
-     arrow width/gap (below) keeps arrow+title on one line at every size
-     instead of the arrow dropping onto its own line. */
-  flex-wrap: nowrap;
-  align-content: flex-start;
-  gap: clamp(16px, 4vw, 67.1px);
+/* Align contents based on navigation direction */
+.case-study-summary--prev {
+  flex-direction: row;
+}
+
+.case-study-summary--prev .case-study-content {
+  text-align: left;
+}
+
+.case-study-summary--next {
+  flex-direction: row;
+}
+
+.case-study-summary--next .case-study-content {
+  text-align: right;
+}
+
+/* Dynamic arrow animations on hover */
+.case-study-summary--prev:hover .case-study-logo-wrapper {
+  transform: translateX(-6px);
+}
+
+.case-study-summary--next:hover .case-study-logo-wrapper {
+  transform: translateX(6px);
+}
+
+.case-study-content {
   display: flex;
-  align-items: center;
-  max-width: 100%;
-  width: auto;
-  align-self: unset;
-  height: auto;
-  transform: rotate(0deg);
-  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  flex-grow: 1;
+  z-index: 2;
+}
+
+.case-study-label {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-goldenrod-300);
+}
+
+.poly-ai {
+  margin: 0;
+  font-family: var(--font-satoshi), sans-serif;
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: inherit;
+  transition: color 0.3s ease;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .case-study-logo-wrapper {
   display: flex;
-  align-items: flex-start;
-  max-width: 100%;
-  width: auto;
-  align-self: unset;
-  height: auto;
-  transform: rotate(0deg);
-  flex-direction: column;
-  padding: 7.7px var(--padding-0) var(--padding-0);
-  box-sizing: border-box;
-  gap: var(--gap-0);
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .case-study-logo-wrapper-child {
-  position: relative;
-  max-height: 100%;
   display: block;
-  /* Fluid instead of the original fixed 351.5px — two cards now share the
-     row (see .case-study-summary-parent), so the arrow must shrink well
-     before the title does, or it starves the title of space on anything
-     narrower than desktop. */
-  width: clamp(64px, 18vw, 351.5px);
-  /* flex:1 forces flex-basis:0% on the main (column) axis, collapsing the
-     image to 0 height since its wrapper has no fixed height to grow into.
-     This never surfaced before because the markup using this class was
-     commented out. flex:0 1 auto lets the browser size it from the SVG's
-     own aspect ratio instead. */
-  flex: 0 1 auto;
-  max-width: 100%;
-}
-
-.poly-ai {
-  font-weight: 900;
-  letter-spacing: -3px;
-  line-height: 120%;
-  display: block;
-  width: clamp(90px, 22vw, 198px);
-  max-width: 100%;
   height: auto;
-  margin: 0;
-  position: relative;
-  font-size: inherit;
-  font-family: inherit;
-  align-items: center;
-  justify-content: center;
-  overflow-wrap: break-word;
-  /* Longer real project titles (unlike "Poly AI") could otherwise grow the
-     card past its neighbor — clamp to 2 lines, matching every other
-     title/heading treatment already used across the project pages. */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
+  width: clamp(50px, 8vw, 84px); /* Restrict line arrow widths beautifully */
+  opacity: 0.65;
+  transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
-@media screen and (max-width: 1050px) {
-  .poly-ai {
-    font-size: var(--fs-51);
-    line-height: var(--lh-61);
-  }
-}
+/* ==========================================================================
+   RESPONSIVE LAYOUTS
+   ========================================================================== */
 
-@media screen and (max-width: 750px) {
-  .case-study-summary-parent {
-    gap: 35px;
-  }
-
-  .case-study-header {
-    gap: 24px;
-  }
-}
-
-/* Below this, even a fluid arrow + 2-line title no longer leaves enough
-   room side by side — stack Previous above Next instead, each keeping its
-   own full-width row (arrow position per card is unchanged). */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .case-study-summary-parent {
     flex-direction: column;
-    align-items: stretch;
-    gap: var(--gap-24);
+    gap: 16px;
   }
 
   .case-study-summary {
     width: 100%;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .case-study-summary-parent {
-    gap: var(--gap-18);
+    padding: 20px 24px;
+    gap: 20px;
+    flex-direction: row !important; /* Force left-to-right on mobile for scanning */
+    flex: none; /* Prevent vertical height collapse in a column flex container */
   }
 
-  .case-study-header {
-    gap: 12px;
+  .case-study-content {
+    text-align: left !important;
   }
 
-  .poly-ai {
-    font-size: var(--fs-38);
-    line-height: var(--lh-46);
+  .case-study-summary--prev:hover .case-study-logo-wrapper {
+    transform: translateX(-4px);
+  }
+
+  .case-study-summary--next:hover .case-study-logo-wrapper {
+    transform: translateX(4px);
   }
 }

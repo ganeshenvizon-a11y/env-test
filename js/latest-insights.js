@@ -4,6 +4,7 @@ import {
   stripHtml,
   formatDateShort,
   getFeaturedImage,
+  getFeaturedImageAlt,
   getCategories,
 } from "./wp-utils.js";
 import { initInsights } from "../assets/js/components/insights.js";
@@ -37,7 +38,7 @@ function createCardElement(post) {
         <div class="insight-card__image-wrap">
             <img class="insight-card__image"
                  src="${getFeaturedImage(post)}"
-                 alt=""
+                 alt="${getFeaturedImageAlt(post)}"
                  loading="lazy"
                  width="384"
                  height="220">

@@ -2,6 +2,7 @@ import {
     fetchAllPosts,
     decodeHtmlEntities,
     getFeaturedImage,
+    getFeaturedImageAlt,
     getCategories,
     getPrimaryCategory,
     estimateReadingTime,
@@ -50,7 +51,7 @@ function createCard(post) {
     card.className = 'insight-card';
     card.innerHTML = `
         <div class="insight-card__image-wrap">
-            <img class="insight-card__image" src="${getFeaturedImage(post)}" alt="" loading="lazy">
+            <img class="insight-card__image" src="${getFeaturedImage(post)}" alt="${getFeaturedImageAlt(post)}" loading="lazy">
             <span class="insight-card__badge">${category}</span>
         </div>
         <div class="insight-card__content">

@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Serve sitemap.php's output at the clean /sitemap.xml URL search
+    # engines expect.
+    RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+    # Serve robots.php's output at the clean /robots.txt URL, so its
+    # Sitemap: directive can reflect the current environment's domain.
+    RewriteRule ^robots\.txt$ robots.php [L]
+</IfModule>

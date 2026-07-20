@@ -25,25 +25,24 @@ function createNavItem(project, direction, currentSlug) {
   const arrowSrc = isPrev ? ARROW_PREV_SRC : ARROW_NEXT_SRC;
   const arrow = `
     <div class="case-study-logo-wrapper">
-      <img class="case-study-logo-wrapper-child" alt="" src="${arrowSrc}">
+      <img class="case-study-logo-wrapper-child" alt="${isPrev ? 'Previous' : 'Next'} project" src="${arrowSrc}">
     </div>`;
-  // title is CMS text, not markup — kept out of the innerHTML template below
-  // and set via textContent so literal HTML in a project title can't be
-  // parsed as markup.
-  const heading = `<h2 class="poly-ai"></h2>`;
+  const labelText = isPrev ? "PREVIOUS PROJECT" : "NEXT PROJECT";
+  const content = `
+    <div class="case-study-content">
+      <span class="case-study-label">${labelText}</span>
+      <h3 class="poly-ai"></h3>
+    </div>
+  `;
 
   const item = document.createElement("a");
-  item.className = "case-study-summary";
+  item.className = `case-study-summary case-study-summary--${direction}`;
   item.href = href;
   item.setAttribute(
     "aria-label",
     `${isPrev ? "Previous" : "Next"} project: ${title}`,
   );
-  item.innerHTML = `
-    <div class="case-study-header">
-      ${isPrev ? arrow + heading : heading + arrow}
-    </div>
-  `;
+  item.innerHTML = isPrev ? arrow + content : content + arrow;
   item.querySelector(".poly-ai").textContent = title;
   item.addEventListener("click", () =>
     track(isPrev ? "project_nav_previous_click" : "project_nav_next_click", {

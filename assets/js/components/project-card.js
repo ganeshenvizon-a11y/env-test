@@ -56,6 +56,7 @@ function ensureFrameSprite(){
  * @param {Object} data
  * @param {string} data.title
  * @param {string} data.logo - image src for the project/brand logo
+ * @param {string} [data.logoAlt] - alt text for data.logo; falls back to data.title
  * @param {string} [data.fallbackLogo] - swapped in if data.logo fails to load
  * @param {string} data.bgColor - CSS background (color or gradient)
  * @param {string} data.accentColor - fill for the SVG frame
@@ -110,7 +111,7 @@ export function renderProjectCard(data){
         card.querySelector('.project-card__logo'),
         data.logo,
         data.fallbackLogo || data.logo,
-        '',
+        data.logoAlt || data.title,
     );
 
     return card;

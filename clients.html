@@ -237,53 +237,53 @@
 
       <div class="valuable-clients__grid">
         <div class="valuable-clients__logo">
-          <img loading="lazy" alt="Client logo" src="assets/images/clients/image-115@2x.png" />
+          <img loading="lazy" alt="Yashoda Hospitals logo" src="assets/images/clients/image-115@2x.png" />
         </div>
         <div class="valuable-clients__logo">
-          <img loading="lazy" alt="Client logo" src="assets/images/clients/image-119@2x.png" />
+          <img loading="lazy" alt="JSW Cement logo" src="assets/images/clients/image-119@2x.png" />
         </div>
         <div class="valuable-clients__logo">
-          <img loading="lazy" alt="Client logo" src="assets/images/clients/image-121@2x.png" />
+          <img loading="lazy" alt="JIMS Research Foundation logo" src="assets/images/clients/image-121@2x.png" />
         </div>
         <div class="valuable-clients__logo">
-          <img loading="lazy" alt="Client logo" src="assets/images/clients/image-122@2x.png" />
+          <img loading="lazy" alt="Asli Hyderabad logo" src="assets/images/clients/image-122@2x.png" />
         </div>
         <div class="valuable-clients__logo">
-          <img loading="lazy" alt="Client logo" src="assets/images/clients/image-117@2x.png" />
+          <img loading="lazy" alt="Center for Soft Power logo" src="assets/images/clients/image-117@2x.png" />
         </div>
         <div class="valuable-clients__logo">
-          <img loading="lazy" alt="Client logo" src="assets/images/clients/image-111@2x.png" />
+          <img loading="lazy" alt="GMR logo" src="assets/images/clients/image-111@2x.png" />
         </div>
         <div class="valuable-clients__logo">
-          <img loading="lazy" alt="Client logo" src="assets/images/clients/image-110@2x.png" />
+          <img loading="lazy" alt="India Foundation logo" src="assets/images/clients/image-110@2x.png" />
         </div>
         <div class="valuable-clients__logo">
-          <img loading="lazy" alt="Client logo" src="assets/images/clients/image-123@2x.png" />
+          <img loading="lazy" alt="IPAGE logo" src="assets/images/clients/image-123@2x.png" />
         </div>
         <div class="valuable-clients__logo">
-          <img loading="lazy" alt="Client logo" src="assets/images/clients/image-120@2x.png" />
+          <img loading="lazy" alt="Sagar Cement logo" src="assets/images/clients/image-120@2x.png" />
         </div>
         <div class="valuable-clients__logo">
-          <img loading="lazy" alt="Client logo" src="assets/images/clients/image-112@2x.png" />
+          <img loading="lazy" alt="Cyberabad Police logo" src="assets/images/clients/image-112@2x.png" />
         </div>
         <div class="valuable-clients__logo">
-          <img loading="lazy" alt="Client logo" src="assets/images/clients/image-109@2x.png" />
+          <img loading="lazy" alt="NRSC ISRO logo" src="assets/images/clients/image-109@2x.png" />
         </div>
         <div class="valuable-clients__logo">
-          <img loading="lazy" alt="Client logo" src="assets/images/clients/image-113@2x.png" />
+          <img loading="lazy" alt="Bharathi Cement logo" src="assets/images/clients/image-113@2x.png" />
         </div>
       </div>
 
       <div class="valuable-clients__more" id="valuableClientsMore">
         <div class="valuable-clients__grid valuable-clients__grid--extra">
           <div class="valuable-clients__logo">
-            <img loading="lazy" alt="Client logo" src="assets/images/clients/image-118@2x.png" />
+            <img loading="lazy" alt="Nityo Systems logo" src="assets/images/clients/image-118@2x.png" />
           </div>
           <div class="valuable-clients__logo">
-            <img loading="lazy" alt="Client logo" src="assets/images/clients/image-114@2x.png" />
+            <img loading="lazy" alt="Navayuga logo" src="assets/images/clients/image-114@2x.png" />
           </div>
           <div class="valuable-clients__logo">
-            <img loading="lazy" alt="Client logo" src="assets/images/clients/image-126@2x.png" />
+            <img loading="lazy" alt="Concrete Lime Light logo" src="assets/images/clients/image-126@2x.png" />
           </div>
         </div>
       </div>
@@ -889,20 +889,48 @@ document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------------------------------
     const initClientCards = () => {
         const cards = document.querySelectorAll('.client-card');
+        let userInteracted = false;
+
         cards.forEach(card => {
             const toggles = card.querySelectorAll('.client-card__toggle');
             toggles.forEach(toggle => {
                 toggle.addEventListener('click', (e) => {
                     e.stopPropagation();
+                    userInteracted = true;
                     card.classList.toggle('is-flipped');
                 });
             });
 
             // Forgiving click target: allow clicking the card itself to toggle
             card.addEventListener('click', () => {
+                userInteracted = true;
                 card.classList.toggle('is-flipped');
             });
         });
+
+        // Auto-peek animation to hint interactivity to the user
+        setTimeout(() => {
+            if (userInteracted) return;
+
+            // Flip all cards to active state (back face) sequentially
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    if (userInteracted) return;
+                    card.classList.add('is-flipped');
+                }, index * 250);
+            });
+
+            // Flip all cards back to inactive state (front face) after a delay
+            setTimeout(() => {
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        if (!userInteracted && card.classList.contains('is-flipped')) {
+                            card.classList.remove('is-flipped');
+                        }
+                    }, index * 250);
+                });
+            }, 2500); // Let the user view the flipped content for 2.5 seconds
+        }, 1500); // Trigger 1.5 seconds after page load
     };
 
     // ----------------------------------------------------

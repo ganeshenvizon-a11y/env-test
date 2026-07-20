@@ -94,6 +94,16 @@ export function getProjectImage(project) {
 }
 
 /**
+ * Descriptive alt text for a project's featured image: the media library's
+ * own "Alternative Text" field when an editor set one, otherwise the project
+ * title (never empty/generic).
+ */
+export function getProjectImageAlt(project) {
+  const altText = project.featured_image_alt?.trim?.();
+  return altText || decodeHtmlEntities(project.title?.rendered || UNTITLED_PROJECT_TITLE);
+}
+
+/**
  * Maps a WordPress project record onto the shared ProjectCard component's
  * data shape, reusing its existing card design instead of introducing a new
  * one. Assigned Services taxonomy terms are shown via the card's tag pills —
@@ -103,6 +113,7 @@ export function buildProjectCardData(project) {
   return {
     title: decodeHtmlEntities(project.title?.rendered || UNTITLED_PROJECT_TITLE),
     logo: getProjectImage(project),
+    logoAlt: getProjectImageAlt(project),
     fallbackLogo: FALLBACK_IMAGE,
     bgColor: CARD_BG,
     accentColor: CARD_ACCENT,

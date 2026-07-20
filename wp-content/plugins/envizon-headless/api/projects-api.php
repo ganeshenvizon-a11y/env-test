@@ -24,6 +24,24 @@ function envizon_register_project_rest_fields() {
 
     register_rest_field(
         'projects',
+        'featured_image_alt',
+        array(
+            'get_callback' => function ($post) {
+
+                $thumbnail_id = get_post_thumbnail_id($post['id']);
+
+                if (!$thumbnail_id) {
+                    return '';
+                }
+
+                return get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+            },
+            'schema' => null,
+        )
+    );
+
+    register_rest_field(
+        'projects',
         'service_terms',
         array(
             'get_callback' => function ($post) {

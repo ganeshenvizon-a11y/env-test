@@ -76,3 +76,19 @@ export function setImageWithFallback(imgEl, src, fallbackSrc, alt) {
 export function hasContent(html) {
   return Boolean((html || "").trim());
 }
+
+/**
+ * Backfills alt text on any <img> inside `container` that WordPress's
+ * Gutenberg body content left without one (no alt attribute, or an
+ * empty/whitespace one) — editorial discipline in the CMS can't be
+ * guaranteed, so this is the code-side safety net. Images the editor did
+ * describe are left untouched.
+ */
+export function fillMissingImageAlt(container, fallbackAlt) {
+  if (!container || !fallbackAlt) return;
+  container.querySelectorAll("img").forEach((img) => {
+    if (!img.getAttribute("alt")?.trim()) {
+      img.alt = fallbackAlt;
+    }
+  });
+}

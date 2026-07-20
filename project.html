@@ -384,7 +384,9 @@
        Hidden by default and only revealed once both a previous and next
        project are found (navigation wraps around, so this only ever hides
        when the catalog has fewer than two projects). -->
-  <nav class="case-study-summary-parent" id="projectNav" aria-label="Project navigation" hidden></nav>
+  <section class="project-nav-wrapper">
+    <nav class="case-study-summary-parent" id="projectNav" aria-label="Project navigation" hidden></nav>
+  </section>
 
   <!-- Populated dynamically by js/project-related.js. Hidden by default and
        only revealed once at least one related project is found. -->
@@ -397,8 +399,7 @@
 
   </main>
 
-  <section class="case-study-summary-parent">
-    <div class="global-cta">
+  <div class="global-cta">
       <section class="call-to-action-content">
         <div class="frame-parent">
           <div class="lets-build-something-people-r-parent">
@@ -454,7 +455,6 @@
       </section>
       <footer class="footer"></footer>
     </div>
-  </section>
 </div>
 
 <script type="module" src="js/header.js"></script>

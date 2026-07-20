@@ -2,6 +2,7 @@ import {
     fetchAllPosts,
     decodeHtmlEntities,
     getFeaturedImage,
+    getFeaturedImageAlt,
     getCategories,
     getPostIdFromQuery
 } from './wp-utils.js';
@@ -20,7 +21,7 @@ function createNavItem(post, direction) {
         <a class="article-nav-card article-nav-card--${direction}" href="${href}"
            aria-label="${isPrev ? 'Previous' : 'Next'} article: ${title}">
             <div class="article-nav-card__image-wrap">
-                <img class="article-nav-card__image" src="${getFeaturedImage(post)}" alt="" loading="lazy">
+                <img class="article-nav-card__image" src="${getFeaturedImage(post)}" alt="${getFeaturedImageAlt(post)}" loading="lazy">
             </div>
             <div class="article-nav-card__content">
                 <span class="article-nav-card__category">${category}</span>

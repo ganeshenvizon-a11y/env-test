@@ -19,6 +19,7 @@ import {
   setSafeLink,
   setImageWithFallback,
   hasContent,
+  fillMissingImageAlt,
 } from "./shared/cms-validation.js";
 import { showState } from "./shared/loading-state.js";
 import { track } from "./shared/analytics.js";
@@ -139,6 +140,7 @@ function renderProject(refs, project) {
     refs.contentWrapper.style.display = hasContent(rawContent) ? "" : "none";
   }
   refs.content.innerHTML = rawContent;
+  fillMissingImageAlt(refs.content, `${title} project image`);
   wrapHeadingParagraphPairs(refs.content);
 
   initSocialShare({ title, description, url, image, slug: project.slug });

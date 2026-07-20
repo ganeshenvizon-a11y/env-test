@@ -3,6 +3,7 @@ import {
     decodeHtmlEntities,
     formatDateShort,
     getFeaturedImage,
+    getFeaturedImageAlt,
     getCategories,
     getPostIdFromQuery
 } from './wp-utils.js';
@@ -48,7 +49,7 @@ function createFeaturedCard(post) {
     card.className = 'sidebar-featured';
     card.innerHTML = `
         <div class="sidebar-featured__image-wrap">
-            <img class="sidebar-featured__image" src="${getFeaturedImage(post)}" alt="" loading="lazy">
+            <img class="sidebar-featured__image" src="${getFeaturedImage(post)}" alt="${getFeaturedImageAlt(post)}" loading="lazy">
             <span class="sidebar-featured__badge">${category}</span>
         </div>
         <div class="sidebar-featured__body">
@@ -70,7 +71,7 @@ function createRecentItem(post) {
     item.className = 'sidebar-recent__item';
     item.href = `blog-single.html?id=${post.id}`;
     item.innerHTML = `
-        <img class="sidebar-recent__thumb" src="${getFeaturedImage(post)}" alt="" loading="lazy" width="64" height="64">
+        <img class="sidebar-recent__thumb" src="${getFeaturedImage(post)}" alt="${getFeaturedImageAlt(post)}" loading="lazy" width="64" height="64">
         <div class="sidebar-recent__info">
             <h4 class="sidebar-recent__title">${title}</h4>
             <span class="sidebar-recent__date">${formatDateShort(post.date)}</span>

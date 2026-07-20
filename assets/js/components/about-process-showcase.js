@@ -123,10 +123,10 @@ export function initAboutProcessShowcase(root = '.about-discovery') {
                             <p class="discovery-accordion__desc">${f.desc}</p>
                             <div class="discovery-accordion__media">
                                 <div class="discovery-media__wrap discovery-media__wrap--left">
-                                    <img src="${f.left}" alt="" loading="lazy">
+                                    <img src="${f.left}" alt="${f.title} process visual" loading="lazy">
                                 </div>
                                 <div class="discovery-media__wrap discovery-media__wrap--center">
-                                    <img src="${f.center}" alt="" loading="lazy">
+                                    <img src="${f.center}" alt="${f.title} process visual" loading="lazy">
                                 </div>
                             </div>
                             <a href="#" class="discovery-accordion__cta">${f.cta} <span aria-hidden="true">↗</span></a>
@@ -158,7 +158,9 @@ export function initAboutProcessShowcase(root = '.about-discovery') {
             renderList();
             renderAccordion();
             leftImg.src = feature.left;
+            leftImg.alt = `${feature.title} process visual`;
             centerImg.src = feature.center;
+            centerImg.alt = `${feature.title} process visual`;
 
             card.classList.remove('is-switching');
             leftWrap.classList.remove('is-switching');
@@ -173,7 +175,9 @@ export function initAboutProcessShowcase(root = '.about-discovery') {
     const initial = FEATURES.find(f => f.key === activeKey) || FEATURES[0];
     renderCard(initial);
     leftImg.src = initial.left;
+    leftImg.alt = `${initial.title} process visual`;
     centerImg.src = initial.center;
+    centerImg.alt = `${initial.title} process visual`;
     renderList();
     renderAccordion();
 }

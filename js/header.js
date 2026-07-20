@@ -66,6 +66,7 @@ function initServicesDropdown() {
     if (!previewImg) return;
 
     const defaultHero = "assets/images/services/branding/image 165.jpg";
+    const defaultHeroAlt = previewImg.getAttribute('alt');
     let hoverTimeout;
 
     const showDropdown = () => {
@@ -97,6 +98,7 @@ function initServicesDropdown() {
                 previewImg.classList.add('fade-out');
                 setTimeout(() => {
                     previewImg.setAttribute('src', heroSrc);
+                    previewImg.setAttribute('alt', `${link.textContent.trim()} services preview`);
                     previewImg.classList.remove('fade-out');
                 }, 150);
             }
@@ -109,6 +111,7 @@ function initServicesDropdown() {
             previewImg.classList.add('fade-out');
             setTimeout(() => {
                 previewImg.setAttribute('src', defaultHero);
+                previewImg.setAttribute('alt', defaultHeroAlt);
                 previewImg.classList.remove('fade-out');
             }, 150);
         }

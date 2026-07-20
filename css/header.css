@@ -83,7 +83,7 @@
 }
 
 .nav-links a {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Satoshi', sans-serif;
     font-size: 14px;
     font-weight: 500;
     color: var(--text-muted);
@@ -430,7 +430,7 @@
 }
 
 .services-dropdown__list a {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Satoshi', sans-serif;
     font-size: 16px;
     font-weight: 600;
     color: var(--text-muted);

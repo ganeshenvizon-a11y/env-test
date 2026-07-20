@@ -10,6 +10,7 @@ import {
     getPostIdFromQuery,
     removeDuplicateFeaturedImage
 } from './wp-utils.js';
+import { fillMissingImageAlt } from './shared/cms-validation.js';
 
 function getRefs() {
     return {
@@ -91,6 +92,7 @@ function renderPost(refs, post) {
 
     const content = stripLeadingH1(post.content?.rendered || '');
     refs.content.innerHTML = removeDuplicateFeaturedImage(content, getFeaturedImageSourceUrl(post));
+    fillMissingImageAlt(refs.content, `${title} article image`);
 
     // Read after the content is in the DOM so it reflects what's actually
     // rendered (and excludes anything CSS-hidden), not the raw API payload.

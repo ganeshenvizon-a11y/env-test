@@ -155,6 +155,17 @@ export function getFeaturedImage(post) {
 }
 
 /**
+ * Descriptive alt text for a post's featured image: the media library's own
+ * "Alternative Text" field when an editor set one, otherwise the post title
+ * (never empty/generic, unlike the raw WordPress default of "").
+ */
+export function getFeaturedImageAlt(post) {
+  const media = post._embedded?.["wp:featuredmedia"]?.[0];
+  const altText = media?.alt_text?.trim();
+  return altText || decodeHtmlEntities(post.title?.rendered || "");
+}
+
+/**
  * The real WordPress featured-media URL, or null if the post has none (as
  * opposed to getFeaturedImage's FALLBACK_IMAGE, which is a display default
  * and not something migrated content could legitimately duplicate).
